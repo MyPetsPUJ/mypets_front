@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AdoptanteService } from 'src/app/services/adoptante.service';
+
 
 @Component({
   selector: 'app-crear-animal',
@@ -8,7 +8,7 @@ import { AdoptanteService } from 'src/app/services/adoptante.service';
 })
 export class CrearAnimalComponent implements OnInit {
 
-  constructor(public adoptanteService: AdoptanteService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
