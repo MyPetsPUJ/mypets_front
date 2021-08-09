@@ -10,6 +10,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { CrearAnimalComponent } from './usuarios/crear-animal/crear-animal.component';
 import { SeleccionAnimalComponent } from './usuarios/crear-animal/seleccion-animal/seleccion-animal.component';
+import { CrearAnimalGatoComponent } from './usuarios/crear-animal/crear-animal-gato/crear-animal-gato.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { SeleccionAnimalComponent } from './usuarios/crear-animal/seleccion-anim
     UsuariosComponent,
     ReportesComponent,
     CrearAnimalComponent,
-    SeleccionAnimalComponent
+    SeleccionAnimalComponent,
+    CrearAnimalGatoComponent
   ],
   imports: [
     CommonModule,

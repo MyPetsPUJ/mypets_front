@@ -1,0 +1,32 @@
+.ancho
+{
+    width: 90%;
+}.ancho
+{
+    width: 90%;
+}
+.centro
+{
+    text-align: center;
+}
+.margen 
+{
+   height: 1120px;
+   width: 1120px;
+   margin: auto;
+}
+.tamano 
+{
+    text-align: center;
+    width: 120px;
+    height: 35px;
+}
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+  .titulo 
+  {
+      font-size: 30px;
+      text-align: center;
+      font-family:Georgia, 'Times New Roman', Times, serif
+  }
