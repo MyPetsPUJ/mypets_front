@@ -1,50 +1,86 @@
 <div>
-    <mat-toolbar>
-        <span>Crear animal</span>
-    </mat-toolbar>
-    <mat-card styles="margin-top: 10px;">Ingrese los datos del animal
+    <mat-card styles="margin-top: 10px;">
+        <h2 class= "titulo">Crear un perro</h2>
         <form>
-            <mat-grid-list cols="4" rowHeight="70px">
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
-                    <mat-form-field class="ancho">
-                        <mat-label>Nombre del animal</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                </mat-grid-tile>
-
-                <mat-grid-tile [colspan]="3" [rowspan]="6" [style.background]="'lightgreen'">
-                    Imagen animal
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
-                    <mat-form-field appearance="fill" class="ancho">
-                        <mat-label>Edad</mat-label>
-                        <mat-select>
-                            <mat-option *ngFor="let item of edad" [value]="item">
-                                {{item}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
-                    <mat-form-field appearance="fill" class="ancho">
-                        <mat-label>Tipo</mat-label>
-                        <mat-select>
-                            <mat-option *ngFor="let item of tipo" [value]="item">
-                                {{item}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightgreen'">
-                    raza
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightgreen'">
-                    Tam
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightgreen'">
-                    Botón de aceptar y volver
-                </mat-grid-tile>
-            </mat-grid-list>
+            <mat-card>
+                <div class="centro">
+                    <img src = "../../../assets/Images/dog-form.png" width= "15%">
+                </div>
+                <form>
+                    <mat-grid-list cols="2" rowHeight="60px">
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho">
+                                <mat-label>Nombre del animal</mat-label>
+                                <input matInput>
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field appearance="fill" class="ancho">
+                                <mat-label>Edad aproximada</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let item of edad" [value]="item">
+                                        {{item}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho">
+                                <mat-label>Raza</mat-label>
+                                <input matInput>
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field appearance="fill" class="ancho">
+                                <mat-label>sexo</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let item of genero" [value]="item">
+                                        {{item}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho">
+                                <mat-label>Peso(kg)</mat-label>
+                                <input matInput type = "number">
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field appearance="fill" class="ancho">
+                                <mat-label>Situación</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let item of situacion" [value]="item">
+                                        {{item}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                            <mat-form-field appearance="fill" class="ancho">
+                                <mat-label>Esquema de vacunación</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let item of vacunas" [value]="item">
+                                        {{item}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                            <mat-form-field appearance="fill" class = "ancho">
+                                <mat-label>Fecha de última vacuna</mat-label>
+                                <input matInput [matDatepicker]="picker">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                              </mat-form-field>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                    <div class = "centro">
+                        <button mat-raised-button color="primary" style="margin: 16px;" class = "tamano">Crear animal</button>
+                        <button mat-raised-button color="accent" class = "tamano" routerLink = "/dashboard/animales">Cancelar</button>
+                    </div>
+                </form>
+            </mat-card>
         </form>
     </mat-card>
 </div>
