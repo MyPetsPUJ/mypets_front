@@ -34,6 +34,6 @@ export class CrearAdoptanteComponent implements OnInit {
     if (form.invalid){
       return;
     }
-    this.authservice.crearUsuarioAdoptante(form.value.nombre, form.value.apellidos, form.value.fecha_nac, form.value.genero, form.value.localidad, form.value.correo, form.value.num_cel, form.value.password);
+    this.authservice.crearUsuarioAdoptante(form.value.nombre, form.value.apellidos, form.value.fecha_nac, form.value.genero, form.value.localidad, form.value.correo, form.value.num_cel, form.value.password, 'Adoptante');
   }
 }

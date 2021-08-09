@@ -7,4 +7,5 @@ export interface AuthFundacion{
     correo: string;
     num_celular: string;
     contrasena: string;
+    tipo_usuario: string;
 }

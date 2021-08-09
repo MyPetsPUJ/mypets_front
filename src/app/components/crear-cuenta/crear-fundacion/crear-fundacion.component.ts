@@ -24,7 +24,7 @@ export class CrearFundacionComponent implements OnInit {
     if(form.invalid){
       return;
     }
-    this.authFundacionService.crearUsuarioFundacion(form.value.nombreFun, form.value.nombreEncar, form.value.apellidos, form.value.fecha_creacion, form.value.localidad, form.value.correo, form.value.num_cel, form.value.contrasena);
+    this.authFundacionService.crearUsuarioFundacion(form.value.nombreFun, form.value.nombreEncar, form.value.apellidos, form.value.fecha_creacion, form.value.localidad, form.value.correo, form.value.num_cel, form.value.contrasena, 'Fundacion');
 
   }
 
