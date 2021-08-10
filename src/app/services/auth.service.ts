@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { AuthData } from '../components/interfaces/authData';
+import { inicioSesion } from '../components/interfaces/inicioSesion';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +19,13 @@ export class AuthService {
       .subscribe(respuesta => {
         console.log(respuesta);
       });
+  }
+
+  inicioSesion(correo: string, password: string, tipo_usuario: string){
+    const inicioSesion: inicioSesion = {correo: correo, password: password, tipo_usuario: tipo_usuario}
+    this.http.post("http://localhost:3000/api/login", inicioSesion)
+      .subscribe(respuesta => {
+        console.log(respuesta);
+      })
   }
 }

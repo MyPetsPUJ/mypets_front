@@ -1,8 +1,9 @@
 import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   loading = false;
   cuentaNueva = false;
-  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router)
+  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router, public authService: AuthService)
   {
     this.form = this.fb.group ({
       usuario: ['',Validators.required],
@@ -23,6 +24,21 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  inicioSesionAdoptante(form: NgForm){
+    
+    if(form.invalid){
+      return;
+    }
+    
+    this.authService.inicioSesion(form.value.correo, form.value.password, form.value.tipo_usuario);
+    this.loading = true;
+    setTimeout(() => 
+    {
+      this.router.navigate(['dashboard']);
+    },1500)
+  }
+
   ingresar()
   {
     const usuario = this.form.value.usuario;
@@ -30,7 +46,7 @@ export class LoginComponent implements OnInit {
     
     if(usuario == 'FelipeVan' && password == '12345')
     {
-      this.exito(usuario);
+      this.exito();
     }
     else 
     {
@@ -38,6 +54,7 @@ export class LoginComponent implements OnInit {
     }
     console.log(this.form.value); 
   }
+
   error()
   {
     this._snackBar.open('Usuario o contraseña inválidos','',
@@ -48,9 +65,9 @@ export class LoginComponent implements OnInit {
     } )
     this.form.reset();
   }
-  exito(usuario: string)
+  exito()
   {
-    this._snackBar.open('Bienvenido ' + usuario,'',
+    this._snackBar.open('Bienvenido ' + 'a my pet','',
     {
       duration: 5000,
       horizontalPosition: 'center',
