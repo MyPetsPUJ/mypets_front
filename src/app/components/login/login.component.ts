@@ -30,13 +30,19 @@ export class LoginComponent implements OnInit {
     if(form.invalid){
       return;
     }
+    const correo_adoptante = form.value.correo;
+    const password_adoptante = form.value.password;
+    const tipo_adoptante = form.value.tipo_usuario;
     
-    this.authService.inicioSesion(form.value.correo, form.value.password, form.value.tipo_usuario);
+    this.authService.inicioSesion(correo_adoptante, password_adoptante, tipo_adoptante);
+    
     this.loading = true;
     setTimeout(() => 
     {
       this.router.navigate(['dashboard']);
     },1500)
+    
+    
   }
 
   ingresar()
@@ -46,7 +52,7 @@ export class LoginComponent implements OnInit {
     
     if(usuario == 'FelipeVan' && password == '12345')
     {
-      this.exito();
+      this.exito(usuario);
     }
     else 
     {
@@ -65,9 +71,9 @@ export class LoginComponent implements OnInit {
     } )
     this.form.reset();
   }
-  exito()
+  exito(usuario: string)
   {
-    this._snackBar.open('Bienvenido ' + 'a my pet','',
+    this._snackBar.open('Bienvenido ' + usuario,'',
     {
       duration: 5000,
       horizontalPosition: 'center',
@@ -79,6 +85,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['dashboard']);
     },1500)
   }
+
   crearCuenta()
   {
     this.cuentaNueva = true
