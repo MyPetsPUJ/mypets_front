@@ -1,13 +1,15 @@
-export interface EntidadGato{
+export interface EntidadPerro{
     nombre: String;
     edad: String;
     raza: String;
     sexo: String;
+    tamano: String;
     color_ojos: String;
     tipo_pelaje: String;
+    color_pelaje: String;
     situacion: String;
-    ultima_vac: Date;
     desparasitado: String;
+    ultima_vac: Date;
     descripcion: String;
     esquema_vac: Array<String>;
 }

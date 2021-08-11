@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
+
+import { CrearPerroService } from 'src/app/services/crear-perro.service';
 
 export interface Vacuna_box{
   nombre: String;
@@ -16,7 +19,7 @@ export interface Vacuna_box{
 
 export class CrearAnimalComponent implements OnInit {
 
-  constructor() { }
+  constructor(public crearPerroService: CrearPerroService) { }
 
   ngOnInit(): void {
   }
@@ -50,4 +53,13 @@ export class CrearAnimalComponent implements OnInit {
   }; 
   desparasitado: any[] = ['Sí', 'No'];
   situacion: any[] = ['Sin esterilizar','Esterilizado'];
+
+  onCrearPerro(form: NgForm){
+    console.log(form.value);
+    if(form.invalid){
+      return;
+    }
+    this.crearPerroService.crearPerro(form.value.nombre, form.value.edad, form.value.raza, form.value.sexo, form.value.tamano, form.value.color_ojos, form.value.tipo_pelaje, form.value.color_pelaje, form.value.situacion, form.value.desparasitado, form.value.ultima_vac, form.value.descripcion, form.value.esquema_vac);
+
+  }
 }
