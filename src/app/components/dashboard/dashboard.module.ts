@@ -20,9 +20,9 @@ import { CrearAnimalGatoComponent } from './usuarios/crear-animal/crear-animal-g
     NavbarComponent,
     UsuariosComponent,
     ReportesComponent,
-    CrearAnimalComponent,
-    SeleccionAnimalComponent,
-    CrearAnimalGatoComponent
+    //CrearAnimalComponent,
+    SeleccionAnimalComponent
+    //CrearAnimalGatoComponent
   ],
   imports: [
     CommonModule,

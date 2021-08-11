@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCheckboxModule} from '@angular/material/checkbox'
 
 //Angular material
 
@@ -13,6 +14,8 @@ import { CrearCuentaComponent } from './components/crear-cuenta/crear-cuenta.com
 import { CrearAdoptanteComponent } from './components/crear-cuenta/crear-adoptante/crear-adoptante.component';
 import { CrearFundacionComponent } from './components/crear-cuenta/crear-fundacion/crear-fundacion.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CrearAnimalGatoComponent } from './components/dashboard/usuarios/crear-animal/crear-animal-gato/crear-animal-gato.component';
+import { CrearAnimalComponent } from './components/dashboard/usuarios/crear-animal/crear-animal.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     CrearCuentaComponent,
     CrearAdoptanteComponent,
-    CrearFundacionComponent
+    CrearFundacionComponent,
+    CrearAnimalGatoComponent,
+    CrearAnimalComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -28,7 +34,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

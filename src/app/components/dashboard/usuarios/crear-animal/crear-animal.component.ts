@@ -1,10 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
+
+export interface Vacuna_box{
+  nombre: String;
+  completado: boolean;
+  color: ThemePalette;
+  esquema?: Vacuna_box[];
+}
 
 @Component({
   selector: 'app-crear-animal',
   templateUrl: './crear-animal.component.html',
   styleUrls: ['./crear-animal.component.css']
 })
+
 export class CrearAnimalComponent implements OnInit {
 
   constructor() { }
@@ -23,6 +32,22 @@ export class CrearAnimalComponent implements OnInit {
   '9 años',  '10 años',  '11 años',  '12 años', '13 años', '14 años', '15 años', 'más de 15 años'];
   tipo: any[] = ['Perro', 'Gato'];
   genero: any [] = ['Macho','Hembra'];
-  vacunas: any[] = ['Ninguno','Pentavalente + rabia', 'Hexavalente'];
+  tamano: any[] = ['Pequeño', 'Mediano', 'Grande'];
+  color_ojos: any[] = ['Azul', 'Verde', 'Marrón', 'Dorado', 'Negro', 'Heterocromía'];
+  tipo_pelaje: any[] = ['Pelaje duro', 'Pelaje rizado', 'Pelaje corto', 'Pelaje largo'];
+  vacunas: Vacuna_box = {
+    
+    nombre: 'Seleccione el esquema de vacunas del animal',
+    completado: false,
+    color: "primary",
+    esquema: [
+      {nombre: 'Moquillo canino', completado: false, color:"primary"},
+      {nombre: 'Hepatitis', completado: false, color:"primary"},
+      {nombre: 'Parvovirosis', completado: false, color:"primary"},
+      {nombre: 'Leptospirosis', completado: false, color:"primary"},
+      {nombre: 'Rabia', completado: false, color:"primary"},
+    ]
+  }; 
+  desparasitado: any[] = ['Sí', 'No'];
   situacion: any[] = ['Sin esterilizar','Esterilizado'];
 }

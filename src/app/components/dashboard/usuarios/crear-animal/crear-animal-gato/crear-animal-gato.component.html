@@ -6,7 +6,7 @@
                 <div class="centro">
                     <img src = "../../../assets/Images/cat-form.png" width= "15%">
                 </div>
-                <form>
+                <form action="crear-animal-gato.component.ts" >
                     <mat-grid-list cols="2" rowHeight="60px">
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field class="ancho">
@@ -32,7 +32,7 @@
                         </mat-grid-tile>
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field appearance="fill" class="ancho">
-                                <mat-label>sexo</mat-label>
+                                <mat-label>Sexo</mat-label>
                                 <mat-select>
                                     <mat-option *ngFor="let item of genero" [value]="item">
                                         {{item}}
@@ -41,9 +41,23 @@
                             </mat-form-field>
                         </mat-grid-tile>
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field class="ancho">
-                                <mat-label>Peso(kg)</mat-label>
-                                <input matInput type = "number">
+                            <mat-form-field appearance="fill" class="ancho">
+                                <mat-label>Color de ojos</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let item of color_ojos" [value]="item">
+                                        {{item}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field appearance="fill" class="ancho">
+                                <mat-label>Tipo de pelaje</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let item of tipo_pelaje" [value]="item">
+                                        {{item}}
+                                    </mat-option>
+                                </mat-select>
                             </mat-form-field>
                         </mat-grid-tile>
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -57,16 +71,6 @@
                             </mat-form-field>
                         </mat-grid-tile>
                         <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                            <mat-form-field appearance="fill" class="ancho">
-                                <mat-label>Esquema de vacunación</mat-label>
-                                <mat-select>
-                                    <mat-option *ngFor="let item of vacunas" [value]="item">
-                                        {{item}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="1" >
                             <mat-form-field appearance="fill" class = "ancho">
                                 <mat-label>Fecha de última vacuna</mat-label>
                                 <input matInput [matDatepicker]="picker">
@@ -74,7 +78,40 @@
                                 <mat-datepicker #picker></mat-datepicker>
                               </mat-form-field>
                         </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field appearance="fill" class="ancho">
+                                <mat-label>Está desparasitado</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let item of desparasitado" [value]="item">
+                                        {{item}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho">
+                                <mat-label>Descripción sobre el animal</mat-label>
+                                <textarea class="descrip" placeholder="Ej: Es un gato muy consentido..." matInput></textarea>
+                            </mat-form-field>
+                        </mat-grid-tile>
                     </mat-grid-list>
+                    <div>
+                            <section class="vacunas">
+                                <span>
+                                    <h1>Seleccione el esquema de vacunas del gato</h1>
+                                </span>
+                                <span>
+                                    <ul>
+                                        <li *ngFor="let esquema of vacunas.esquema" class="items">
+                                            <mat-checkbox [(ngModel)]="vacunas.completado" [color]="vacunas.color" (ngModelChange)="updateAllComplete()">
+                                                {{esquema.nombre}}
+                                            </mat-checkbox>
+                                        </li>
+                                    </ul>
+                                </span>
+                            </section>
+                        
+                    </div>
                     <div class = "centro">
                         <button mat-raised-button color="primary" style="margin: 16px;" class = "tamano">Crear animal</button>
                         <button mat-raised-button color="accent" class = "tamano" routerLink = "/dashboard/animales">Cancelar</button>
