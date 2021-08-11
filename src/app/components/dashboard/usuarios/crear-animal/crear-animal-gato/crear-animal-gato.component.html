@@ -103,7 +103,7 @@
                                 <span>
                                     <ul>
                                         <li *ngFor="let esquema of vacunas.esquema" class="items">
-                                            <mat-checkbox [(ngModel)]="vacunas.completado" [color]="vacunas.color" (ngModelChange)="updateAllComplete()">
+                                            <mat-checkbox>
                                                 {{esquema.nombre}}
                                             </mat-checkbox>
                                         </li>
