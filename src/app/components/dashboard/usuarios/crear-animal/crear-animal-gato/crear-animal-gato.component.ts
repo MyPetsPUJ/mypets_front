@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
+
+import { CrearGatoService } from 'src/app/services/crear-gato.service';
 
 export interface Vacuna_box{
   nombre: String;
@@ -16,13 +19,12 @@ export interface Vacuna_box{
 })
 export class CrearAnimalGatoComponent implements OnInit {
 
-  constructor() { }
+  constructor(public crearGatoService: CrearGatoService) { }
 
   ngOnInit(): void {
   }
 
   
-
   edad: any [] = ['menos de 1 mes ', '1 mes', '2 meses', '3 meses'
   , '4 meses', '5 meses', '6 meses', '7 meses', '8 meses', '9 meses', '10 meses', 
   '11 meses', '1 año',  '2 años',  '3 años',  '4 años',  '5 años',  '6 años',  '7 años',  '8 años',
@@ -37,6 +39,10 @@ export class CrearAnimalGatoComponent implements OnInit {
   tipo_pelaje: any[] = ['Pelaje largo', 'Pelaje semilargo', 'Pelaje corto', 'Sin pelaje'];
 
   desparasitado: any[] = ['Sí', 'No'];
+
+  lista_vacunas: any[] = ['Leucemia viral felina', 'Triple felina', 'Segunda dosis leucemia', 'Refuerzo triple felina', 'Rabia'];
+
+  situacion: any[] = ['Sin esterilizar','Esterilizado'];
 
   vacunas: Vacuna_box = {
     
@@ -72,5 +78,13 @@ export class CrearAnimalGatoComponent implements OnInit {
     }
     this.vacunas.esquema.forEach(t => t.completado = completado);
   }
-  situacion: any[] = ['Sin esterilizar','Esterilizado'];
+
+  onCrearGato(form: NgForm){
+    console.log(form.value);
+    if(form.invalid){
+      return;
+    }
+    this.crearGatoService.crearGato(form.value.nombre, form.value.edad, form.value.raza, form.value.sexo, form.value.color_ojos, form.value.tipo_pelaje, form.value.situacion, form.value.ultima_vac, form.value.desparasitado, form.value.descripcion, form.value.esquema_vac);
+  }
+  
 }
