@@ -11,5 +11,5 @@ export interface EntidadPerro{
     desparasitado: String;
     ultima_vac: Date;
     descripcion: String;
-    esquema_vac: Array<String>;
+    esquema_vac: String;
 }

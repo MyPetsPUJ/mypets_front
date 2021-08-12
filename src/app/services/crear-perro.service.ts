@@ -12,7 +12,7 @@ export class CrearPerroService {
 
   crearPerro(nombre: string, edad: string, raza: string, sexo: string, tamano: string, color_ojos: string, 
     tipo_pelaje: string, color_pelaje: string, situacion: string, desparasitado: string, 
-    ultima_vac: Date, descripcion: string, esquema_vac: Array<string>)
+    ultima_vac: Date, descripcion: string, esquema_vac: String)
     {
 
     const entidadPerro: EntidadPerro = {nombre: nombre, edad: edad, raza: raza, sexo: sexo, tamano: tamano, color_ojos: color_ojos, tipo_pelaje: tipo_pelaje, 

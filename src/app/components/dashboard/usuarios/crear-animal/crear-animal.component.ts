@@ -38,6 +38,8 @@ export class CrearAnimalComponent implements OnInit {
   tamano: any[] = ['Pequeño', 'Mediano', 'Grande'];
   color_ojos: any[] = ['Azul', 'Verde', 'Marrón', 'Dorado', 'Negro', 'Heterocromía'];
   tipo_pelaje: any[] = ['Pelaje duro', 'Pelaje rizado', 'Pelaje corto', 'Pelaje largo'];
+  lista_vacunas: any[] = ['Moquillo canino', 'Hepatitis', 'Parvovirosis', 'Leptospirosis', 'Rabia']
+
   vacunas: Vacuna_box = {
     
     nombre: 'Seleccione el esquema de vacunas del animal',
@@ -59,7 +61,7 @@ export class CrearAnimalComponent implements OnInit {
     if(form.invalid){
       return;
     }
-    this.crearPerroService.crearPerro(form.value.nombre, form.value.edad, form.value.raza, form.value.sexo, form.value.tamano, form.value.color_ojos, form.value.tipo_pelaje, form.value.color_pelaje, form.value.situacion, form.value.desparasitado, form.value.ultima_vac, form.value.descripcion, form.value.esquema_vac);
+    this.crearPerroService.crearPerro(form.value.nombre, form.value.edad, form.value.raza, form.value.sexo, form.value.tamano, form.value.color_ojos, form.value.tipo_pelaje, form.value.color_pelaje, form.value.situacion, form.value.desparasitado, form.value.ultima_vac, form.value.descripcion, JSON.stringify(form.value.esquema_vac));
 
   }
 }
