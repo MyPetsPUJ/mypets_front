@@ -1,4 +1,4 @@
-<div>
+<div class = "image">
     <mat-toolbar color="primary">
         <span> Creación de cuenta - fundación</span>
     </mat-toolbar>
@@ -13,7 +13,7 @@
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
                         <mat-form-field class="ancho">
                             <mat-label>Nombre de la fundación</mat-label>
-                            <input matInput name="nombreFun" ngModel type="text" #nombreInput="ngModel" required>
+                            <input matInput name="nombreFun" ngModel type="text" #nombreInput="ngModel" required [ngModel] = "nombreFun">
                         </mat-form-field>
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -25,7 +25,7 @@
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
                         <mat-form-field class="ancho">
                             <mat-label>Apellidos de encargado(a)</mat-label>
-                            <input matInput name="apellidos" ngModel type="text" #apellidosInput="ngModel" required>
+                            <input matInput name="apellidos" ngModel type="text" #apellidosInput="ngModel" required >
                         </mat-form-field>
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -56,7 +56,7 @@
                             <mat-form-field class="ancho">
                               <mat-label>Número de celular</mat-label>
                               <span matPrefix>+57 &nbsp;</span>
-                              <input type="tel" name="num_cel" ngModel #numInput="ngModel" required matInput placeholder="555-555-1234">
+                              <input type="tel" name="num_cel" ngModel #numInput="ngModel" required matInput placeholder="320559628">
                             </mat-form-field>
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="1" [rowspan]="1" >
@@ -70,7 +70,6 @@
                     <button mat-raised-button color="primary" style="margin: 16px;" class = "tamano" type="submit">Crear cuenta</button>
                     <button mat-raised-button color="accent" class = "tamano" routerLink = "/crear-cuenta">Cancelar</button>
                 </div>
-                
             </form>
         </mat-card>
     </div>
