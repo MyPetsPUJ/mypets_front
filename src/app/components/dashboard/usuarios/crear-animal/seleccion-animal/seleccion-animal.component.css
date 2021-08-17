@@ -1,0 +1,41 @@
+.body 
+{
+    display: flex;
+    justify-content: center;
+    height: 80%;
+    align-items: center;
+}
+.crear
+{
+    width: 100%;
+    max-width: 650px;
+    text-align: center;
+}
+.titulo 
+{
+    font-size: 30px;
+    text-align: center;
+    font-family:Georgia, 'Times New Roman', Times, serif
+}
+.example-spacer 
+{
+    margin: auto;
+}
+.btn-image {
+    background-image: url('https://brandflow.net/assets/img/featured/mdb-prolog.jpg') !important;
+    background-size: contain;
+}
+.ancho 
+{
+    width: 80%;
+    height: 50px;
+}
+.pointer 
+{
+    cursor: pointer;
+}
+.image 
+{
+    background-image: url(src\assets\Images\background.png);
+    height: 90%;
+}

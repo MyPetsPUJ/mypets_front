@@ -1,0 +1,89 @@
+<div>
+    <mat-card styles="margin-top: 10px;" class = "image">
+        <h2>Mi cuenta - nombre de la fundación</h2>
+        <form >
+            <mat-card>
+                <div class="centro">
+                    <img src = "../../../assets/Images/pet-hotel.png" width= "15%" class = "pointer"  matTooltip="Desplegar opciones de foto" 
+                    [matMenuTriggerFor]="menu">
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item  routerLink = "mi_cuenta">
+                          <mat-icon>visibility</mat-icon>
+                          <span>Ver foto</span>
+                        </button>
+                        <button mat-menu-item>
+                          <mat-icon>perm_media</mat-icon>
+                          <span>Cambiar foto</span>
+                        </button>
+                      </mat-menu>
+                </div>
+                <form>
+                    <mat-grid-list cols="2" rowHeight="60px">
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho">
+                                <mat-label>Nombre de la fundación</mat-label>
+                                <input matInput>
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho">
+                                <mat-label>Nombre de encargado(a)</mat-label>
+                                <input matInput>
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho">
+                                <mat-label>Apellidos de encargado(a)</mat-label>
+                                <input matInput>
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho" appearance="fill">
+                                <mat-label>Fecha de creación</mat-label>
+                                <input matInput [matDatepicker]="picker">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker touchUi #picker></mat-datepicker>
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field appearance="fill" class="ancho">
+                                <mat-label>Localidad</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let item of localidad" [value]="item">
+                                        {{item}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho">
+                                <mat-label>Correo electrónico</mat-label>
+                                <input matInput>
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                                <mat-form-field class="ancho">
+                                  <mat-label>Número de celular</mat-label>
+                                  <span matPrefix>+57 &nbsp;</span>
+                                  <input type="tel" matInput placeholder="555-555-1234">
+                                </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                            <mat-form-field class="ancho">
+                                <mat-label>Contraseña</mat-label>
+                                <input matInput>
+                            </mat-form-field>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                    <div class = "centro">
+                        <button mat-raised-button color="primary" style="margin: 16px;" class = "tamano">Crear cuenta</button>
+                        <button mat-raised-button color="accent" class = "tamano" routerLink = "/dashboard">Cancelar</button>
+                    </div> 
+                </form>
+            </mat-card>
+        </form>
+    
+    </mat-card>
+    
+
+</div>

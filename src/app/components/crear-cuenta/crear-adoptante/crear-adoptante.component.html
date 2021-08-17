@@ -1,0 +1,81 @@
+<div>
+    <mat-toolbar color="primary">
+        <span> Creación de cuenta - adoptante</span>
+    </mat-toolbar>
+    <div class= "margen">
+        <mat-card>
+            <div class="centro">
+                <h2>Ingrese los datos solicitados</h2>
+                <img src = "../../../assets/Images/adopt.png" width= "15%">
+            </div>
+            <form action="crear-adoptante.component.ts" (ngSubmit)="onSignUp(signUpForm)" #signUpForm="ngForm" method="POST">
+                <mat-grid-list cols="2" rowHeight="60px">
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field class="ancho">
+                            <mat-label>Nombre(s)</mat-label>
+                            <input matInput name="nombre" ngModel type="text" #nombreInput="ngModel" required>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field class="ancho">
+                            <mat-label>Apellidos</mat-label>
+                            <input matInput name="apellidos" ngModel type="text" #apellidoInput="ngModel" required>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field class="ancho" appearance="fill">
+                            <mat-label>Fecha de nacimiento</mat-label>
+                            <input matInput name="fecha_nac" ngModel #fechaInput="ngModel" required [matDatepicker]="picker">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker touchUi #picker></mat-datepicker>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field appearance="fill" class="ancho">
+                            <mat-label>Género</mat-label>
+                            <mat-select name="genero" ngModel #generoInput="ngModel">
+                                <mat-option *ngFor="let genero of genero" [value]="genero" >
+                                    {{genero}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field appearance="fill" class="ancho">
+                            <mat-label>Localidad</mat-label>
+                            <mat-select name="localidad" ngModel #localidadInput="ngModel">
+                                <mat-option *ngFor="let localidad of localidad" [value]="localidad">
+                                    {{localidad}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field class="ancho">
+                            <mat-label>Correo electrónico</mat-label>
+                            <input name="correo" ngModel type="email" #emailInput="ngModel" required matInput>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                            <mat-form-field class="ancho">
+                              <mat-label>Número de celular</mat-label>
+                              <span matPrefix>+57 &nbsp;</span>
+                              <input name="num_cel" ngModel type="tel" #numInput="ngModel" required matInput placeholder="555-555-1234">
+                            </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho">
+                            <mat-label>Contraseña</mat-label>
+                            <input name="password" ngModel type="password" #passwordInput="ngModel" required matInput>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                </mat-grid-list>
+                <div class = "centro">
+                    <button mat-raised-button color="primary" style="margin: 16px;" class = "tamano" type="submit">Crear cuenta</button>
+                    <button mat-raised-button color="accent" class = "tamano" routerLink = "/crear-cuenta">Cancelar</button>
+                </div>
+                
+            </form>
+        </mat-card>
+    </div>
+</div>
