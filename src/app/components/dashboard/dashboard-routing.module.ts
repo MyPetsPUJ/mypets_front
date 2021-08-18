@@ -8,6 +8,7 @@ import { CrearAnimalGatoComponent } from './usuarios/crear-animal/crear-animal-g
 import { CrearAnimalComponent } from './usuarios/crear-animal/crear-animal.component';
 import { SeleccionAnimalComponent } from './usuarios/crear-animal/seleccion-animal/seleccion-animal.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { PublicacionesComponent } from './publicaciones/publicaciones.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent, children:  [
@@ -17,7 +18,8 @@ const routes: Routes = [
     {path: 'mi_cuenta',component: MiCuentaComponent},
     {path:'seleccion-animal',component: SeleccionAnimalComponent},
     {path: 'seleccion-animal/crear-animal-perro',component: CrearAnimalComponent},
-    {path: 'seleccion-animal/crear-animal-gato', component: CrearAnimalGatoComponent}
+    {path: 'seleccion-animal/crear-animal-gato', component: CrearAnimalGatoComponent},
+    {path: 'publicaciones', component: PublicacionesComponent}
     
   ]}
 ];
