@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,9 +11,11 @@ import { AuthService } from 'src/app/services/auth.service';
 export class CrearAdoptanteComponent implements OnInit {
 
   
-  constructor(public authservice: AuthService) { }
-
+  constructor(public authservice: AuthService, private sanitizer: DomSanitizer) { }
+  public archivos: any = [];
+  public previsualizacion: string | undefined;
   ngOnInit(): void {
+    this.previsualizacion = "../../../assets/Images/adopt.png";
   }
   tiles: any[] = [
     {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
@@ -36,4 +39,35 @@ export class CrearAdoptanteComponent implements OnInit {
     }
     this.authservice.crearUsuarioAdoptante(form.value.nombre, form.value.apellidos, form.value.fecha_nac, form.value.genero, form.value.localidad, form.value.correo, form.value.num_cel, form.value.password, 'Adoptante');
   }
+  onFileInput(event): any
+  {
+    const archivo = event.target.files[0];
+    this.archivos.push(archivo);
+    this.extraerBase64(archivo).then((imagen: any) => 
+    {
+      this.previsualizacion = imagen.base;
+    });
+  }
+  extraerBase64 = async ($event: any) => new Promise((resolve) => {
+    try{
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base:null
+        });
+      };
+      return resolve;
+    }catch(e)
+    {
+      return null;
+    }
+  });
 }

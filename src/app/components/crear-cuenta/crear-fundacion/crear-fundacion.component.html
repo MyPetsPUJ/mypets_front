@@ -6,7 +6,18 @@
         <mat-card>
             <div class="centro">
                 <h2>Ingrese los datos solicitados</h2>
-                <img src = "../../../assets/Images/chat.png" width= "15%">
+
+
+                <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />
+                <img [src]="previsualizacion" width="15%" class="pointer" matTooltip="Desplegar opciones de foto"
+                        [matMenuTriggerFor]="menu">
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="fileInput.click()">
+                            <mat-icon>perm_media</mat-icon>
+                            <span>Cambiar foto</span>
+                            <input (change)="onFileInput($event)" type="file">
+                        </button>
+                    </mat-menu>
             </div>
             <form action="crear-fundacion.component.ts" (ngSubmit)=onSignUp(signUpFun) #signUpFun="ngForm" method="POST" >
                 <mat-grid-list cols="2" rowHeight="60px">

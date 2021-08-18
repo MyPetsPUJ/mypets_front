@@ -22,7 +22,6 @@ export class MiCuentaComponent implements OnInit {
   constructor(private sanitizer: DomSanitizer) { }
   public archivos: any = [];
   public previsualizacion: string | undefined;
-  public bloqueado: boolean | undefined;
   ngOnInit(): void {
     this.nombreEncargado = 'Juan Felipe';
     this.apellidosEncargado = 'Vanegas Patiño';
@@ -62,5 +61,5 @@ export class MiCuentaComponent implements OnInit {
     {
       return null;
     }
-  })
+  });
 }
