@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Animal } from '../components/interfaces/usuario';
+import { Animal } from '../domain/usuario';
 
 @Injectable({
   providedIn: 'root'

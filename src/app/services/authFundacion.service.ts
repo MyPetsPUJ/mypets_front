@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient} from '@angular/common/http';
 
-import { AuthFundacion } from '../components/interfaces/authFundacion';
+import { AuthFundacion } from '../domain/authFundacion';
 
 @Injectable({
   providedIn: 'root'

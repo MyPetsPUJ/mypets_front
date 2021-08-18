@@ -12,7 +12,6 @@ import { CrearAnimalComponent } from './usuarios/crear-animal/crear-animal.compo
 import { SeleccionAnimalComponent } from './usuarios/crear-animal/seleccion-animal/seleccion-animal.component';
 import { CrearAnimalGatoComponent } from './usuarios/crear-animal/crear-animal-gato/crear-animal-gato.component';
 import { MiCuentaComponent } from './mi-cuenta/mi-cuenta.component';
-import { PublicacionesComponent } from './publicaciones/publicaciones.component';
 
 
 @NgModule({
@@ -24,8 +23,7 @@ import { PublicacionesComponent } from './publicaciones/publicaciones.component'
     ReportesComponent,
     //CrearAnimalComponent,
     SeleccionAnimalComponent,
-    MiCuentaComponent,
-    PublicacionesComponent
+    MiCuentaComponent
     //CrearAnimalGatoComponent
   ],
   imports: [

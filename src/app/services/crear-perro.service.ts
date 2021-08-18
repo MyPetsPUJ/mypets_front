@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 
-import { EntidadPerro } from '../components/interfaces/entidadPerro';
+import { EntidadPerro } from '../domain/entidadPerro';
 
 @Injectable({
   providedIn: 'root'

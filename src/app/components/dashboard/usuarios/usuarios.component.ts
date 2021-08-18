@@ -5,7 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { noop } from 'rxjs';
 import { AnimalService } from 'src/app/services/animal.service';
-import { Animal } from '../../interfaces/usuario';
+import { Animal } from '../../../domain/usuario';
 
 
 @Component({
