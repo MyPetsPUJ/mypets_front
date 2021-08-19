@@ -8,6 +8,6 @@ export interface AuthFundacion{
     localidad: string;
     correo: string;
     num_celular: string;
-    contrasena: string;
+    password: string;
     tipo_usuario: string;
 }
