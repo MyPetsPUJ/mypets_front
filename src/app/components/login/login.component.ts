@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { AuthFundacionService } from 'src/app/services/authFundacion.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   loading = false;
   cuentaNueva = false;
-  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router, public authService: AuthService)
+  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router, public authService: AuthService, public authFundacionService: AuthFundacionService)
   {
     this.form = this.fb.group ({
       usuario: ['',Validators.required],
@@ -30,21 +31,25 @@ export class LoginComponent implements OnInit {
     if(form.invalid){
       return;
     }
-    const correo_adoptante = form.value.correo;
-    const password_adoptante = form.value.password;
-    const tipo_adoptante = form.value.tipo_usuario;
+    const correo_usuario = form.value.correo;
+    const password_usuario = form.value.password;
+    const tipo_usuario = form.value.tipo_usuario;
+
+    const usuarioAdoptante: String = "Adoptante";
     
-    console.log(correo_adoptante);
-    console.log(password_adoptante);
-    console.log(tipo_adoptante);
+
+    //Hace falta hacer una verificación de que usuario y contraseña sean los correctos en el front-end
     
-    this.authService.inicioSesion(correo_adoptante, password_adoptante, tipo_adoptante);
     
-    this.loading = true;
-    setTimeout(() => 
-    {
-      this.router.navigate(['dashboard']);
-    },1500)
+    if(tipo_usuario === usuarioAdoptante){
+      
+      this.authService.inicioSesion(correo_usuario, password_usuario, tipo_usuario);
+      this.exito(correo_usuario);
+    }
+    else{
+      this.authFundacionService.inicioSesion(correo_usuario, password_usuario, tipo_usuario);
+      this.exito(correo_usuario); //Cambiar dashboard dependiendo del usuario
+    }
     
     
   }

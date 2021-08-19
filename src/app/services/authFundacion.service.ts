@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { HttpClient} from '@angular/common/http';
 
 import { AuthFundacion } from '../components/interfaces/authFundacion';
+import { inicioSesion } from '../components/interfaces/inicioSesion';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,14 @@ export class AuthFundacionService {
     .subscribe(respuesta => {
       console.log(respuesta);
     });
+  }
+
+  inicioSesion(correo: string, password: string, tipo_usuario: string){
+    const inicioSesion: inicioSesion = {correo: correo, password: password, tipo_usuario: tipo_usuario}
+    this.http.post("http://localhost:3000/api/login", inicioSesion)
+      .subscribe(respuesta => {
+        console.log(respuesta);
+      })
   }
 
 }
