@@ -5,38 +5,72 @@
       <mat-card class="color">
         <form>
           <div class="centro">
-            <img src="../../../assets/Images/dog-form.png" width="15%" />
+            <img
+              src="../../../assets/Images/imagen-publicacion.png"
+              width="15%"
+            />
           </div>
-          <form action="crear-publicacion.component.ts" (ngSubmit)="onCrearPublicacion(crearPublicacionForm)" #crearPublicacionForm="ngForm" method="POST">
-            <mat-grid-list cols="2" rowHeight="60px">
-              <mat-grid-tile [colspan]="1" [rowspan]="1">
-                <mat-form-field class="ancho">
-                  <mat-label>Ingrese un título para la publicación</mat-label>
-                  <input name="nombrePublicacion" ngModel type="text" #nombreInput="ngModel" required matInput />
-                </mat-form-field>
-              </mat-grid-tile>
-              <mat-grid-tile [colspan]="1" [rowspan]="1">
-                <mat-form-field class="ancho">
-                  <mat-label>Nombre del animal</mat-label>
-                  <input name="cuerpoPublicacion" ngModel type="text" #nombreInput="ngModel" required matInput />
-                  <div class="centro">
-                    <button mat-raised-button color="primary" style="margin: 16px" class="tamano" type="submit">
-                      Crear Publicacion
-                    </button>
-                    <button mat-raised-button color="accent" class="tamano" routerLink="/dashboard/animales">
-                      Cancelar
-                    </button>
-                  </div>
-                </mat-form-field>
-              </mat-grid-tile>
+          <form
+            action="crear-publicacion.component.ts"
+            (ngSubmit)="onCrearPublicacion(crearPublicacionForm)"
+            #crearPublicacionForm="ngForm"
+            method="POST"
+          >
+            <mat-grid-list cols="1" rowHeight="60px">
+              <div class="centro">
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Ingrese un título para la publicación</mat-label>
+                    <input
+                      name="nombrePublicacion"
+                      ngModel
+                      type="text"
+                      #nombreInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Ingrese el cuerpo de la publicación</mat-label>
+                    <input
+                      name="cuerpoPublicacion"
+                      ngModel
+                      type="text"
+                      #nombreInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+              </div>
             </mat-grid-list>
+            <div class="centro">
+              <button
+                mat-raised-button
+                color="primary"
+                style="margin: 18px"
+                class="tamano"
+                type="submit"
+              >
+                Crear publicación
+              </button>
+              <button
+                mat-raised-button
+                color="accent"
+                class="tamano"
+                routerLink="/dashboard/publicaciones"
+              >
+                Cancelar
+              </button>
+            </div>
           </form>
         </form>
       </mat-card>
     </form>
   </mat-card>
 </div>
-
 
 <!--
 <div>
