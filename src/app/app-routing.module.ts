@@ -12,7 +12,8 @@ const routes: Routes = [
   {path: 'crear-cuenta',component: CrearCuentaComponent},
   {path: 'crear-cuenta/crear-adoptante',component: CrearAdoptanteComponent},
   {path: 'crear-cuenta/crear-fundacion',component: CrearFundacionComponent},
-  {path: 'dashboard',loadChildren: () => import('./components/dashboard/dashboard.module').then(x =>x.DashboardModule)} //Carga perezosa
+  {path: 'dashboard',loadChildren: () => import('./components/dashboard/dashboard.module').then(x =>x.DashboardModule)},
+  {path: 'dashboard-adoptante',loadChildren: () => import('./components/dashboard-adoptante/dashboard-adoptante.module').then(x =>x.DashboardAdoptanteModule)} //Carga perezosa
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
