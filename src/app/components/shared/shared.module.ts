@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 //Módulos
-import { ReactiveFormsModule } from '@angular/forms';
+import { NgForm, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 //Angular material
 import { MatSliderModule } from '@angular/material/slider';
