@@ -1,7 +1,9 @@
 export interface AuthData {
     nombre: string; 
     apellidos: string; 
-    fecha_nacimiento: string; 
+    fecha_nacimiento: string;
+    tipo_doc: string;
+    num_doc: string; 
     genero: string;
     localidad: string;
     correo: string; 

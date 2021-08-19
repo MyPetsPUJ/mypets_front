@@ -33,6 +33,22 @@
                         </mat-form-field>
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field appearance="fill" class="ancho">
+                            <mat-label>Tipo de documento</mat-label>
+                            <mat-select name="tipo_doc" ngModel #tipo_docInput="ngModel">
+                                <mat-option *ngFor="let tipo_doc of tipo_doc" [value]="tipo_doc" >
+                                    {{tipo_doc}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field class="ancho">
+                            <mat-label>Número de documento</mat-label>
+                            <input matInput name="num_doc" ngModel type="text" #num_docInput="ngModel" required>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
                         <mat-form-field class="ancho" appearance="fill">
                             <mat-label>Fecha de nacimiento</mat-label>
                             <input matInput name="fecha_nac" ngModel #fechaInput="ngModel" required [matDatepicker]="picker">

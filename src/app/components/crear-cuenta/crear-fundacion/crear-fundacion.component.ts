@@ -18,17 +18,19 @@ export class CrearFundacionComponent implements OnInit {
   ngOnInit(): void {
     this.previsualizacion = "../../../assets/Images/chat.png";
   }
+
+  tipo_doc: any [] =['Cédula de ciudadanía', 'Cédula de extranjería'];
   localidad: any[] = ['1.Usaquén','2.Chapinero','3.Santa Fé','4.San Cristobal',
   '5.Usme', '6. Tunjuelito', '7.Bosa', '8.Kennedy','9.Fontibón','10.Engativá','11.Suba','12.Barrios Unidos',
   '13.Teusaquillo','14.Los Mártires', '15.Antonio Nariño', '16.Puente Aranda', '17.Candelaria',
   '18.Rafael Uribe Uribe','19.Ciudad Bolivar','20.Sumapaz'];
-  nombreFun:string = 'nombreFundacion';
+  //nombreFun:string = 'nombreFundacion';
   onSignUp(form: NgForm){
     console.log(form.value);
     if(form.invalid){
       return;
     }
-    this.authFundacionService.crearUsuarioFundacion(form.value.nombreFun, form.value.nombreEncar, form.value.apellidos, form.value.fecha_creacion, form.value.localidad, form.value.correo, form.value.num_cel, form.value.contrasena, 'Fundacion');
+    this.authFundacionService.crearUsuarioFundacion(form.value.nombreFun, form.value.nombreEncar, form.value.apellidos, form.value.tipo_doc, form.value.num_doc, form.value.fecha_creacion, form.value.localidad, form.value.correo, form.value.num_cel, form.value.contrasena, 'Fundacion');
 
   }
   onFileInput(event): any

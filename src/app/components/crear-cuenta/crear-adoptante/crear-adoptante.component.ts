@@ -27,6 +27,7 @@ export class CrearAdoptanteComponent implements OnInit {
   selectedCar: string | undefined;
 
   genero: any[] = ['Masculino','Femenino'];
+  tipo_doc: any[] =['Cédula de ciudadanía', 'Cédula de extranjería']
   localidad: any[] = ['1.Usaquén','2.Chapinero','3.Santa Fé','4.San Cristobal',
   '5.Usme', '6. Tunjuelito', '7.Bosa', '8.Kennedy','9.Fontibón','10.Engativá','11.Suba','12.Barrios Unidos',
   '13.Teusaquillo','14.Los Mártires', '15.Antonio Nariño', '16.Puente Aranda', '17.Candelaria',
@@ -37,7 +38,7 @@ export class CrearAdoptanteComponent implements OnInit {
     if (form.invalid){
       return;
     }
-    this.authservice.crearUsuarioAdoptante(form.value.nombre, form.value.apellidos, form.value.fecha_nac, form.value.genero, form.value.localidad, form.value.correo, form.value.num_cel, form.value.password, 'Adoptante');
+    this.authservice.crearUsuarioAdoptante(form.value.nombre, form.value.apellidos, form.value.fecha_nac, form.value.tipo_doc, form.value.num_doc, form.value.genero, form.value.localidad, form.value.correo, form.value.num_cel, form.value.password, 'Adoptante');
   }
   onFileInput(event): any
   {
