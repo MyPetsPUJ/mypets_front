@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
     const tipo_usuario = form.value.tipo_usuario;
 
     const usuarioAdoptante: String = "Adoptante";
+    const usuarioFundacion: String = "Fundacion";
     
 
     //Hace falta hacer una verificación de que usuario y contraseña sean los correctos en el front-end
@@ -46,7 +47,7 @@ export class LoginComponent implements OnInit {
       this.authService.inicioSesion(correo_usuario, password_usuario, tipo_usuario);
       this.exito(correo_usuario);
     }
-    else{
+    else if(tipo_usuario === usuarioFundacion){
       this.authFundacionService.inicioSesion(correo_usuario, password_usuario, tipo_usuario);
       this.exito(correo_usuario); //Cambiar dashboard dependiendo del usuario
     }
