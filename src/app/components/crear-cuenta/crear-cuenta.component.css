@@ -29,3 +29,12 @@
     width: 80%;
     height: 50px;
 }
+.pointer 
+{
+    cursor: pointer;
+}
+.image 
+{
+    background-image: url(src\assets\Images\crear-usuario-background1.jpg);
+    height: 90%;
+}

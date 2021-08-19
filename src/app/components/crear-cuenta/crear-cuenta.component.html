@@ -1,24 +1,22 @@
-<mat-toolbar color = "primary">
+<mat-toolbar color="primary">
     <span> Creación de cuenta - Selección</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button routerLink = "">
+    <button mat-icon-button routerLink="">
         <mat-icon>highlight_off</mat-icon>
     </button>
 </mat-toolbar>
-<h2 class= "titulo">Seleccione el tipo de cuenta a crear</h2>
-<div class = "body">
-    <div>
-        <div class = "crear">
-            <img src="../../../assets/Images/adopcion.png" width= "70%">
-            <p></p>
-                <button  name = "btnAdoptante" class = "ancho button" mat-raised-button color="primary" routerLink = "/crear-cuenta/crear-adoptante">
-                    Adoptante
-                </button>
+<div class="image">
+    <h2 class="titulo">Seleccione el tipo de cuenta a crear</h2>
+    <div class="body">
+        <div>
+            <div class="crear">
+                <img src="../../../assets/Images/adopcion.png" width="70%" class="pointer"
+                    routerLink="/crear-cuenta/crear-adoptante" matTooltip="Fundación">
+            </div>
         </div>
+        <div>
+            <img src="../../../assets/Images/cuidado-animal.png" width="70%" class="pointer"
+                routerLink="/crear-cuenta/crear-fundacion" matTooltip="Adoptante">
+        </div>
+
     </div>
-    <div>
-        <img src="../../../assets/Images/cuidado-animal.png" width= "70%">
-        <p></p>
-        <button  name = "btnFundacion" class = "ancho button" mat-raised-button color="warn" routerLink = "/crear-cuenta/crear-fundacion">
-                    Fundación</button>
-</div>
