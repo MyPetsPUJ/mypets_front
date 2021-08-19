@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { EntidadPublicacion } from  '../../interfaces/entidadPublicacion';
 import { MatTableDataSource } from '@angular/material/table';
 import { PublicacionService } from 'src/app/services/publicacion.service';
+import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
 
 @Component({
   selector: 'app-publicaciones',

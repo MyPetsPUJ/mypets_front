@@ -9,6 +9,7 @@ import { CrearAnimalComponent } from './usuarios/crear-animal/crear-animal.compo
 import { SeleccionAnimalComponent } from './usuarios/crear-animal/seleccion-animal/seleccion-animal.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { PublicacionesComponent } from './publicaciones/publicaciones.component';
+import { CrearPublicacionComponent } from './publicaciones/crear-publicacion/crear-publicacion.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent, children:  [
@@ -19,8 +20,8 @@ const routes: Routes = [
     {path:'seleccion-animal',component: SeleccionAnimalComponent},
     {path: 'seleccion-animal/crear-animal-perro',component: CrearAnimalComponent},
     {path: 'seleccion-animal/crear-animal-gato', component: CrearAnimalGatoComponent},
-    {path: 'publicaciones', component: PublicacionesComponent}
-    
+    {path: 'publicaciones', component: PublicacionesComponent},
+    {path: 'publicaciones/crear-publicacion', component: CrearPublicacionComponent}
   ]}
 ];
 
