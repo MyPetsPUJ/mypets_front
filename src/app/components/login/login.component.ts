@@ -34,6 +34,10 @@ export class LoginComponent implements OnInit {
     const password_adoptante = form.value.password;
     const tipo_adoptante = form.value.tipo_usuario;
     
+    console.log(correo_adoptante);
+    console.log(password_adoptante);
+    console.log(tipo_adoptante);
+    
     this.authService.inicioSesion(correo_adoptante, password_adoptante, tipo_adoptante);
     
     this.loading = true;

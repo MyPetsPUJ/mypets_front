@@ -1,18 +1,17 @@
-<!-- 
 <div>
   <mat-card styles="margin-top: 10px;" class="image">
-    <h2 class="titulo">Crear un perro</h2>
+    <h2 class="titulo">Crear una publicación</h2>
     <form>
       <mat-card class="color">
         <form>
           <div class="centro">
             <img src="../../../assets/Images/dog-form.png" width="15%" />
           </div>
-          <form action="crear-animal.component.ts" (ngSubmit)="onCrearPublicacion(crearPublicacionForm)" #crearPerroForm="ngForm" method="POST">
+          <form action="crear-publicacion.component.ts" (ngSubmit)="onCrearPublicacion(crearPublicacionForm)" #crearPublicacionForm="ngForm" method="POST">
             <mat-grid-list cols="2" rowHeight="60px">
               <mat-grid-tile [colspan]="1" [rowspan]="1">
                 <mat-form-field class="ancho">
-                  <mat-label>Nombre del animal</mat-label>
+                  <mat-label>Ingrese un título para la publicación</mat-label>
                   <input name="nombrePublicacion" ngModel type="text" #nombreInput="ngModel" required matInput />
                 </mat-form-field>
               </mat-grid-tile>
@@ -37,7 +36,7 @@
     </form>
   </mat-card>
 </div>
--->
+
 
 <!--
 <div>

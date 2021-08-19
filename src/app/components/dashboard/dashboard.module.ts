@@ -27,7 +27,7 @@ import { CrearPublicacionComponent } from './publicaciones/crear-publicacion/cre
     SeleccionAnimalComponent,
     MiCuentaComponent,
     PublicacionesComponent,
-    CrearPublicacionComponent
+    //CrearPublicacionComponent
     //CrearAnimalGatoComponent
   ],
   imports: [

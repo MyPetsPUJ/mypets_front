@@ -16,6 +16,7 @@ import { CrearFundacionComponent } from './components/crear-cuenta/crear-fundaci
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CrearAnimalGatoComponent } from './components/dashboard/usuarios/crear-animal/crear-animal-gato/crear-animal-gato.component';
 import { CrearAnimalComponent } from './components/dashboard/usuarios/crear-animal/crear-animal.component';
+import { CrearPublicacionComponent } from './components/dashboard/publicaciones/crear-publicacion/crear-publicacion.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CrearAnimalComponent } from './components/dashboard/usuarios/crear-anim
     CrearAdoptanteComponent,
     CrearFundacionComponent,
     CrearAnimalGatoComponent,
-    CrearAnimalComponent
+    CrearAnimalComponent,
+    CrearPublicacionComponent
     
   ],
   imports: [
