@@ -3,11 +3,17 @@ import { HttpClient} from '@angular/common/http';
 
 import { EntidadGato } from '../components/interfaces/entidadGato';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class CrearGatoService {
+  private token: string = "";
+  dominio: string = "localhost";
+  puerto: number = 3000;
+  pathIntermedio: string = "api";
+  entidad: string = "dashboard";
+  subTipoEntidad: string = "seleccion-animal";
+  subTipoEntidadII: string = "crear-animal-gato";
 
   constructor(private http: HttpClient) { }
 
@@ -18,7 +24,7 @@ export class CrearGatoService {
       const entidadGato: EntidadGato = {nombre: nombre, edad: edad, raza: raza, sexo: sexo, color_ojos: color_ojos, 
         tipo_pelaje: tipo_pelaje, situacion: situacion, ultima_vac: ultima_vac, desparasitado: desparasitado, descripcion: descripcion, esquema_vac: esquema_vac}
 
-      this.http.post("http://localhost:3000/api/dashboard/seleccion-animal/crear-animal-gato", entidadGato)
+      this.http.post(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.subTipoEntidadII}`, entidadGato)
       .subscribe(respuesta => {
           console.log(respuesta);
         });

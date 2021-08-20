@@ -9,11 +9,18 @@ import { inicioSesion } from '../components/interfaces/inicioSesion';
 })
 export class AuthService {
 
+  private token: string = "";
+  dominio: string = "localhost";
+  puerto: number = 3000;
+  pathIntermedio: string = "api";
+  entidad: string = "crear-cuenta";
+  subTipoEntidad: string = "crear-adoptante";
+
   constructor(private http: HttpClient) { }
 
 
   crearUsuarioAdoptanteBonito(authData: AuthData){
-    this.http.post("http://localhost:3000/api/crear-cuenta/crear-adoptante", authData)
+    this.http.post(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}`, authData)
     .subscribe(respuesta => {
       console.log(respuesta);
     });
@@ -23,7 +30,7 @@ export class AuthService {
       genero: string, localidad: string, correo: string, num_celular:string, password: string, tipo_usuario: string){
       const authData: AuthData = {nombre: nombre, apellidos: apellidos, fecha_nacimiento: fecha_nacimiento, tipo_doc: tipo_doc, num_doc: num_doc, 
       genero: genero, localidad: localidad, correo: correo, num_celular: num_celular, password: password, tipo_usuario: tipo_usuario};
-      this.http.post("http://localhost:3000/api/crear-cuenta/crear-adoptante", authData)
+      this.http.post(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}`, authData)
       .subscribe(respuesta => {
         console.log(respuesta);
       });
@@ -31,7 +38,7 @@ export class AuthService {
 
   inicioSesion(correo: string, password: string, tipo_usuario: string){
     const inicioSesion: inicioSesion = {correo: correo, password: password, tipo_usuario: tipo_usuario}
-    this.http.post("http://localhost:3000/api/login", inicioSesion)
+    this.http.post(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}`, inicioSesion)
       .subscribe(respuesta => {
         console.log(respuesta);
       })

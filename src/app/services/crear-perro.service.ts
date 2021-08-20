@@ -7,6 +7,13 @@ import { EntidadPerro } from '../components/interfaces/entidadPerro';
   providedIn: 'root'
 })
 export class CrearPerroService {
+  private token: string = "";
+  dominio: string = "localhost";
+  puerto: number = 3000;
+  pathIntermedio: string = "api";
+  entidad: string = "dashboard";
+  subTipoEntidad: string = "seleccion-animal";
+  subTipoEntidadII: string = "crear-animal-perro";
 
   constructor(private http: HttpClient) { }
 
@@ -17,7 +24,7 @@ export class CrearPerroService {
 
     const entidadPerro: EntidadPerro = {nombre: nombre, edad: edad, raza: raza, sexo: sexo, tamano: tamano, color_ojos: color_ojos, tipo_pelaje: tipo_pelaje, 
       color_pelaje: color_pelaje, situacion: situacion, desparasitado: desparasitado, ultima_vac: ultima_vac, descripcion: descripcion, esquema_vac: esquema_vac};
-    this.http.post("http://localhost:3000/api/dashboard/seleccion-animal/crear-animal-perro", entidadPerro)
+    this.http.post(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.subTipoEntidadII}`, entidadPerro)
     .subscribe(respuesta => {
       console.log(respuesta);
     })
