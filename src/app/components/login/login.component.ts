@@ -45,11 +45,11 @@ export class LoginComponent implements OnInit {
     if(tipo_usuario === usuarioAdoptante){
       
       this.authService.inicioSesion(correo_usuario, password_usuario, tipo_usuario);
-      this.exito(correo_usuario);
+      this.exitoAdoptante(correo_usuario);
     }
     else if(tipo_usuario === usuarioFundacion){
       this.authFundacionService.inicioSesion(correo_usuario, password_usuario, tipo_usuario);
-      this.exito(correo_usuario); //Cambiar dashboard dependiendo del usuario
+      this.exitoFundacion(correo_usuario); //Cambiar dashboard dependiendo del usuario
     }
     
     
@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
     
     if(usuario == 'FelipeVan' && password == '12345')
     {
-      this.exito(usuario);
+      this.exitoAdoptante(usuario);
     }
     else 
     {
@@ -81,7 +81,22 @@ export class LoginComponent implements OnInit {
     } )
     this.form.reset();
   }
-  exito(usuario: string)
+  exitoAdoptante(usuario: string)
+  {
+    this._snackBar.open('Bienvenido ' + usuario,'',
+    {
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition : 'bottom'
+    } )
+    this.loading = true;
+    setTimeout(() => 
+    {
+      this.router.navigate(['dashboard-adoptante']);
+    },1500)
+  }
+
+  exitoFundacion(usuario: string)
   {
     this._snackBar.open('Bienvenido ' + usuario,'',
     {

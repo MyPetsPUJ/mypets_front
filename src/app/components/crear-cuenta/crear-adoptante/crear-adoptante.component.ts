@@ -38,7 +38,10 @@ export class CrearAdoptanteComponent implements OnInit {
     if (form.invalid){
       return;
     }
-    this.authservice.crearUsuarioAdoptante(form.value.nombre, form.value.apellidos, form.value.fecha_nac, form.value.tipo_doc, form.value.num_doc, form.value.genero, form.value.localidad, form.value.correo, form.value.num_cel, form.value.password, 'Adoptante');
+    const datosAdoptante = {nombre: form.value.nombre, apellidos: form.value.apellidos, fecha_nacimiento: form.value.fecha_nac,
+    tipo_doc: form.value.tipo_doc, num_doc: form.value.num_doc, genero: form.value.genero, localidad: form.value.localidad, correo: form.value.correo, num_celular: form.value.num_cel, password: form.value.password, tipo_usuario: 'Adoptante'} //TODO pasar objetos y no params
+    //this.authservice.crearUsuarioAdoptante(datosAdoptante);
+    this.authservice.crearUsuarioAdoptanteBonito(datosAdoptante);
   }
   onFileInput(event): any
   {
