@@ -1,13 +1,13 @@
 <mat-toolbar color="warn">
     <span>My Pet-Adoptante</span>
     <span class="example-spacer"></span>
-    <button mat-button >Mapa</button
+    <button mat-button routerLink="/dashboard-adoptante">Mapa</button
     ><!--ngfor es para correr un array-->
-    <button mat-button >Adoptame</button
+    <button mat-button routerLink="adoptame">Adoptame</button
     ><!--ngfor es para correr un array-->
-    <button mat-button >Fundaciones</button
+    <button mat-button routerLink="fundaciones">Fundaciones</button
     ><!--ngfor es para correr un array-->
-    <button mat-button >Consejos</button
+    <button mat-button routerLink="consejos">Consejos</button
     ><!--ngfor es para correr un array-->
     <span class="example-spacer"></span>
     <button
@@ -21,6 +21,10 @@
       <button mat-menu-item routerLink="mi_cuenta">
         <mat-icon>account_circle</mat-icon>
         <span>Mi cuenta</span>
+      </button>
+      <button mat-menu-item routerLink="mi_cuenta">
+        <mat-icon>logout</mat-icon>
+        <span>Cerrar sesión</span>
       </button>
     </mat-menu>
   </mat-toolbar>

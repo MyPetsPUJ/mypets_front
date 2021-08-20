@@ -1,7 +1,7 @@
 <div>
     <mat-card styles="margin-top: 10px;" class="image">
         <h2>Mi cuenta - nombre de la fundación</h2>
-        <form>
+        <form [formGroup]="form">
             <mat-card>
                 <div>
                         <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />
@@ -26,25 +26,25 @@
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field class="ancho">
                                 <mat-label>Nombre de la fundación</mat-label>
-                                <input matInput>
+                                <input matInput autocomplete="off" formControlName="nombreFundacion">
                             </mat-form-field>
                         </mat-grid-tile>
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field class="ancho">
                                 <mat-label>Nombre de encargado(a)</mat-label>
-                                <input matInput>
+                                <input matInput autocomplete="off" formControlName="nombreEncargado">
                             </mat-form-field>
                         </mat-grid-tile>
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field class="ancho">
                                 <mat-label>Apellidos de encargado(a)</mat-label>
-                                <input matInput>
+                                <input matInput autocomplete="off" formControlName="apellidosEncargado">
                             </mat-form-field>
                         </mat-grid-tile>
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field class="ancho" appearance="fill">
                                 <mat-label>Fecha de creación</mat-label>
-                                <input matInput [matDatepicker]="picker">
+                                <input matInput [matDatepicker]="picker" formControlName="fechaCreacion">
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                 <mat-datepicker touchUi #picker></mat-datepicker>
                             </mat-form-field>
@@ -52,7 +52,7 @@
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field appearance="fill" class="ancho">
                                 <mat-label>Localidad</mat-label>
-                                <mat-select>
+                                <mat-select formControlName="localidad">
                                     <mat-option *ngFor="let item of localidad" [value]="item">
                                         {{item}}
                                     </mat-option>
@@ -62,20 +62,20 @@
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field class="ancho">
                                 <mat-label>Correo electrónico</mat-label>
-                                <input matInput>
+                                <input matInput autocomplete="off" formControlName="correo">
                             </mat-form-field>
                         </mat-grid-tile>
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field class="ancho">
                                 <mat-label>Número de celular</mat-label>
                                 <span matPrefix>+57 &nbsp;</span>
-                                <input type="tel" matInput placeholder="555-555-1234">
+                                <input type="tel" matInput placeholder="555-555-1234" autocomplete="off" formControlName="numCelular">
                             </mat-form-field>
                         </mat-grid-tile>
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field class="ancho">
                                 <mat-label>Contraseña</mat-label>
-                                <input matInput>
+                                <input matInput type="password" autocomplete="off" formControlName="contrasena">
                             </mat-form-field>
                         </mat-grid-tile>
                     </mat-grid-list>

@@ -5,7 +5,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { noop } from 'rxjs';
 import { AnimalService } from 'src/app/services/animal.service';
-import { Animal } from '../../interfaces/usuario';
+import { CrearAnimalService } from 'src/app/services/crearAnimal.service';
+import { EntidadAnimal } from '../../interfaces/entidadAnimal';
+
 
 
 @Component({
@@ -14,12 +16,12 @@ import { Animal } from '../../interfaces/usuario';
   styleUrls: ['./usuarios.component.css']
 })
 export class UsuariosComponent implements OnInit {
-  animales: Animal[] = [];
-  displayedColumns: string[] = ['nombreAnimal', 'edad', 'tipo', 'raza','tamano','accion'];
+  animales: EntidadAnimal[] = [];
+  displayedColumns: string[] = ['nombre','edad','tipo','raza','sexo','tamano','situacion','EsquemaVac'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private animalService: AnimalService, private snackbar: MatSnackBar) { }
+  constructor(private animalService: CrearAnimalService, private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.cargarAnimales();

@@ -25,4 +25,8 @@ export class AnimalService {
   {
     this.animales.splice(index,1);
   }
+  agregarAnimal(animal: Animal)
+  {
+    this.animales.unshift(animal);
+  }
 }

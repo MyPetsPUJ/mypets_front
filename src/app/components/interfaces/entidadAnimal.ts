@@ -8,7 +8,7 @@ export interface EntidadAnimal{
     tipo_pelaje: String;
     situacion: String;
     desparasitado: String;
-    ultima_vac: Date;
+    ultima_vac: string;
     descripcion: String;
     esquema_vac: String;
     tipo_animal: String;

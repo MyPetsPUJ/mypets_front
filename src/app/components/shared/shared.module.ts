@@ -24,7 +24,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatMenuModule} from '@angular/material/menu';
-
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -55,7 +55,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatRadioModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule
   ],
   exports: [
     MatSliderModule,
@@ -78,7 +79,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatRadioModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule
   ]
 })
 export class SharedModule { }
