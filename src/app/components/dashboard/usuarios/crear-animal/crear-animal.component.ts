@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 
-import { CrearPerroService } from 'src/app/services/crear-perro.service';
+import { CrearAnimalService } from 'src/app/services/crearAnimal.service';
 
 export interface Vacuna_box{
   nombre: String;
@@ -19,7 +19,7 @@ export interface Vacuna_box{
 
 export class CrearAnimalComponent implements OnInit {
 
-  constructor(public crearPerroService: CrearPerroService) { }
+  constructor(public crearPerroService: CrearAnimalService) { }
 
   ngOnInit(): void {
   }
@@ -61,7 +61,8 @@ export class CrearAnimalComponent implements OnInit {
     if(form.invalid){
       return;
     }
-    this.crearPerroService.crearPerro(form.value.nombre, form.value.edad, form.value.raza, form.value.sexo, form.value.tamano, form.value.color_ojos, form.value.tipo_pelaje, form.value.color_pelaje, form.value.situacion, form.value.desparasitado, form.value.ultima_vac, form.value.descripcion, JSON.stringify(form.value.esquema_vac));
+    const datosPerro = {nombre: form.value.nombre, edad: form.value.edad, raza: form.value.raza, sexo: form.value.sexo, tamano: form.value.tamano, color_ojos: form.value.color_ojos, tipo_pelaje: form.value.tipo_pelaje, situacion: form.value.situacion, desparasitado: form.value.desparasitado, ultima_vac: form.value.ultima_vac, descripcion: form.value.descripcion, esquema_vac: form.value.esquema_vac, tipo_animal: "Perro"}
+    this.crearPerroService.crearAnimalPerro(datosPerro);
 
   }
 }

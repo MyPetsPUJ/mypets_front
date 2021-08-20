@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 
-import { CrearGatoService } from 'src/app/services/crear-gato.service';
+import { CrearAnimalService } from 'src/app/services/crearAnimal.service';
 
 export interface Vacuna_box{
   nombre: String;
@@ -19,7 +19,7 @@ export interface Vacuna_box{
 })
 export class CrearAnimalGatoComponent implements OnInit {
 
-  constructor(public crearGatoService: CrearGatoService) { }
+  constructor(public crearGatoService: CrearAnimalService) { }
 
   ngOnInit(): void {
   }
@@ -33,6 +33,8 @@ export class CrearAnimalGatoComponent implements OnInit {
   tipo: any[] = ['Perro', 'Gato'];
 
   genero: any [] = ['Macho','Hembra'];
+
+  tamano: any[] = ['Pequeño', 'Mediano', 'Grande'];
 
   color_ojos: any[] = ['Azul', 'Verde', 'Marrón', 'Dorado', 'Negro', 'Heterocromía'];
 
@@ -84,7 +86,8 @@ export class CrearAnimalGatoComponent implements OnInit {
     if(form.invalid){
       return;
     }
-    this.crearGatoService.crearGato(form.value.nombre, form.value.edad, form.value.raza, form.value.sexo, form.value.color_ojos, form.value.tipo_pelaje, form.value.situacion, form.value.ultima_vac, form.value.desparasitado, form.value.descripcion, form.value.esquema_vac);
+    const datosGato = {nombre: form.value.nombre, edad: form.value.edad, raza: form.value.raza, sexo: form.value.sexo, tamano: form.value.tamano, color_ojos: form.value.color_ojos, tipo_pelaje: form.value.tipo_pelaje, situacion: form.value.situacion, desparasitado: form.value.desparasitado, ultima_vac: form.value.ultima_vac, descripcion: form.value.descripcion, esquema_vac: form.value.esquema_vac, tipo_animal: "Gato"}
+    this.crearGatoService.crearAnimalGato(datosGato);
   }
   
 }

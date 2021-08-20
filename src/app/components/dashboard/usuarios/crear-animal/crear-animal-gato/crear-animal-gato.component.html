@@ -42,6 +42,21 @@
                         </mat-grid-tile>
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field appearance="fill" class="ancho">
+                              <mat-label>Tamaño</mat-label>
+                              <mat-select
+                                name="tamano"
+                                ngModel
+                                #tamanoInput="ngModel"
+                                required
+                              >
+                                <mat-option *ngFor="let item of tamano" [value]="item">
+                                  {{ item }}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field appearance="fill" class="ancho">
                                 <mat-label>Color de ojos</mat-label>
                                 <mat-select name="color_ojos" ngModel #color_ojosInput="ngModel" required>
                                     <mat-option *ngFor="let item of color_ojos" [value]="item">
