@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 
-import { AuthFundacionService } from 'src/app/services/authFundacion.service';
+import { CrearFundacionService } from 'src/app/services/crearFundacion.service';
 
 @Component({
   selector: 'app-crear-fundacion',
@@ -11,7 +11,7 @@ import { AuthFundacionService } from 'src/app/services/authFundacion.service';
 })
 export class CrearFundacionComponent implements OnInit {
 
-  constructor(public authFundacionService: AuthFundacionService, private sanitizer: DomSanitizer) {}
+  constructor(public crearFundacionService: CrearFundacionService, private sanitizer: DomSanitizer) {}
   public archivos: any = [];
   public previsualizacion: string | undefined;
 
@@ -31,7 +31,7 @@ export class CrearFundacionComponent implements OnInit {
       return;
     }
     const datosFundacion = {nombreFund: form.value.nombreFun, nombreEncar: form.value.nombreEncar, apellidosEncar: form.value.apellidos, tipo_doc: form.value.tipo_doc, num_doc: form.value.num_doc, fecha_creacion: form.value.fecha_creacion, localidad: form.value.localidad, correo: form.value.correo, num_celular: form.value.num_cel, password: form.value.contrasena, tipo_usuario: 'Fundacion'}
-    this.authFundacionService.crearUsuarioFundacion(datosFundacion);
+    this.crearFundacionService.crearUsuarioFundacion(datosFundacion);
   }
 
   onFileInput(event): any

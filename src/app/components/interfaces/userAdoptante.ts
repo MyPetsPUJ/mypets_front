@@ -1,4 +1,4 @@
-export interface AuthData {
+export interface UserAdoptante {
     nombre: string; 
     apellidos: string; 
     fecha_nacimiento: string;

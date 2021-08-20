@@ -1,15 +1,15 @@
 import { HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { AuthFundacionService } from "src/app/services/authFundacion.service";
+import { CrearFundacionService } from "src/app/services/crearFundacion.service";
 
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor{
 
-    constructor(private authFundacionService: AuthFundacionService){}
+    constructor(private crearFundacionService: CrearFundacionService){}
 
     intercept(req: HttpRequest<any>, next: HttpHandler){
-        const authToken = this.authFundacionService.getToken();
+        const authToken = this.crearFundacionService.getToken();
         const authRequest = req.clone({
             headers: req.headers.set('Authorization', authToken)
         });

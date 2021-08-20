@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AuthFundacionService } from './authFundacion.service';
+import { CrearFundacionService } from './crearFundacion.service';
 
 describe('AdoptanteService', () => {
-  let service: AuthFundacionService;
+  let service: CrearFundacionService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AuthFundacionService);
+    service = TestBed.inject(CrearFundacionService);
   });
 
   it('should be created', () => {

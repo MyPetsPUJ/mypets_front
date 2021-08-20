@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { AuthService } from 'src/app/services/auth.service';
+import { CrearAdoptanteService } from 'src/app/services/crearAdoptante.service';
 
 @Component({
   selector: 'app-crear-adoptante',
@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class CrearAdoptanteComponent implements OnInit {
 
   
-  constructor(public authservice: AuthService, private sanitizer: DomSanitizer) { }
+  constructor(public crearAdoptanteService: CrearAdoptanteService, private sanitizer: DomSanitizer) { }
   public archivos: any = [];
   public previsualizacion: string | undefined;
   ngOnInit(): void {
@@ -41,7 +41,7 @@ export class CrearAdoptanteComponent implements OnInit {
     const datosAdoptante = {nombre: form.value.nombre, apellidos: form.value.apellidos, fecha_nacimiento: form.value.fecha_nac,
     tipo_doc: form.value.tipo_doc, num_doc: form.value.num_doc, genero: form.value.genero, localidad: form.value.localidad, correo: form.value.correo, num_celular: form.value.num_cel, password: form.value.password, tipo_usuario: 'Adoptante'} //TODO pasar objetos y no params
     //this.authservice.crearUsuarioAdoptante(datosAdoptante);
-    this.authservice.crearUsuarioAdoptante(datosAdoptante);
+    this.crearAdoptanteService.crearUsuarioAdoptante(datosAdoptante);
   }
   onFileInput(event): any
   {

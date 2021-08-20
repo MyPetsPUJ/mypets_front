@@ -1,4 +1,4 @@
-export interface AuthFundacion{
+export interface UserFundacion{
     nombreFund: string;
     nombreEncar: string;
     apellidosEncar: string;

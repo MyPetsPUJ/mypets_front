@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
-import { AuthFundacionService } from 'src/app/services/authFundacion.service';
+import { CrearAdoptanteService } from 'src/app/services/crearAdoptante.service';
+import { CrearFundacionService } from 'src/app/services/crearFundacion.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   loading = false;
   cuentaNueva = false;
-  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router, public authService: AuthService, public authFundacionService: AuthFundacionService)
+  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router, public crearAdoptanteService: CrearAdoptanteService, public crearFundacionService: CrearFundacionService)
   {
     this.form = this.fb.group ({
       usuario: ['',Validators.required],
@@ -44,11 +44,11 @@ export class LoginComponent implements OnInit {
     
     if(datosLogin.tipo_usuario === usuarioAdoptante){
       
-      this.authService.inicioSesion(datosLogin);
+      this.crearAdoptanteService.inicioSesion(datosLogin);
       this.exitoAdoptante(datosLogin.correo);
     }
     else if(datosLogin.tipo_usuario === usuarioFundacion){
-      this.authFundacionService.inicioSesion(datosLogin);
+      this.crearFundacionService.inicioSesion(datosLogin);
       this.exitoFundacion(datosLogin.correo); //Cambiar dashboard dependiendo del usuario
     }
     
