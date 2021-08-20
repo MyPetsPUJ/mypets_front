@@ -30,11 +30,11 @@ export class AuthFundacionService {
   {
     const authFundacion: AuthFundacion = {nombreFund: nombreFund, nombreEncar: nombreEncar, apellidosEncar: apellidosEncar, tipo_doc: tipo_doc, num_doc: num_doc, fecha_creacion: fecha_creacion,
     localidad: localidad, correo: correo, num_celular: num_celular, password: password, tipo_usuario: tipo_usuario};
-    this.http.post<{token: string}>("http://localhost:3000/api/crear-cuenta/crear-fundacion", authFundacion)
+    this.http.post<{token: string}>(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}`, authFundacion)
     .subscribe(respuesta => {
       console.log(respuesta);
-      const token = respuesta.token;
-      this.token = token;
+      //const token = respuesta.token;
+      //this.token = token;
     });
   }
 
