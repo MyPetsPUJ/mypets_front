@@ -30,9 +30,10 @@ export class CrearFundacionComponent implements OnInit {
     if(form.invalid){
       return;
     }
-    this.authFundacionService.crearUsuarioFundacion(form.value.nombreFun, form.value.nombreEncar, form.value.apellidos, form.value.tipo_doc, form.value.num_doc, form.value.fecha_creacion, form.value.localidad, form.value.correo, form.value.num_cel, form.value.contrasena, 'Fundacion');
-
+    const datosFundacion = {nombreFund: form.value.nombreFun, nombreEncar: form.value.nombreEncar, apellidosEncar: form.value.apellidos, tipo_doc: form.value.tipo_doc, num_doc: form.value.num_doc, fecha_creacion: form.value.fecha_creacion, localidad: form.value.localidad, correo: form.value.correo, num_celular: form.value.num_cel, password: form.value.contrasena, tipo_usuario: 'Fundacion'}
+    this.authFundacionService.crearUsuarioFundacion(datosFundacion);
   }
+
   onFileInput(event): any
   {
     const archivo = event.target.files[0];

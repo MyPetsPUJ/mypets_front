@@ -17,6 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CrearAnimalGatoComponent } from './components/dashboard/usuarios/crear-animal/crear-animal-gato/crear-animal-gato.component';
 import { CrearAnimalComponent } from './components/dashboard/usuarios/crear-animal/crear-animal.component';
 import { CrearPublicacionComponent } from './components/dashboard/publicaciones/crear-publicacion/crear-publicacion.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './components/interfaces/authInterceptor';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,7 @@ import { CrearPublicacionComponent } from './components/dashboard/publicaciones/
     ReactiveFormsModule,
     MatCheckboxModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
