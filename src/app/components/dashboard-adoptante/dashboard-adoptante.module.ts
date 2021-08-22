@@ -9,6 +9,7 @@ import { MapaComponent } from './mapa/mapa.component';
 import { AdoptameComponent } from './adoptame/adoptame.component';
 import { FundacionesComponent } from './fundaciones/fundaciones.component';
 import { ConsejosComponent } from './consejos/consejos.component';
+import { SolicitudAdopcionComponent } from './adoptame/solicitud-adopcion/solicitud-adopcion.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ConsejosComponent } from './consejos/consejos.component';
     MapaComponent,
     AdoptameComponent,
     FundacionesComponent,
-    ConsejosComponent
+    ConsejosComponent,
+    SolicitudAdopcionComponent
   ],
   imports: [
     CommonModule,
