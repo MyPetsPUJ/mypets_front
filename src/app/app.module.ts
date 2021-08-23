@@ -26,10 +26,10 @@ import { AuthInterceptor } from './components/interfaces/authInterceptor';
     LoginComponent,
     CrearCuentaComponent,
     CrearAdoptanteComponent,
-    CrearFundacionComponent,
-    CrearAnimalGatoComponent,
-    CrearAnimalComponent,
-    CrearPublicacionComponent
+    CrearFundacionComponent
+    //CrearAnimalGatoComponent
+    //CrearAnimalComponent,
+    //CrearPublicacionComponent
     
   ],
   imports: [

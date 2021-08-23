@@ -14,6 +14,7 @@ import { CrearAnimalGatoComponent } from './usuarios/crear-animal/crear-animal-g
 import { MiCuentaComponent } from './mi-cuenta/mi-cuenta.component';
 import { PublicacionesComponent } from './publicaciones/publicaciones.component';
 import { CrearPublicacionComponent } from './publicaciones/crear-publicacion/crear-publicacion.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -23,17 +24,19 @@ import { CrearPublicacionComponent } from './publicaciones/crear-publicacion/cre
     NavbarComponent,
     UsuariosComponent,
     ReportesComponent,
-    //CrearAnimalComponent,
+    CrearAnimalComponent,
     SeleccionAnimalComponent,
     MiCuentaComponent,
     PublicacionesComponent,
-    //CrearPublicacionComponent
-    //CrearAnimalGatoComponent
+    CrearPublicacionComponent,
+    CrearAnimalGatoComponent
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class DashboardModule { }
