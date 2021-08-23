@@ -1,12 +1,11 @@
-
 <div>
   <mat-card styles="margin-top: 10px;" class="image">
-    <h2 class="titulo">Crear una publicación</h2>
+    <h2 class="titulo">Solicitud de adopción</h2>
     <form>
       <mat-card class="color">
         <form>
           <div class="centro">
-            <img src="../../../assets/Images/adoptame.jpg" width="15%" />
+            <img src="../../../assets/Images/silueta-perro.png" width="15%" />
           </div>
           <form
             action="solicitud-adopcion.component.ts"
@@ -14,16 +13,16 @@
             #solicitudAdopcionForm="ngForm"
             method="POST"
           >
-            <mat-grid-list cols="1" rowHeight="60px">
+            <mat-grid-list cols="2" rowHeight="60px">
               <div class="centro">
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field class="ancho">
-                    <mat-label>Ingrese un título para la publicación</mat-label>
+                    <mat-label>Nombres</mat-label>
                     <input
-                      name="nombrePublicacion"
+                      name="nombresAdoptante"
                       ngModel
                       type="text"
-                      #nombreInput="ngModel"
+                      #nombresAdoptanteInput="ngModel"
                       required
                       matInput
                     />
@@ -31,12 +30,165 @@
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field class="ancho">
-                    <mat-label>Ingrese el cuerpo de la publicación</mat-label>
+                    <mat-label>Apellidos</mat-label>
                     <input
-                      name="cuerpoPublicacion"
+                      name="apellidosAdoptante"
                       ngModel
                       type="text"
-                      #nombreInput="ngModel"
+                      #apellidosAdoptanteInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Número de documento</mat-label>
+                    <input
+                      name="numDocAdoptante"
+                      ngModel
+                      type="number"
+                      #edadAdoptanteInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field appearance="fill" class="ancho">
+                    <mat-label>Tipo de documento</mat-label>
+                    <mat-select
+                      name="tipoDocAdoptante"
+                      ngModel
+                      #tipoDocAdoptanteInput="ngModel"
+                      required
+                    >
+                      <mat-option *ngFor="let item of tipo_doc" [value]="item">
+                        {{ item }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Edad</mat-label>
+                    <input
+                      name="edadAdoptante"
+                      ngModel
+                      type="number"
+                      #edadAdoptanteInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field appearance="fill" class="ancho">
+                    <mat-label>Localidad</mat-label>
+                    <mat-select
+                      name="localidad"
+                      ngModel
+                      #localidadInput="ngModel"
+                    >
+                      <mat-option
+                        *ngFor="let localidad of localidad"
+                        [value]="localidad"
+                      >
+                        {{ localidad }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Barrio</mat-label>
+                    <input
+                      name="barrio"
+                      ngModel
+                      type="text"
+                      #barrioInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Dirección</mat-label>
+                    <input
+                      name="direccion"
+                      ngModel
+                      type="text"
+                      #direccionInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Número de celular</mat-label>
+                    <input
+                      name="numeroCelular"
+                      ngModel
+                      type="number"
+                      #numeroCelularInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Correo electrónico</mat-label>
+                    <input
+                      name="correoElectronico"
+                      ngModel
+                      type="email"
+                      #correoElectronicoInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Ocupación</mat-label>
+                    <input
+                      name="ocupacion"
+                      ngModel
+                      type="text"
+                      #ocupacionInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label
+                      >Nombre de la mascota que quiere adoptar</mat-label
+                    >
+                    <input
+                      name="mascotaSolicitud"
+                      ngModel
+                      type="text"
+                      #mascotaSolicitudInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label
+                      >Fundación a la que pertenece la mascota</mat-label
+                    >
+                    <input
+                      name="fundacionSolicitud"
+                      ngModel
+                      type="email"
+                      #fundacionSolicitudInput="ngModel"
                       required
                       matInput
                     />
@@ -52,13 +204,13 @@
                 class="tamano"
                 type="submit"
               >
-                Crear publicación
+                Enviar Solicitud
               </button>
               <button
                 mat-raised-button
                 color="accent"
                 class="tamano"
-                routerLink="/dashboard/publicaciones"
+                routerLink="/dashboard-adoptante/adoptame"
               >
                 Cancelar
               </button>
@@ -68,6 +220,4 @@
       </mat-card>
     </form>
   </mat-card>
-  
 </div>
-

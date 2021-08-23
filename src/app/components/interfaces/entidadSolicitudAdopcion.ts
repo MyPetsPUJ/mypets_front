@@ -10,4 +10,6 @@ export interface EntidadSolicitudAdopcion{
     numeroCelular: number;
     correoElectronico: string;
     ocupacion: string;
+    mascotaSolicitud: string;
+    fundacionSolicitud: string;
 }
