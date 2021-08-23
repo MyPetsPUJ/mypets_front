@@ -24,7 +24,8 @@ export class CrearPublicacionComponent implements OnInit {
     if(form.invalid){
       return;
     }
-    this.crearPublicacionService.crearPublicacion(form.value.nombrePublicacion,form.value.cuerpoPublicacion,Date().toLocaleString(),"src\assets\Images\dog.png");
+    const datosPublicacion = {tituloPublicacion : form.value.nombrePublicacion, cuerpoPublicacion:form.value.cuerpoPublicacion,fechaPublicacion: this.fechaPublicacion,imagenPublicacion: this.imagenPublicacion};
+    this.crearPublicacionService.crearPublicacion(datosPublicacion);
 
   }
 

@@ -1,1 +1,73 @@
-<p>solicitud-adopcion works!</p>
+<!--
+<div>
+  <mat-card styles="margin-top: 10px;" class="image">
+    <h2 class="titulo">Crear una publicación</h2>
+    <form>
+      <mat-card class="color">
+        <form>
+          <div class="centro">
+            <img src="../../../assets/Images/adoptame.jpg" width="15%" />
+          </div>
+          <form
+            action="solicitud-adopcion.component.ts"
+            (ngSubmit)="onEnviarSolicitud(solicitudAdopcionForm)"
+            #crearPublicacionForm="ngForm"
+            method="POST"
+          >
+            <mat-grid-list cols="1" rowHeight="60px">
+              <div class="centro">
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Ingrese un título para la publicación</mat-label>
+                    <input
+                      name="nombrePublicacion"
+                      ngModel
+                      type="text"
+                      #nombreInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Ingrese el cuerpo de la publicación</mat-label>
+                    <input
+                      name="cuerpoPublicacion"
+                      ngModel
+                      type="text"
+                      #nombreInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+              </div>
+            </mat-grid-list>
+            <div class="centro">
+              <button
+                mat-raised-button
+                color="primary"
+                style="margin: 18px"
+                class="tamano"
+                type="submit"
+              >
+                Crear publicación
+              </button>
+              <button
+                mat-raised-button
+                color="accent"
+                class="tamano"
+                routerLink="/dashboard/publicaciones"
+              >
+                Cancelar
+              </button>
+            </div>
+          </form>
+        </form>
+      </mat-card>
+    </form>
+  </mat-card>
+  
+</div>
+-->
