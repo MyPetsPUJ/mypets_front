@@ -1,7 +1,7 @@
 <div class="content">
     <h2 class="titulo">Animales en adopción</h2>
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
-      <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let animal of animales">
+      <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="50%" *ngFor="let animal of animales">
         <mat-card class="mat-elevation-z8">
             <mat-card-header>
               <div mat-card-avatar >
@@ -10,7 +10,8 @@
               <mat-card-title>{{animal.nombre}}</mat-card-title>
               <mat-card-subtitle>{{nombreFundacion}}</mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                <img  class="container crop" mat-card-image [src]="animal.foto" alt="Photo of a Shiba Inu">
+            
             <mat-card-content>
               <p>
                 {{animal.descripcion}}

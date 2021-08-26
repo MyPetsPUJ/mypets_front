@@ -19,19 +19,19 @@ export class CrearAnimalService {
   constructor(private http: HttpClient) {
   }
   animales: EntidadAnimal[] = [
-    {nombre:'Paca', edad: '11 años', raza: 'Carey', sexo: 'Hembra', tamano: 'Pequeño',color_ojos: 'Negro'
+    {foto: '../../../assets/Images/paca.png',nombre:'Paca', edad: '11 años', raza: 'Carey', sexo: 'Hembra', tamano: 'Pequeño',color_ojos: 'Negro'
       ,tipo_pelaje:'Pelaje corto',situacion:'Esterilizado',desparasitado:'Sí',ultima_vac: '15/02/2020',descripcion:'Es muy linda', 
       esquema_vac:'Triple felina',tipo_animal:'Gato'},
-    {nombre:'Milú', edad: '5 años', raza: 'Schnauzer', sexo: 'Hembra', tamano: 'Pequeño',color_ojos: 'Negro'
+    {foto: '../../../assets/Images/milu.png',nombre:'Milú', edad: '5 años', raza: 'Schnauzer', sexo: 'Hembra', tamano: 'Pequeño',color_ojos: 'Negro'
       ,tipo_pelaje:'Pelaje largo',situacion:'Esterilizado',desparasitado:'Sí',ultima_vac: '02/02/2020',descripcion:'Es muy juguetona', 
       esquema_vac:'Rabia',tipo_animal:'Perro'},
-    {nombre:'Aslan', edad: '3 años', raza: 'Pitbull', sexo: 'Macho', tamano: 'Mediano',color_ojos: 'Negro'
+    {foto: '../../../assets/Images/aslan.png',nombre:'Aslan', edad: '3 años', raza: 'Pitbull', sexo: 'Macho', tamano: 'Mediano',color_ojos: 'Negro'
       ,tipo_pelaje:'Pelaje corto',situacion:'Esterilizado',desparasitado:'Sí',ultima_vac: '15/02/2020',descripcion:'Es muy cariñoso', 
       esquema_vac:'Rabia',tipo_animal:'Perro'},
-    {nombre:'Akino', edad: '4 meses', raza: 'Criollo', sexo: 'Macho', tamano: 'Pequeño',color_ojos: 'Negro'
+    {foto: '../../../assets/Images/akino.png',nombre:'Akino', edad: '4 meses', raza: 'Criollo', sexo: 'Macho', tamano: 'Pequeño',color_ojos: 'Negro'
       ,tipo_pelaje:'Pelaje semilargo',situacion:'Sin Esterilizar',desparasitado:'Sí',ultima_vac: 'No aplica',descripcion:'Es muy cansón', 
       esquema_vac:'Ninguno',tipo_animal:'Gato'},
-    {nombre:'Levy', edad: '5 años', raza: 'Criollo', sexo: 'Macho', tamano: 'Grande',color_ojos: 'Verde'
+    {foto: '../../../assets/Images/levy.png',nombre:'Levy', edad: '5 años', raza: 'Criollo', sexo: 'Macho', tamano: 'Grande',color_ojos: 'Verde'
       ,tipo_pelaje:'Pelaje semilargo',situacion:'Esterilizado',desparasitado:'Sí',ultima_vac: '15/08/2020',descripcion:'Es muy gordo', 
       esquema_vac:'Refuerzo triple felina',tipo_animal:'Gato'},
   ];

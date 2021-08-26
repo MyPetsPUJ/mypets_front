@@ -1,4 +1,5 @@
 export interface EntidadAnimal{
+    foto: string;
     nombre: String;
     edad: String;
     raza: String;
