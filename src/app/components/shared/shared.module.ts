@@ -26,6 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 
 
@@ -56,7 +57,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatDatepickerModule,
     MatNativeDateModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    FlexLayoutModule
   ],
   exports: [
     MatSliderModule,
@@ -80,7 +82,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatDatepickerModule,
     MatNativeDateModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    FlexLayoutModule
   ]
 })
 export class SharedModule { }

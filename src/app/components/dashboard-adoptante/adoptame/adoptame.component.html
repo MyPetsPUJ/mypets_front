@@ -1,33 +1,32 @@
-<div>
-  <p class="centro">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-      </mat-card-header>
-      <img
-        mat-card-image
-        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-        alt="Photo of a Shiba Inu"
-      />
-      <mat-card-content>
-        <p>
-          The Shiba Inu is the smallest of the six original and distinct spitz
-          breeds of dog from Japan. A small, agile dog that copes very well with
-          mountainous terrain, the Shiba Inu was originally bred for hunting.
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-        <button
-          mat-button
-          routerLink="/dashboard-adoptante/adoptame/solicitud-adopcion"
-        >
-          ENVIAR SOLICITUD DE ADOPCION
-        </button>
-      </mat-card-actions>
-    </mat-card>
-  </p>
-</div>
+<div class="content">
+    <h2 class="titulo">Animales en adopción</h2>
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let animal of animales">
+        <mat-card class="mat-elevation-z8">
+            <mat-card-header>
+              <div mat-card-avatar >
+                <img [src]="logoFundacion" class="circulo">
+              </div>
+              <mat-card-title>{{animal.nombre}}</mat-card-title>
+              <mat-card-subtitle>{{nombreFundacion}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+                {{animal.descripcion}}
+              </p>
+            </mat-card-content>
+            <div class="centro">
+              <button mat-raised-button color="warn" routerLink="solicitud-adopcion">ENVÍAR FORMULARIO DE ADOPCIÓN</button>
+            </div>
+          </mat-card>
+      </div>
+    </div>
+    </div>
+
+
+
+
+
+
+    

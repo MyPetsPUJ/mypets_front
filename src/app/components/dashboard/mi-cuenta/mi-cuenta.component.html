@@ -1,7 +1,7 @@
 <div>
     <mat-card styles="margin-top: 10px;" class="image">
         <h2>Mi cuenta - nombre de la fundación</h2>
-        <form [formGroup]="form">
+        <form>
             <mat-card>
                 <div>
                         <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />
@@ -21,7 +21,7 @@
                         </button>
                     </mat-menu>
                 </div>
-                <form>
+                <form [formGroup]="form">
                     <mat-grid-list cols="2" rowHeight="60px">
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field class="ancho">
