@@ -10,7 +10,11 @@
               <mat-card-title>{{animal.nombre}}</mat-card-title>
               <mat-card-subtitle>{{nombreFundacion}}</mat-card-subtitle>
             </mat-card-header>
-                <img  class="container crop" mat-card-image [src]="animal.foto" alt="Photo of a Shiba Inu">
+            <div class="parent">
+                <img  class="container crop card" mat-card-image [src]="animal.foto" alt="Photo of a Shiba Inu">
+              
+            </div>
+               
             
             <mat-card-content>
               <p>
