@@ -22,6 +22,16 @@ export class InicioComponent implements OnInit {
             center: { lat: -34.397, lng: 150.644 },
             zoom: 20
           });
+          var marker = new google.maps.Marker({
+            map: mapa,
+            position: geolocate,
+            title: 'Estás aquí'
+          });
+          var infoWindow = new google.maps.InfoWindow({
+            position: geolocate,
+            content:
+            '<h1>Estás aqu</h1>'
+        });
           mapa.setCenter(geolocate);
       });
       }
