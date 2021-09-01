@@ -6,18 +6,26 @@ import { Loader } from "@googlemaps/js-api-loader"
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit {
+  geolocalizacion: google.maps.LatLng | any;
   constructor() { 
   }
   ngOnInit(): void {
     const loader = new Loader({
-      apiKey: "AIzaSyCmGeyG9eLi8mLEzSFA5_T5k_KUQTvpzgA"
+      apiKey: "AIzaSyAesjccMPoVK0aW3au9R9qKHHSqSW8u65E"
     });
     
     loader.load().then(() => {
-    new google.maps.Map(document.getElementById("map") as HTMLElement, {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 8,
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position){
+          var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+          const mapa = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+            center: { lat: -34.397, lng: 150.644 },
+            zoom: 20
+          });
+          mapa.setCenter(geolocate);
       });
+      }
+    
     });
   }
 
