@@ -28,9 +28,19 @@ export class CrearAdoptanteService {
 }
 
   inicioSesion(inicioSesion: InicioSesion){
-    this.http.post(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.login}`, inicioSesion)
-      .subscribe(respuesta => {
-        console.log(respuesta);
-      })
+    return this.http.post(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.login}`, inicioSesion)
+      // .subscribe(respuesta => {
+      //   console.log(respuesta);
+      // })
   }
 }
+
+
+
+
+
+
+
+
+
+
