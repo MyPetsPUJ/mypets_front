@@ -6,6 +6,7 @@ import { DashboardAdoptanteComponent } from './dashboard-adoptante.component';
 import { FundacionesComponent } from './fundaciones/fundaciones.component';
 import { MapaComponent } from './mapa/mapa.component';
 import { SolicitudAdopcionComponent } from './adoptame/solicitud-adopcion/solicitud-adopcion.component';
+import { SolicitudesAdopcionAdoptanteComponent } from './solicitudes-adopcion-adoptante/solicitudes-adopcion-adoptante.component';
 
 const routes: Routes = [
   {path:'',component: DashboardAdoptanteComponent, children: [
@@ -13,7 +14,8 @@ const routes: Routes = [
     {path: 'adoptame',component: AdoptameComponent},
     {path: 'fundaciones',component: FundacionesComponent},
     {path: 'consejos',component: ConsejosComponent},
-    {path: 'adoptame/solicitud-adopcion', component: SolicitudAdopcionComponent}
+    {path: 'adoptame/solicitud-adopcion', component: SolicitudAdopcionComponent},
+    {path: 'solicitudes-adopcion-adoptante', component: SolicitudesAdopcionAdoptanteComponent}
   ]}
 ];
 

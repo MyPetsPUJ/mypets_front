@@ -11,6 +11,7 @@ import { AdoptameComponent } from './adoptame/adoptame.component';
 import { FundacionesComponent } from './fundaciones/fundaciones.component';
 import { ConsejosComponent } from './consejos/consejos.component';
 import { SolicitudAdopcionComponent } from './adoptame/solicitud-adopcion/solicitud-adopcion.component';
+import { SolicitudesAdopcionAdoptanteComponent } from './solicitudes-adopcion-adoptante/solicitudes-adopcion-adoptante.component';
 
 
 
@@ -22,7 +23,8 @@ import { SolicitudAdopcionComponent } from './adoptame/solicitud-adopcion/solici
     AdoptameComponent,
     FundacionesComponent,
     ConsejosComponent,
-    SolicitudAdopcionComponent
+    SolicitudAdopcionComponent,
+    SolicitudesAdopcionAdoptanteComponent
   ],
   imports: [
     CommonModule,

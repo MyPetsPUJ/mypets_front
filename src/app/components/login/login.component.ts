@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
       password: form.value.password,
       tipo_usuario: form.value.tipo_usuario,
     };
+    
 
     const usuarioAdoptante: String = 'Adoptante'; //TODO separar en constantes
     const usuarioFundacion: String = 'Fundacion';
