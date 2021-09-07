@@ -9,111 +9,107 @@ import { CrearFundacionService } from 'src/app/services/crearFundacion.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
   loading = false;
   cuentaNueva = false;
-  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router, public crearAdoptanteService: CrearAdoptanteService, public crearFundacionService: CrearFundacionService)
-  {
-    this.form = this.fb.group ({
-      usuario: ['',Validators.required],
-      contrasena: ['',Validators.required] //inicia vacio y el espacio es requerido
-    })
+  constructor(
+    private fb: FormBuilder,
+    private _snackBar: MatSnackBar,
+    private router: Router,
+    public crearAdoptanteService: CrearAdoptanteService,
+    public crearFundacionService: CrearFundacionService
+  ) {
+    this.form = this.fb.group({
+      usuario: ['', Validators.required],
+      contrasena: ['', Validators.required], //inicia vacio y el espacio es requerido
+    });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  inicioSesionAdoptante(form: NgForm){
-    
-    if(form.invalid){
+  inicioSesionAdoptante(form: NgForm) {
+    if (form.invalid) {
       return;
     }
 
-    const datosLogin = {correo: form.value.correo, password: form.value.password, tipo_usuario: form.value.tipo_usuario}
+    const datosLogin = {
+      correo: form.value.correo,
+      password: form.value.password,
+      tipo_usuario: form.value.tipo_usuario,
+    };
     
 
-    const usuarioAdoptante: String = "Adoptante";
-    const usuarioFundacion: String = "Fundacion";
-    
+    const usuarioAdoptante: String = 'Adoptante'; //TODO separar en constantes
+    const usuarioFundacion: String = 'Fundacion';
 
     //Hace falta hacer una verificación de que usuario y contraseña sean los correctos en el front-end
-    
-    
-    if(datosLogin.tipo_usuario === usuarioAdoptante){
-      
-      this.crearAdoptanteService.inicioSesion(datosLogin);
-      this.exitoAdoptante(datosLogin.correo);
+
+    if (datosLogin.tipo_usuario === usuarioAdoptante) {
+      this.crearAdoptanteService
+        .inicioSesion(datosLogin)
+        .subscribe((respuesta) => {
+          console.log(respuesta);
+          this.exitoAdoptante(datosLogin.correo);
+        });
+    } else if (datosLogin.tipo_usuario === usuarioFundacion) {
+      this.crearFundacionService
+        .inicioSesion(datosLogin)
+        .subscribe((respuesta) => {
+          console.log(respuesta);
+          this.exitoFundacion(datosLogin.correo); //Cambiar dashboard dependiendo del usuario
+        });
     }
-    else if(datosLogin.tipo_usuario === usuarioFundacion){
-      this.crearFundacionService.inicioSesion(datosLogin);
-      this.exitoFundacion(datosLogin.correo); //Cambiar dashboard dependiendo del usuario
-    }
-    
-    
   }
 
-  ingresar()
-  {
+  ingresar() {
     const usuario = this.form.value.usuario;
     const password = this.form.value.contrasena;
-    
-    if(usuario == 'FelipeVan' && password == '12345')
-    {
+
+    if (usuario == 'FelipeVan' && password == '12345') {
       this.exitoAdoptante(usuario);
-    }
-    else 
-    {
+    } else {
       this.error();
     }
-    console.log(this.form.value); 
+    console.log(this.form.value);
   }
 
-  error()
-  {
-    this._snackBar.open('Usuario o contraseña inválidos','',
-    {
+  error() {
+    this._snackBar.open('Usuario o contraseña inválidos', '', {
       duration: 5000,
       horizontalPosition: 'center',
-      verticalPosition : 'bottom'
-    } )
+      verticalPosition: 'bottom',
+    });
     this.form.reset();
   }
-  exitoAdoptante(usuario: string)
-  {
-    this._snackBar.open('Bienvenido ' + usuario,'',
-    {
+  exitoAdoptante(usuario: string) {
+    this._snackBar.open('Bienvenido ' + usuario, '', {
       duration: 5000,
       horizontalPosition: 'center',
-      verticalPosition : 'bottom'
-    } )
+      verticalPosition: 'bottom',
+    });
     this.loading = true;
-    setTimeout(() => 
-    {
+    setTimeout(() => {
       this.router.navigate(['dashboard-adoptante']);
-    },1500)
+    }, 1500);
   }
 
-  exitoFundacion(usuario: string)
-  {
-    this._snackBar.open('Bienvenido ' + usuario,'',
-    {
+  exitoFundacion(usuario: string) {
+    this._snackBar.open('Bienvenido ' + usuario, '', {
       duration: 5000,
       horizontalPosition: 'center',
-      verticalPosition : 'bottom'
-    } )
+      verticalPosition: 'bottom',
+    });
     this.loading = true;
-    setTimeout(() => 
-    {
+    setTimeout(() => {
       this.router.navigate(['dashboard']);
-    },1500)
+    }, 1500);
   }
 
-  crearCuenta()
-  {
-    this.cuentaNueva = true
+  crearCuenta() {
+    this.cuentaNueva = true;
     this.router.navigate(['crear-cuenta']);
   }
 }
