@@ -5,6 +5,7 @@
 
 <div class="full" id= "map">
     <agm-map class="mapa" [latitude]="latitude" [longitude]="longitude" [zoom] = "zoom" (mapClick)="mapClicked($event)">
+        <button mat-button (click)="activarPuntos()" [disabled]="!activarPuntos">Activar Puntos de interés</button>
         <agm-marker [latitude]="latitude" [longitude]="longitude">
             <agm-info-window>
                 <div>
@@ -24,4 +25,11 @@
             </agm-info-window>
         </agm-marker>
     </agm-map>
+    <div>
+        <button mat-button (click)="activarPuntos()" [disabled]="!activarPuntos">Activar Puntos de interés</button>
+    </div>
+    <div>
+        <button mat-button (click)="desactivarPuntos()" [disabled]="!activarPuntos">Desactivar puntos de interés</button>
+    </div>
+    
 </div>
