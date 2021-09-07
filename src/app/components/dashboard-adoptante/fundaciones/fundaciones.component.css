@@ -1,0 +1,27 @@
+.content 
+{
+    padding: 30px;
+}
+
+.card 
+{
+    width: 200px;
+    height: 200px;
+    
+}
+  
+.header-image 
+{
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+.titulo 
+{
+    text-align: center;
+}
+
+.margen
+{
+    margin-left: 40px;
+}
