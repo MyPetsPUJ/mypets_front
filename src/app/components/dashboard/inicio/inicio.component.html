@@ -3,8 +3,25 @@
 </div>
 -->
 
-<div class="full">
-    <agm-map class="mapa">
-
+<div class="full" id= "map">
+    <agm-map class="mapa" [latitude]="latitude" [longitude]="longitude" [zoom] = "zoom" (mapClick)="mapClicked($event)">
+        <agm-marker [latitude]="latitude" [longitude]="longitude">
+            <agm-info-window>
+                <div>
+                    <p>
+                        Estás aquí
+                    </p>
+                </div>
+            </agm-info-window>
+        </agm-marker>
+        <agm-marker *ngFor="let coord of coordenadas" [latitude]="coord.latitude" [longitude]="coord.longitude">
+            <agm-info-window>
+                <div>
+                    <p>
+                        Punto marcado
+                    </p>
+                </div>
+            </agm-info-window>
+        </agm-marker>
     </agm-map>
 </div>
