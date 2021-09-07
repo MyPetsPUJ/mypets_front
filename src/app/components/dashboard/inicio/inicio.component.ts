@@ -10,33 +10,6 @@ export class InicioComponent implements OnInit {
   constructor() { 
   }
   ngOnInit(): void {
-    const loader = new Loader({
-      apiKey: "AIzaSyAesjccMPoVK0aW3au9R9qKHHSqSW8u65E"
-    });
-    
-    loader.load().then(() => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position){
-          var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-          const mapa = new google.maps.Map(document.getElementById("map") as HTMLElement, {
-            center: { lat: -34.397, lng: 150.644 },
-            zoom: 20
-          });
-          var marker = new google.maps.Marker({
-            map: mapa,
-            position: geolocate,
-            title: 'Estás aquí'
-          });
-          var infoWindow = new google.maps.InfoWindow({
-            position: geolocate,
-            content:
-            '<h1>Estás aqu</h1>'
-        });
-          mapa.setCenter(geolocate);
-      });
-      }
-    
-    });
   }
 
 }
