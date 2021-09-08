@@ -27,6 +27,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { AgmCoreModule } from '@agm/core';
 
 
 
@@ -58,7 +59,10 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatNativeDateModule,
     MatMenuModule,
     MatDialogModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyD0mZKECnq4OrpXb6fokmGZr03ZIE-XM_A'
+    })
   ],
   exports: [
     MatSliderModule,
@@ -83,7 +87,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatNativeDateModule,
     MatMenuModule,
     MatDialogModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AgmCoreModule
   ]
 })
 export class SharedModule { }

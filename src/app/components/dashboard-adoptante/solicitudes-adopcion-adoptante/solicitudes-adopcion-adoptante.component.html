@@ -1,1 +1,33 @@
-<p>solicitudes-adopcion-adoptante works!</p>
+<div *ngIf="solicitudes.length > 0">
+  <div class="mat-elevation-z8" class="tam">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="fundacion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Fundacion</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.fundacion }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.fecha }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="estado">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Estado de la solicitud
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.estado }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+</div>
+<h2 *ngIf="solicitudes.length == 0" class="tam">No hay solicitudes activas</h2>

@@ -39,7 +39,7 @@ import { AuthInterceptor } from './components/interfaces/authInterceptor';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
