@@ -3,9 +3,28 @@
 </div>
 -->
 
-<div class="full" id= "map">
-    <agm-map class="mapa" [latitude]="latitude" [longitude]="longitude" [zoom] = "zoom" (mapClick)="mapClicked($event)">
-        <button mat-button (click)="activarPuntos()" [disabled]="!activarPuntos">Activar Puntos de interés</button>
+<div class="full" id="map">
+
+    <agm-map class="mapa" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" (mapClick)="mapClicked($event)"
+        [mapTypeControl]="true" (mapReady)="mapReady($event)">
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="activarPuntos()">
+          <mat-icon>room</mat-icon>
+          <span>Fijar un punto de interés</span>
+        </button>
+        <button mat-menu-item (click)="eliminarPuntos()">
+            <mat-icon>delete</mat-icon>
+            <span>Eliminar todos los puntos de interés</span>
+          </button>
+      </mat-menu>
+
+
+        <button id="Settings" class="toggle-button controls button" mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu">
+            <mat-icon aria-hidden="true">settings</mat-icon>
+        </button>
+        
         <agm-marker [latitude]="latitude" [longitude]="longitude">
             <agm-info-window>
                 <div>
@@ -19,17 +38,10 @@
             <agm-info-window>
                 <div>
                     <p>
-                        Punto marcado
+                        {{direccion}}
                     </p>
                 </div>
             </agm-info-window>
         </agm-marker>
     </agm-map>
-    <div>
-        <button mat-button (click)="activarPuntos()" [disabled]="!activarPuntos">Activar Puntos de interés</button>
-    </div>
-    <div>
-        <button mat-button (click)="desactivarPuntos()" [disabled]="!activarPuntos">Desactivar puntos de interés</button>
-    </div>
-    
 </div>

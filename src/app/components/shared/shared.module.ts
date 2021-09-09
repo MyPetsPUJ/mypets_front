@@ -61,7 +61,7 @@ import { AgmCoreModule } from '@agm/core';
     MatDialogModule,
     FlexLayoutModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyD0mZKECnq4OrpXb6fokmGZr03ZIE-XM_A'
+      apiKey: 'AIzaSyDQYP0Nq4rtQ33uqLIYUqzGITOaoCnp1DQ'
     })
   ],
   exports: [
