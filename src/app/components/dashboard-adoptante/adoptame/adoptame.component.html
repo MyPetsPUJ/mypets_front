@@ -1,37 +1,44 @@
 <div class="content">
-    <h2 class="titulo">Animales en adopción</h2>
-    <div fxLayout="row wrap" fxLayoutGap="16px grid">
-      <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="50%" *ngFor="let animal of animales">
-        <mat-card class="mat-elevation-z8">
-            <mat-card-header>
-              <div mat-card-avatar >
-                <img [src]="logoFundacion" class="circulo">
-              </div>
-              <mat-card-title>{{animal.nombre}}</mat-card-title>
-              <mat-card-subtitle>{{nombreFundacion}}</mat-card-subtitle>
-            </mat-card-header>
-            <div class="parent">
-                <img  class="container crop card" mat-card-image [src]="animal.foto" alt="Photo of a Shiba Inu">
-              
-            </div>
-               
-            
-            <mat-card-content>
-              <p>
-                {{animal.descripcion}}
-              </p>
-            </mat-card-content>
-            <div class="centro">
-              <button mat-raised-button color="warn" routerLink="solicitud-adopcion">ENVÍAR FORMULARIO DE ADOPCIÓN</button>
-            </div>
-          </mat-card>
-      </div>
+  <h2 class="titulo">Animales en adopción</h2>
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div
+      fxFlex="33%"
+      fxFlex.xs="100%"
+      fxFlex.sm="50%"
+      *ngFor="let animal of animales"
+    >
+      <mat-card class="mat-elevation-z8">
+        <mat-card-header>
+          <div mat-card-avatar>
+            <img [src]="logoFundacion" class="circulo" />
+          </div>
+          <mat-card-title>{{ animal.nombre }}</mat-card-title>
+          <mat-card-subtitle>{{ nombreFundacion }}</mat-card-subtitle>
+        </mat-card-header>
+        <div class="parent">
+          <img
+            class="container crop card"
+            mat-card-image
+            [src]="animal.foto"
+            alt="Photo of a Shiba Inu"
+          />
+        </div>
+
+        <mat-card-content>
+          <p>
+            {{ animal.descripcion }}
+          </p>
+        </mat-card-content>
+        <div class="centro">
+          <button
+            mat-raised-button
+            color="warn"
+            routerLink="solicitud-adopcion"
+          >
+            ENVÍAR FORMULARIO DE ADOPCIÓN
+          </button>
+        </div>
+      </mat-card>
     </div>
-    </div>
-
-
-
-
-
-
-    
+  </div>
+</div>

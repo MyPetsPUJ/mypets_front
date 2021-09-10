@@ -6,7 +6,7 @@ import { EntidadEstadoSolicitudAdopcion } from '../components/interfaces/entidad
 })
 export class EstadoSolicitudAdopcionService {
   solicitudesActivas: EntidadEstadoSolicitudAdopcion[] = [
-    {aceptada: false, fundacion: "Perritos felices", fecha: Date().toLocaleString()},
+    {aceptada: "Aceptada", fundacion: "Perritos felices", fecha: "5 de Febrero de 2010"}
   ];
   constructor() { }
   getSolicitudes(): EntidadEstadoSolicitudAdopcion[]

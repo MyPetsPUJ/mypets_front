@@ -1,5 +1,5 @@
 export interface EntidadEstadoSolicitudAdopcion{
-    aceptada: boolean;
+    aceptada: string;
     fundacion: string;
     fecha: string;
 }
