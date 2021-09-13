@@ -1,0 +1,41 @@
+.centro
+{
+    text-align: center;
+}
+.ancho
+{
+    width: 90%;
+}
+.margen 
+{
+    height: 100px;
+   width: 1120px;
+   margin: auto;
+   background-image: url(src\assets\Images\fundacion_background.jpg);
+}
+.tamano 
+{
+    text-align: center;
+    width: 120px;
+    height: 35px;
+}
+.pointer 
+{
+    cursor: pointer;
+}
+.image 
+{
+    background-image: url(src\assets\Images\fundacion_background.jpg);
+    height: 90%;
+}
+.colorFondo 
+{
+    background-color: beige;
+}
+.centroImg 
+{
+    text-align: center;
+}
+.demo-inline-calendar-card {
+    width: 200px;
+  }

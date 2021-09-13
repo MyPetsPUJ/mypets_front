@@ -1,1 +1,39 @@
-<p>reportes works so well!</p>
+<div>
+    <mat-card styles="margin-top: 10px;" class="image">
+        <h2>Reportes</h2>
+        <form>
+            <mat-card class="colorFondo">
+
+                <div class="centroImg">
+                    <h1>Reporte de adopción fundación (nombre de fundación)</h1>
+
+                    <img src="../../../assets/Images/fundacion_logo.png" width="15%">
+                    <p>Por favor seleccione el rango de fechas en las que desea generar el reporte de adopción </p>
+                </div>
+                <div class="centro">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Seleccione las fechas</mat-label>
+                        <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                            <input matStartDate formControlName="inicio" placeholder="Start date">
+                            <input matEndDate formControlName="final" placeholder="End date">
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker></mat-date-range-picker>
+
+                        
+                    </mat-form-field>
+                    <div id="valores" >
+                        <p>Rango seleccionado: {{range.value | json}}</p>
+                    </div>
+                    <button mat-button  mat-raised-button color="primary" (click)="verFecha()">Obtener reporte</button>
+                </div>
+
+
+                
+            </mat-card>
+        </form>
+
+    </mat-card>
+
+
+</div>
