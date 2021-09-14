@@ -45,3 +45,7 @@
     background-image: url(src\assets\Images\cats-background.png);
     height: 90%;
 }
+
+.inputImg{
+    visibility: hidden;
+}
