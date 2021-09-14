@@ -1,6 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
+import { VerFotoComponent } from './ver-foto/ver-foto.component';
 
 @Component({
   selector: 'app-mi-cuenta',
@@ -13,7 +15,7 @@ export class MiCuentaComponent implements OnInit {
   '13.Teusaquillo','14.Los Mártires', '15.Antonio Nariño', '16.Puente Aranda', '17.Candelaria',
   '18.Rafael Uribe Uribe','19.Ciudad Bolivar','20.Sumapaz'];
   form: FormGroup;
-  constructor(private sanitizer: DomSanitizer, private fb: FormBuilder) {
+  constructor(private sanitizer: DomSanitizer, private fb: FormBuilder, public dialog: MatDialog) {
     this.form = this.fb.group({
       nombreFundacion: ['Perritos felices', Validators.required],
       nombreEncargado: ['Juan Felipe', Validators.required],
@@ -62,4 +64,11 @@ export class MiCuentaComponent implements OnInit {
       return null;
     }
   });
+  verFoto()
+  {
+    this.dialog.open(VerFotoComponent,
+      {
+        data:{foto: this.previsualizacion}
+      });
+  }
 }

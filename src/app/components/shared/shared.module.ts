@@ -28,6 +28,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { AgmCoreModule } from '@agm/core';
+import { VentanaReporteComponent } from '../dashboard/reportes/ventana-reporte/ventana-reporte.component';
 
 
 
@@ -35,6 +36,7 @@ import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [],
+  entryComponents: [VentanaReporteComponent],
   imports: [
     CommonModule,
     MatSliderModule,

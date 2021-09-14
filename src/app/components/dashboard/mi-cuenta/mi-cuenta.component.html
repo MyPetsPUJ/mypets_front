@@ -10,7 +10,7 @@
                     <img [src]="previsualizacion" width="15%" class="pointer" matTooltip="Desplegar opciones de foto"
                         [matMenuTriggerFor]="menu">
                     <mat-menu #menu="matMenu">
-                        <button mat-menu-item>
+                        <button mat-menu-item (click)="verFoto()">
                             <mat-icon>visibility</mat-icon>
                             <span>Ver foto</span>
                         </button>
