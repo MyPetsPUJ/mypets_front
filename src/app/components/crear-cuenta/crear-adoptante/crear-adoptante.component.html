@@ -51,7 +51,8 @@
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
                         <mat-form-field class="ancho" appearance="fill">
                             <mat-label>Fecha de nacimiento</mat-label>
-                            <input matInput name="fecha_nac" ngModel #fechaInput="ngModel" required [matDatepicker]="picker">
+                            <input matInput name="fecha_nac" ngModel #fechaInput="ngModel" required [matDatepicker]="picker"
+                            [max]="maxDate" [min]="minDate">
                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker touchUi #picker></mat-datepicker>
                         </mat-form-field>

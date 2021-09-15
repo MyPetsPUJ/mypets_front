@@ -10,10 +10,14 @@ import { CrearFundacionService } from 'src/app/services/crearFundacion.service';
   styleUrls: ['./crear-fundacion.component.css'],
 })
 export class CrearFundacionComponent implements OnInit {
+  maxDate: Date | any;
   constructor(
     public crearFundacionService: CrearFundacionService,
     private sanitizer: DomSanitizer
-  ) {}
+  ) {
+    const currentYear = new Date().getFullYear();
+    this.maxDate = new Date;
+  }
   public archivos: any = [];
   public previsualizacion: string | undefined;
 

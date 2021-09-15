@@ -88,7 +88,8 @@
                         <mat-grid-tile [colspan]="1" [rowspan]="1" >
                             <mat-form-field appearance="fill" class = "ancho">
                                 <mat-label>Fecha de última vacuna</mat-label>
-                                <input name="ultima_vac" ngModel #ultima_vacInput="ngModel" required matInput [matDatepicker]="picker">
+                                <input name="ultima_vac" ngModel #ultima_vacInput="ngModel" required matInput [matDatepicker]="picker"
+                                [min]="minDate"[max]="maxDate">
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                 <mat-datepicker #picker></mat-datepicker>
                               </mat-form-field>

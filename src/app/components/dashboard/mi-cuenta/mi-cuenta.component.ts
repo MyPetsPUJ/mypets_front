@@ -68,6 +68,8 @@ export class MiCuentaComponent implements OnInit {
   {
     this.dialog.open(VerFotoComponent,
       {
+        width: '500px',
+        height: '500px',
         data:{foto: this.previsualizacion}
       });
   }
