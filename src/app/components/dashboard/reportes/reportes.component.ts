@@ -19,6 +19,8 @@ export class ReportesComponent implements OnInit {
   });
   minDate: Date | any;
   maxDate: Date | any;
+  nombreFundacion: string | any;
+  imagenFundacion: string | any;
   constructor(public dialog: MatDialog) { 
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 1, 0, 1);
@@ -26,6 +28,8 @@ export class ReportesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.nombreFundacion = "Perritos felices"; //Aquí se cargan datos de la BD
+    this.imagenFundacion = "../../../assets/Images/fundacion_logo.png"
   }
   verFecha()
   {

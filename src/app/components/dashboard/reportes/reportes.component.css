@@ -25,7 +25,7 @@
 }
 .image 
 {
-    background-image: url(src\assets\Images\fundacion_background.jpg);
+    background-image: url(src\assets\Images\reportes_background.jpg);
     height: 90%;
 }
 .colorFondo 
@@ -38,4 +38,8 @@
 }
 .demo-inline-calendar-card {
     width: 200px;
+  }
+  .tam{
+      width: 700px;
+      margin: auto;
   }

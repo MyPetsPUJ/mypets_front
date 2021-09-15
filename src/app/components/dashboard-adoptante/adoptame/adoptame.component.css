@@ -12,6 +12,7 @@
 .content 
 {
     padding: 16px;
+    background-color: beige;
 }
 .content > mat-card 
 {
