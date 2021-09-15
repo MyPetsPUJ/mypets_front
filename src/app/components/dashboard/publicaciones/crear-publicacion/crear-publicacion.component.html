@@ -46,6 +46,10 @@
                 </mat-grid-tile>
               </div>
             </mat-grid-list>
+            <div>
+              <button mat-stroked-button type="button" (click)="filePicker.click()">Escoger Imagen</button>
+              <input class="inputImg" type="file" #filePicker>
+            </div>
             <div class="centro">
               <button
                 mat-raised-button

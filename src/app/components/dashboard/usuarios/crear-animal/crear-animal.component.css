@@ -39,3 +39,7 @@
 {
     background-color:beige;
 }
+
+.inputImg{
+    visibility: hidden;
+}
