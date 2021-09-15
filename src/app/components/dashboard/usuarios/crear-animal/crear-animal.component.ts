@@ -18,8 +18,14 @@ export interface Vacuna_box{
 })
 
 export class CrearAnimalComponent implements OnInit {
-
-  constructor(public crearPerroService: CrearAnimalService) { }
+  minDate: Date | any;
+  maxDate: Date | any;
+  constructor(public crearPerroService: CrearAnimalService) 
+  {
+    const currentYear = new Date().getFullYear();
+    this.minDate = new Date(currentYear - 19, 0, 1);
+    this.maxDate = new Date();
+  }
 
   ngOnInit(): void {
   }

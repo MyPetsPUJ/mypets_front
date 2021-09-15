@@ -18,8 +18,13 @@ export interface Vacuna_box{
   styleUrls: ['./crear-animal-gato.component.css']
 })
 export class CrearAnimalGatoComponent implements OnInit {
-
-  constructor(public crearGatoService: CrearAnimalService) { }
+  minDate: Date |any;
+  maxDate: Date | any;
+  constructor(public crearGatoService: CrearAnimalService) { 
+    const currentYear = new Date().getFullYear();
+    this.minDate = new Date(currentYear - 19, 0, 1);
+    this.maxDate = new Date();
+  }
 
   ngOnInit(): void {
   }

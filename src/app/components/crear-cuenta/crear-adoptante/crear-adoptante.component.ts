@@ -9,9 +9,14 @@ import { CrearAdoptanteService } from 'src/app/services/crearAdoptante.service';
   styleUrls: ['./crear-adoptante.component.css']
 })
 export class CrearAdoptanteComponent implements OnInit {
-
+  minDate: Date | any;
+  maxDate: Date | any;
   
-  constructor(public crearAdoptanteService: CrearAdoptanteService, private sanitizer: DomSanitizer) { }
+  constructor(public crearAdoptanteService: CrearAdoptanteService, private sanitizer: DomSanitizer) {
+    const currentYear = new Date().getFullYear();
+    this.minDate = new Date(currentYear - 110, 0, 1);
+    this.maxDate = new Date(currentYear- 18,11,31);
+   }
   public archivos: any = [];
   public previsualizacion: string | undefined;
   ngOnInit(): void {
