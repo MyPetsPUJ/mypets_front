@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { CrearAnimalService } from 'src/app/services/crearAnimal.service';
 
@@ -20,14 +21,16 @@ export interface Vacuna_box{
 export class CrearAnimalComponent implements OnInit {
   minDate: Date | any;
   maxDate: Date | any;
-  constructor(public crearPerroService: CrearAnimalService) 
+  constructor(public crearPerroService: CrearAnimalService, private sanitizer:DomSanitizer) 
   {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 19, 0, 1);
     this.maxDate = new Date();
   }
-
+  public archivos: any = [];
+  public previsualizacion: string | undefined;
   ngOnInit(): void {
+    this.previsualizacion = '../../../assets/Images/dog-form.png';
   }
   tiles: any[] = [
     {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
@@ -59,4 +62,35 @@ export class CrearAnimalComponent implements OnInit {
     this.crearPerroService.crearAnimalPerro(datosPerro);
 
   }
+  onFileInput(event): any
+  {
+    const archivo = event.target.files[0];
+    this.archivos.push(archivo);
+    this.extraerBase64(archivo).then((imagen: any) => 
+    {
+      this.previsualizacion = imagen.base;
+    });
+  }
+  extraerBase64 = async ($event: any) => new Promise((resolve) => {
+    try{
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base:null
+        });
+      };
+      return resolve;
+    }catch(e)
+    {
+      return null;
+    }
+  });
 }

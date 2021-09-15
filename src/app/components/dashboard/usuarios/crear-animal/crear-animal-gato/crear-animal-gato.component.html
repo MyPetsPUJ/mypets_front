@@ -3,8 +3,19 @@
         <h2 class= "titulo">Crear un gato</h2>
         <form>
             <mat-card class = "color">
+                <div>
+                    <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />
+                </div>
                 <div class="centro">
-                    <img src = "../../../assets/Images/cat-form.png" width= "15%">
+                    <img [src] = "previsualizacion" width= "15%" class="pointer"
+                    matTooltip="Desplegar opciones de foto" [matMenuTriggerFor]="menu">
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="fileInput.click()">
+                          <mat-icon>perm_media</mat-icon>
+                          <span>Cambiar foto</span>
+                          <input (change)="onFileInput($event)" type="file">
+                        </button>
+                      </mat-menu>
                 </div>
                 <form action="crear-animal-gato.component.ts" (ngSubmit)="onCrearGato(crearGatoForm)" #crearGatoForm="ngForm" method="POST">
                     <mat-grid-list cols="2" rowHeight="60px">

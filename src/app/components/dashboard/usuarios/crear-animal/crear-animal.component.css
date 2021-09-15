@@ -43,3 +43,7 @@
 .inputImg{
     visibility: hidden;
 }
+.pointer 
+{
+    cursor: pointer;
+}

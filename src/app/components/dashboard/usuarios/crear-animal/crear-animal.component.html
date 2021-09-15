@@ -3,8 +3,19 @@
     <h2 class="titulo">Crear un perro</h2>
     <form>
       <mat-card class="color">
+        <div>
+          <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />
+        </div>
         <div class="centro">
-          <img src="../../../assets/Images/dog-form.png" width="15%" />
+          <img [src]="previsualizacion" width="15%" class="pointer"
+            matTooltip="Desplegar opciones de foto" [matMenuTriggerFor]="menu" />
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="fileInput.click()">
+              <mat-icon>perm_media</mat-icon>
+              <span>Cambiar foto</span>
+              <input (change)="onFileInput($event)" type="file">
+            </button>
+          </mat-menu>
         </div>
         <form action="crear-animal.component.ts" (ngSubmit)="onCrearPerro(crearPerroForm)" #crearPerroForm="ngForm"
           method="POST">
@@ -95,9 +106,8 @@
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <mat-form-field appearance="fill" class="ancho">
                 <mat-label>Fecha de última vacuna</mat-label>
-                <input name="ultima_vac" ngModel #ultima_vacInput="ngModel" required matInput
-                  [matDatepicker]="picker" [min]="minDate" 
-                  [max]="maxDate"/>
+                <input name="ultima_vac" ngModel #ultima_vacInput="ngModel" required matInput [matDatepicker]="picker"
+                  [min]="minDate" [max]="maxDate" />
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
