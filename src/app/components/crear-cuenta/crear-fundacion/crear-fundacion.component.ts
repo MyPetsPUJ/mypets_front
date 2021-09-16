@@ -16,7 +16,7 @@ export class CrearFundacionComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) {
     const currentYear = new Date().getFullYear();
-    this.maxDate = new Date;
+    this.maxDate = new Date();
   }
   public archivos: any = [];
   public previsualizacion: string | undefined;

@@ -6,6 +6,7 @@
 }
 .centro {
   text-align: center;
+  
 }
 .margen {
   height: 1120px;
@@ -32,6 +33,8 @@
 .color {
   background-color: beige;
 }
+
+
 
 .inputImg{
   visibility: hidden;

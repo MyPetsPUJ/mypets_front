@@ -1,27 +1,35 @@
 import { Injectable } from '@angular/core';
-import {EntidadPublicacion} from '../components/interfaces/entidadPublicacion'
+import { EntidadPublicacion } from '../components/interfaces/entidadPublicacion';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PublicacionService {
   publicaciones: EntidadPublicacion[] = [
-    {tituloPublicacion : 'Se busca dueño para Betto', 
-    cuerpoPublicacion: "Beto es un perro cariñoso con 6 años de vida",
-    fechaPublicacion: Date().toLocaleString(),
-    imagenPublicacion: "../../../assets/Images/dog-form.png"},
-    {tituloPublicacion : "Lily esta sin hogar", 
-    cuerpoPublicacion: "Lily actualmente se encuentra en busca de",
-    fechaPublicacion: Date().toLocaleString(),
-    imagenPublicacion: "src/assets/Images/dog-form.png"},
-    {tituloPublicacion : "Adopta a Laura!", 
-    cuerpoPublicacion: "Laura fue abandonada por su familia",
-    fechaPublicacion: Date().toLocaleString(),
-    imagenPublicacion: "../../../assets/Images/dog-form.png"}
+    {
+      titulo: 'Se busca dueño para Betto',
+      cuerpo: 'Beto es un perro cariñoso con 6 años de vida',
+      fecha: Date().toLocaleString(),
+      imagenPath: '../../../assets/Images/dog-form.png',
+      seccion: 'Adopción',
+    },
+    {
+      titulo: 'Lily esta sin hogar',
+      cuerpo: 'Lily actualmente se encuentra en busca de',
+      fecha: Date().toLocaleString(),
+      imagenPath: 'src/assets/Images/dog-form.png',
+      seccion: 'Adopción',
+    },
+    {
+      titulo: 'Adopta a Laura!',
+      cuerpo: 'Laura fue abandonada por su familia',
+      fecha: Date().toLocaleString(),
+      imagenPath: '../../../assets/Images/dog-form.png',
+      seccion: 'Adopción',
+    },
   ];
-  constructor() { }
-  getPublicaciones(): EntidadPublicacion[]
-  {
+  constructor() {}
+  getPublicaciones(): EntidadPublicacion[] {
     return this.publicaciones;
   }
 }

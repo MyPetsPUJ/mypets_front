@@ -17,6 +17,8 @@ import { CrearPublicacionComponent } from './publicaciones/crear-publicacion/cre
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VentanaReporteComponent } from './reportes/ventana-reporte/ventana-reporte.component';
 import { VerFotoComponent } from './mi-cuenta/ver-foto/ver-foto.component';
+import { PublicacionListComponent } from './publicaciones/publicacion-list/publicacion-list/publicacion-list.component';
+import { PublicacionPreviewComponent } from './publicaciones/publicacion-preview/publicacion-preview/publicacion-preview.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { VerFotoComponent } from './mi-cuenta/ver-foto/ver-foto.component';
     CrearPublicacionComponent,
     CrearAnimalGatoComponent,
     VentanaReporteComponent,
-    VerFotoComponent
+    VerFotoComponent,
+    PublicacionListComponent,
+    PublicacionPreviewComponent
   ],
   imports: [
     CommonModule,

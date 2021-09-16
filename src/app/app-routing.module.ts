@@ -7,16 +7,28 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
-  {path: 'login',component: LoginComponent},
-  {path: 'crear-cuenta',component: CrearCuentaComponent},
-  {path: 'crear-cuenta/crear-adoptante',component: CrearAdoptanteComponent},
-  {path: 'crear-cuenta/crear-fundacion',component: CrearFundacionComponent},
-  {path: 'dashboard',loadChildren: () => import('./components/dashboard/dashboard.module').then(x =>x.DashboardModule)},
-  {path: 'dashboard-adoptante',loadChildren: () => import('./components/dashboard-adoptante/dashboard-adoptante.module').then(x =>x.DashboardAdoptanteModule)} //Carga perezosa
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'crear-cuenta', component: CrearCuentaComponent },
+  { path: 'crear-cuenta/crear-adoptante', component: CrearAdoptanteComponent },
+  { path: 'crear-cuenta/crear-fundacion', component: CrearFundacionComponent },
+  {
+    path: 'dashboard',
+    loadChildren: () =>
+      import('./components/dashboard/dashboard.module').then(
+        (x) => x.DashboardModule
+      ),
+  },
+  {
+    path: 'dashboard-adoptante',
+    loadChildren: () =>
+      import(
+        './components/dashboard-adoptante/dashboard-adoptante.module'
+      ).then((x) => x.DashboardAdoptanteModule),
+  }, //Carga perezosa
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

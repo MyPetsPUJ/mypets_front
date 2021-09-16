@@ -10,23 +10,40 @@ import { SeleccionAnimalComponent } from './usuarios/crear-animal/seleccion-anim
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { PublicacionesComponent } from './publicaciones/publicaciones.component';
 import { CrearPublicacionComponent } from './publicaciones/crear-publicacion/crear-publicacion.component';
+import { PublicacionListComponent } from './publicaciones/publicacion-list/publicacion-list/publicacion-list.component';
+import { PublicacionPreviewComponent } from './publicaciones/publicacion-preview/publicacion-preview/publicacion-preview.component';
 
 const routes: Routes = [
-  {path: '', component: DashboardComponent, children:  [
-    {path: '',component: InicioComponent},
-    {path: 'animales',component: UsuariosComponent},
-    {path: 'reportes',component: ReportesComponent},
-    {path: 'mi_cuenta',component: MiCuentaComponent},
-    {path:'seleccion-animal',component: SeleccionAnimalComponent},
-    {path: 'seleccion-animal/crear-animal-perro',component: CrearAnimalComponent},
-    {path: 'seleccion-animal/crear-animal-gato', component: CrearAnimalGatoComponent},
-    {path: 'publicaciones', component: PublicacionesComponent},
-    {path: 'publicaciones/crear-publicacion', component: CrearPublicacionComponent}
-  ]}
+  {
+    path: '',
+    component: DashboardComponent,
+    children: [
+      { path: '', component: InicioComponent },
+      { path: 'animales', component: UsuariosComponent },
+      { path: 'reportes', component: ReportesComponent },
+      { path: 'mi_cuenta', component: MiCuentaComponent },
+      { path: 'seleccion-animal', component: SeleccionAnimalComponent },
+      {
+        path: 'seleccion-animal/crear-animal-perro',
+        component: CrearAnimalComponent,
+      },
+      {
+        path: 'seleccion-animal/crear-animal-gato',
+        component: CrearAnimalGatoComponent,
+      },
+      {path: 'publicaciones', component: PublicacionesComponent},
+      {
+        path: 'publicaciones/crear-publicacion',
+        component: CrearPublicacionComponent,
+      },
+      //{ path: 'publicaciones', component: PublicacionListComponent },
+      { path: 'publicaciones/:id', component: PublicacionPreviewComponent },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DashboardRoutingModule { }
+export class DashboardRoutingModule {}
