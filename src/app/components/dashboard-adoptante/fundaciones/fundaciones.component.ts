@@ -22,7 +22,7 @@ export class FundacionesComponent implements OnInit {
   }
   cargarAnimalesXFundacion()
   {
-    this.fundaciones = this.fundacionesServices.getFundaciones();
+    //this.fundaciones = this.fundacionesServices.getFundaciones();
   }
 
 }

@@ -18,19 +18,19 @@ export class FundacionService {
 
   constructor(private http: HttpClient) { }
 
-  fundaciones:UserFundacion[]=[ 
-    {nombreFund: 'Huellita',nombreEncar: 'Luis', apellidosEncar: 'Lopez', tipo_doc: 'CC', num_doc: '12312313',
-    fecha_creacion: new Date('12/3/2020'), localidad: 'Engativa', correo: 'perritos@gmail.com', num_celular: '313125530',
-    password: "user123", tipo_usuario: "Fundacion", /*mision : "Poteger las mascotas", vision: "Crecer a nivel capital"*/},
+  // fundaciones:UserFundacion[]=[ 
+  //   {nombreFund: 'Huellita',nombreEncar: 'Luis', apellidosEncar: 'Lopez', tipo_doc: 'CC', num_doc: '12312313',
+  //   fecha_creacion: new Date('12/3/2020'), localidad: 'Engativa', correo: 'perritos@gmail.com', num_celular: '313125530',
+  //   password: "user123", tipo_usuario: "Fundacion", /*mision : "Poteger las mascotas", vision: "Crecer a nivel capital"*/},
 
-    {nombreFund: 'Adoptame',nombreEncar: 'Amrio', apellidosEncar: 'Perez', tipo_doc: 'CC', num_doc: '123326',
-    fecha_creacion: new Date('02/10/2019'), localidad: 'Suba', correo: 'adopta@gmail.com', num_celular: '3131354330',
-    password: "user123", tipo_usuario: "Fundacion", /*mision : "Incentivar la adopcion", vision: "Crecer a nivel capital"*/}
-  ];
+  //   {nombreFund: 'Adoptame',nombreEncar: 'Amrio', apellidosEncar: 'Perez', tipo_doc: 'CC', num_doc: '123326',
+  //   fecha_creacion: new Date('02/10/2019'), localidad: 'Suba', correo: 'adopta@gmail.com', num_celular: '3131354330',
+  //   password: "user123", tipo_usuario: "Fundacion", /*mision : "Incentivar la adopcion", vision: "Crecer a nivel capital"*/}
+  // ];
   
-  getFundaciones(): UserFundacion[]
-  {
-    return this.fundaciones;
-  }
+  // getFundaciones(): UserFundacion[]
+  // {
+  //   return this.fundaciones;
+  // }
 
 }

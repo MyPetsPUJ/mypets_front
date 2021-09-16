@@ -4,6 +4,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 import { CrearFundacionService } from 'src/app/services/crearFundacion.service';
 
+interface HtmlInputEvent extends Event {
+  target: (HTMLInputElement & EventTarget) | null;
+}
+
 @Component({
   selector: 'app-crear-fundacion',
   templateUrl: './crear-fundacion.component.html',
@@ -20,6 +24,8 @@ export class CrearFundacionComponent implements OnInit {
   }
   public archivos: any = [];
   public previsualizacion: string | undefined;
+  file!: File;
+  photoSelected: string | ArrayBuffer = '';
 
   ngOnInit(): void {
     this.previsualizacion = '../../../assets/Images/chat.png';
@@ -54,26 +60,38 @@ export class CrearFundacionComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    const datosFundacion = {
-      nombreFund: form.value.nombreFun,
-      nombreEncar: form.value.nombreEncar,
-      apellidosEncar: form.value.apellidos,
-      tipo_doc: form.value.tipo_doc,
-      num_doc: form.value.num_doc,
-      fecha_creacion: form.value.fecha_creacion,
-      localidad: form.value.localidad,
-      correo: form.value.correo,
-      num_celular: form.value.num_cel,
-      password: form.value.contrasena,
-      tipo_usuario: 'Fundacion',
-    };
+
     this.crearFundacionService
-      .crearUsuarioFundacion(datosFundacion)
+      .crearUsuarioFundacion(
+        form.value.nombreFun,
+        form.value.nombreEncar,
+        form.value.apellidos,
+        form.value.tipo_doc,
+        form.value.num_doc,
+        form.value.fecha_creacion,
+        form.value.localidad,
+        form.value.correo,
+        form.value.num_cel,
+        form.value.contrasena,
+        this.file,
+        'Fundacion'
+      )
       .subscribe((respuesta) => {
         console.log(respuesta);
+        (err) => console.log(err);
         // const token = respuesta.token;
         // this.token = token;
       });
+  }
+
+  onPhotoSelected(event: any): void {
+    if (event.target?.files && event.target.files[0]) {
+      this.file = <File>event.target.files[0];
+      //image preview
+      const reader = new FileReader();
+      reader.onload = (e) => (this.photoSelected = reader.result as string);
+      reader.readAsDataURL(this.file);
+    }
   }
 
   onFileInput(event): any {

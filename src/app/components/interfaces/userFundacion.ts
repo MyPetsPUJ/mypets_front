@@ -9,5 +9,6 @@ export interface UserFundacion{
     correo: string;
     num_celular: string;
     password: string;
+    imagenPath: string;
     tipo_usuario: string;
 }

@@ -5,9 +5,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 import { CrearAnimalService } from 'src/app/services/crearAnimal.service';
 
-
-
-
 interface HtmlInputEvent extends Event {
   target: (HTMLInputElement & EventTarget) | null;
 }
