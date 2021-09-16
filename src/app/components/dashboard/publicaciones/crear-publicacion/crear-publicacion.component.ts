@@ -6,7 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 //import { read } from 'fs';
 
 interface HtmlInputEvent extends Event {
-  target: HTMLInputElement & EventTarget | null;
+  target: (HTMLInputElement & EventTarget) | null;
 }
 
 @Component({
@@ -37,13 +37,23 @@ export class CrearPublicacionComponent implements OnInit {
     'Comportamiento',
   ]; //Dato quemado para poder compilar, luego borrar
 
-  onCrearPublicacion(form: NgForm){
+  onCrearPublicacion(form: NgForm) {
     console.log(form.value);
-    if(form.invalid){
+    if (form.invalid) {
       return;
     }
-    this.crearPublicacionService.crearPublicacion(form.value.nombrePublicacion, form.value.cuerpoPublicacion, this.fechaPublicacion, this.file, form.value.seccionPublicacion)
-    .subscribe(res => console.log(res), err => console.log(err))
+    this.crearPublicacionService
+      .crearPublicacion(
+        form.value.nombrePublicacion,
+        form.value.cuerpoPublicacion,
+        this.fechaPublicacion,
+        this.file,
+        form.value.seccionPublicacion
+      )
+      .subscribe(
+        (res) => console.log(res),
+        (err) => console.log(err)
+      );
   }
 
   onPhotoSelected(event: any): void {
@@ -51,7 +61,7 @@ export class CrearPublicacionComponent implements OnInit {
       this.file = <File>event.target.files[0];
       //image preview
       const reader = new FileReader();
-      reader.onload = e => this.photoSelected = reader.result as string;
+      reader.onload = (e) => (this.photoSelected = reader.result as string);
       reader.readAsDataURL(this.file);
     }
   }

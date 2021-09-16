@@ -3,22 +3,22 @@
     <h2 class="titulo">Crear un perro</h2>
     <form>
       <mat-card class="color">
-        <div>
-          <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />
-        </div>
-        <div class="centro">
-          <img [src]="previsualizacion" width="15%" class="pointer"
-            matTooltip="Desplegar opciones de foto" [matMenuTriggerFor]="menu" />
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="fileInput.click()">
-              <mat-icon>perm_media</mat-icon>
-              <span>Cambiar foto</span>
-              <input (change)="onFileInput($event)" type="file">
-            </button>
-          </mat-menu>
-        </div>
         <form action="crear-animal.component.ts" (ngSubmit)="onCrearPerro(crearPerroForm)" #crearPerroForm="ngForm"
           method="POST">
+          <div class="centro">
+            <h2>Agrega una imagen de tu animal</h2>
+
+            <input #fileInput type="file" (change)="onPhotoSelected($event)" style="display:none;" />
+            <img [src]="photoSelected || previsualizacion" width="15%" class="pointer" matTooltip="Desplegar opciones de foto"
+                    [matMenuTriggerFor]="menu">
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="fileInput.click()">
+                        <mat-icon>perm_media</mat-icon>
+                        <span>Cambiar foto</span>
+                        <input (change)="onPhotoSelected($event)" type="file">
+                    </button>
+                </mat-menu>
+          </div>
           <mat-grid-list cols="2" rowHeight="60px">
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <mat-form-field class="ancho">
@@ -119,28 +119,27 @@
                   placeholder="Ej: Es un perrito muy cariñoso y noble..." matInput></textarea>
               </mat-form-field>
             </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field class="ancho">
+                <mat-label>Esquema Vacunación</mat-label>
+                <input name="esquema_vac" ngModel type="text" #esquema_vacInput="ngModel" required placeholder="Ej: Rabia"
+                  matInput />
+              </mat-form-field>
+            </mat-grid-tile>
           </mat-grid-list>
-
-          <div>
-            <section class="vacunas">
-              <span>
+              <!-- <span>
                 <h1>Seleccione el esquema de vacunas del perro</h1>
               </span>
               <span>
                 <ul>
                   <li *ngFor="let vac of lista_vacunas" class="items">
                     <mat-checkbox name="esquema_vac" ngModel #esquema_vacInput="ngModel">
-                      {{ vac }}
+                      {{vac}}
                     </mat-checkbox>
                   </li>
                 </ul>
-              </span>
-            </section>
-          </div>
-          <div>
-            <button mat-stroked-button type="button" (click)="filePicker.click()">Escoger Imagen</button>
-            <input class="inputImg" type="file" #filePicker>
-          </div>
+              </span> -->
+            
           <div class="centro">
             <button mat-raised-button color="primary" style="margin: 16px" class="tamano" type="submit">
               Crear animal

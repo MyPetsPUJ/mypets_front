@@ -12,6 +12,10 @@ export interface Vacuna_box{
   esquema?: Vacuna_box[];
 }
 
+interface HtmlInputEvent extends Event {
+  target: (HTMLInputElement & EventTarget) | null;
+}
+
 
 @Component({
   selector: 'app-crear-animal-gato',
@@ -28,6 +32,8 @@ export class CrearAnimalGatoComponent implements OnInit {
   }
   public archivos: any = [];
   public previsualizacion: string | undefined;
+  file!: File;
+  photoSelected: string | ArrayBuffer = '';
   ngOnInit(): void {
     this.previsualizacion = '../../../assets/Images/cat-form.png';
   }
@@ -89,14 +95,45 @@ export class CrearAnimalGatoComponent implements OnInit {
     this.vacunas.esquema.forEach(t => t.completado = completado);
   }
 
-  onCrearGato(form: NgForm){
+  onCrearGato(form: NgForm) {
     console.log(form.value);
-    if(form.invalid){
+    if (form.invalid) {
       return;
     }
-    const datosGato = {foto: '',nombre: form.value.nombre, edad: form.value.edad, raza: form.value.raza, sexo: form.value.sexo, tamano: form.value.tamano, color_ojos: form.value.color_ojos, tipo_pelaje: form.value.tipo_pelaje, situacion: form.value.situacion, desparasitado: form.value.desparasitado, ultima_vac: form.value.ultima_vac, descripcion: form.value.descripcion, esquema_vac: form.value.esquema_vac, tipo_animal: "Gato"}
-    this.crearGatoService.crearAnimalGato(datosGato);
+
+    this.crearGatoService
+      .crearAnimalGato(
+        form.value.nombre,
+        form.value.edad,
+        form.value.raza,
+        form.value.sexo,
+        form.value.tamano,
+        form.value.color_ojos,
+        form.value.tipo_pelaje,
+        form.value.situacion,
+        form.value.desparasitado,
+        form.value.ultima_vac,
+        form.value.descripcion,
+        this.file,
+        form.value.esquema_vac,
+        'Gato'
+      )
+      .subscribe(
+        (res) => console.log(res),
+        (err) => console.log(err)
+      );
   }
+
+  onPhotoSelected(event: any): void {
+    if (event.target?.files && event.target.files[0]) {
+      this.file = <File>event.target.files[0];
+      //image preview
+      const reader = new FileReader();
+      reader.onload = (e) => (this.photoSelected = reader.result as string);
+      reader.readAsDataURL(this.file);
+    }
+  }
+
   onFileInput(event): any
   {
     const archivo = event.target.files[0];
