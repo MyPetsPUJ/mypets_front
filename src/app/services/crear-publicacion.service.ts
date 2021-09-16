@@ -15,18 +15,18 @@ export class CrearPublicacionService {
 
   constructor(private http: HttpClient) {}
 
-  crearPublicacion(entidadPublicacion: EntidadPublicacion) {
-    this.http
-      .post(
-        `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.subTipoEntidadII}`,
-        entidadPublicacion
-      )
-      .subscribe((respuesta) => {
-        console.log(respuesta);
-      });
-  }
+  // crearPublicacion(entidadPublicacion: EntidadPublicacion) {
+  //   this.http
+  //     .post(
+  //       `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.subTipoEntidadII}`,
+  //       entidadPublicacion
+  //     )
+  //     .subscribe((respuesta) => {
+  //       console.log(respuesta);
+  //     });
+  // }
 
-  crearPublicacionFoto(
+  crearPublicacion(
     titulo: string,
     cuerpo: string,
     fecha: string,

@@ -37,37 +37,13 @@ export class CrearPublicacionComponent implements OnInit {
     'Comportamiento',
   ]; //Dato quemado para poder compilar, luego borrar
 
-  // onCrearPublicacion(form: NgForm) {
-  //   console.log(form.value);
-  //   if (form.invalid) {
-  //     return;
-  //   }
-  //   const datosPublicacion = {
-  //     titulo: form.value.nombrePublicacion,
-  //     cuerpo: form.value.cuerpoPublicacion,
-  //     fecha: this.fechaPublicacion,
-  //     imagenPath: this.imagenPublicacion,
-  //     seccion: this.seccion[0],
-  //   };
-  //   this.crearPublicacionService.crearPublicacion(datosPublicacion);
-  // }
-
   onCrearPublicacion(form: NgForm){
     console.log(form.value);
     if(form.invalid){
       return;
     }
-    this.crearPublicacionService.crearPublicacionFoto(form.value.nombrePublicacion, form.value.cuerpoPublicacion, this.fechaPublicacion, this.file, form.value.seccionPublicacion)
+    this.crearPublicacionService.crearPublicacion(form.value.nombrePublicacion, form.value.cuerpoPublicacion, this.fechaPublicacion, this.file, form.value.seccionPublicacion)
     .subscribe(res => console.log(res), err => console.log(err))
-  }
-
-  crearPublicacion(
-    tituloPublicacion: HTMLInputElement,
-    cuerpoPublicacion: HTMLTextAreaElement,
-    seccionPublicacion: HTMLElement
-  ) {
-    console.log(tituloPublicacion.value);
-    console.log(cuerpoPublicacion.value);
   }
 
   onPhotoSelected(event: any): void {
@@ -80,33 +56,33 @@ export class CrearPublicacionComponent implements OnInit {
     }
   }
 
-  onFileInput(event): any {
-    const archivo = event.target.files[0];
-    this.archivos.push(archivo);
-    this.extraerBase64(archivo).then((imagen: any) => {
-      this.previsualizacion = imagen.base;
-    });
-  }
-  extraerBase64 = async ($event: any) =>
-    new Promise((resolve) => {
-      try {
-        const unsafeImg = window.URL.createObjectURL($event);
-        const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
-        const reader = new FileReader();
-        reader.readAsDataURL($event);
-        reader.onload = () => {
-          resolve({
-            base: reader.result,
-          });
-        };
-        reader.onerror = (error) => {
-          resolve({
-            base: null,
-          });
-        };
-        return resolve;
-      } catch (e) {
-        return null;
-      }
-    });
+  // onFileInput(event): any {
+  //   const archivo = event.target.files[0];
+  //   this.archivos.push(archivo);
+  //   this.extraerBase64(archivo).then((imagen: any) => {
+  //     this.previsualizacion = imagen.base;
+  //   });
+  // }
+  // extraerBase64 = async ($event: any) =>
+  //   new Promise((resolve) => {
+  //     try {
+  //       const unsafeImg = window.URL.createObjectURL($event);
+  //       const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+  //       const reader = new FileReader();
+  //       reader.readAsDataURL($event);
+  //       reader.onload = () => {
+  //         resolve({
+  //           base: reader.result,
+  //         });
+  //       };
+  //       reader.onerror = (error) => {
+  //         resolve({
+  //           base: null,
+  //         });
+  //       };
+  //       return resolve;
+  //     } catch (e) {
+  //       return null;
+  //     }
+  //   });
 }
