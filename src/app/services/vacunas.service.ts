@@ -16,9 +16,15 @@ export class VacunasService {
 
   constructor(private http: HttpClient) {}
 
-  getVacunas() {
+  getVacunasGato() {
     return this.http.get<Vacuna[]>(
       `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.entidad}/${this.eleccionAnimal}/${this.crearGato}`
+    );
+  }
+
+  getVacunasPerro() {
+    return this.http.get<Vacuna[]>(
+      `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.entidad}/${this.eleccionAnimal}/${this.crearPerro}`
     );
   }
 }

@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Vacuna } from 'src/app/components/interfaces/entidadVacuna';
 
 import { CrearAnimalService } from 'src/app/services/crearAnimal.service';
+import { VacunasService } from 'src/app/services/vacunas.service';
 
 interface HtmlInputEvent extends Event {
   target: (HTMLInputElement & EventTarget) | null;
@@ -19,18 +21,26 @@ export class CrearAnimalComponent implements OnInit {
   maxDate: Date | any;
   constructor(
     public crearPerroService: CrearAnimalService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private getVacunasService: VacunasService
   ) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 19, 0, 1);
     this.maxDate = new Date();
   }
+  vacunas: Vacuna[] = []
   public archivos: any = [];
   public previsualizacion: string | undefined;
   file!: File;
   photoSelected: string | ArrayBuffer = '';
   ngOnInit(): void {
     this.previsualizacion = '../../../assets/Images/dog-form.png';
+    this.getVacunasService.getVacunasPerro().subscribe(
+      (res) => {
+        this.vacunas = res;
+      },
+      (err) => console.log(err)
+    );
   }
   tiles: any[] = [
     { text: 'One', cols: 3, rows: 1, color: 'lightblue' },

@@ -5,6 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 import { CrearAnimalService } from 'src/app/services/crearAnimal.service';
 import { VacunasService } from 'src/app/services/vacunas.service';
+import { Vacuna } from 'src/app/components/interfaces/entidadVacuna';
 
 export interface Vacuna_box {
   nombre: String;
@@ -34,14 +35,18 @@ export class CrearAnimalGatoComponent implements OnInit {
     this.minDate = new Date(currentYear - 19, 0, 1);
     this.maxDate = new Date();
   }
+
+  public vacunas: Vacuna[] = [];
   public archivos: any = [];
   public previsualizacion: string | undefined;
   file!: File;
   photoSelected: string | ArrayBuffer = '';
   ngOnInit(): void {
     this.previsualizacion = '../../../assets/Images/cat-form.png';
-    this.getVacunasService.getVacunas().subscribe(
-      (res) => console.log(res),
+    this.getVacunasService.getVacunasGato().subscribe(
+      (res) => {
+        this.vacunas = res;
+      },
       (err) => console.log(err)
     );
   }
@@ -111,44 +116,44 @@ export class CrearAnimalGatoComponent implements OnInit {
 
   situacion: any[] = ['Sin esterilizar', 'Esterilizado'];
 
-  vacunas: Vacuna_box = {
-    nombre: 'Seleccione el esquema de vacunas del animal',
-    completado: false,
-    color: 'primary',
-    esquema: [
-      { nombre: 'Leucemia viral felina', completado: false, color: 'primary' },
-      { nombre: 'Triple felina', completado: false, color: 'primary' },
-      { nombre: 'Segunda dosis leucemia', completado: false, color: 'primary' },
-      { nombre: 'Refuerzo triple felina', completado: false, color: 'primary' },
-      { nombre: 'Rabia', completado: false, color: 'primary' },
-    ],
-  };
+  // vacunas: Vacuna_box = {
+  //   nombre: 'Seleccione el esquema de vacunas del animal',
+  //   completado: false,
+  //   color: 'primary',
+  //   esquema: [
+  //     { nombre: 'Leucemia viral felina', completado: false, color: 'primary' },
+  //     { nombre: 'Triple felina', completado: false, color: 'primary' },
+  //     { nombre: 'Segunda dosis leucemia', completado: false, color: 'primary' },
+  //     { nombre: 'Refuerzo triple felina', completado: false, color: 'primary' },
+  //     { nombre: 'Rabia', completado: false, color: 'primary' },
+  //   ],
+  // };
 
   all_complete: boolean = false;
 
-  updateAllComplete() {
-    this.all_complete =
-      this.vacunas.esquema != null &&
-      this.vacunas.esquema.every((t) => t.completado);
-  }
+  // updateAllComplete() {
+  //   this.all_complete =
+  //     this.vacunas.esquema != null &&
+  //     this.vacunas.esquema.every((t) => t.completado);
+  // }
 
-  someComplete() {
-    if (this.vacunas.esquema == null) {
-      return false;
-    }
-    return (
-      this.vacunas.esquema.filter((t) => t.completado).length > 0 &&
-      !this.all_complete
-    );
-  }
+  // someComplete() {
+  //   if (this.vacunas.esquema == null) {
+  //     return false;
+  //   }
+  //   return (
+  //     this.vacunas.esquema.filter((t) => t.completado).length > 0 &&
+  //     !this.all_complete
+  //   );
+  // }
 
-  setAll(completado: boolean) {
-    this.all_complete = completado;
-    if (this.vacunas.esquema == null) {
-      return;
-    }
-    this.vacunas.esquema.forEach((t) => (t.completado = completado));
-  }
+  // setAll(completado: boolean) {
+  //   this.all_complete = completado;
+  //   if (this.vacunas.esquema == null) {
+  //     return;
+  //   }
+  //   this.vacunas.esquema.forEach((t) => (t.completado = completado));
+  // }
 
   onCrearGato(form: NgForm) {
     console.log(form.value);

@@ -67,8 +67,8 @@
                         <mat-form-field appearance="fill" class="ancho">
                             <mat-label>Localidad</mat-label>
                             <mat-select name="localidad" ngModel #localidadInput="ngModel">
-                                <mat-option *ngFor="let item of localidad" [value]="item">
-                                    {{item}}
+                                <mat-option *ngFor="let item of localidades" [value]="item">
+                                    {{item.nombre}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
