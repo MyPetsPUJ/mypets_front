@@ -24,17 +24,21 @@ export class PublicacionesComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
-    private publicacionesService: PublicacionService,
+    private publicacionService: PublicacionService,
     private snackbar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
-    this.cargarPublicaciones();
+    this.publicacionService.getPublicaciones()
+    .subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    )
   }
-  cargarPublicaciones() {
-    this.publicaciones = this.publicacionesService.getPublicaciones();
-    this.dataSource = new MatTableDataSource(this.publicaciones);
-  }
+  // cargarPublicaciones() {
+  //   this.publicaciones = this.publicacionesService.getPublicaciones();
+  //   this.dataSource = new MatTableDataSource(this.publicaciones);
+  // }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

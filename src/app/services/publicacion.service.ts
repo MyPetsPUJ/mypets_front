@@ -1,10 +1,18 @@
 import { Injectable } from '@angular/core';
 import { EntidadPublicacion } from '../components/interfaces/entidadPublicacion';
+import { HttpClient } from '@angular/common/http';
+import { ServicioBaseService } from './servicioBase.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PublicacionService {
+  dominio: string = 'localhost';
+  puerto: number = 3000;
+  pathIntermedio: string = 'api';
+  entidad: string = 'dashboard';
+  subTipoEntidad: string = 'publicaciones';
+
   publicaciones: EntidadPublicacion[] = [
     {
       titulo: 'Se busca dueño para Betto',
@@ -28,8 +36,11 @@ export class PublicacionService {
       seccion: 'Adopción',
     },
   ];
-  constructor() {}
-  getPublicaciones(): EntidadPublicacion[] {
-    return this.publicaciones;
+  constructor(private http: HttpClient) {}
+
+  getPublicaciones() {
+    return this.http.get<EntidadPublicacion[]>(
+      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}`
+    );
   }
 }
