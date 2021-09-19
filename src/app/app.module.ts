@@ -19,6 +19,7 @@ import { CrearAnimalComponent } from './components/dashboard/usuarios/crear-anim
 import { CrearPublicacionComponent } from './components/dashboard/publicaciones/crear-publicacion/crear-publicacion.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './components/interfaces/authInterceptor';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AuthInterceptor } from './components/interfaces/authInterceptor';
     LoginComponent,
     CrearCuentaComponent,
     CrearAdoptanteComponent,
-    CrearFundacionComponent
+    CrearFundacionComponent,
+    HomeComponent
     //CrearAnimalGatoComponent
     //CrearAnimalComponent,
     //CrearPublicacionComponent
