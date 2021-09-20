@@ -19,12 +19,12 @@ const routes: Routes = [
     path: '',
     component: DashboardComponent,
     children: [
-      { path: '', component: InicioComponent },
+      { path: '', component: HomePageComponent },
       { path: 'animales', component: UsuariosComponent },
       { path: 'reportes', component: ReportesComponent },
       { path: 'mi_cuenta', component: MiCuentaComponent },
       { path: 'seleccion-animal', component: SeleccionAnimalComponent },
-      { path: 'home', component: HomePageComponent},
+      { path: 'mapa', component: InicioComponent},
       {
         path: 'seleccion-animal/crear-animal-perro',
         component: CrearAnimalComponent,

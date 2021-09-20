@@ -11,11 +11,11 @@ import { FormularioAdopcionComponent } from './solicitudes-adopcion-adoptante/fo
 import { HomePageComponent } from './home-page/home-page.component';
 const routes: Routes = [
   {path:'',component: DashboardAdoptanteComponent, children: [
-    {path: '',component: MapaComponent},
+    {path: '',component: HomePageComponent},
     {path: 'adoptame',component: AdoptameComponent},
     {path: 'fundaciones',component: FundacionesComponent},
     {path: 'consejos',component: ConsejosComponent},
-    {path: 'home', component: HomePageComponent},
+    {path: 'mapa', component: MapaComponent},
     {path: 'adoptame/solicitud-adopcion', component: SolicitudAdopcionComponent},
     {path: 'solicitudes-adopcion-adoptante', component: SolicitudesAdopcionAdoptanteComponent},
     {path: 'solicitudes-adopcion-adoptante/formulario-adopcion', component: FormularioAdopcionComponent}
