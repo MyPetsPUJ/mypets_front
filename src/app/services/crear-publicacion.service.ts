@@ -13,8 +13,8 @@ export class CrearPublicacionService {
   subTipoEntidad: string = 'publicaciones';
   subTipoEntidadII: string = 'crear-publicacion';
 
-  constructor(private http: HttpClient) {}
-
+  constructor(private http: HttpClient) { }
+  publicacion: EntidadPublicacion |any;
   // crearPublicacion(entidadPublicacion: EntidadPublicacion) {
   //   this.http
   //     .post(
@@ -26,7 +26,7 @@ export class CrearPublicacionService {
   //     });
   // }
   publicaciones: EntidadPublicacion[] = [
-    {titulo: 'Consejos para perros grandes',cuerpo:'Limpialos y bañalos', fecha: '17/09/21', imagenPath: '../../../assets/Images/chat.png',seccion: 'perros grandes'}
+    { titulo: 'Consejos para perros grandes', cuerpo: 'Limpialos y bañalos', fecha: '17/09/2021', imagenPath: '../../../assets/Images/chat.png', seccion: 'perros grandes' }
   ]
   crearPublicacion(
     titulo: string,
@@ -47,8 +47,23 @@ export class CrearPublicacionService {
       fd
     );
   }
-  getPublicaciones()
-  {
+  getPublicaciones() {
     return this.publicaciones;
   }
+  crearPublicacionQuemada(titulo: string,
+    cuerpo: string,
+    fecha: string,
+    imagen: string,
+    seccion: string)
+    {
+      this.publicacion = 
+      {
+        cuerpo: cuerpo,
+        titulo: titulo,
+        fecha: fecha,
+        imagenPath: imagen,
+        seccion: seccion
+      }
+      this.publicaciones.unshift(this.publicacion);
+    }
 }

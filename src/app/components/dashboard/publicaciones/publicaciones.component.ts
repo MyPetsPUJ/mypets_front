@@ -33,7 +33,7 @@ export class PublicacionesComponent implements OnInit {
       res => console.log(res),
       err => console.log(err)
     )*/
-    //this.cargarPublicaciones();
+    this.cargarPublicaciones();
   }
   cargarPublicaciones() {
   this.publicaciones = this.publicacionService.getPublicaciones();

@@ -4,6 +4,7 @@ import { ThemePalette } from '@angular/material/core';
 import { CrearPublicacionService } from 'src/app/services/crear-publicacion.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 //import { read } from 'fs';
 
 interface HtmlInputEvent extends Event {
@@ -20,12 +21,13 @@ export class CrearPublicacionComponent implements OnInit {
     public crearPublicacionService: CrearPublicacionService,
     private sanitizer: DomSanitizer,
     private _snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   public archivos: any = [];
   public previsualizacion: string | undefined;
   file!: File;
-  photoSelected: string | ArrayBuffer = '';
+  photoSelected: string | any;
 
   ngOnInit(): void {
     this.photoSelected = '../../../assets/Images/no-image.png';
@@ -75,6 +77,11 @@ export class CrearPublicacionComponent implements OnInit {
     }
     else 
     {
+      this.crearPublicacionService.crearPublicacionQuemada(form.value.nombrePublicacion,
+        form.value.cuerpoPublicacion,
+        this.fechaPublicacion,
+        this.photoSelected,
+        form.value.seccionPublicacion);
       this.crearPublicacionService
       .crearPublicacion(
         form.value.nombrePublicacion,
@@ -87,6 +94,12 @@ export class CrearPublicacionComponent implements OnInit {
         (res) => console.log(res),
         (err) => console.log(err)
       );
+      this._snackBar.open('Publicación creada','', {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+      });
+      this.router.navigate([['']]);
     }
     
   }
