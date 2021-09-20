@@ -1,23 +1,21 @@
 <mat-toolbar color="warn">
   <span>My Pet-Adoptante</span>
   <span class="example-spacer"></span>
-  <button mat-button routerLink="/dashboard-adoptante">Mapa</button
-  ><!--ngfor es para correr un array-->
-  <button mat-button routerLink="adoptame">Adoptame</button
-  ><!--ngfor es para correr un array-->
-  <button mat-button routerLink="fundaciones">Fundaciones</button
-  ><!--ngfor es para correr un array-->
-  <button mat-button routerLink="consejos">Consejos</button
-  ><!--ngfor es para correr un array-->
+  <button mat-button routerLink="home">Home</button>
+
+  <button mat-button routerLink="/dashboard-adoptante">Mapa</button>
+  <!--ngfor es para correr un array-->
+  <button mat-button routerLink="adoptame">Adoptame</button>
+  <!--ngfor es para correr un array-->
+  <button mat-button routerLink="fundaciones">Fundaciones</button>
+  <!--ngfor es para correr un array-->
+  <button mat-button routerLink="consejos">Consejos</button>
+  <!--ngfor es para correr un array-->
   <button mat-button routerLink="solicitudes-adopcion-adoptante">
     Mis solicitudes de adopcion
   </button>
   <span class="example-spacer"></span>
-  <button
-    mat-icon-button
-    [matMenuTriggerFor]="menu"
-    aria-label="Example icon-button with a menu"
-  >
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu="matMenu">

@@ -20,6 +20,7 @@ import { VentanaReporteComponent } from './reportes/ventana-reporte/ventana-repo
 import { VerFotoComponent } from './mi-cuenta/ver-foto/ver-foto.component';
 import { PublicacionListComponent } from './publicaciones/publicacion-list/publicacion-list/publicacion-list.component';
 import { PublicacionPreviewComponent } from './publicaciones/publicacion-preview/publicacion-preview/publicacion-preview.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { PublicacionPreviewComponent } from './publicaciones/publicacion-preview
     VentanaReporteComponent,
     VerFotoComponent,
     PublicacionListComponent,
-    PublicacionPreviewComponent
+    PublicacionPreviewComponent,
+    HomePageComponent
   ],
   imports: [
     CommonModule,

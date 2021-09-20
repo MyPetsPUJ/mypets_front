@@ -45,7 +45,8 @@ export class InicioComponent implements OnInit {
       const coordinates: Coordenada = { latitude: $event.coords.lat, longitude: $event.coords.lng }
       this.coordenadas.push(coordinates);
       console.log('coordenadaSize ' + this.coordenadas.length);
-      this.geoCodificacionInversa(geocoder,coordinates.latitude,coordinates.longitude)
+      this.geoCodificacionInversa(geocoder,coordinates.latitude,coordinates.longitude);
+      console.log(coordinates.latitude + ',' + coordinates.longitude);
     }
     activarPuntos = false;
   }

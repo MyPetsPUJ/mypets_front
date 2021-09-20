@@ -5,14 +5,12 @@ import { CrearCuentaComponent } from './components/crear-cuenta/crear-cuenta.com
 import { CrearFundacionComponent } from './components/crear-cuenta/crear-fundacion/crear-fundacion.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
-import { HomeComponent } from './components/home/home.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'crear-cuenta', component: CrearCuentaComponent },
   { path: 'crear-cuenta/crear-adoptante', component: CrearAdoptanteComponent },
   { path: 'crear-cuenta/crear-fundacion', component: CrearFundacionComponent },
-  { path: 'home', component: HomeComponent},
   {
     path: 'dashboard',
     loadChildren: () =>

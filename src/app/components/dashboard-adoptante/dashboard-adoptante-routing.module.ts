@@ -8,12 +8,14 @@ import { MapaComponent } from './mapa/mapa.component';
 import { SolicitudAdopcionComponent } from './adoptame/solicitud-adopcion/solicitud-adopcion.component';
 import { SolicitudesAdopcionAdoptanteComponent } from './solicitudes-adopcion-adoptante/solicitudes-adopcion-adoptante.component';
 import { FormularioAdopcionComponent } from './solicitudes-adopcion-adoptante/formulario-adopcion/formulario-adopcion.component';
+import { HomePageComponent } from './home-page/home-page.component';
 const routes: Routes = [
   {path:'',component: DashboardAdoptanteComponent, children: [
     {path: '',component: MapaComponent},
     {path: 'adoptame',component: AdoptameComponent},
     {path: 'fundaciones',component: FundacionesComponent},
     {path: 'consejos',component: ConsejosComponent},
+    {path: 'home', component: HomePageComponent},
     {path: 'adoptame/solicitud-adopcion', component: SolicitudAdopcionComponent},
     {path: 'solicitudes-adopcion-adoptante', component: SolicitudesAdopcionAdoptanteComponent},
     {path: 'solicitudes-adopcion-adoptante/formulario-adopcion', component: FormularioAdopcionComponent}
