@@ -25,7 +25,9 @@ export class CrearPublicacionService {
   //       console.log(respuesta);
   //     });
   // }
-
+  publicaciones: EntidadPublicacion[] = [
+    {titulo: 'Consejos para perros grandes',cuerpo:'Limpialos y bañalos', fecha: '17/09/21', imagenPath: '../../../assets/Images/chat.png',seccion: 'perros grandes'}
+  ]
   crearPublicacion(
     titulo: string,
     cuerpo: string,
@@ -44,5 +46,9 @@ export class CrearPublicacionService {
       `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.subTipoEntidadII}`,
       fd
     );
+  }
+  getPublicaciones()
+  {
+    return this.publicaciones;
   }
 }

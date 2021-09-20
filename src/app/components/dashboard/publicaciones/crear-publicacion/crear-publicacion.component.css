@@ -39,3 +39,11 @@
 .inputImg{
   visibility: hidden;
 }
+.pointer
+{
+  cursor: pointer;
+}
+.tam{
+  width: 800px;
+  margin: auto;
+}

@@ -6,6 +6,7 @@ import { EntidadPublicacion } from '../../interfaces/entidadPublicacion';
 import { MatTableDataSource } from '@angular/material/table';
 import { PublicacionService } from 'src/app/services/publicacion.service';
 import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
+import { CrearPublicacionService } from 'src/app/services/crear-publicacion.service';
 
 @Component({
   selector: 'app-publicaciones',
@@ -23,22 +24,21 @@ export class PublicacionesComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(
-    private publicacionService: PublicacionService,
-    private snackbar: MatSnackBar
-  ) {}
+  
+  constructor(private publicacionService: CrearPublicacionService,private snackbar: MatSnackBar) {}
 
   ngOnInit(): void {
-    this.publicacionService.getPublicaciones()
+    /*this.publicacionService.getPublicaciones()
     .subscribe(
       res => console.log(res),
       err => console.log(err)
-    )
+    )*/
+    //this.cargarPublicaciones();
   }
-  // cargarPublicaciones() {
-  //   this.publicaciones = this.publicacionesService.getPublicaciones();
-  //   this.dataSource = new MatTableDataSource(this.publicaciones);
-  // }
+  cargarPublicaciones() {
+  this.publicaciones = this.publicacionService.getPublicaciones();
+  this.dataSource = new MatTableDataSource(this.publicaciones);
+  }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

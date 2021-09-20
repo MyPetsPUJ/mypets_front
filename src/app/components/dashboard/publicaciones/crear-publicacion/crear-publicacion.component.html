@@ -1,88 +1,57 @@
-<div>
-  <mat-card styles="margin-top: 10px;" class="image">
+<div class="image">
     <h2 class="titulo">Crear una publicación</h2>
     <form>
-      <mat-card class="color">
+      <mat-card class="color  tam">
         <form>
-          
-          <form
-            action="crear-publicacion.component.ts"
-            (ngSubmit)="onCrearPublicacion(crearPublicacionForm)"
-            #crearPublicacionForm="ngForm"
-            method="POST"
-          >
-          <div class="centro">
-            <h2>Agrega una imagen a tu publicación</h2>
 
-            <input #fileInput type="file" (change)="onPhotoSelected($event)" style="display:none;" />
-            <img [src]="photoSelected || previsualizacion" width="15%" class="pointer" matTooltip="Desplegar opciones de foto"
-                    [matMenuTriggerFor]="menu">
-                <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="fileInput.click()">
-                        <mat-icon>perm_media</mat-icon>
-                        <span>Cambiar foto</span>
-                        <input (change)="onPhotoSelected($event)" type="file">
-                    </button>
-                </mat-menu>
-          </div>
-            <mat-grid-list cols="1" rowHeight="60px">
+          <form action="crear-publicacion.component.ts" (ngSubmit)="onCrearPublicacion(crearPublicacionForm)"
+            #crearPublicacionForm="ngForm" method="POST">
+            <div class="centro">
+              <h2>Agrega una imagen a tu publicación</h2>
+
+              <input #fileInput type="file" (change)="onPhotoSelected($event)" style="display:none;" />
+              <img [src]="photoSelected || previsualizacion" width="30%" class="pointer"
+                matTooltip="Desplegar opciones de foto" [matMenuTriggerFor]="menu">
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="fileInput.click()">
+                  <mat-icon>perm_media</mat-icon>
+                  <span>Cambiar foto</span>
+                  <input (change)="onPhotoSelected($event)" type="file">
+                </button>
+              </mat-menu>
+            </div>
+            <mat-grid-list cols="2" rowHeight="60px">
               <div class="centro">
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field class="ancho">
-                    <mat-label >Ingrese un título para la publicación</mat-label>
-                    <input
-                      name="nombrePublicacion"
-                      ngModel
-                      type="text"
-                      #nombreInput="ngModel"
-                      required
-                      matInput
-                    />
+                    <mat-label>Ingrese un título para la publicación</mat-label>
+                    <input name="nombrePublicacion" ngModel type="text" #nombreInput="ngModel" required matInput />
                   </mat-form-field>
                 </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-grid-tile [colspan]="1" [rowspan]="2">
                   <mat-form-field class="ancho">
                     <mat-label>Ingrese el cuerpo de la publicación</mat-label>
-                    <textarea
-                      rows="3"
-                      name="cuerpoPublicacion"
-                      ngModel
-                      type="text"
-                      #nombreInput="ngModel"
-                      required
-                      matInput
-                    ></textarea>
+                    <textarea rows="3" name="cuerpoPublicacion" ngModel type="text" #nombreInput="ngModel" required
+                      matInput></textarea>
                   </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
-                  <mat-form-field class="ancho">
-                    <mat-label>Seleccione la sección a la que pertenecerá esta publicación</mat-label>
+                  <mat-form-field class="ancho" >
+                    <mat-label >Seleccione la sección a la que pertenecerá esta publicación</mat-label>
                     <mat-select name="seccionPublicacion" ngModel #seccionPublicacion_Input="ngModel">
-                      <mat-option *ngFor="let seccion of seccion" [value]="seccion" required>
-                          {{seccion}}
+                      <mat-option *ngFor="let seccion of seccion" [value]="seccion" required > 
+                        {{seccion}}
                       </mat-option>
-                  </mat-select>
+                    </mat-select>
                   </mat-form-field>
                 </mat-grid-tile>
-                
               </div>
             </mat-grid-list>
             <div class="centro">
-              <button
-                mat-raised-button
-                color="primary"
-                style="margin: 18px"
-                class="tamano"
-                type="submit"
-              >
+              <button mat-raised-button color="primary" style="margin: 18px" class="tamano" type="submit">
                 Crear publicación
               </button>
-              <button
-                mat-raised-button
-                color="accent"
-                class="tamano"
-                routerLink="/dashboard/publicaciones"
-              >
+              <button mat-raised-button color="accent" class="tamano" routerLink="/dashboard/publicaciones">
                 Cancelar
               </button>
             </div>
@@ -90,7 +59,6 @@
         </form>
       </mat-card>
     </form>
-  </mat-card>
 </div>
 
 <!--

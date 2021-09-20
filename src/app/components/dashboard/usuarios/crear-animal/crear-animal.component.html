@@ -119,13 +119,16 @@
                   placeholder="Ej: Es un perrito muy cariñoso y noble..." matInput></textarea>
               </mat-form-field>
             </mat-grid-tile>
-            <mat-grid-tile [colspan]="1" [rowspan]="1">
-              <span class ="seccionVacunas"><ul>
-                  <li *ngFor="let vacuna of vacunas" class="items">
-                    <mat-checkbox> {{vacuna.nombre}} </mat-checkbox>
+            <mat-grid-tile [colspan]="1" [rowspan]="2" >
+              <div class="izquierda">
+                <span class ="seccionVacunas"><ul>
+                  <li *ngFor="let vacuna of lista_vacunas">
+                    <mat-checkbox> {{vacuna}} </mat-checkbox>
                   </li>
                 </ul>
               </span>
+              </div>
+              
             </mat-grid-tile>
           </mat-grid-list>
               <!-- <span>

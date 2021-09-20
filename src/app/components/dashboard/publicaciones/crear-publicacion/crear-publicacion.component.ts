@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { CrearPublicacionService } from 'src/app/services/crear-publicacion.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { MatSnackBar } from '@angular/material/snack-bar';
 //import { read } from 'fs';
 
 interface HtmlInputEvent extends Event {
@@ -17,7 +18,8 @@ interface HtmlInputEvent extends Event {
 export class CrearPublicacionComponent implements OnInit {
   constructor(
     public crearPublicacionService: CrearPublicacionService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private _snackBar: MatSnackBar,
   ) {}
 
   public archivos: any = [];
@@ -26,23 +28,54 @@ export class CrearPublicacionComponent implements OnInit {
   photoSelected: string | ArrayBuffer = '';
 
   ngOnInit(): void {
-    this.previsualizacion = '../../../assets/Images/no-image.png';
+    this.photoSelected = '../../../assets/Images/no-image.png';
   }
   fechaPublicacion: string = Date().toLocaleString();
   imagenPublicacion: string = 'srcassetsImagesdog.png';
   seccion: any[] = [
-    'Disponible para adoptar',
-    'Cuidado animal',
+    'Adquisición',
+    'Adultos',
     'Alimentación',
-    'Comportamiento',
+    'Cambios en mi mascota',
+    'Cachorros',
+    'Cuidados y bienestar',
+    'Entrenamiento',
+    'Nutrición',
+    'Salud',
   ]; //Dato quemado para poder compilar, luego borrar
 
   onCrearPublicacion(form: NgForm) {
-    console.log(form.value);
-    if (form.invalid) {
-      return;
+    
+    if (form.invalid || form.value.seccionPublicacion == '')  {
+      
+      if(this.photoSelected == "../../../assets/Images/no-image.png")
+      {
+        this._snackBar.open('Por favor seleccione una imágen para la publicación','', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
+      }
+      else if(form.value.seccionPublicacion == '')
+      {
+        this._snackBar.open('Por favor rellene los espacios solicitados','', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
+      }
+      else 
+      {
+        this._snackBar.open('Por favor rellene los espacios solicitados','', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
+      }
     }
-    this.crearPublicacionService
+    else 
+    {
+      this.crearPublicacionService
       .crearPublicacion(
         form.value.nombrePublicacion,
         form.value.cuerpoPublicacion,
@@ -54,6 +87,8 @@ export class CrearPublicacionComponent implements OnInit {
         (res) => console.log(res),
         (err) => console.log(err)
       );
+    }
+    
   }
 
   onPhotoSelected(event: any): void {

@@ -121,10 +121,10 @@
                                 <textarea name="descripcion" ngModel #descripcionInput="ngModel" required class="descrip" placeholder="Ej: Es un gato muy consentido..." matInput></textarea>
                             </mat-form-field>
                         </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-grid-tile [colspan]="1" [rowspan]="2">
                             <span class ="seccionVacunas"><ul>
-                                <li *ngFor="let vacuna of vacunas" class="items">
-                                  <mat-checkbox> {{vacuna.nombre}} </mat-checkbox>
+                                <li *ngFor="let vacuna of lista_vacunas" class="items">
+                                  <mat-checkbox> {{vacuna}} </mat-checkbox>
                                 </li>
                               </ul>
                             </span>
