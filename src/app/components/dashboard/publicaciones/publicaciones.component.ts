@@ -16,10 +16,12 @@ import { CrearPublicacionService } from 'src/app/services/crear-publicacion.serv
 export class PublicacionesComponent implements OnInit {
   publicaciones: EntidadPublicacion[] = [];
   displayedColumns: String[] = [
+    'imagenPublicacion',
     'tituloPublicacion',
     'cuerpoPublicacion',
+    'seccionPublicacion',
     'fechaPublicacion',
-    'imagenPublicacion',
+    
   ];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
