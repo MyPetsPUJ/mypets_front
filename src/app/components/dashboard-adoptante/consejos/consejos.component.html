@@ -1,1 +1,40 @@
-<p>consejos works!</p>
+<div class="content">
+    <h2 class="titulo">Consejos</h2>
+    <div fxLayout="row wrap" fxLayoutGap="16px grid" >
+      <div
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="75%"
+        *ngFor="let consejo of consejos"
+      >
+        <mat-card class="mat-elevation-z8 example-card">
+          <mat-card-header>
+            <div mat-card-avatar>
+              <img [src]="logoFundacion" class="circulo" />
+            </div>
+            <mat-card-title>{{consejo.titulo }}</mat-card-title>
+            <mat-card-subtitle>{{ nombreFundacion }}</mat-card-subtitle>
+          </mat-card-header>
+          <div class="parent">
+            <img
+              class="container crop card"
+              mat-card-image
+              [src]="consejo.imagenPath"
+              alt="Photo of a Shiba Inu"
+            />
+          </div>
+          <div class="centro">
+            <button
+              mat-raised-button
+              color="warn"
+              routerLink="solicitud-adopcion"
+            >
+              Visualizar consejo
+            </button>
+          </div>
+        </mat-card>
+      </div>
+      
+    </div>
+    <button mat-button routerLink="/dashboard">dashboard</button>
+  </div>

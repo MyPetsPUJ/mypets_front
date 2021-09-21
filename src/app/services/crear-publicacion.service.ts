@@ -26,7 +26,7 @@ export class CrearPublicacionService {
   //     });
   // }
   publicaciones: EntidadPublicacion[] = [
-    { titulo: 'Consejos para perros grandes', cuerpo: 'Limpialos y bañalos', fecha: '17/09/2021', imagenPath: '../../../assets/Images/chat.png', seccion: 'perros grandes' }
+    { titulo: 'Consejos para perros grandes', cuerpo: 'Limpialos y bañalos', fecha: '17/09/2021', imagenPath: '../../../assets/Images/adoptante.jpg', seccion: 'perros grandes' }
   ]
   crearPublicacion(
     titulo: string,
