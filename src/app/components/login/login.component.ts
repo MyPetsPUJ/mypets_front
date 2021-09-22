@@ -1,11 +1,14 @@
 import { stringify } from '@angular/compiler/src/util';
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CrearAdoptanteService } from 'src/app/services/crearAdoptante.service';
 import { CrearFundacionService } from 'src/app/services/crearFundacion.service';
 
+@Injectable({
+  providedIn: "root"
+})
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,6 +18,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   loading = false;
   cuentaNueva = false;
+  private token: string = ""
   constructor(
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
@@ -26,6 +30,10 @@ export class LoginComponent implements OnInit {
       usuario: ['', Validators.required],
       contrasena: ['', Validators.required], //inicia vacio y el espacio es requerido
     });
+  }
+
+  getToken(){
+    return this.token;
   }
 
   ngOnInit(): void {}
@@ -59,6 +67,9 @@ export class LoginComponent implements OnInit {
         .inicioSesion(datosLogin)
         .subscribe((respuesta) => {
           console.log(respuesta);
+          const token = respuesta.token;
+          this.token = token
+          //localStorage.setItem('token', JSON.stringify(respuesta.token));
           this.exitoFundacion(datosLogin.correo); //Cambiar dashboard dependiendo del usuario
         });
     }
