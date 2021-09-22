@@ -16,7 +16,7 @@ export class CrearFundacionService {
   subTipoEntidad: string = 'crear-fundacion';
   login: string = 'login';
 
-  constructor(private servicioBase: ServicioBaseService) {}
+  constructor(private servicioBase: ServicioBaseService, private http: HttpClient) {}
 
   getToken() {
     return this.token;
@@ -61,6 +61,9 @@ export class CrearFundacionService {
   }
 
   inicioSesion(inicioSesion: InicioSesion) {
-    return this.servicioBase.post([this.login], inicioSesion);
+    return this.http.post<{token: string}>("http://localhost:3000/api/login", inicioSesion);
+    //return this.servicioBase.post([this.login], inicioSesion);
   }
+
+  
 }
