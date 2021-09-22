@@ -1,0 +1,13 @@
+<div>
+  <form [formGroup]="formRegistro" (submit)="send()">
+    <div>
+      <input type="text" formControlName="email" />
+    </div>
+    <div>
+      <input type="password" formControlName="password" />
+    </div>
+    <div>
+      <button>Send</button>
+    </div>
+  </form>
+</div>

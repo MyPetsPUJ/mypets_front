@@ -22,6 +22,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './components/interfaces/authInterceptor';
 import { HomeComponent } from './components/home/home.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { CrearAdoptanteReactivoComponent } from './components/crear-cuenta/crear-adoptante-reactivo/crear-adoptante-reactivo.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     CrearCuentaComponent,
     CrearAdoptanteComponent,
     CrearFundacionComponent,
-    HomeComponent
+    HomeComponent,
+    CrearAdoptanteReactivoComponent
     //CrearAnimalGatoComponent
     //CrearAnimalComponent,
     //CrearPublicacionComponent
@@ -44,7 +46,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     FormsModule,
     ReactiveFormsModule,
     MatCheckboxModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true}],
   bootstrap: [AppComponent]

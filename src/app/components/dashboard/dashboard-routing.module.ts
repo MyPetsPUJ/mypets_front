@@ -13,7 +13,7 @@ import { CrearPublicacionComponent } from './publicaciones/crear-publicacion/cre
 import { PublicacionListComponent } from './publicaciones/publicacion-list/publicacion-list/publicacion-list.component';
 import { PublicacionPreviewComponent } from './publicaciones/publicacion-preview/publicacion-preview/publicacion-preview.component';
 import { HomePageComponent } from './home-page/home-page.component';
-
+import { AnimalesAdoptadosComponent } from './animales-adoptados/animales-adoptados.component';
 const routes: Routes = [
   {
     path: '',
@@ -25,6 +25,7 @@ const routes: Routes = [
       { path: 'mi_cuenta', component: MiCuentaComponent },
       { path: 'seleccion-animal', component: SeleccionAnimalComponent },
       { path: 'mapa', component: InicioComponent},
+      { path:'animales-adoptados',component: AnimalesAdoptadosComponent},
       {
         path: 'seleccion-animal/crear-animal-perro',
         component: CrearAnimalComponent,
