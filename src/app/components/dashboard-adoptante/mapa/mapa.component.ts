@@ -1,6 +1,7 @@
 import { LatLng } from '@agm/core';
 import { Component, OnInit } from '@angular/core';
-
+import { MatDialog } from '@angular/material/dialog';
+import { ListaFundacionesComponent } from './lista-fundaciones/lista-fundaciones.component';
 
 @Component({
   selector: 'app-mapa',
@@ -11,28 +12,13 @@ import { Component, OnInit } from '@angular/core';
 export class MapaComponent implements OnInit {
   latitude: number | any;
   longitude: number | any;
-  service: google.maps.DistanceMatrixService | any;
-  constructor() { }
+  map:any;
+  infoFunds: any[] = [];
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.geolocalizar();
-    const origin1 = { lat: 55.93, lng: -3.118 };
-    const origin2 = "Greenwich, England";
-    const destinationA = "Stockholm, Sweden";
-    const destinationB = { lat: 50.087, lng: 14.421 };
-    const request = {
-      origins: [origin1, origin2],
-      destinations: [destinationA, destinationB],
-      travelMode: google.maps.TravelMode.DRIVING,
-      unitSystem: google.maps.UnitSystem.METRIC,
-      avoidHighways: false,
-      avoidTolls: false,
-    };
-    this.service.getDistanceMatrix(request).then((response) => {
-      console.log(response.rows[0].elements[0].distance);
-    });
-    
-    
+
   }
 
   geolocalizar() {
@@ -40,14 +26,86 @@ export class MapaComponent implements OnInit {
       navigator.geolocation.getCurrentPosition((position) => {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
+        console.log(this.latitude + ' ' + this.longitude);
       });
     }
   }
-  distancia()
+  abrirVentana()
   {
-    
-    
+    this.dialog.open(ListaFundacionesComponent, 
+      {
+        width: '500px',
+        height: '500px',
+        data: {informacion : this.infoFunds}
+      });
+      
   }
+  calcularRuta()
+  {
+    const origin = { lat: 4.6474866, lng: -74.1655377};
+    const destination={ lat: 4.650743586540149, lng: -74.14916171363397};
+    const directionsService = new google.maps.DirectionsService();
+    var info;
+    var coordenadasFund: any[]=[
+      {lat: 4.741765335769153,lng: -74.02332319625492},
+      {lat: 4.607630539524677,lng: -74.17644514449711},
+      {lat: 4.679491660505332,lng: -74.0823747099268},
+      {lat: 4.809507241630877,lng: -74.10160078414555},
+      {lat: 4.698653384887069,lng: -74.12975324996586},
+      {lat: 4.618581277506073,lng: -74.07756819137211},
+      {lat: 4.559034610195376,lng: -74.10915388473148}]
+      var i = Number(0);
+      for(i = 0; i< coordenadasFund.length; i++)
+      {
+        directionsService.route({
+          origin: origin,
+          destination: coordenadasFund[i],
+          travelMode: google.maps.TravelMode.DRIVING,
+        }, (response, status) => {
+          if(status == google.maps.DirectionsStatus.OK)
+          {
+            console.log(response?.routes[0].legs[0].distance?.text);
+            var distancia = String(response?.routes[0].legs[0].distance?.text);
+            var tiempoViaje = String(response?.routes[0].legs[0].duration?.text);
+            var direccion = String(response?.routes[0].legs[0].end_address);
+            console.log('Coordenada ' + i + ' distancia: ' + distancia);
+            console.log('Coordenada ' + i + ' tiempo de viaje: ' + response?.routes[0].legs[0].duration?.text);
+            console.log('Coordenada ' + i + ' dirección: ' + response?.routes[0].legs[0].end_address);
+            console.log(response);
+            info = {
+              nombreFundacion: 'Fundacion'+(this.infoFunds.length + 1),
+              distancia: distancia,
+              duracion: tiempoViaje,
+              dir: direccion
+            }
+            this.infoFunds.push(info);
+            if (this.infoFunds.length == coordenadasFund.length)
+            {
+              this.dialog.open(ListaFundacionesComponent, 
+                {
+                  width: '900px',
+                  height: '500px',
+                  data: {informacion : this.infoFunds}
+                });
+            }
+          }
+          else{
+    
+          }
+        })
+      }
+  }
+  mapReady(event: any) {
+    this.map = event;
+    //const input = document.getElementById('Map-Search');
+    //this.searchBox = new google.maps.places.SearchBox(<HTMLInputElement>input);
+    this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(document.getElementById('Settings'));
+    this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(document.getElementById('Profile'));
+    //this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(document.getElementById('Logout'));
+
+    //this.searchBox.addListener('places_changed', () => this.goToSearchedPlace());
+}
   public getDistance(latitudOr: number, longitudOr: number, latitudDes: number, longDes: number) {
     const matrix = new google.maps.DistanceMatrixService();
     return new Promise((resolve, reject) => {

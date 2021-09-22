@@ -14,6 +14,7 @@ import { SolicitudAdopcionComponent } from './adoptame/solicitud-adopcion/solici
 import { SolicitudesAdopcionAdoptanteComponent } from './solicitudes-adopcion-adoptante/solicitudes-adopcion-adoptante.component';
 import { FormularioAdopcionComponent } from './solicitudes-adopcion-adoptante/formulario-adopcion/formulario-adopcion.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { ListaFundacionesComponent } from './mapa/lista-fundaciones/lista-fundaciones.component';
 
 
 
@@ -28,7 +29,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     SolicitudAdopcionComponent,
     SolicitudesAdopcionAdoptanteComponent,
     FormularioAdopcionComponent,
-    HomePageComponent
+    HomePageComponent,
+    ListaFundacionesComponent
   ],
   imports: [
     CommonModule,

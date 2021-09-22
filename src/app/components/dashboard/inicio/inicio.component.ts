@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Loader } from "@googlemaps/js-api-loader"
 import { MouseEvent as AGMMouseEvent } from '@agm/core';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export interface Coordenada {
   latitude: number | any;
   longitude: number | any;
@@ -42,6 +43,7 @@ export class InicioComponent implements OnInit {
     geocoder: google.maps.Geocoder;
     if (activarPuntos) {
       const geocoder = new google.maps.Geocoder();
+      
       const coordinates: Coordenada = { latitude: $event.coords.lat, longitude: $event.coords.lng }
       this.coordenadas.push(coordinates);
       console.log('coordenadaSize ' + this.coordenadas.length);
@@ -50,6 +52,7 @@ export class InicioComponent implements OnInit {
     }
     activarPuntos = false;
   }
+
   geoCodificacionInversa(geocodificador: google.maps.Geocoder, latitud: number, longitud: number) {
     const latlng = {
       lat: latitud,
@@ -102,3 +105,7 @@ goToSearchedPlace() {
     activarPuntos = true;
   }
 }
+function i(i: any) {
+  throw new Error('Function not implemented.');
+}
+
