@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-animales-adoptados',
   templateUrl: './animales-adoptados.component.html',
@@ -7,7 +6,6 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 })
 export class AnimalesAdoptadosComponent implements OnInit {
 
-  faCoffee = faCoffee;
   constructor() { }
 
   ngOnInit(): void {

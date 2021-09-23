@@ -2,9 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Loader } from "@googlemaps/js-api-loader"
 import { MouseEvent as AGMMouseEvent } from '@agm/core';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { MatDialog } from '@angular/material/dialog';
+import { TextoInteresComponent } from './texto-interes/texto-interes.component';
 export interface Coordenada {
   latitude: number | any;
   longitude: number | any;
+  titulo: string;
+  descripcion: string;
+  direccion: string;
 }
 var activarPuntos: boolean = false;
 
@@ -25,7 +30,10 @@ export class InicioComponent implements OnInit {
   map: any;
   searchBox: any;
   direccion: string | any;
-  constructor() {
+  textoInteres: string | any;
+  tituloInteres: string | any;
+
+  constructor(public dialog: MatDialog) {
   }
   ngOnInit(): void {
     this.geolocalizar();
@@ -44,16 +52,34 @@ export class InicioComponent implements OnInit {
     if (activarPuntos) {
       const geocoder = new google.maps.Geocoder();
       
-      const coordinates: Coordenada = { latitude: $event.coords.lat, longitude: $event.coords.lng }
-      this.coordenadas.push(coordinates);
+      var coordinates: Coordenada = { latitude: $event.coords.lat, longitude: $event.coords.lng, 
+      titulo: '', descripcion: '', direccion: '' }
       console.log('coordenadaSize ' + this.coordenadas.length);
-      this.geoCodificacionInversa(geocoder,coordinates.latitude,coordinates.longitude);
+      const dialogRef = this.dialog.open(TextoInteresComponent, {
+        disableClose: true,
+        width: '600px',
+        height: '500px',
+        data: {texto:this.textoInteres}
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        this.tituloInteres = result.titulo;
+        this.textoInteres = result.texto;
+        coordinates = { latitude: $event.coords.lat, longitude: $event.coords.lng, 
+          titulo: this.tituloInteres, descripcion: this.textoInteres, direccion: ''}
+        this.geoCodificacionInversa(geocoder,coordinates.latitude,coordinates.longitude, 
+        coordinates);
+        this.coordenadas.push(coordinates);
+      });
       console.log(coordinates.latitude + ',' + coordinates.longitude);
     }
     activarPuntos = false;
+  
   }
 
-  geoCodificacionInversa(geocodificador: google.maps.Geocoder, latitud: number, longitud: number) {
+  geoCodificacionInversa(geocodificador: google.maps.Geocoder, latitud: number, longitud: number, 
+    coordinates: Coordenada) {
     const latlng = {
       lat: latitud,
       lng: longitud,
@@ -62,8 +88,8 @@ export class InicioComponent implements OnInit {
       .geocode({ location: latlng })
       .then((response) => {
         if (response.results[0]) {
-  
-          this.direccion = response.results[0].formatted_address; //se obtiene la dirección
+          coordinates.direccion = response.results[0].formatted_address;
+          
         }
       })
       .catch((e) => window.alert("Geocoder failed due to: " + e));

@@ -21,6 +21,7 @@ import { VerFotoComponent } from './mi-cuenta/ver-foto/ver-foto.component';
 import { PublicacionListComponent } from './publicaciones/publicacion-list/publicacion-list/publicacion-list.component';
 import { PublicacionPreviewComponent } from './publicaciones/publicacion-preview/publicacion-preview/publicacion-preview.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { TextoInteresComponent } from './inicio/texto-interes/texto-interes.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     VerFotoComponent,
     PublicacionListComponent,
     PublicacionPreviewComponent,
-    HomePageComponent
+    HomePageComponent,
+    TextoInteresComponent
   ],
   imports: [
     CommonModule,

@@ -32,7 +32,8 @@ import { CrearAdoptanteReactivoComponent } from './components/crear-cuenta/crear
     CrearAdoptanteComponent,
     CrearFundacionComponent,
     HomeComponent,
-    CrearAdoptanteReactivoComponent
+    CrearAdoptanteReactivoComponent,
+    
     //CrearAnimalGatoComponent
     //CrearAnimalComponent,
     //CrearPublicacionComponent
