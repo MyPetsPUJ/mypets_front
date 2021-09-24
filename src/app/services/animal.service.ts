@@ -1,32 +1,39 @@
 import { Injectable } from '@angular/core';
-import { Animal } from '../components/interfaces/usuario'; 
+import { Animal } from '../components/interfaces/usuario';
+import { EntidadAnimal } from '../components/interfaces/entidadAnimal';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AnimalService {
-  animales: Animal[] = [
-    {nombreAnimal: 'Paca', edad: 11, tipo: 'Gato', raza: 'Carey', tamano: 'Pequeño'},
-    {nombreAnimal: 'Milú', edad: 6, tipo: 'Perro', raza: 'Schnauzer', tamano: 'Mediano'},
-    {nombreAnimal: 'Aslan', edad: 3, tipo: 'Perro', raza: 'American-Pitubull', tamano: 'Grande'},
-    {nombreAnimal: 'Pelusa', edad: 11, tipo: 'Gato', raza: 'Maine-Coon', tamano: 'Pequeño'},
-    {nombreAnimal: 'Levy', edad: 4, tipo: 'Gato', raza: 'Criollo', tamano: 'Grande'},
-  ];
-  constructor() { }
-  getAnimales(): Animal[]
-  {
-    return this.animales;
+  dominio: string = 'localhost';
+  puerto: number = 3000;
+  pathApi: string = 'api';
+  pathDashboard: string = 'dashboard-adoptante';
+  pathAdoptame: string = 'adoptame';
+
+  // animales: Animal[] = [
+  //   {nombreAnimal: 'Paca', edad: 11, tipo: 'Gato', raza: 'Carey', tamano: 'Pequeño'},
+  //   {nombreAnimal: 'Milú', edad: 6, tipo: 'Perro', raza: 'Schnauzer', tamano: 'Mediano'},
+  //   {nombreAnimal: 'Aslan', edad: 3, tipo: 'Perro', raza: 'American-Pitubull', tamano: 'Grande'},
+  //   {nombreAnimal: 'Pelusa', edad: 11, tipo: 'Gato', raza: 'Maine-Coon', tamano: 'Pequeño'},
+  //   {nombreAnimal: 'Levy', edad: 4, tipo: 'Gato', raza: 'Criollo', tamano: 'Grande'},
+  // ];
+  constructor(private http: HttpClient) {}
+  getAnimales() {
+    return this.http.get<EntidadAnimal[]>(
+      `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathDashboard}/${this.pathAdoptame}`
+    );
   }
-  getNombre(index: number): string
-  {
-    return this.animales[index].nombreAnimal;
-  }
-  eliminarAnimal(index: number)
-  {
-    this.animales.splice(index,1);
-  }
-  agregarAnimal(animal: Animal)
-  {
-    this.animales.unshift(animal);
-  }
+  
+  // getNombre(index: number): string {
+  //   return this.animales[index].nombreAnimal;
+  // }
+  // eliminarAnimal(index: number) {
+  //   this.animales.splice(index, 1);
+  // }
+  // agregarAnimal(animal: Animal) {
+  //   this.animales.unshift(animal);
+  // }
 }

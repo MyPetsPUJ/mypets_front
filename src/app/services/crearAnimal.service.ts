@@ -19,7 +19,7 @@ export class CrearAnimalService {
   constructor(private http: HttpClient) {}
   animales: EntidadAnimal[] = [
     {
-      imagenPath: '../../../assets/Images/paca.png',
+      urlImg: '../../../assets/Images/paca.png',
       nombre: 'Paca',
       edad: '11 años',
       raza: 'Carey',
@@ -35,7 +35,7 @@ export class CrearAnimalService {
       tipo_animal: 'Gato',
     },
     {
-      imagenPath: '../../../assets/Images/milu.png',
+      urlImg: '../../../assets/Images/milu.png',
       nombre: 'Milú',
       edad: '5 años',
       raza: 'Schnauzer',
@@ -51,7 +51,7 @@ export class CrearAnimalService {
       tipo_animal: 'Perro',
     },
     {
-      imagenPath: '../../../assets/Images/aslan.png',
+      urlImg: '../../../assets/Images/aslan.png',
       nombre: 'Aslan',
       edad: '3 años',
       raza: 'Pitbull',
@@ -67,7 +67,7 @@ export class CrearAnimalService {
       tipo_animal: 'Perro',
     },
     {
-      imagenPath: '../../../assets/Images/akino.png',
+      urlImg: '../../../assets/Images/akino.png',
       nombre: 'Akino',
       edad: '4 meses',
       raza: 'Criollo',
@@ -83,7 +83,7 @@ export class CrearAnimalService {
       tipo_animal: 'Gato',
     },
     {
-      imagenPath: '../../../assets/Images/levy.png',
+      urlImg: '../../../assets/Images/levy.png',
       nombre: 'Levy',
       edad: '5 años',
       raza: 'Criollo',

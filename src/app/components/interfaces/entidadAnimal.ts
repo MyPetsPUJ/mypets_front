@@ -11,6 +11,6 @@ export interface EntidadAnimal {
   ultima_vac: string;
   descripcion: string;
   esquema_vac: string;
-  imagenPath: string;
+  urlImg: string;
   tipo_animal: string;
 }

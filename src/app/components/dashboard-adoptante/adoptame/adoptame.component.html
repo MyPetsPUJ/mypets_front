@@ -9,18 +9,18 @@
     >
       <mat-card class="mat-elevation-z8">
         <mat-card-header>
-          <div mat-card-avatar>
+          <!-- <div mat-card-avatar>
             <img [src]="logoFundacion" class="circulo" />
-          </div>
+          </div> -->
           <mat-card-title>{{ animal.nombre }}</mat-card-title>
-          <mat-card-subtitle>{{ nombreFundacion }}</mat-card-subtitle>
+          <!-- <mat-card-subtitle>{{ nombreFundacion }}</mat-card-subtitle> -->
         </mat-card-header>
         <div class="parent">
           <img
             class="container crop card"
             mat-card-image
-            [src]="animal.imagenPath"
-            alt="Photo of a Shiba Inu"
+            [src]="'http://localhost:3000/' + animal.urlImg"
+            alt="Foto de un animal"
           />
         </div>
 
