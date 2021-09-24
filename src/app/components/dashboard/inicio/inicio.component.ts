@@ -4,6 +4,7 @@ import { MouseEvent as AGMMouseEvent } from '@agm/core';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { MatDialog } from '@angular/material/dialog';
 import { TextoInteresComponent } from './texto-interes/texto-interes.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 export interface Coordenada {
   latitude: number | any;
   longitude: number | any;
@@ -12,7 +13,6 @@ export interface Coordenada {
   direccion: string;
 }
 var activarPuntos: boolean = false;
-
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
@@ -32,8 +32,7 @@ export class InicioComponent implements OnInit {
   direccion: string | any;
   textoInteres: string | any;
   tituloInteres: string | any;
-
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private _snackBar: MatSnackBar) {
   }
   ngOnInit(): void {
     this.geolocalizar();
@@ -43,7 +42,7 @@ export class InicioComponent implements OnInit {
       navigator.geolocation.getCurrentPosition((position) => {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
-        console.log('latitud: '+ this.latitude + ' longitud: ' + this.longitude);
+        console.log('latitud: ' + this.latitude + ' longitud: ' + this.longitude);
       });
     }
   }
@@ -51,34 +50,42 @@ export class InicioComponent implements OnInit {
     geocoder: google.maps.Geocoder;
     if (activarPuntos) {
       const geocoder = new google.maps.Geocoder();
-      
-      var coordinates: Coordenada = { latitude: $event.coords.lat, longitude: $event.coords.lng, 
-      titulo: '', descripcion: '', direccion: '' }
+
+      var coordinates: Coordenada = {
+        latitude: $event.coords.lat, longitude: $event.coords.lng,
+        titulo: '', descripcion: '', direccion: ''
+      }
       console.log('coordenadaSize ' + this.coordenadas.length);
       const dialogRef = this.dialog.open(TextoInteresComponent, {
         disableClose: true,
         width: '600px',
         height: '500px',
-        data: {texto:this.textoInteres}
+        data: { titulo: '', texto: '' }
       });
-  
+
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
         this.tituloInteres = result.titulo;
         this.textoInteres = result.texto;
-        coordinates = { latitude: $event.coords.lat, longitude: $event.coords.lng, 
-          titulo: this.tituloInteres, descripcion: this.textoInteres, direccion: ''}
-        this.geoCodificacionInversa(geocoder,coordinates.latitude,coordinates.longitude, 
-        coordinates);
+        coordinates = {
+          latitude: $event.coords.lat, longitude: $event.coords.lng,
+          titulo: this.tituloInteres, descripcion: this.textoInteres, direccion: ''
+        }
+        this.geoCodificacionInversa(geocoder, coordinates.latitude, coordinates.longitude,
+          coordinates);
         this.coordenadas.push(coordinates);
+        this._snackBar.open('Punto de interés creado','', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
       });
       console.log(coordinates.latitude + ',' + coordinates.longitude);
     }
     activarPuntos = false;
-  
   }
 
-  geoCodificacionInversa(geocodificador: google.maps.Geocoder, latitud: number, longitud: number, 
+  geoCodificacionInversa(geocodificador: google.maps.Geocoder, latitud: number, longitud: number,
     coordinates: Coordenada) {
     const latlng = {
       lat: latitud,
@@ -89,16 +96,66 @@ export class InicioComponent implements OnInit {
       .then((response) => {
         if (response.results[0]) {
           coordinates.direccion = response.results[0].formatted_address;
-          
+
         }
       })
       .catch((e) => window.alert("Geocoder failed due to: " + e));
   }
 
+  eliminarPunto(latitud: number, longitud: number) {
+    var i = 0;
+    var encontrado = false
+    for (i = 0; i < this.coordenadas.length; i++) {
+      if (latitud == this.coordenadas[i].latitude && longitud == this.coordenadas[i].longitude) {
+        this.coordenadas.splice(i, 1);
+        encontrado = true;
+        this._snackBar.open('Punto de interés eliminado', '', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
+      }
+    }
 
-  eliminarPuntos()
-  {
+  }
+  eliminarPuntos() {
     this.coordenadas = [];
+  }
+  editarPunto(latitud: number, longitud: number) {
+    
+    var i = 0;
+    for (i = 0; i < this.coordenadas.length; i++) {
+      if (latitud == this.coordenadas[i].latitude && longitud == this.coordenadas[i].longitude) {
+
+        var coordenadaAux: Coordenada = {latitude: latitud, 
+          longitude: longitud,
+          titulo: this.coordenadas[i].titulo,
+          descripcion: this.coordenadas[i].descripcion,
+          direccion: this.coordenadas[i].direccion}
+        const dialogRef = this.dialog.open(TextoInteresComponent, {
+          disableClose: true,
+          width: '600px',
+          height: '500px',
+          data: { titulo: this.coordenadas[i].titulo, texto: this.coordenadas[i].descripcion}
+        });
+        this.coordenadas.splice(i,1);
+
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
+          coordenadaAux.titulo = result.titulo;
+          coordenadaAux.descripcion = result.texto;
+          this.coordenadas.push(coordenadaAux);
+          this._snackBar.open('Punto de interés editado', '', {
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom',
+          });
+        });
+        
+      }
+    }
+
+
   }
   mapReady(event: any) {
     this.map = event;
@@ -110,22 +167,22 @@ export class InicioComponent implements OnInit {
     this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(document.getElementById('Logout'));
 
     //this.searchBox.addListener('places_changed', () => this.goToSearchedPlace());
-}
-goToSearchedPlace() {
-  const places = this.searchBox.getPlaces();
-  if (places.length === 0) {
-  return;
   }
-  const bounds = new google.maps.LatLngBounds();
-  places.forEach((place) => {
-  if (place.geometry.viewport) {
-      bounds.union(place.geometry.viewport);
-  } else {
-      bounds.extend(place.geometry.location);
+  goToSearchedPlace() {
+    const places = this.searchBox.getPlaces();
+    if (places.length === 0) {
+      return;
+    }
+    const bounds = new google.maps.LatLngBounds();
+    places.forEach((place) => {
+      if (place.geometry.viewport) {
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+    this.map.fitBounds(bounds);
   }
-  });
-  this.map.fitBounds(bounds);
-}
 
   activarPuntos() {
     activarPuntos = true;

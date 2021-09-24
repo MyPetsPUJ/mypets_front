@@ -24,7 +24,7 @@
             <mat-icon aria-hidden="true">settings</mat-icon>
         </button>
         
-        <agm-marker [latitude]="latitude" [longitude]="longitude">
+        <agm-marker [latitude]="latitude" [longitude]="longitude" >
             <agm-info-window>
                 <div>
                     <h2>
@@ -43,7 +43,12 @@
                     <p>
                         direccion: {{coord.direccion}}
                     </p>
+                <div class="alinearDer">
+                    <mat-icon matTooltip="editar punto" class="pointer" (click)="editarPunto(coord.latitude,coord.longitude)">edit</mat-icon>
+                    <mat-icon matTooltip="eliminar punto" class="pointer" (click)="eliminarPunto(coord.latitude,coord.longitude)">delete</mat-icon>
                     
+                </div>
+                
                 </div>
             </agm-info-window>
         </agm-marker>

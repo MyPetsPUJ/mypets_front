@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -11,8 +12,11 @@ export class TextoInteresComponent implements OnInit {
   
   tituloDevuelta: string | any;
   textoDevuelta: string | any;
+  form: FormGroup;
   constructor( public dialogRef: MatDialogRef<TextoInteresComponent>,@Inject(MAT_DIALOG_DATA) public data: any,
-  private _snackBar: MatSnackBar,) { 
+  private _snackBar: MatSnackBar, private fb: FormBuilder) { 
+    this.form = this.fb.group({
+      tituloLugar: [this.data.titulo, Validators.required]});
     console.log(this.data.texto);
     this.textoDevuelta = this.data.texto;
   }
@@ -41,11 +45,6 @@ export class TextoInteresComponent implements OnInit {
     }
     else
     {
-      this._snackBar.open('Punto de interés creado','', {
-        duration: 3000,
-        horizontalPosition: 'center',
-        verticalPosition: 'bottom',
-      });
      this.dialogRef.close({titulo: this.tituloDevuelta, texto: this.textoDevuelta});
     }
   }
