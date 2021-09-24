@@ -3,10 +3,12 @@
     padding: 30px;
 }
 
-.card 
+mat-card 
 {
-    width: 200px;
-    height: 200px;
+    margin: auto;
+    width: 35%;
+    display: block;
+    margin-top: 2rem;
 }
   
 .header-image 
@@ -23,4 +25,9 @@
 .margen
 {
     margin-left: 40px;
+}
+
+.imagen{
+    width: 500px;
+    height: 500px;
 }

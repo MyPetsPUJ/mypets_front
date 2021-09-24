@@ -10,20 +10,33 @@ import { SolicitudesAdopcionAdoptanteComponent } from './solicitudes-adopcion-ad
 import { FormularioAdopcionComponent } from './solicitudes-adopcion-adoptante/formulario-adopcion/formulario-adopcion.component';
 import { HomePageComponent } from './home-page/home-page.component';
 const routes: Routes = [
-  {path:'',component: DashboardAdoptanteComponent, children: [
-    {path: '',component: HomePageComponent},
-    {path: 'adoptame',component: AdoptameComponent},
-    {path: 'fundaciones',component: FundacionesComponent},
-    {path: 'consejos',component: ConsejosComponent},
-    {path: 'mapa', component: MapaComponent},
-    {path: 'adoptame/solicitud-adopcion', component: SolicitudAdopcionComponent},
-    {path: 'solicitudes-adopcion-adoptante', component: SolicitudesAdopcionAdoptanteComponent},
-    {path: 'solicitudes-adopcion-adoptante/formulario-adopcion', component: FormularioAdopcionComponent}
-  ]}
+  {
+    path: '',
+    component: DashboardAdoptanteComponent,
+    children: [
+      { path: '', component: HomePageComponent },
+      { path: 'adoptame', component: AdoptameComponent },
+      { path: 'get-fundaciones', component: FundacionesComponent },
+      { path: 'consejos', component: ConsejosComponent },
+      { path: 'mapa', component: MapaComponent },
+      {
+        path: 'adoptame/solicitud-adopcion',
+        component: SolicitudAdopcionComponent,
+      },
+      {
+        path: 'solicitudes-adopcion-adoptante',
+        component: SolicitudesAdopcionAdoptanteComponent,
+      },
+      {
+        path: 'solicitudes-adopcion-adoptante/formulario-adopcion',
+        component: FormularioAdopcionComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DashboardAdoptanteRoutingModule { }
+export class DashboardAdoptanteRoutingModule {}

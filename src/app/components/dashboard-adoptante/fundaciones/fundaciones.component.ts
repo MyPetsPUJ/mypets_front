@@ -14,10 +14,17 @@ export class FundacionesComponent implements OnInit {
   Vision:string|undefined;
   numero:string|undefined;*/
 
-  constructor(private fundacionesServices: FundacionService) {}
+  constructor(private fundacionesService: FundacionService) {}
 
   ngOnInit(): void {
-    this.cargarAnimalesXFundacion();
+    this.fundacionesService.getFundaciones().subscribe({
+      next: (res) => {
+        this.fundaciones = res;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
   }
   cargarAnimalesXFundacion() {
     //this.fundaciones = this.fundacionesServices.getFundaciones();

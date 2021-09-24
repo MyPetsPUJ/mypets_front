@@ -1,4 +1,60 @@
-<div class = "content">
+<mat-card *ngFor="let fundacion of fundaciones">
+  <mat-card-subtitle>
+    {{fundacion.nombreFund}}
+  </mat-card-subtitle>
+  <img [src]="'http://localhost:3000/' + fundacion.urlImg" mat-card-image>
+  <mat-card-content>
+    <p>Fecha de creación: {{fundacion.fecha_creacion}}</p>
+    <p>Estamos ubicados en: {{fundacion.localidad}}</p>
+    <p>Contacto: {{fundacion.num_celular}}</p>
+  </mat-card-content>
+</mat-card>
+
+
+
+
+
+
+<!-- <div class="row">
+    <div class="col-md-4 p-4" *ngFor="let fundacion of fundaciones">
+      <div class="card">
+        <div class="card-header">
+            {{fundacion.nombreFund}}
+        </div>
+        <img [src]="'http://localhost:3000/' + fundacion.urlImg" class="imagen">
+        <div class="card-body">
+
+        </div>
+      </div>
+
+    </div>
+
+
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class = "content">
     <h1 class = "titulo" > Fundaciones</h1>
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
         <div fxFlex="16%" fxFlex.xs="100%" fxFlex.sm="50%" *ngFor="let fundacion of fundaciones">
@@ -9,13 +65,13 @@
                 </mat-card-header>
                 <img mat-card-image src="../../../assets/Images/fundacion_logo.png" alt="Logo de la fundación">
                 <mat-card-content class = "margen">
-                  <p>
-                    <!--{{fundacion.mision}}-->
+                  <p> -->
+                    <!-- {{fundacion.mision}}
                     mision
                   </p>
                   <p>
                       vision 
-                    <!--{{fundacion.vision}}-->
+                    {{fundacion.vision}}
                   </p>
                 </mat-card-content>
                 <mat-card-actions>
@@ -26,7 +82,7 @@
         </div>
     </div>
 </div>
-    
+     -->
 
 
 
