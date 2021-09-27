@@ -1,127 +1,223 @@
-<div class="card">
-  <h2>Formulario de Adopción</h2>
-  <h3>Información Personal</h3>
-  <div class="row">
-    <div class="col">
-      <div class="form-group">
-        <label>Nombres</label>
-        <input type="text" />
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="form-group">
-        <label>Apellidos</label>
-        <input type="text" />
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="form-group">
-        <label>Teléfono fijo</label>
-        <input type="text" />
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="form-group">
-        <label>Teléfono celular</label>
-        <input type="text" />
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="form-group">
-        <label>Correo</label>
-        <textarea></textarea>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <h3>Documento</h3>
-        <div class="form-group">
-          <label>Tipo</label>
-          <textarea></textarea>
-        </div>
-      </div>
-
-      <div class="col">
-        <h4>Documento</h4>
-        <div class="form-group">
-          <label>Número</label>
-          <textarea></textarea>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <div class="form-group">
-          <label>Dirección de residencia </label>
-          <textarea></textarea>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <div class="form-group">
-          <label>Barrio</label>
-          <textarea></textarea>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="form-group">
-          <label>Localidad</label>
-          <textarea></textarea>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <div class="form-group">
-          <label>Instagram</label>
-          <textarea></textarea>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="form-group">
-          <label>Facebook</label>
-          <textarea></textarea>
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <label>Twitter</label>
-          <textarea></textarea>
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <label>Whatsapp</label>
-          <textarea></textarea>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="form-group">
-        <label>Ocupación</label>
-        <textarea></textarea>
-      </div>
-    </div>
-    <div class="col">
-      <div class="form-group">
-        <label>Empresa</label>
-        <textarea></textarea>
-      </div>
-    </div>
-
-    <div class="col">
-      <input type="submit" value="Continuar" />
-    </div>
-  </div>
+<div>
+  <mat-card styles="margin-top: 10px;" class="image">
+    <h2 class="titulo">Solicitud de adopción</h2>
+    <form>
+      <mat-card class="color">
+        <form>
+          <div class="centro">
+            <img src="../../../assets/Images/silueta-perro.png" width="15%" />
+          </div>
+          <form
+            action="solicitud-adopcion.component.ts"
+            (ngSubmit)="onEnviarSolicitud(solicitudAdopcionForm)"
+            #solicitudAdopcionForm="ngForm"
+            method="POST"
+          >
+            <mat-grid-list cols="2" rowHeight="60px">
+              <div class="centro">
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Nombres</mat-label>
+                    <input
+                      name="nombresAdoptante"
+                      ngModel
+                      type="text"
+                      #nombresAdoptanteInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Apellidos</mat-label>
+                    <input
+                      name="apellidosAdoptante"
+                      ngModel
+                      type="text"
+                      #apellidosAdoptanteInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Número de documento</mat-label>
+                    <input
+                      name="numDocAdoptante"
+                      ngModel
+                      type="number"
+                      #edadAdoptanteInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field appearance="fill" class="ancho">
+                    <mat-label>Tipo de documento</mat-label>
+                    <mat-select
+                      name="tipoDocAdoptante"
+                      ngModel
+                      #tipoDocAdoptanteInput="ngModel"
+                      required
+                    >
+                      <mat-option *ngFor="let item of tipo_doc" [value]="item">
+                        {{ item }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Edad</mat-label>
+                    <input
+                      name="edadAdoptante"
+                      ngModel
+                      type="number"
+                      #edadAdoptanteInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field appearance="fill" class="ancho">
+                    <mat-label>Localidad</mat-label>
+                    <mat-select
+                      name="localidad"
+                      ngModel
+                      #localidadInput="ngModel"
+                    >
+                      <mat-option
+                        *ngFor="let localidad of localidad"
+                        [value]="localidad"
+                      >
+                        {{ localidad }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Barrio</mat-label>
+                    <input
+                      name="barrio"
+                      ngModel
+                      type="text"
+                      #barrioInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Dirección</mat-label>
+                    <input
+                      name="direccion"
+                      ngModel
+                      type="text"
+                      #direccionInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Número de celular</mat-label>
+                    <input
+                      name="numeroCelular"
+                      ngModel
+                      type="number"
+                      #numeroCelularInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Correo electrónico</mat-label>
+                    <input
+                      name="correoElectronico"
+                      ngModel
+                      type="email"
+                      #correoElectronicoInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Ocupación</mat-label>
+                    <input
+                      name="ocupacion"
+                      ngModel
+                      type="text"
+                      #ocupacionInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label
+                      >Nombre de la mascota que quiere adoptar</mat-label
+                    >
+                    <input
+                      name="mascotaSolicitud"
+                      ngModel
+                      type="text"
+                      #mascotaSolicitudInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label
+                      >Fundación a la que pertenece la mascota</mat-label
+                    >
+                    <input
+                      name="fundacionSolicitud"
+                      ngModel
+                      type="email"
+                      #fundacionSolicitudInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+              </div>
+            </mat-grid-list>
+            <div class="centro">
+              <button
+                mat-raised-button
+                color="primary"
+                style="margin: 18px"
+                class="tamano"
+                type="submit"
+              >
+                Enviar Solicitud
+              </button>
+              <button
+                mat-raised-button
+                color="accent"
+                class="tamano"
+                routerLink="/dashboard-adoptante/adoptame"
+              >
+                Cancelar
+              </button>
+            </div>
+          </form>
+        </form>
+      </mat-card>
+    </form>
+  </mat-card>
 </div>

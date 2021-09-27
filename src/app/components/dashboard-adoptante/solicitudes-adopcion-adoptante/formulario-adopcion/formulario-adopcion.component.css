@@ -1,143 +1,34 @@
-* {
-  margin: 0;
-  padding: 0;
-  border-width: border-box;
+.ancho {
+  width: 90%;
 }
-
-html,
-body {
-  height: 100vh;
-  background: #ffffff;
-  font-family: "Balsamiq Sans", sans-serif;
+.ancho {
+  width: 90%;
 }
-
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.centro {
+  text-align: center;
 }
-
-.card {
-  width: 70%;
-  padding: 30px 90px 90px 90px;
-  border: 6px solid rgba(0, 0, 0, 0.3);
-  box-shadow: 20px 20px 0 rgba(0, 0, 0, 0.3);
-  border-radius: 50px;
-  position: relative;
+.margen {
+  height: 1120px;
+  width: 1120px;
   margin: auto;
 }
-
-.card h2 {
-  color: rgba(0, 0, 0, 0.3);
-  font-size: 60px;
-  text-transform: uppercase;
+.tamano {
+  text-align: center;
+  width: 140px;
+  height: 35px;
 }
-.card h3 {
-  color: rgba(0, 0, 0, 0.3);
-  font-size: 25px;
-  text-transform: uppercase;
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
 }
-.card h4 {
-  color: rgb(255, 255, 255);
-  font-size: 25px;
-  text-transform: uppercase;
+.titulo {
+  font-size: 30px;
+  text-align: center;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
-
-.card .row {
-  position: relative;
-  width: 100%;
-  display: grid;
-  grid: auto / auto auto;
-  grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
-  grid-gap: 30px;
+.image {
+  background-image: url(src\assets\Images\dogs-background.png);
+  height: 90%;
 }
-
-.card .row .col {
-  position: relative;
-  width: 100%;
-  margin: 30px 20px 40px 0;
-  transition: 0.5s;
-}
-
-.card .row .form-group {
-  position: relative;
-  width: 100%;
-  height: 40px;
-  color: #666666;
-}
-
-.card .row .form-group input,
-.card .row .form-group textarea {
-  position: absolute;
-  width: 90%;
-  height: 100%;
-  background: transparent;
-  outline: none;
-  font-size: 24px;
-  padding: 10px 0 10px 20px;
-  border: 5px solid rgba(0, 0, 0, 0.3);
-  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
-  color: #666666;
-  border-radius: 50px;
-}
-
-.card .row .form-group label {
-  line-height: 40px;
-  color: #666666;
-  font-size: 24px;
-  margin: 0 0 0 30px;
-  display: block;
-  pointer-events: none;
-}
-
-.row .col:nth-child(6) {
-  margin-top: 64px;
-}
-
-.card .row .form-group input:focus,
-.card .row .form-group textarea:focus {
-  border: 5px solid #666666;
-  transition: all 0.5s;
-}
-
-.card .row input[type="submit"] {
-  border: 5px solid rgba(0, 0, 0, 0.3);
-  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
-  padding: 10px;
-  height: 100%;
-  width: 50%;
-  cursor: pointer;
-  outline: none;
-  background: transparent;
-  text-transform: uppercase;
-  color: #666666;
-  line-height: 40px;
-  font-size: 24px;
-  font-weight: 700;
-  border-radius: 45px;
-  transition: all 0.4s;
-}
-
-.card .row input[type="submit"]:hover {
-  border: 5px solid rgba(255, 255, 255, 1);
-  color: #000000;
-  transition: all 0.4s;
-}
-
-@media screen and (max-width: 900px) {
-  .card .row {
-    grid-template-columns: repeat(auto-fit, minmax(70%, 1fr));
-  }
-
-  .card {
-    padding: 20px;
-  }
-
-  .card h2 {
-    font-size: 34px;
-  }
-
-  .card .row input[type="submit"] {
-    width: 100%;
-  }
+.color {
+  background-color: #f5f5dcb5;
 }
