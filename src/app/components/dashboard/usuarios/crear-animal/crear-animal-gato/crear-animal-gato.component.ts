@@ -161,6 +161,10 @@ export class CrearAnimalGatoComponent implements OnInit {
       return;
     }
 
+    // const esquema: string[] = []
+    // esquema.push(form.value.esquema_vac);
+    console.log(JSON.stringify(form.value.esquema_vac));
+
     this.crearGatoService
       .crearAnimalGato(
         form.value.nombre,
@@ -175,7 +179,7 @@ export class CrearAnimalGatoComponent implements OnInit {
         form.value.ultima_vac,
         form.value.descripcion,
         this.file,
-        form.value.esquema_vac,
+        form.value.esquema_vac.nombre,
         'Gato'
       )
       .subscribe(

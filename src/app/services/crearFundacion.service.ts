@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserFundacion } from '../components/interfaces/userFundacion';
 import { InicioSesion } from '../components/interfaces/inicioSesion';
 import { ServicioBaseService } from './servicioBase.service';
+import { map } from 'rxjs/operators';
 //import { url } from 'inspector';
 
 @Injectable({
@@ -16,7 +17,10 @@ export class CrearFundacionService {
   subTipoEntidad: string = 'crear-fundacion';
   login: string = 'login';
 
-  constructor(private servicioBase: ServicioBaseService, private http: HttpClient) {}
+  constructor(
+    private servicioBase: ServicioBaseService,
+    private http: HttpClient
+  ) {}
 
   getToken() {
     return this.token;
@@ -60,10 +64,20 @@ export class CrearFundacionService {
     return this.servicioBase.post([this.entidad, this.subTipoEntidad], fd);
   }
 
-  inicioSesion(inicioSesion: InicioSesion) {
-    return this.http.post<{token: string}>("http://localhost:3000/api/login", inicioSesion, {withCredentials: true});
-    //return this.servicioBase.post([this.login], inicioSesion);
-  }
-
-
+  // inicioSesion(inicioSesion: InicioSesion) {
+  //   return this.http
+  //     .post<{ token: string }>(
+  //       'http://localhost:3000/api/login',
+  //       inicioSesion,
+  //       { withCredentials: true }
+  //     )
+  //     .pipe(
+  //       map((res) => {
+  //         console.log(res);
+  //         const token = res.token;
+  //         this.token = token;
+  //       })
+  //     );
+  //   //return this.servicioBase.post([this.login], inicioSesion);
+  // }
 }

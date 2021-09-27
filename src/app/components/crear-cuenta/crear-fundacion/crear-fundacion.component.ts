@@ -59,7 +59,7 @@ export class CrearFundacionComponent implements OnInit {
         form.value.tipo_doc,
         form.value.num_doc,
         form.value.fecha_creacion,
-        form.value.localidad,
+        form.value.localidad.nombre,
         form.value.correo,
         form.value.num_cel,
         form.value.contrasena,
