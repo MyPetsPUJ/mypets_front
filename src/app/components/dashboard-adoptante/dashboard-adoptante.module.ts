@@ -15,6 +15,7 @@ import { SolicitudesAdopcionAdoptanteComponent } from './solicitudes-adopcion-ad
 import { FormularioAdopcionComponent } from './solicitudes-adopcion-adoptante/formulario-adopcion/formulario-adopcion.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ListaFundacionesComponent } from './mapa/lista-fundaciones/lista-fundaciones.component';
+import { ConsejoPreviewComponent } from './consejos/consejo-preview/consejo-preview.component';
 
 
 
@@ -30,7 +31,8 @@ import { ListaFundacionesComponent } from './mapa/lista-fundaciones/lista-fundac
     SolicitudesAdopcionAdoptanteComponent,
     FormularioAdopcionComponent,
     HomePageComponent,
-    ListaFundacionesComponent
+    ListaFundacionesComponent,
+    ConsejoPreviewComponent
   ],
   imports: [
     CommonModule,

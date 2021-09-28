@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
+import {MapsAPILoader} from "@agm/core";
+declare var google: any;
 
 import { CrearFundacionService } from 'src/app/services/crearFundacion.service';
 import { LocalidadesService } from 'src/app/services/localidades.service';
@@ -20,7 +22,9 @@ export class CrearFundacionComponent implements OnInit {
   constructor(
     public crearFundacionService: CrearFundacionService,
     private sanitizer: DomSanitizer,
-    private getLocalidadesService: LocalidadesService
+    private getLocalidadesService: LocalidadesService,
+    private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone
   ) {
     const currentYear = new Date().getFullYear();
     this.maxDate = new Date();
@@ -29,10 +33,25 @@ export class CrearFundacionComponent implements OnInit {
   public previsualizacion: string | undefined;
   file!: File;
   photoSelected: string | ArrayBuffer = '';
-  localidades: Localidad[] = []
-
+  localidades: Localidad[] = [];
+  @ViewChild('search')
+  public searchElementRef: ElementRef | any;
   ngOnInit(): void {
     this.previsualizacion = '../../../assets/Images/chat.png';
+    this.mapsAPILoader.load().then(
+      () => {
+        let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement,{ types:['address']});
+        autocomplete.setComponentRestrictions({'country' : ['co']});
+        autocomplete.addListener('place_changed' , () => {
+          this.ngZone.run( () => {
+            let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+            if ( place.geometry === undefined || place.geometry == null ) {
+              return;
+            }
+          })
+        })
+      }
+    );
     this.getLocalidadesService.getLocalidadesFundacion().subscribe(
       (res) => {
         this.localidades = res;
@@ -58,7 +77,7 @@ export class CrearFundacionComponent implements OnInit {
         form.value.tipo_doc,
         form.value.num_doc,
         form.value.fecha_creacion,
-        form.value.localidad.nombre,
+        form.value.direccion.nombre,
         form.value.correo,
         form.value.num_cel,
         form.value.contrasena,

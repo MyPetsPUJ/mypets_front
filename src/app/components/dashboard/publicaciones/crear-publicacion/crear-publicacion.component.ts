@@ -47,10 +47,7 @@ export class CrearPublicacionComponent implements OnInit {
   ]; //Dato quemado para poder compilar, luego borrar
 
   onCrearPublicacion(form: NgForm) {
-    
-    if (form.invalid || form.value.seccionPublicacion == '')  {
-      
-      if(this.photoSelected == "../../../assets/Images/no-image.png")
+    if(this.photoSelected == "../../../assets/Images/no-image.png")
       {
         this._snackBar.open('Por favor seleccione una imágen para la publicación','', {
           duration: 3000,
@@ -58,7 +55,9 @@ export class CrearPublicacionComponent implements OnInit {
           verticalPosition: 'bottom',
         });
       }
-      else if(form.value.seccionPublicacion == '')
+    else if (form.invalid || form.value.seccionPublicacion == '')  {
+      
+      if(form.value.seccionPublicacion == '')
       {
         this._snackBar.open('Por favor rellene los espacios solicitados','', {
           duration: 3000,

@@ -64,7 +64,8 @@ import { VentanaReporteComponent } from '../dashboard/reportes/ventana-reporte/v
     MatDialogModule,
     FlexLayoutModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAh5NFAZ5AK5YHY5ybYWQm3rRQF4myY-q8'
+      apiKey: 'AIzaSyAh5NFAZ5AK5YHY5ybYWQm3rRQF4myY-q8',
+      libraries: ["places"]
     }),
   ],
   exports: [

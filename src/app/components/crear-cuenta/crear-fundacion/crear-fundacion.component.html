@@ -1,3 +1,7 @@
+<div>
+    <div class="form-group">
+      </div>
+</div>
 <div class = "image">
     <mat-toolbar color="primary">
         <span> Creación de cuenta - fundación</span>
@@ -23,19 +27,19 @@
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
                         <mat-form-field class="ancho">
                             <mat-label>Nombre de la fundación</mat-label>
-                            <input matInput name="nombreFun" ngModel type="text" #nombreInput="ngModel" required>
+                            <input matInput name="nombreFun" ngModel type="text" #nombreInput="ngModel" required autocomplete="off">
                         </mat-form-field>
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
                         <mat-form-field class="ancho">
                             <mat-label>Nombre de encargado(a)</mat-label>
-                            <input matInput name="nombreEncar" ngModel type="text" #nombreEnInput="ngModel" required>
+                            <input matInput name="nombreEncar" ngModel type="text" #nombreEnInput="ngModel" required autocomplete="off">
                         </mat-form-field>
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
                         <mat-form-field class="ancho">
                             <mat-label>Apellidos de encargado(a)</mat-label>
-                            <input matInput name="apellidos" ngModel type="text" #apellidosInput="ngModel" required >
+                            <input matInput name="apellidos" ngModel type="text" #apellidosInput="ngModel" required autocomplete="off">
                         </mat-form-field>
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -51,7 +55,7 @@
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
                         <mat-form-field class="ancho">
                             <mat-label>Número de documento</mat-label>
-                            <input matInput name="num_doc" ngModel type="text" #num_docInput="ngModel" required>
+                            <input matInput name="num_doc" ngModel type="text" #num_docInput="ngModel" required autocomplete="off">
                         </mat-form-field>
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -65,31 +69,30 @@
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
                         <mat-form-field appearance="fill" class="ancho">
-                            <mat-label>Localidad</mat-label>
-                            <mat-select name="localidad" ngModel #localidadInput="ngModel">
-                                <mat-option *ngFor="let item of localidades" [value]="item">
-                                    {{item.nombre}}
-                                </mat-option>
-                            </mat-select>
+                            <mat-label>Dirección</mat-label>
+                            <input matInput name="direccion" type="text" autocomplete="off" 
+                            placeholder="Ingrese la dirección donde se encuentra la fundación" 
+                            autocapitalize="off" class="form-group" #search > 
+                            
                         </mat-form-field>
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
                         <mat-form-field class="ancho">
                             <mat-label>Correo electrónico</mat-label>
-                            <input matInput name="correo" ngModel type="text" #correoInput="ngModel" required>
+                            <input matInput name="correo" ngModel type="text" #correoInput="ngModel" required autocomplete="off">
                         </mat-form-field>
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="1" [rowspan]="1" >
                             <mat-form-field class="ancho">
                               <mat-label>Número de celular</mat-label>
                               <span matPrefix>+57 &nbsp;</span>
-                              <input type="tel" name="num_cel" ngModel #numInput="ngModel" required matInput placeholder="320559628">
+                              <input type="tel" name="num_cel" ngModel #numInput="ngModel" required matInput placeholder="320559628" autocomplete="off">
                             </mat-form-field>
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="1" [rowspan]="1" >
                         <mat-form-field class="ancho">
                             <mat-label>Contraseña</mat-label>
-                            <input matInput name="contrasena" ngModel type="password" #passwordInput ="ngModel" required>
+                            <input matInput name="contrasena" ngModel type="password" #passwordInput ="ngModel" required autocomplete="off">
                         </mat-form-field>
                     </mat-grid-tile>
                 </mat-grid-list>
