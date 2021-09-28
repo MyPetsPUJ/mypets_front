@@ -41,7 +41,6 @@ export class CrearFundacionComponent implements OnInit {
     );
   }
 
-  
   tipo_doc: any[] = ['Cédula de ciudadanía', 'Cédula de extranjería'];
   
   
