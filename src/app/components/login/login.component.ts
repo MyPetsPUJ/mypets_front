@@ -5,10 +5,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CrearAdoptanteService } from 'src/app/services/crearAdoptante.service';
 import { CrearFundacionService } from 'src/app/services/crearFundacion.service';
+import { LoginService } from 'src/app/services/login.service';
 
-@Injectable({
-  providedIn: "root"
-})
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,13 +17,14 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   loading = false;
   cuentaNueva = false;
-  private token: string = ""
+  private token: string = '';
   constructor(
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
     private router: Router,
     public crearAdoptanteService: CrearAdoptanteService,
-    public crearFundacionService: CrearFundacionService
+    public crearFundacionService: CrearFundacionService,
+    private loginService: LoginService
   ) {
     this.form = this.fb.group({
       usuario: ['', Validators.required],
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  getToken(){
+  getToken() {
     return this.token;
   }
 
@@ -48,45 +48,39 @@ export class LoginComponent implements OnInit {
       password: form.value.password,
       tipo_usuario: form.value.tipo_usuario,
     };
-    
 
     const usuarioAdoptante: String = 'Adoptante'; //TODO separar en constantes
     const usuarioFundacion: String = 'Fundacion';
 
     //Hace falta hacer una verificación de que usuario y contraseña sean los correctos en el front-end
 
-    if (datosLogin.tipo_usuario === usuarioAdoptante) {
-      this.crearAdoptanteService
+    if (datosLogin.tipo_usuario == usuarioAdoptante) {
+      this.loginService
         .inicioSesion(datosLogin)
-        .subscribe((respuesta) => {
-          console.log(respuesta);
-          this.exitoAdoptante(datosLogin.correo);
+        .subscribe({
+          next: (respuesta) => {
+            console.log(respuesta);
+            this.exitoAdoptante(datosLogin.correo);
+          },
+          error: (e) => {
+            this.error();
+          }
         });
-    } else if (datosLogin.tipo_usuario === usuarioFundacion) {
-      this.crearFundacionService
+    } else if (datosLogin.tipo_usuario == usuarioFundacion) {
+      this.loginService
         .inicioSesion(datosLogin)
-        .subscribe((respuesta) => {
-          console.log(respuesta);
-          const token = respuesta.token;
-          this.token = token
-          //localStorage.setItem('token', JSON.stringify(respuesta.token));
-          this.exitoFundacion(datosLogin.correo); //Cambiar dashboard dependiendo del usuario
+        .subscribe({
+          next: (respuesta) => {
+            this.exitoFundacion(datosLogin.correo);
+          },
+          error: (e) => {
+            this.error();
+          }
         });
     }
   }
 
-  ingresar() {
-    const usuario = this.form.value.usuario;
-    const password = this.form.value.contrasena;
-
-    if (usuario == 'FelipeVan' && password == '12345') {
-      this.exitoAdoptante(usuario);
-    } else {
-      this.error();
-    }
-    console.log(this.form.value);
-  }
-
+  
   error() {
     this._snackBar.open('Usuario o contraseña inválidos', '', {
       duration: 5000,

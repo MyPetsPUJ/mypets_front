@@ -4,14 +4,14 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
-import { LoginComponent } from '../components/login/login.component';
+import { LoginService } from './login.service';
 
 @Injectable()
 export class TokenInterceptorService implements HttpInterceptor {
   constructor(private injector: Injector) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    const authTokenService = this.injector.get(LoginComponent);
+    const authTokenService = this.injector.get(LoginService);
     console.log('Este es el token------');
     console.log(`${authTokenService.getToken()}`);
     const authRequest = req.clone({

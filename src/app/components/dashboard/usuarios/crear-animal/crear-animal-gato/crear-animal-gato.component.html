@@ -124,7 +124,7 @@
                         <mat-grid-tile [colspan]="1" [rowspan]="2">
                             <span class ="seccionVacunas"><ul>
                                 <li *ngFor="let vacuna of lista_vacunas" class="items">
-                                  <mat-checkbox> {{vacuna}} </mat-checkbox>
+                                  <mat-checkbox name="esquema_vac" ngModel #esquema_vacInput="ngModel" > {{vacuna}} </mat-checkbox>
                                 </li>
                               </ul>
                             </span>
