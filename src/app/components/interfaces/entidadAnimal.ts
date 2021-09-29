@@ -13,4 +13,5 @@ export interface EntidadAnimal {
   esquema_vac: string;
   urlImg: string;
   tipo_animal: string;
+  idDueño: string;
 }

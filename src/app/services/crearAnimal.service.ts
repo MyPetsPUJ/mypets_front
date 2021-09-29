@@ -33,6 +33,7 @@ export class CrearAnimalService {
       descripcion: 'Es muy linda',
       esquema_vac: 'Triple felina',
       tipo_animal: 'Gato',
+      idDueño: ''
     },
     {
       urlImg: '../../../assets/Images/milu.png',
@@ -49,6 +50,7 @@ export class CrearAnimalService {
       descripcion: 'Es muy juguetona',
       esquema_vac: 'Rabia',
       tipo_animal: 'Perro',
+      idDueño: '1233511884'
     },
     {
       urlImg: '../../../assets/Images/aslan.png',
@@ -65,6 +67,7 @@ export class CrearAnimalService {
       descripcion: 'Es muy cariñoso',
       esquema_vac: 'Rabia',
       tipo_animal: 'Perro',
+      idDueño: '1233511885'
     },
     {
       urlImg: '../../../assets/Images/akino.png',
@@ -81,6 +84,7 @@ export class CrearAnimalService {
       descripcion: 'Es muy cansón',
       esquema_vac: 'Ninguno',
       tipo_animal: 'Gato',
+      idDueño: ''
     },
     {
       urlImg: '../../../assets/Images/levy.png',
@@ -97,6 +101,7 @@ export class CrearAnimalService {
       descripcion: 'Es muy gordo',
       esquema_vac: 'Refuerzo triple felina',
       tipo_animal: 'Gato',
+      idDueño: '1233511886'
     },
   ];
   getAnimales(): EntidadAnimal[] {

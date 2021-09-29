@@ -1,3 +1,5 @@
+import { EntidadAnimal } from "./entidadAnimal";
+
 export interface UserAdoptante {
     nombre: string; 
     apellidos: string; 
