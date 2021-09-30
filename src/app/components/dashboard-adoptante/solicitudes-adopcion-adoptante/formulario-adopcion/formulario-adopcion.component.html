@@ -5,7 +5,7 @@
       <mat-card class="color">
         <form>
           <div class="centro">
-            <img src="../../../assets/Images/siluetahombre.png" width="10%" />
+            <img src="../../../assets/Images/siluetahombre.png" width="7%" />
           </div>
           <h2 class="titulo">Información Personal</h2>
           <form
@@ -363,6 +363,59 @@
                       required
                     >
                       <mat-option *ngFor="let item of decision" [value]="item">
+                        {{ item }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-grid-tile>
+              </div>
+            </mat-grid-list>
+            <div class="centro">
+              <img src="../../../assets/Images/silueta-perro.png" width="15%" />
+            </div>
+            <h2 class="titulo">Información Relacionada con la tenencia de mascotas</h2>
+            <mat-grid-list cols="2" rowHeight="60px">
+              <div class="centro">
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label
+                      >¿Cuántas horas permanece fuera de casa al día?  </mat-label
+                    >
+                    <input
+                      name="tiempoEnCasaHoras"
+                      ngModel
+                      type="number"
+                      #fundacionSolicitudInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field appearance="fill" class="ancho">
+                    <mat-label>¿Aproximadamente hasta qué hora estaría sola la mascota?</mat-label>
+                    <mat-select
+                      name="horaRegresoCasa"
+                      ngModel
+                      #tipoDocAdoptanteInput="ngModel"
+                      required
+                    >
+                      <mat-option *ngFor="let item of horasSolo" [value]="item">
+                        {{ item }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field appearance="fill" class="ancho">
+                    <mat-label>¿En qué lugar vivirá la mascota?</mat-label>
+                    <mat-select
+                      name="lugarDeVivienda"
+                      ngModel
+                      #tipoDocAdoptanteInput="ngModel"
+                      required
+                    >
+                      <mat-option *ngFor="let item of lugarDeVivienda" [value]="item">
                         {{ item }}
                       </mat-option>
                     </mat-select>

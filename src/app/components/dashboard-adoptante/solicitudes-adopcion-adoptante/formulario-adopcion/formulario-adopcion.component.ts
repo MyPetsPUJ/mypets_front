@@ -20,6 +20,9 @@ export class FormularioAdopcionComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  lugarDeJugar:any[]=["Patio Interior","Patio Exterior","Garaje","Zonas verdes cercanas","Parques en las zonas de domicilio"];
+  lugarDeVivienda:any[]= ["Casa", "Apartamento", "Finca"];
+  horasSolo:any[]= ["No se quedaría solo nunca","Hasta la 1 P.M","Hasta las 6 P.M", "Más de las 6 P.M"];
   decision:any[]= ["SI","NO"];
   temperamentos: any[]=['Amigable','Manso','Brusco','Agresivo'];
   tipo_doc: any[] =['Cédula de ciudadanía', 'Cédula de extranjería'];
