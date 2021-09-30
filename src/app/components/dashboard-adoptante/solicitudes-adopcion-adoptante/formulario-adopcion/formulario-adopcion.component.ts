@@ -20,8 +20,9 @@ export class FormularioAdopcionComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  tipo_doc: any[] =['Cédula de ciudadanía', 'Cédula de extranjería']
+  decision:any[]= ["SI","NO"];
+  temperamentos: any[]=['Amigable','Manso','Brusco','Agresivo'];
+  tipo_doc: any[] =['Cédula de ciudadanía', 'Cédula de extranjería'];
   localidad: any[] = ['1.Usaquén','2.Chapinero','3.Santa Fé','4.San Cristobal',
   '5.Usme', '6. Tunjuelito', '7.Bosa', '8.Kennedy','9.Fontibón','10.Engativá','11.Suba','12.Barrios Unidos',
   '13.Teusaquillo','14.Los Mártires', '15.Antonio Nariño', '16.Puente Aranda', '17.Candelaria',
