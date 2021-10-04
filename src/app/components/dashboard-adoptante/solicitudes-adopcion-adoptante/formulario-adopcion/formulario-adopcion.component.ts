@@ -27,6 +27,8 @@ export class FormularioAdopcionComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  tiempoConocimiento:any[]=["Entre 0 y 2 años","Entre 2 y 5 años","Entre 5 y 10 años","Entre 10 y 20 años","Más de 20 años o toda la vida"];
+  parentezcos:any[]=["Padre o Madre","Tío","Abuelo","Hijo","Sobrino","Primo","Hermano","Otro"];
   periodoAdaptacion:any=["Menos de dos meses", "Entre 2 y 5 meses", "Entre 5 y 12 meses", "El tiempo que sea necesario"];
   casaDeLaMascota:any[]=["Patio","Terraza","Garaje","Dentro de la casa","Dormirá conmigo"];
   actividadesConMascota:any[]=["Senderismo","Montañismo","Ciclovía","Llevarla regularmente al trabajo","Llevarla con usted de viaje","Llevarla con usted a hacer ejercicio","Llevarla a parques"];

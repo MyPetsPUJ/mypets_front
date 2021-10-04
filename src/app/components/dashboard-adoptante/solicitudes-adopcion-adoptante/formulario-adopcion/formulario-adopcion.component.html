@@ -373,7 +373,7 @@
             <div class="centro">
               <img src="../../../assets/Images/silueta-perro.png" width="15%" />
             </div>
-            <h2 class="titulo">Información Relacionada con la tenencia de mascotas</h2>
+            <h2 class="titulo">Información Relacionada con la Tenencia de Mascotas</h2>
             <mat-grid-list cols="2" rowHeight="60px">
               <div class="centro">
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -637,6 +637,161 @@
 
               </div>
             </mat-grid-list>
+
+            <div class="centro">
+              <img src="../../../assets/Images/casa.png" width="25%" />
+            </div>
+            <h2 class="titulo">Referencia Familiar</h2>
+          
+            <mat-grid-list cols="2" rowHeight="60px">
+              <div class="centro">
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Nombres del familiar</mat-label>
+                    <input
+                      name="nombresFamiliar"
+                      ngModel
+                      type="text"
+                      #nombresAdoptanteInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Apellidos del familiar</mat-label>
+                    <input
+                      name="apellidosFamiliar"
+                      ngModel
+                      type="text"
+                      #apellidosFamiliarInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field appearance="fill" class="ancho">
+                    <mat-label>Parentezco</mat-label>
+                    <mat-select
+                      name="parentezcoFamiliar"
+                      ngModel
+                      #parentezcoFamiliarInput="ngModel"
+                      required
+                    >
+                      <mat-option *ngFor="let item of parentezcos" [value]="item">
+                        {{ item }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Número fijo</mat-label>
+                    <input
+                      name="numFijoFamiliar"
+                      ngModel
+                      type="tel"
+                      #numFijoFamiliarInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Número celular</mat-label>
+                    <input
+                      name="numCelularFamiliar"
+                      ngModel
+                      type="tel"
+                      #numCelularFamiliarInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+              </div>
+          </mat-grid-list> 
+          <div class="centro">
+            <img src="../../../assets/Images/casa.png" width="25%" />
+          </div>
+          <h2 class="titulo">Referencia Personal</h2>
+        
+          <mat-grid-list cols="2" rowHeight="60px">
+            <div class="centro">
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field class="ancho">
+                  <mat-label>Nombres del familiar</mat-label>
+                  <input
+                    name="nombresFamiliar"
+                    ngModel
+                    type="text"
+                    #nombresAdoptanteInput="ngModel"
+                    required
+                    matInput
+                  />
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field class="ancho">
+                  <mat-label>Apellidos del familiar</mat-label>
+                  <input
+                    name="apellidosFamiliar"
+                    ngModel
+                    type="text"
+                    #apellidosFamiliarInput="ngModel"
+                    required
+                    matInput
+                  />
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field appearance="fill" class="ancho">
+                  <mat-label>Tiempo de conocimiento en años</mat-label>
+                  <mat-select
+                    name="tiempoDeConocimientoAmigo"
+                    ngModel
+                    #tiempoDeConocimientoAmigoInput="ngModel"
+                    required
+                  >
+                    <mat-option *ngFor="let item of tiempoConocimiento" [value]="item">
+                      {{ item }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field class="ancho">
+                  <mat-label>Número fijo</mat-label>
+                  <input
+                    name="numFijoAmigo"
+                    ngModel
+                    type="tel"
+                    #numFijoAmigoInput="ngModel"
+                    required
+                    matInput
+                  />
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field class="ancho">
+                  <mat-label>Número celular</mat-label>
+                  <input
+                    name="numCelularAmigo"
+                    ngModel
+                    type="tel"
+                    #numCelularAmigoInput="ngModel"
+                    required
+                    matInput
+                  />
+                </mat-form-field>
+              </mat-grid-tile>
+            </div>
+        </mat-grid-list> 
+
+          
 
             <div class="centro">
               <button
