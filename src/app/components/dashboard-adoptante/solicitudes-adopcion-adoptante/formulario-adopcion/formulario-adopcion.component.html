@@ -452,6 +452,187 @@
                     </ul>
                   </span>
                 </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field appearance="fill" class="ancho">
+                    <mat-label>¿Ha tenido mascota anteriormente?</mat-label>
+                    <mat-select
+                      name="mascotaAnterior"
+                      ngModel
+                      #mascotaAnteriorInput="ngModel"
+                      required
+                    >
+                      <mat-option *ngFor="let item of decision" [value]="item">
+                        {{ item }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field appearance="fill" class="ancho">
+                    <mat-label>¿Conoce los cuidados que necesita una mascota?</mat-label>
+                    <mat-select
+                      name="conoceCuidadosMascota"
+                      ngModel
+                      #conoceCuidadosMascotaInput="ngModel"
+                      required
+                    >
+                      <mat-option *ngFor="let item of decision" [value]="item">
+                        {{ item }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field appearance="fill" class="ancho">
+                    <mat-label>¿Tiene veterinario de confianza?</mat-label>
+                    <mat-select
+                      name="veterinarioDeConfianza"
+                      ngModel
+                      #veterinarioDeConfianzaInput="ngModel"
+                      required
+                    >
+                      <mat-option *ngFor="let item of decision" [value]="item">
+                        {{ item }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field appearance="fill" class="ancho">
+                    <mat-label>¿Es consciente de que una mascota representa una responsabilidad por aproximadamente 15 años?</mat-label>
+                    <mat-select
+                      name="conscienteResponsabilidad15años"
+                      ngModel
+                      #conscienteResponsabilidad15añosInput="ngModel"
+                      required
+                    >
+                      <mat-option *ngFor="let item of decision" [value]="item">
+                        {{ item }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="2">
+                  <span class ="actividadesConMascota"><ul>
+                      <li *ngFor="let actividades of actividadesConMascota" class="items">
+                        <mat-checkbox name="actividadesConMascota" ngModel #actividadesConMascotaInput="ngModel" > {{actividades}} </mat-checkbox>
+                      </li>
+                    </ul>
+                  </span>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field appearance="fill" class="ancho">
+                    <mat-label>¿Estaría dispuesto a buscar alternativas como colegio, paseador, entrenador...?</mat-label>
+                    <mat-select
+                      name="alternativaPaseador"
+                      ngModel
+                      #alternativaPaseadorInput="ngModel"
+                      required
+                    >
+                      <mat-option *ngFor="let item of decision" [value]="item">
+                        {{ item }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="2">
+                  <span class ="casaDeLaMascota"><ul>
+                      <li *ngFor="let casa of casaDeLaMascota" class="items">
+                        <mat-checkbox name="casaDeLaMascota" ngModel #casaDeLaMascotaInput="ngModel" > {{casa}} </mat-checkbox>
+                      </li>
+                    </ul>
+                  </span>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field appearance="fill" class="ancho">
+                    <mat-label>¿Estaría dispuesto a llevar el animal con usted en caso de mudarse de la ciudad o país?</mat-label>
+                    <mat-select
+                      name="disposicionMudarseConElAnimal"
+                      ngModel
+                      #disposicionMudarseConElAnimalInput="ngModel"
+                      required
+                    >
+                      <mat-option *ngFor="let item of decision" [value]="item">
+                        {{ item }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field appearance="fill" class="ancho">
+                    <mat-label>¿Estaría dispuesto a pasear al animal al menos dos veces al día (en caso de que sea perro)?</mat-label>
+                    <mat-select
+                      name="alternativaPaseador"
+                      ngModel
+                      #alternativaPaseadorInput="ngModel"
+                      required
+                    >
+                      <mat-option *ngFor="let item of decision" [value]="item">
+                        {{ item }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field appearance="fill" class="ancho">
+                    <mat-label>¿Cuánto tiempo dará para que el animal tenga un periodo de adaptación a la familia y al nuevo hábitat?</mat-label>
+                    <mat-select
+                      name="disposicionAdaptacionAnimal"
+                      ngModel
+                      #disposicionAdaptacionAnimalInput="ngModel"
+                      required
+                    >
+                      <mat-option *ngFor="let periodo of periodoAdaptacion" [value]="periodo">
+                        {{ periodo }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label
+                      >¿Quién asumirá los gastos de la mascota?  </mat-label
+                    >
+                    <input
+                      name="asumirGastosAnimal"
+                      ngModel
+                      type="text"
+                      #asumirGastosAnimalInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label
+                      >¿Quién cuidará la mascota en caso de que usted no lo pueda seguir haciendo?  </mat-label
+                    >
+                    <input
+                      name="adoptanteAlternativoAusencia"
+                      ngModel
+                      type="text"
+                      #adoptanteAlternativoAusenciaInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field appearance="fill" class="ancho">
+                    <mat-label>¿En el lugar donde reside actualmente está permitida la tenencia de animales?</mat-label>
+                    <mat-select
+                      name="permisionTenenciaAnimales"
+                      ngModel
+                      #permisionTenenciaAnimalesInput="ngModel"
+                      required
+                    >
+                      <mat-option *ngFor="let item of decision" [value]="item">
+                        {{ item }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-grid-tile>
                 
 
               </div>
