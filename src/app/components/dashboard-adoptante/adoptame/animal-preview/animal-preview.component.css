@@ -1,0 +1,12 @@
+.alinear
+{
+    text-align: center;
+}
+.justificar 
+{
+    text-align: justify;
+    text-justify: inter-word;
+}
+mat-grid-tile {
+    background: beige;
+  }

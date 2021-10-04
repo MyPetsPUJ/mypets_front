@@ -2,9 +2,9 @@
   <h2 class="titulo">Animales en adopción</h2>
   <div fxLayout="row wrap" fxLayoutGap="16px grid">
     <div
-      fxFlex="33%"
-      fxFlex.xs="100%"
-      fxFlex.sm="50%"
+    fxFlex="25%"
+    fxFlex.xs="100%"
+    fxFlex.sm="75%"
       *ngFor="let animal of animales"
     >
       <mat-card class="mat-elevation-z8">
@@ -19,24 +19,26 @@
           <img
             class="container crop card"
             mat-card-image
-            [src]="'http://localhost:3000/' + animal.urlImg"
+            [src]="animal.urlImg"
             alt="Foto de un animal"
           />
         </div>
 
         <mat-card-content>
-          <p>
+          <div class="cortarTexto"> 
             {{ animal.descripcion }}
-          </p>
+          </div>
+            
+          
           
         </mat-card-content>
         <div class="centro">
           <button
             mat-raised-button
             color="warn"
-            routerLink="solicitud-adopcion"
+            (click)="openPreview(animal)"
           >
-            ENVÍAR FORMULARIO DE ADOPCIÓN
+            Ver a detalle
           </button>
         </div>
       </mat-card>
