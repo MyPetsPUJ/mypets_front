@@ -421,6 +421,39 @@
                     </mat-select>
                   </mat-form-field>
                 </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field appearance="fill" class="ancho">
+                    <mat-label>¿Cuánto estima en gastos mensuales con su mascota?</mat-label>
+                    <mat-select
+                      name="veterinarioGastos"
+                      ngModel
+                      #veterinarioGastos="ngModel"
+                      required
+                    >
+                      <mat-option *ngFor="let item of dineroEstimadoMascota" [value]="item">
+                        {{ item }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="2">
+                  <span class ="seccionJugar"><ul>
+                      <li *ngFor="let item of lugarDeJugar" class="items">
+                        <mat-checkbox name="patioInteriorJugar" ngModel #esquema_vacInput="ngModel" > {{item}} </mat-checkbox>
+                      </li>
+                    </ul>
+                  </span>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="2">
+                  <span class ="gastosMascota"><ul>
+                      <li *ngFor="let gastos of gastosMascota" class="items">
+                        <mat-checkbox name="vaterinarioGastos" ngModel #veterinarioGastosInput="ngModel" > {{gastos}} </mat-checkbox>
+                      </li>
+                    </ul>
+                  </span>
+                </mat-grid-tile>
+                
+
               </div>
             </mat-grid-list>
 

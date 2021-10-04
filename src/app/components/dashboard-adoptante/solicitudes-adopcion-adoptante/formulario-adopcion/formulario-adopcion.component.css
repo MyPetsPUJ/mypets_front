@@ -32,3 +32,12 @@
 .color {
   background-color: #f5f5dcb5;
 }
+.seccionJugar {
+  margin: 50px;
+}
+.items {
+  font-size: 12pt;
+}
+.vacunas {
+  margin-left: 30px;
+}

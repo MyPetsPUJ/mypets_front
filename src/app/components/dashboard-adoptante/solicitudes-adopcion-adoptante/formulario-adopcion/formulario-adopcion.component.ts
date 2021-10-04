@@ -7,7 +7,14 @@ import { InformacionRelacionada } from 'src/app/components/interfaces/formulario
 import { EntidadAnimal } from 'src/app/components/interfaces/entidadAnimal';
 import { Referencias } from 'src/app/components/interfaces/formularioReferencia';
 import { FormularioAdopcion } from 'src/app/components/interfaces/formularioAdopcion';
+import { ThemePalette } from '@angular/material/core';
 
+export interface Vacuna_box {
+  nombre: String;
+  completado: boolean;
+  color: ThemePalette;
+  esquema?: Vacuna_box[];
+}
 
 @Component({
   selector: 'app-formulario-adopcion',
@@ -20,6 +27,8 @@ export class FormularioAdopcionComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  dineroEstimadoMascota:any[]=["Menos de 50 mil pesos", "Entre 50 y 150 mil pesos", "Entre 200 y 300 mil pesos","Más de 300 mil pesos"];
+  gastosMascota:any[]=["Veterinario","Vacunas y desparasitación","Alimento","Accesorios(juguetes,plato,etc)","Cama","Correa","Placa de Identificación"]
   lugarDeJugar:any[]=["Patio Interior","Patio Exterior","Garaje","Zonas verdes cercanas","Parques en las zonas de domicilio"];
   lugarDeVivienda:any[]= ["Casa", "Apartamento", "Finca"];
   horasSolo:any[]= ["No se quedaría solo nunca","Hasta la 1 P.M","Hasta las 6 P.M", "Más de las 6 P.M"];
