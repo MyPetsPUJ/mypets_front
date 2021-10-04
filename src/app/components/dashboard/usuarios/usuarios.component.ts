@@ -17,7 +17,7 @@ import { EntidadAnimal } from '../../interfaces/entidadAnimal';
 })
 export class UsuariosComponent implements OnInit {
   animales: EntidadAnimal[] = [];
-  displayedColumns: string[] = ['nombre','edad','tipo','raza','sexo','tamano','situacion','EsquemaVac'];
+  displayedColumns: string[] = ['foto','edad','tipo','sexo','situacion','EsquemaVac'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
