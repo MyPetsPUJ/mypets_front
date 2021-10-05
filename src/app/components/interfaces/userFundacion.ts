@@ -11,4 +11,7 @@ export interface UserFundacion {
   password: string;
   urlImg: string;
   tipo_usuario: string;
+  direccion: string;
+  mision: string;
+  vision: string;
 }
