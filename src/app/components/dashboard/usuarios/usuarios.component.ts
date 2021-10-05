@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
@@ -7,6 +8,7 @@ import { noop } from 'rxjs';
 import { AnimalService } from 'src/app/services/animal.service';
 import { CrearAnimalService } from 'src/app/services/crearAnimal.service';
 import { EntidadAnimal } from '../../interfaces/entidadAnimal';
+import { PetPreviewComponent } from './pet-preview/pet-preview.component';
 
 
 
@@ -21,7 +23,8 @@ export class UsuariosComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private animalService: CrearAnimalService, private snackbar: MatSnackBar) { }
+  constructor(private animalService: CrearAnimalService, private snackbar: MatSnackBar,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.cargarAnimales();
@@ -50,5 +53,13 @@ export class UsuariosComponent implements OnInit {
       horizontalPosition: 'center',
       verticalPosition : 'bottom'
     } )
+  }
+  visualizarAnimal(animal: EntidadAnimal)
+  {
+    const dialogRef = this.dialog.open(PetPreviewComponent, {
+      width: '600px',
+      height: '500px',
+      data: { animal: animal }
+    });
   }
 }

@@ -23,6 +23,7 @@ import { PublicacionPreviewComponent } from './publicaciones/publicacion-preview
 import { HomePageComponent } from './home-page/home-page.component';
 import { TextoInteresComponent } from './inicio/texto-interes/texto-interes.component';
 import { AnimalesAdoptadosComponent } from './animales-adoptados/animales-adoptados.component';
+import { PetPreviewComponent } from './usuarios/pet-preview/pet-preview.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { AnimalesAdoptadosComponent } from './animales-adoptados/animales-adopta
     PublicacionPreviewComponent,
     HomePageComponent,
     TextoInteresComponent,
-    AnimalesAdoptadosComponent
+    AnimalesAdoptadosComponent,
+    PetPreviewComponent
   ],
   imports: [
     CommonModule,

@@ -1,6 +1,6 @@
 <div class="alinear">
     <h1>{{data.animal.nombre}}</h1>
-    <img [src]="'http://localhost:3000/' + data.animal.urlImg" mat-card-image width="70%" class="container crop">
+    <img [src]="data.animal.urlImg" mat-card-image class="container crop">
     <p> </p>
     <p> </p>
     <div class="justificar"> {{data.animal.descripcion}}</div>
@@ -18,4 +18,3 @@
     <p> </p>
     <button mat-raised-button color="warn">Quiero adoptar</button>
 </div>
-
