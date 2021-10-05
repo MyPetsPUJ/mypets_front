@@ -5,13 +5,11 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { MatDialog } from '@angular/material/dialog';
 import { TextoInteresComponent } from './texto-interes/texto-interes.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-export interface Coordenada {
-  latitude: number | any;
-  longitude: number | any;
-  titulo: string;
-  descripcion: string;
-  direccion: string;
-}
+
+import { Coordenada } from '../../interfaces/entidadCoordenada';
+
+
+
 var activarPuntos: boolean = false;
 @Component({
   selector: 'app-inicio',

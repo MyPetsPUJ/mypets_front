@@ -1,7 +1,13 @@
-import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  NgZone,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import {MapsAPILoader} from "@agm/core";
+import { MapsAPILoader } from '@agm/core';
 declare var google: any;
 
 import { CrearFundacionService } from 'src/app/services/crearFundacion.service';
@@ -38,20 +44,21 @@ export class CrearFundacionComponent implements OnInit {
   public searchElementRef: ElementRef | any;
   ngOnInit(): void {
     this.previsualizacion = '../../../assets/Images/chat.png';
-    this.mapsAPILoader.load().then(
-      () => {
-        let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement,{ types:['address']});
-        autocomplete.setComponentRestrictions({'country' : ['co']});
-        autocomplete.addListener('place_changed' , () => {
-          this.ngZone.run( () => {
-            let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-            if ( place.geometry === undefined || place.geometry == null ) {
-              return;
-            }
-          })
-        })
-      }
-    );
+    this.mapsAPILoader.load().then(() => {
+      let autocomplete = new google.maps.places.Autocomplete(
+        this.searchElementRef.nativeElement,
+        { types: ['address'] }
+      );
+      autocomplete.setComponentRestrictions({ country: ['co'] });
+      autocomplete.addListener('place_changed', () => {
+        this.ngZone.run(() => {
+          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+          if (place.geometry === undefined || place.geometry == null) {
+            return;
+          }
+        });
+      });
+    });
     this.getLocalidadesService.getLocalidadesFundacion().subscribe(
       (res) => {
         this.localidades = res;
@@ -61,8 +68,7 @@ export class CrearFundacionComponent implements OnInit {
   }
 
   tipo_doc: any[] = ['Cédula de ciudadanía', 'Cédula de extranjería'];
-  
-  
+
   onSignUp(form: NgForm) {
     console.log(form.value);
     if (form.invalid) {
@@ -77,7 +83,9 @@ export class CrearFundacionComponent implements OnInit {
         form.value.tipo_doc,
         form.value.num_doc,
         form.value.fecha_creacion,
-        form.value.direccion.nombre,
+        form.value.direccion,
+        form.value.mision,
+        form.value.vision,
         form.value.correo,
         form.value.num_cel,
         form.value.contrasena,

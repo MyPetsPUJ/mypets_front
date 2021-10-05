@@ -4,7 +4,7 @@
 </div>
 <div class = "image">
     <mat-toolbar color="primary">
-        <span> Creación de cuenta - fundación</span>
+        <span> Creación de cuenta - Fundación</span>
     </mat-toolbar>
     <div class= "margen">
         <mat-card>
@@ -59,6 +59,20 @@
                         </mat-form-field>
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field class="ancho">
+                          <mat-label>Misión</mat-label>
+                          <textarea name="mision" ngModel #misionInput="ngModel" required class="descrip"
+                            placeholder="Escriba cual es su misión como fundación animal" matInput></textarea>
+                        </mat-form-field>
+                      </mat-grid-tile>
+                      <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field class="ancho">
+                          <mat-label>Visión</mat-label>
+                          <textarea name="vision" ngModel #visionInput="ngModel" required class="descrip"
+                            placeholder="Escriba cual es su visión como fundación animal" matInput></textarea>
+                        </mat-form-field>
+                      </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
                         <mat-form-field class="ancho" appearance="fill">
                             <mat-label>Fecha de creación</mat-label>
                             <input matInput name="fecha_creacion" ngModel #fechaInput="ngModel" required [matDatepicker]="picker"
@@ -70,7 +84,7 @@
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
                         <mat-form-field appearance="fill" class="ancho">
                             <mat-label>Dirección</mat-label>
-                            <input matInput name="direccion" type="text" autocomplete="off" 
+                            <input matInput name="direccion" ngModel #direccionInput="ngModel" type="text" autocomplete="off" 
                             placeholder="Ingrese la dirección donde se encuentra la fundación" 
                             autocapitalize="off" class="form-group" #search > 
                             
@@ -96,10 +110,6 @@
                         </mat-form-field>
                     </mat-grid-tile>
                 </mat-grid-list>
-                <div>
-                    <button mat-stroked-button type="button" (click)="filePicker.click()">Escoger Imagen</button>
-                    <input class="inputImg" type="file" #filePicker>
-                  </div>
                 <div class = "centro">
                     <button mat-raised-button color="primary" style="margin: 16px;" class = "tamano" type="submit">Crear cuenta</button>
                     <button mat-raised-button color="accent" class = "tamano" routerLink = "/crear-cuenta">Cancelar</button>

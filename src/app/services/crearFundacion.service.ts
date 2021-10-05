@@ -40,7 +40,10 @@ export class CrearFundacionService {
     tipo_doc: string,
     num_doc: string,
     fecha_creacion: string,
-    localidad: string,
+    // localidad: string,
+    direccion: string,
+    mision: string,
+    vision: string,
     correo: string,
     num_celular: string,
     password: string,
@@ -54,7 +57,10 @@ export class CrearFundacionService {
     fd.append('tipo_doc', tipo_doc);
     fd.append('num_doc', num_doc);
     fd.append('fecha_creacion', fecha_creacion);
-    fd.append('localidad', localidad);
+    // fd.append('localidad', localidad);
+    fd.append('direccion', direccion);
+    fd.append('mision', mision);
+    fd.append('vision', vision);
     fd.append('correo', correo);
     fd.append('num_celular', num_celular);
     fd.append('password', password);
