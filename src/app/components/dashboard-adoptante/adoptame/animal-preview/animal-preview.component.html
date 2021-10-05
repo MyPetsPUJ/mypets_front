@@ -1,6 +1,6 @@
 <div class="alinear">
     <h1>{{data.animal.nombre}}</h1>
-    <img [src]="data.animal.urlImg" width="70%">
+    <img [src]="'http://localhost:3000/' + data.animal.urlImg" mat-card-image width="70%">
     <p> </p>
     <p> </p>
     <div class="justificar"> {{data.animal.descripcion}}</div>

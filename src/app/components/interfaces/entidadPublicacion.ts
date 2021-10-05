@@ -2,6 +2,6 @@ export interface EntidadPublicacion {
   titulo: string;
   cuerpo: string;
   fecha: string;
-  imagenPath: string;
+  urlImg: string;
   seccion: string;
 }

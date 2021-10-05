@@ -14,10 +14,10 @@ export class AdoptameComponent implements OnInit {
   animales: EntidadAnimal[] = [];
   nombreFundacion: string | undefined;
   logoFundacion: string | undefined;
-  constructor(private animalService: CrearAnimalService,  public dialog: MatDialog) {}
+  constructor(private animalService: AnimalService,  public dialog: MatDialog) {}
   ngOnInit(): void {
-    this.cargarAnimalesXFundacion();
-    /** 
+    //this.cargarAnimalesXFundacion();
+    
     this.animalService.getAnimales().subscribe({
       next: (res) => {
         this.animales = res;
@@ -26,14 +26,14 @@ export class AdoptameComponent implements OnInit {
         console.log(error);
       }
     });
-    */
+    
   }
-   cargarAnimalesXFundacion()
-  {
-     this.animales = this.animalService.getAnimales();
-     this.nombreFundacion = 'Perritos Felices';
-     this.logoFundacion = "../../../assets/Images/fundacion_logo.png"
-   }
+  //  cargarAnimalesXFundacion()
+  // {
+  //    this.animales = this.animalService.getAnimales();
+  //    this.nombreFundacion = 'Perritos Felices';
+  //    this.logoFundacion = "../../../assets/Images/fundacion_logo.png"
+  //  }
    openPreview(animal: EntidadAnimal | any) 
    {
     const dialogRef = this.dialog.open(AnimalPreviewComponent, {
