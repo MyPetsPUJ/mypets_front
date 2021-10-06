@@ -29,6 +29,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { AgmCoreModule } from '@agm/core';
 import { VentanaReporteComponent } from '../dashboard/reportes/ventana-reporte/ventana-reporte.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 
@@ -67,6 +68,7 @@ import { VentanaReporteComponent } from '../dashboard/reportes/ventana-reporte/v
       apiKey: 'AIzaSyAh5NFAZ5AK5YHY5ybYWQm3rRQF4myY-q8',
       libraries: ["places"]
     }),
+    MatCheckboxModule
   ],
   exports: [
     MatSliderModule,
@@ -92,7 +94,8 @@ import { VentanaReporteComponent } from '../dashboard/reportes/ventana-reporte/v
     MatMenuModule,
     MatDialogModule,
     FlexLayoutModule,
-    AgmCoreModule
+    AgmCoreModule,
+    MatCheckboxModule
   ]
 })
 export class SharedModule { }

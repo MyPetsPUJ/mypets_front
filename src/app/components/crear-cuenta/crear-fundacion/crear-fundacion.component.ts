@@ -40,6 +40,8 @@ export class CrearFundacionComponent implements OnInit {
   file!: File;
   photoSelected: string | ArrayBuffer = '';
   localidades: Localidad[] = [];
+  latitud: number | any;
+  longitud: number | any;
   @ViewChild('search')
   public searchElementRef: ElementRef | any;
   ngOnInit(): void {
@@ -56,6 +58,11 @@ export class CrearFundacionComponent implements OnInit {
           if (place.geometry === undefined || place.geometry == null) {
             return;
           }
+          else 
+          {
+            this.longitud = place.geometry.location?.lng();
+            this.latitud = place.geometry.location?.lat();
+          }
         });
       });
     });
@@ -70,6 +77,8 @@ export class CrearFundacionComponent implements OnInit {
   tipo_doc: any[] = ['Cédula de ciudadanía', 'Cédula de extranjería'];
 
   onSignUp(form: NgForm) {
+    console.log(this.latitud);
+    console.log(this.longitud);
     console.log(form.value);
     if (form.invalid) {
       return;

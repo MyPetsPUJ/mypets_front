@@ -436,15 +436,20 @@
                     </mat-select>
                   </mat-form-field>
                 </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="2">
-                  <span class ="seccionJugar"><ul>
+                <mat-grid-tile [colspan]="1" [rowspan]="3">
+                    <span class ="seccionJugar"> 
+                      <h2>Escoja los lugares donde su mascota podrá jugar: </h2>
+                      <ul>
+                      
                       <li *ngFor="let item of lugarDeJugar" class="items">
-                        <mat-checkbox name="patioInteriorJugar" ngModel #esquema_vacInput="ngModel" > {{item}} </mat-checkbox>
+                        <mat-checkbox name="patioInteriorJugar" ngModel #esquema_vacInput="ngModel" > {{item}} </mat-checkbox> 
                       </li>
                     </ul>
                   </span>
+                  
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="2">
+                  
                   <span class ="gastosMascota"><ul>
                       <li *ngFor="let gastos of gastosMascota" class="items">
                         <mat-checkbox name="vaterinarioGastos" ngModel #veterinarioGastosInput="ngModel" > {{gastos}} </mat-checkbox>
