@@ -14,6 +14,7 @@ import { PublicacionListComponent } from './publicaciones/publicacion-list/publi
 import { PublicacionPreviewComponent } from './publicaciones/publicacion-preview/publicacion-preview/publicacion-preview.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AnimalesAdoptadosComponent } from './animales-adoptados/animales-adoptados.component';
+import { SolicitudesComponent } from './solicitudes/solicitudes.component';
 const routes: Routes = [
   {
     path: '',
@@ -39,6 +40,7 @@ const routes: Routes = [
         path: 'publicaciones/crear-publicacion',
         component: CrearPublicacionComponent,
       },
+      {path: 'solicitudes',component: SolicitudesComponent},
       //{ path: 'publicaciones', component: PublicacionListComponent },
       { path: 'publicaciones/:id', component: PublicacionPreviewComponent },
     ],

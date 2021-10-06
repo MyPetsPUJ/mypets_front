@@ -21,7 +21,7 @@ nav {
 .nav-links {
   display: flex;
   justify-content: space-around;
-  width: 30%;
+  width: 60%;
 }
 .nav-links li {
   list-style: none;
@@ -46,7 +46,7 @@ nav {
 }
 @media screen and (max-width: 1024px) {
   .nav-links {
-    width: 100%;
+    width: 60%;
   }
 }
 @media screen and (max-width: 768px) {
@@ -97,3 +97,13 @@ nav {
 .toggle .line3 {
   transform: rotate(45deg) translate(-5px, -6px);
 }
+.example-spacer 
+{
+    flex: 1 1 auto;
+}
+.pointer 
+{
+  cursor: pointer;
+  
+}
+
