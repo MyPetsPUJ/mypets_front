@@ -47,6 +47,7 @@ h1 {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 12pt;
   line-height: 20px;
+  color: rgba(0, 0, 0, 0.657);
 }
 ul {
   align-content: left;

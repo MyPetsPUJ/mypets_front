@@ -478,9 +478,13 @@
                     </ul>
                   </span>
                 </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="3">
+                <mat-grid-tile [colspan]="1" [rowspan]="4">
                   <span class="gastosMascota"
                     ><ul>
+                      <h1>
+                        De los siguientes items, ¿Cuáles está dispuesto a asumir
+                        para los gastos del animal?:
+                      </h1>
                       <li *ngFor="let gastos of gastosMascota" class="items">
                         <mat-checkbox
                           name="vaterinarioGastos"
@@ -558,9 +562,10 @@
                     </mat-select>
                   </mat-form-field>
                 </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="2">
+                <mat-grid-tile [colspan]="1" [rowspan]="4">
                   <span class="actividadesConMascota"
                     ><ul>
+                      <h1>¿Qué actividades realizará con su mascota?:</h1>
                       <li
                         *ngFor="let actividades of actividadesConMascota"
                         class="items"
@@ -594,9 +599,10 @@
                     </mat-select>
                   </mat-form-field>
                 </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="2">
+                <mat-grid-tile [colspan]="1" [rowspan]="4">
                   <span class="casaDeLaMascota"
                     ><ul>
+                      <h1>Escoja los lugares donde podrá dormir el animal:</h1>
                       <li *ngFor="let casa of casaDeLaMascota" class="items">
                         <mat-checkbox
                           name="casaDeLaMascota"
@@ -872,6 +878,28 @@
                       required
                       matInput
                     />
+                  </mat-form-field>
+                </mat-grid-tile>
+              </div>
+            </mat-grid-list>
+            <mat-grid-list cols="1" rowHeight="60px">
+              <div class="centro">
+                <mat-grid-tile [colspan]="1" [rowspan]="2">
+                  <mat-form-field class="ancho">
+                    <mat-label
+                      >Explique en un parrafo las razones por las que quiere
+                      adoptar a la mascota</mat-label
+                    >
+                    <textarea
+                      name="razonesAdopcion"
+                      ngModel
+                      type="text"
+                      #razonesAdopcionInput="ngModel"
+                      required
+                      matInput
+                      cols="2"
+                    >
+                    </textarea>
                   </mat-form-field>
                 </mat-grid-tile>
               </div>
