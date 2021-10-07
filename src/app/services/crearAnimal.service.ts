@@ -33,7 +33,8 @@ export class CrearAnimalService {
       descripcion: 'Dwayne Douglas Johnson2​(Hayward, California; 2 de mayo de 1972) es un actor y luchador profesional estadounidense, conocido popularmente como «La Roca» o «The Rock».2​Se desempeñó como luchador profesional para la WWE hasta su retirada oficial en 2019, con el objetivo de centrarse en su carrera artística. Johnson ha participado en una gran diversidad de películas siendo premiado en bastantes de ellas, siendo su papel como Luke Hobbs en The Fast and the Furious uno de los más reconocidos.',
       esquema_vac: 'Triple felina',
       tipo_animal: 'Gato',
-      idDueño: ''
+      idPapa: '',
+      enAdopcion: false
     },
     {
       urlImg: '../../../assets/Images/milu.png',
@@ -50,7 +51,8 @@ export class CrearAnimalService {
       descripcion: 'Es muy juguetona',
       esquema_vac: 'Rabia',
       tipo_animal: 'Perro',
-      idDueño: '1233511884'
+      idPapa: '1233511884',
+      enAdopcion: false
     },
     {
       urlImg: '../../../assets/Images/aslan.png',
@@ -67,7 +69,8 @@ export class CrearAnimalService {
       descripcion: 'Es muy cariñoso',
       esquema_vac: 'Rabia',
       tipo_animal: 'Perro',
-      idDueño: '1233511885'
+      idPapa: '1233511885',
+      enAdopcion: false
     },
     {
       urlImg: '../../../assets/Images/akino.png',
@@ -84,7 +87,8 @@ export class CrearAnimalService {
       descripcion: 'Es muy cansón',
       esquema_vac: 'Ninguno',
       tipo_animal: 'Gato',
-      idDueño: ''
+      idPapa: '',
+      enAdopcion: false
     },
     {
       urlImg: '../../../assets/Images/levy.png',
@@ -101,7 +105,8 @@ export class CrearAnimalService {
       descripcion: 'Es muy gordo',
       esquema_vac: 'Refuerzo triple felina',
       tipo_animal: 'Gato',
-      idDueño: '1233511886'
+      idPapa: '1233511886',
+      enAdopcion: false
     },
   ];
   getAnimales(): EntidadAnimal[] {
@@ -112,6 +117,17 @@ export class CrearAnimalService {
   }
   agregarAnimal(animal: EntidadAnimal) {
     this.animales.unshift(animal);
+  }
+  ponerEnAdopcion(index: number, accion: string)
+  {
+    if(accion == 'publicar')
+    {
+      this.animales[index].enAdopcion = true;
+    }
+    if(accion == 'cancelar')
+    {
+      this.animales[index].enAdopcion = false;
+    }
   }
 
   crearAnimalPerro(

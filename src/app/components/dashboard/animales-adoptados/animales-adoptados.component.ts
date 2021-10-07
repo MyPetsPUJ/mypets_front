@@ -44,11 +44,11 @@ export class AnimalesAdoptadosComponent implements OnInit {
     var j = 0;
     for(i = 0; i < this.animales.length; i++)
     {
-      if(this.animales[i].idDueño != '')
+      if(this.animales[i].idPapa != '')
       {
         for(j = 0; j < this.adoptantes.length; j++)
         {
-          if(this.animales[i].idDueño == this.adoptantes[j].num_doc)
+          if(this.animales[i].idPapa == this.adoptantes[j].num_doc)
           {
             this.infoMostrar = {nombre: this.adoptantes[j].nombre + ' ' + this.adoptantes[j].apellidos,
             cedula: this.adoptantes[j].num_doc,

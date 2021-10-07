@@ -6,8 +6,9 @@
     fxFlex.xs="100%"
     fxFlex.sm="75%"
       *ngFor="let animal of animales"
+      
     >
-      <mat-card class="mat-elevation-z8">
+      <mat-card class="mat-elevation-z8" *ngIf="animal.enAdopcion">
         <mat-card-header>
           <!-- <div mat-card-avatar>
             <img [src]="logoFundacion" class="circulo" />
@@ -28,8 +29,6 @@
           <div class="cortarTexto"> 
             {{ animal.descripcion }}
           </div>
-            
-          
           
         </mat-card-content>
         <div class="centro">
@@ -42,6 +41,7 @@
           </button>
         </div>
       </mat-card>
+      
     </div>
   </div>
 </div>

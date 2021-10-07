@@ -19,7 +19,7 @@ import { PetPreviewComponent } from './pet-preview/pet-preview.component';
 })
 export class UsuariosComponent implements OnInit {
   animales: EntidadAnimal[] = [];
-  displayedColumns: string[] = ['foto','edad','tipo','sexo','situacion','EsquemaVac'];
+  displayedColumns: string[] = ['foto', 'edad', 'tipo', 'sexo', 'situacion', 'EsquemaVac', 'publicar'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -29,8 +29,7 @@ export class UsuariosComponent implements OnInit {
   ngOnInit(): void {
     this.cargarAnimales();
   }
-  cargarAnimales()
-  {
+  cargarAnimales() {
     this.animales = this.animalService.getAnimales();
     this.dataSource = new MatTableDataSource(this.animales);
   }
@@ -43,23 +42,43 @@ export class UsuariosComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  eliminarAnimal(index: number)
-  {
+  eliminarAnimal(index: number) {
     this.animalService.eliminarAnimal(index);
     this.cargarAnimales();
-    this.snackbar.open('Animal eliminado de manera correcta','',
-    {
-      duration: 1500,
-      horizontalPosition: 'center',
-      verticalPosition : 'bottom'
-    } )
+    this.snackbar.open('Animal eliminado de manera correcta', '',
+      {
+        duration: 1500,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom'
+      })
   }
-  visualizarAnimal(animal: EntidadAnimal)
-  {
+  visualizarAnimal(animal: EntidadAnimal) {
     const dialogRef = this.dialog.open(PetPreviewComponent, {
       width: '600px',
       height: '500px',
       data: { animal: animal }
     });
+  }
+  publicarAnimal(i: number, accion: string) {
+    this.animalService.ponerEnAdopcion(i, accion);
+    this.cargarAnimales();
+    if (accion == 'publicar') {
+      this.snackbar.open('Animal publicado en adopción', '',
+        {
+          duration: 1500,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom'
+        });
+    }
+    if (accion == 'cancelar')
+    {
+      this.snackbar.open('Publicación cancelada','',
+      {
+        duration: 1500,
+        horizontalPosition: 'center',
+       verticalPosition : 'bottom'
+      });
+    }
+
   }
 }
