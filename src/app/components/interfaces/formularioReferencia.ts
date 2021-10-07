@@ -1,8 +1,8 @@
 export interface Referencias{
     nombres: String;
     apellidos: String;
-    numFijo: number;
-    numCelular: number;
+    numFijo: String;
+    numCelular: String;
     parentezco: String;
-    tiempoDeConocimiento: number;
+    tiempoDeConocimiento: String;
 }
