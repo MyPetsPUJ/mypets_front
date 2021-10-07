@@ -2,12 +2,12 @@ export interface InformacionFamiliar{
     numPersonasCasa : number;
     numAdultos: number;
     numNiños: number;
-    edadesAdultos : Array<number>;
-    edadesNiños : Array<number>;
+    edadesAdultos : number;
+    edadesNiños : number;
     numMascotas: number;
-    razasMascotas: Array<String>;
-    temperamentoMascotas: Array<String>;
-    tiempoConMascotas: Array<number>;
+    razasMascotas: String;
+    temperamentoMascotas: String;
+    tiempoConMascotas: number;
     nombreFamiliarContacto: String;
     numeroFamiliarContacto: number;
     familiaresDeAcuerdo: boolean;

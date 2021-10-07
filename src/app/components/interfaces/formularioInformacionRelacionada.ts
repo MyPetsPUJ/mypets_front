@@ -1,6 +1,6 @@
 export interface InformacionRelacionada{
     tiempoEnCasaHoras: number;
-    horaRegresoCasa: number;
+    horaRegresoCasa: string;
     lugarDeVivienda: String;
     lugarViviendaDeMascota: boolean;
     patioInteriorJugar: boolean;
