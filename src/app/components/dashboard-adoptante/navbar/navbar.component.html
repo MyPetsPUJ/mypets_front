@@ -1,31 +1,61 @@
-<mat-toolbar color="warn">
-  <span>My Pet-Adoptante</span>
-  <span class="example-spacer"></span>
-  <button mat-button routerLink="/dashboard-adoptante">Home</button>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap"
+    rel="stylesheet"
+  />
+</head>
 
-  <button mat-button routerLink="mapa">Mapa</button>
-  <!--ngfor es para correr un array-->
-  <button mat-button routerLink="adoptame">Adoptame</button>
-  <!--ngfor es para correr un array-->
-  <button mat-button routerLink="get-fundaciones">Fundaciones</button>
-  <!--ngfor es para correr un array-->
-  <button mat-button routerLink="consejos">Consejos</button>
-  <!--ngfor es para correr un array-->
-  <button mat-button routerLink="solicitudes-adopcion-adoptante">
-    Mis solicitudes de adopcion
-  </button>
+<nav>
+  <div class="logo">
+    <h4>The Nav</h4>
+  </div>
   <span class="example-spacer"></span>
-  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-    <mat-icon>more_vert</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="mi_cuenta">
-      <mat-icon>account_circle</mat-icon>
-      <span>Mi cuenta</span>
-    </button>
-    <button mat-menu-item (click)="loginService.logout()">
-      <mat-icon>logout</mat-icon>
-      <span>Cerrar sesión</span>
-    </button>
-  </mat-menu>
-</mat-toolbar>
+  <ul class="nav-links">
+    <span class="example-spacer"></span>
+    <li><a routerLink="/dashboard-adoptante">Home</a></li>
+    <span class="example-spacer"></span>
+    <li><a routerLink="mapa">Mapa</a></li>
+    <span class="example-spacer"></span>
+    <li><a routerLink="adoptame">Adoptame</a></li>
+    <span class="example-spacer"></span>
+    <li><a routerLink="get-fundaciones">Fundaciones</a></li>
+    <span class="example-spacer"></span>
+    <li><a routerLink="consejos">Consejos</a></li>
+    <span class="example-spacer"></span>
+    <li><a routerLink="solicitudes-adopcion-adoptante">Mis Solicitudes</a></li>
+    <span class="example-spacer"></span>
+  </ul>
+  <span class="example-spacer"></span>
+  <div>
+    <mat-icon
+      [matMenuTriggerFor]="menu"
+      class="pointer"
+      [ngStyle]="{ color: 'white' }"
+      >more_vert</mat-icon
+    >
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="mi_cuenta">
+        <mat-icon>account_circle</mat-icon>
+        <span>Mi cuenta</span>
+      </button>
+      <button mat-menu-item routerLink="solicitudes">
+        <mat-icon>description</mat-icon>
+        <span>Solicitudes de adopción</span>
+      </button>
+      <button mat-menu-item (click)="loginService.logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Cerrar sesión</span>
+      </button>
+    </mat-menu>
+  </div>
+
+  <div class="burger">
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+  </div>
+</nav>
+<script src="navbar.component.ts"></script>

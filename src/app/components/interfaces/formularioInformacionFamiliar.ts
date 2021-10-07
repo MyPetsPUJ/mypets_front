@@ -1,17 +1,16 @@
 export interface InformacionFamiliar{
-    numPersonasCasa : number;
-    numAdultos: number;
-    numNiños: number;
-    edadesAdultos : number;
-    edadesNiños : number;
-    numMascotas: number;
+    numAdultos: String;
+    numNiños: String;
+    edadesAdultos : String;
+    edadesNiños : String;
+    numMascotas: String;
     razasMascotas: String;
     temperamentoMascotas: String;
-    tiempoConMascotas: number;
+    tiempoConMascotas: String;
     nombreFamiliarContacto: String;
-    numeroFamiliarContacto: number;
-    familiaresDeAcuerdo: boolean;
-    familiaresAlergias: boolean;
-    familiaresPlaneaEmbarazo: boolean;
+    numeroFamiliarContacto: String;
+    familiaresDeAcuerdo: String;
+    familiaresAlergias: String;
+    familiaresPlaneaEmbarazo: String;
 }
 

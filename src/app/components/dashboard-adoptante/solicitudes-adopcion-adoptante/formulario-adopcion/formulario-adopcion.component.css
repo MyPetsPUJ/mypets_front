@@ -33,6 +33,7 @@
   background-color: #f5f5dcb5;
 }
 .seccionJugar {
+  text-align: left;
   margin: 50px;
   float: left;
 }
@@ -42,4 +43,12 @@
 .vacunas {
   margin-left: 30px;
 }
-
+h1 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 12pt;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.657);
+}
+ul {
+  align-content: left;
+}

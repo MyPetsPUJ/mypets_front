@@ -168,16 +168,17 @@
               </div>
             </mat-grid-list>
             <div class="centro">
-              <img src="../../../assets/Images/siluetafamilia.png" width="15%" />
+              <img
+                src="../../../assets/Images/siluetafamilia.png"
+                width="15%"
+              />
             </div>
             <h2 class="titulo">Información Familiar</h2>
             <mat-grid-list cols="2" rowHeight="60px">
-              <div class="centro">  
+              <div class="centro">
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field class="ancho">
-                    <mat-label
-                      >Número de adultos en la casa</mat-label
-                    >
+                    <mat-label>Número de adultos en la casa</mat-label>
                     <input
                       name="numAdultos"
                       ngModel
@@ -190,9 +191,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field class="ancho">
-                    <mat-label
-                      >Número de niños en la casa</mat-label
-                    >
+                    <mat-label>Número de niños en la casa</mat-label>
                     <input
                       name="numNiños"
                       ngModel
@@ -235,9 +234,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field class="ancho">
-                    <mat-label
-                      >Número de mascotas en la casa</mat-label
-                    >
+                    <mat-label>Número de mascotas en la casa</mat-label>
                     <input
                       name="fundacionSolicitud"
                       ngModel
@@ -251,28 +248,34 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field class="ancho">
                     <mat-label
-                      >Digite las razas de las mascotas seguidas de una coma ej: (Pitbull, Cocker...)</mat-label
+                      >Digite las razas de las mascotas seguidas de una coma ej:
+                      (Pitbull, Cocker...)</mat-label
                     >
                     <input
                       name="razasMascotas"
                       ngModel
                       type="text"
                       #fundacionSolicitudInput="ngModel"
-                      required
                       matInput
                     />
                   </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field appearance="fill" class="ancho">
-                    <mat-label>Seleccione el temperamento del animal mas agresivo de la casa</mat-label>
+                    <mat-label
+                      >Seleccione el temperamento del animal mas agresivo de la
+                      casa</mat-label
+                    >
                     <mat-select
                       name="temperamentoMascotas"
                       ngModel
                       #tipoDocAdoptanteInput="ngModel"
                       required
                     >
-                      <mat-option *ngFor="let item of temperamentos" [value]="item">
+                      <mat-option
+                        *ngFor="let item of temperamentos"
+                        [value]="item"
+                      >
                         {{ item }}
                       </mat-option>
                     </mat-select>
@@ -281,7 +284,8 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field class="ancho">
                     <mat-label
-                      >Tiempo en años que lleva con esa mascota (digite 0 en caso de no tener)</mat-label
+                      >Tiempo en años que lleva con esa mascota (digite 0 en
+                      caso de no tener)</mat-label
                     >
                     <input
                       name="tiempoConMascotas"
@@ -296,8 +300,9 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field class="ancho">
                     <mat-label
-                      >Nombre de un familiar al que se pueda contactar en caso de que usted no esté </mat-label
-                    >
+                      >Nombre de un familiar al que se pueda contactar en caso
+                      de que usted no esté
+                    </mat-label>
                     <input
                       name="nombreFamiliarContacto"
                       ngModel
@@ -310,9 +315,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field class="ancho">
-                    <mat-label
-                      >Número de teléfono de ese familiar </mat-label
-                    >
+                    <mat-label>Número de teléfono de ese familiar </mat-label>
                     <input
                       name="numeroFamiliarContacto"
                       ngModel
@@ -325,7 +328,10 @@
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field appearance="fill" class="ancho">
-                    <mat-label>¿Están todas las personas de la casa de acuerdo con tener una mascota más en el hogar?</mat-label>
+                    <mat-label
+                      >¿Están todas las personas de la casa de acuerdo con tener
+                      una mascota más en el hogar?</mat-label
+                    >
                     <mat-select
                       name="familiaresDeAcuerdo"
                       ngModel
@@ -340,7 +346,10 @@
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field appearance="fill" class="ancho">
-                    <mat-label>¿Hay personas con alergias como asma o enfermedades respiratorias?</mat-label>
+                    <mat-label
+                      >¿Hay personas con alergias como asma o enfermedades
+                      respiratorias?</mat-label
+                    >
                     <mat-select
                       name="familiaresAlergias"
                       ngModel
@@ -355,7 +364,10 @@
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field appearance="fill" class="ancho">
-                    <mat-label>¿Hay personas que planeen embarazarse en el próximo año en su casa?</mat-label>
+                    <mat-label
+                      >¿Hay personas que planeen embarazarse en el próximo año
+                      en su casa?</mat-label
+                    >
                     <mat-select
                       name="familiaresPlaneaEmbarazo"
                       ngModel
@@ -373,14 +385,16 @@
             <div class="centro">
               <img src="../../../assets/Images/silueta-perro.png" width="15%" />
             </div>
-            <h2 class="titulo">Información Relacionada con la Tenencia de Mascotas</h2>
+            <h2 class="titulo">
+              Información Relacionada con la Tenencia de Mascotas
+            </h2>
             <mat-grid-list cols="2" rowHeight="60px">
               <div class="centro">
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field class="ancho">
                     <mat-label
-                      >¿Cuántas horas permanece fuera de casa al día?  </mat-label
-                    >
+                      >¿Cuántas horas permanece fuera de casa al día?
+                    </mat-label>
                     <input
                       name="tiempoEnCasaHoras"
                       ngModel
@@ -393,7 +407,10 @@
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field appearance="fill" class="ancho">
-                    <mat-label>¿Aproximadamente hasta qué hora estaría sola la mascota?</mat-label>
+                    <mat-label
+                      >¿Aproximadamente hasta qué hora estaría sola la
+                      mascota?</mat-label
+                    >
                     <mat-select
                       name="horaRegresoCasa"
                       ngModel
@@ -415,7 +432,10 @@
                       #tipoDocAdoptanteInput="ngModel"
                       required
                     >
-                      <mat-option *ngFor="let item of lugarDeVivienda" [value]="item">
+                      <mat-option
+                        *ngFor="let item of lugarDeVivienda"
+                        [value]="item"
+                      >
                         {{ item }}
                       </mat-option>
                     </mat-select>
@@ -423,36 +443,56 @@
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field appearance="fill" class="ancho">
-                    <mat-label>¿Cuánto estima en gastos mensuales con su mascota?</mat-label>
+                    <mat-label
+                      >¿Cuánto estima en gastos mensuales con su
+                      mascota?</mat-label
+                    >
                     <mat-select
                       name="veterinarioGastos"
                       ngModel
                       #veterinarioGastos="ngModel"
                       required
                     >
-                      <mat-option *ngFor="let item of dineroEstimadoMascota" [value]="item">
+                      <mat-option
+                        *ngFor="let item of dineroEstimadoMascota"
+                        [value]="item"
+                      >
                         {{ item }}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
                 </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="3">
-                    <span class ="seccionJugar"> 
-                      <h2>Escoja los lugares donde su mascota podrá jugar: </h2>
-                      <ul>
-                      
+                <mat-grid-tile [colspan]="1" [rowspan]="4">
+                  <span class="seccionJugar">
+                    <ul>
+                      <h1>Escoja los lugares donde su mascota podrá jugar:</h1>
                       <li *ngFor="let item of lugarDeJugar" class="items">
-                        <mat-checkbox name="patioInteriorJugar" ngModel #esquema_vacInput="ngModel" > {{item}} </mat-checkbox> 
+                        <mat-checkbox
+                          name="patioInteriorJugar"
+                          ngModel
+                          #esquema_vacInput="ngModel"
+                        >
+                          {{ item }}
+                        </mat-checkbox>
                       </li>
                     </ul>
                   </span>
-                  
                 </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="2">
-                  
-                  <span class ="gastosMascota"><ul>
+                <mat-grid-tile [colspan]="1" [rowspan]="4">
+                  <span class="gastosMascota"
+                    ><ul>
+                      <h1>
+                        De los siguientes items, ¿Cuáles está dispuesto a asumir
+                        para los gastos del animal?:
+                      </h1>
                       <li *ngFor="let gastos of gastosMascota" class="items">
-                        <mat-checkbox name="vaterinarioGastos" ngModel #veterinarioGastosInput="ngModel" > {{gastos}} </mat-checkbox>
+                        <mat-checkbox
+                          name="vaterinarioGastos"
+                          ngModel
+                          #veterinarioGastosInput="ngModel"
+                        >
+                          {{ gastos }}
+                        </mat-checkbox>
                       </li>
                     </ul>
                   </span>
@@ -474,7 +514,9 @@
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field appearance="fill" class="ancho">
-                    <mat-label>¿Conoce los cuidados que necesita una mascota?</mat-label>
+                    <mat-label
+                      >¿Conoce los cuidados que necesita una mascota?</mat-label
+                    >
                     <mat-select
                       name="conoceCuidadosMascota"
                       ngModel
@@ -504,7 +546,10 @@
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field appearance="fill" class="ancho">
-                    <mat-label>¿Es consciente de que una mascota representa una responsabilidad por aproximadamente 15 años?</mat-label>
+                    <mat-label
+                      >¿Es consciente de que una mascota representa una
+                      responsabilidad por aproximadamente 15 años?</mat-label
+                    >
                     <mat-select
                       name="conscienteResponsabilidad15años"
                       ngModel
@@ -517,17 +562,31 @@
                     </mat-select>
                   </mat-form-field>
                 </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="2">
-                  <span class ="actividadesConMascota"><ul>
-                      <li *ngFor="let actividades of actividadesConMascota" class="items">
-                        <mat-checkbox name="actividadesConMascota" ngModel #actividadesConMascotaInput="ngModel" > {{actividades}} </mat-checkbox>
+                <mat-grid-tile [colspan]="1" [rowspan]="4">
+                  <span class="actividadesConMascota"
+                    ><ul>
+                      <h1>¿Qué actividades realizará con su mascota?:</h1>
+                      <li
+                        *ngFor="let actividades of actividadesConMascota"
+                        class="items"
+                      >
+                        <mat-checkbox
+                          name="actividadesConMascota"
+                          ngModel
+                          #actividadesConMascotaInput="ngModel"
+                        >
+                          {{ actividades }}
+                        </mat-checkbox>
                       </li>
                     </ul>
                   </span>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field appearance="fill" class="ancho">
-                    <mat-label>¿Estaría dispuesto a buscar alternativas como colegio, paseador, entrenador...?</mat-label>
+                    <mat-label
+                      >¿Estaría dispuesto a buscar alternativas como colegio,
+                      paseador, entrenador...?</mat-label
+                    >
                     <mat-select
                       name="alternativaPaseador"
                       ngModel
@@ -540,17 +599,28 @@
                     </mat-select>
                   </mat-form-field>
                 </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="2">
-                  <span class ="casaDeLaMascota"><ul>
+                <mat-grid-tile [colspan]="1" [rowspan]="4">
+                  <span class="casaDeLaMascota"
+                    ><ul>
+                      <h1>Escoja los lugares donde podrá dormir el animal:</h1>
                       <li *ngFor="let casa of casaDeLaMascota" class="items">
-                        <mat-checkbox name="casaDeLaMascota" ngModel #casaDeLaMascotaInput="ngModel" > {{casa}} </mat-checkbox>
+                        <mat-checkbox
+                          name="casaDeLaMascota"
+                          ngModel
+                          #casaDeLaMascotaInput="ngModel"
+                        >
+                          {{ casa }}
+                        </mat-checkbox>
                       </li>
                     </ul>
                   </span>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field appearance="fill" class="ancho">
-                    <mat-label>¿Estaría dispuesto a llevar el animal con usted en caso de mudarse de la ciudad o país?</mat-label>
+                    <mat-label
+                      >¿Estaría dispuesto a llevar el animal con usted en caso
+                      de mudarse de la ciudad o país?</mat-label
+                    >
                     <mat-select
                       name="disposicionMudarseConElAnimal"
                       ngModel
@@ -565,7 +635,10 @@
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field appearance="fill" class="ancho">
-                    <mat-label>¿Estaría dispuesto a pasear al animal al menos dos veces al día (en caso de que sea perro)?</mat-label>
+                    <mat-label
+                      >¿Estaría dispuesto a pasear al animal al menos dos veces
+                      al día (en caso de que sea perro)?</mat-label
+                    >
                     <mat-select
                       name="alternativaPaseador"
                       ngModel
@@ -580,14 +653,20 @@
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field appearance="fill" class="ancho">
-                    <mat-label>¿Cuánto tiempo dará para que el animal tenga un periodo de adaptación a la familia y al nuevo hábitat?</mat-label>
+                    <mat-label
+                      >¿Cuánto tiempo dará para que el animal tenga un periodo
+                      de adaptación a la familia y al nuevo hábitat?</mat-label
+                    >
                     <mat-select
                       name="disposicionAdaptacionAnimal"
                       ngModel
                       #disposicionAdaptacionAnimalInput="ngModel"
                       required
                     >
-                      <mat-option *ngFor="let periodo of periodoAdaptacion" [value]="periodo">
+                      <mat-option
+                        *ngFor="let periodo of periodoAdaptacion"
+                        [value]="periodo"
+                      >
                         {{ periodo }}
                       </mat-option>
                     </mat-select>
@@ -596,8 +675,8 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field class="ancho">
                     <mat-label
-                      >¿Quién asumirá los gastos de la mascota?  </mat-label
-                    >
+                      >¿Quién asumirá los gastos de la mascota?
+                    </mat-label>
                     <input
                       name="asumirGastosAnimal"
                       ngModel
@@ -611,8 +690,9 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field class="ancho">
                     <mat-label
-                      >¿Quién cuidará la mascota en caso de que usted no lo pueda seguir haciendo?  </mat-label
-                    >
+                      >¿Quién cuidará la mascota en caso de que usted no lo
+                      pueda seguir haciendo?
+                    </mat-label>
                     <input
                       name="adoptanteAlternativoAusencia"
                       ngModel
@@ -625,7 +705,10 @@
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field appearance="fill" class="ancho">
-                    <mat-label>¿En el lugar donde reside actualmente está permitida la tenencia de animales?</mat-label>
+                    <mat-label
+                      >¿En el lugar donde reside actualmente está permitida la
+                      tenencia de animales?</mat-label
+                    >
                     <mat-select
                       name="permisionTenenciaAnimales"
                       ngModel
@@ -638,8 +721,6 @@
                     </mat-select>
                   </mat-form-field>
                 </mat-grid-tile>
-                
-
               </div>
             </mat-grid-list>
 
@@ -647,7 +728,7 @@
               <img src="../../../assets/Images/casa.png" width="25%" />
             </div>
             <h2 class="titulo">Referencia Familiar</h2>
-          
+
             <mat-grid-list cols="2" rowHeight="60px">
               <div class="centro">
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -685,7 +766,10 @@
                       #parentezcoFamiliarInput="ngModel"
                       required
                     >
-                      <mat-option *ngFor="let item of parentezcos" [value]="item">
+                      <mat-option
+                        *ngFor="let item of parentezcos"
+                        [value]="item"
+                      >
                         {{ item }}
                       </mat-option>
                     </mat-select>
@@ -718,85 +802,108 @@
                   </mat-form-field>
                 </mat-grid-tile>
               </div>
-          </mat-grid-list> 
-          <div class="centro">
-            <img src="../../../assets/Images/casa.png" width="25%" />
-          </div>
-          <h2 class="titulo">Referencia Personal</h2>
-        
-          <mat-grid-list cols="2" rowHeight="60px">
+            </mat-grid-list>
             <div class="centro">
-              <mat-grid-tile [colspan]="1" [rowspan]="1">
-                <mat-form-field class="ancho">
-                  <mat-label>Nombres del familiar</mat-label>
-                  <input
-                    name="nombresFamiliar"
-                    ngModel
-                    type="text"
-                    #nombresAdoptanteInput="ngModel"
-                    required
-                    matInput
-                  />
-                </mat-form-field>
-              </mat-grid-tile>
-              <mat-grid-tile [colspan]="1" [rowspan]="1">
-                <mat-form-field class="ancho">
-                  <mat-label>Apellidos del familiar</mat-label>
-                  <input
-                    name="apellidosFamiliar"
-                    ngModel
-                    type="text"
-                    #apellidosFamiliarInput="ngModel"
-                    required
-                    matInput
-                  />
-                </mat-form-field>
-              </mat-grid-tile>
-              <mat-grid-tile [colspan]="1" [rowspan]="1">
-                <mat-form-field appearance="fill" class="ancho">
-                  <mat-label>Tiempo de conocimiento en años</mat-label>
-                  <mat-select
-                    name="tiempoDeConocimientoAmigo"
-                    ngModel
-                    #tiempoDeConocimientoAmigoInput="ngModel"
-                    required
-                  >
-                    <mat-option *ngFor="let item of tiempoConocimiento" [value]="item">
-                      {{ item }}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </mat-grid-tile>
-              <mat-grid-tile [colspan]="1" [rowspan]="1">
-                <mat-form-field class="ancho">
-                  <mat-label>Número fijo</mat-label>
-                  <input
-                    name="numFijoAmigo"
-                    ngModel
-                    type="tel"
-                    #numFijoAmigoInput="ngModel"
-                    required
-                    matInput
-                  />
-                </mat-form-field>
-              </mat-grid-tile>
-              <mat-grid-tile [colspan]="1" [rowspan]="1">
-                <mat-form-field class="ancho">
-                  <mat-label>Número celular</mat-label>
-                  <input
-                    name="numCelularAmigo"
-                    ngModel
-                    type="tel"
-                    #numCelularAmigoInput="ngModel"
-                    required
-                    matInput
-                  />
-                </mat-form-field>
-              </mat-grid-tile>
+              <img src="../../../assets/Images/casa.png" width="25%" />
             </div>
-        </mat-grid-list> 
+            <h2 class="titulo">Referencia Personal</h2>
 
-          
+            <mat-grid-list cols="2" rowHeight="60px">
+              <div class="centro">
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Nombres del familiar</mat-label>
+                    <input
+                      name="nombresFamiliar"
+                      ngModel
+                      type="text"
+                      #nombresAdoptanteInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Apellidos del familiar</mat-label>
+                    <input
+                      name="apellidosFamiliar"
+                      ngModel
+                      type="text"
+                      #apellidosFamiliarInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field appearance="fill" class="ancho">
+                    <mat-label>Tiempo de conocimiento en años</mat-label>
+                    <mat-select
+                      name="tiempoDeConocimientoAmigo"
+                      ngModel
+                      #tiempoDeConocimientoAmigoInput="ngModel"
+                      required
+                    >
+                      <mat-option
+                        *ngFor="let item of tiempoConocimiento"
+                        [value]="item"
+                      >
+                        {{ item }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Número fijo</mat-label>
+                    <input
+                      name="numFijoAmigo"
+                      ngModel
+                      type="tel"
+                      #numFijoAmigoInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                  <mat-form-field class="ancho">
+                    <mat-label>Número celular</mat-label>
+                    <input
+                      name="numCelularAmigo"
+                      ngModel
+                      type="tel"
+                      #numCelularAmigoInput="ngModel"
+                      required
+                      matInput
+                    />
+                  </mat-form-field>
+                </mat-grid-tile>
+              </div>
+            </mat-grid-list>
+            <mat-grid-list cols="1" rowHeight="60px">
+              <div class="centro">
+                <mat-grid-tile [colspan]="1" [rowspan]="2">
+                  <mat-form-field class="ancho">
+                    <mat-label
+                      >Explique en un parrafo las razones por las que quiere
+                      adoptar a la mascota</mat-label
+                    >
+                    <textarea
+                      name="razonesAdopcion"
+                      ngModel
+                      type="text"
+                      #razonesAdopcionInput="ngModel"
+                      required
+                      matInput
+                      cols="2"
+                    >
+                    </textarea>
+                  </mat-form-field>
+                </mat-grid-tile>
+              </div>
+            </mat-grid-list>
 
             <div class="centro">
               <button
