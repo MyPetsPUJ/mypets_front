@@ -1,4 +1,5 @@
 export interface InformacionFamiliar{
+    numPersonasCasa : number;
     numAdultos: number;
     numNiños: number;
     edadesAdultos : number;
