@@ -36,4 +36,6 @@ export class FundacionService {
       `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathDashboard}/${this.pathFundaciones}`
     );
   }
+
+  
 }

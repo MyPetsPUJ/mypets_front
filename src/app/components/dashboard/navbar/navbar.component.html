@@ -15,27 +15,27 @@
     <span class="example-spacer"></span>
     <li><a routerLink="mapa">Mapa</a></li>
     <span class="example-spacer"></span>
-    <li><a routerLink="animales">Animales</a></li>
+    <li *ngIf="userIsAuth"><a routerLink="animales">Mis Animales</a></li>
     <span class="example-spacer"></span>
-    <li><a routerLink="animales-adoptados">Adopciones</a></li>
+    <li *ngIf="userIsAuth"><a routerLink="animales-adoptados">Adopciones</a></li>
     <span class="example-spacer"></span>
-    <li><a routerLink="publicaciones">Publicaciones</a></li>
+    <li *ngIf="userIsAuth"><a routerLink="publicaciones">Mis Publicaciones</a></li>
     <span class="example-spacer"></span>
   </ul>
   <span class="example-spacer"></span>
   <div>
-    <mat-icon [matMenuTriggerFor]="menu" class="pointer" [ngStyle]="{'color':'white'}">more_vert</mat-icon>
+    <mat-icon *ngIf="userIsAuth" [matMenuTriggerFor]="menu" class="pointer" [ngStyle]="{'color':'white'}">more_vert</mat-icon>
     
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="mi_cuenta">
+      <button  mat-menu-item routerLink="mi_cuenta">
         <mat-icon>account_circle</mat-icon>
         <span>Mi cuenta</span>
       </button>
-      <button mat-menu-item routerLink="solicitudes">
+      <button  mat-menu-item routerLink="solicitudes">
         <mat-icon>description</mat-icon>
         <span>Solicitudes de adopción</span>
       </button>
-      <button mat-menu-item (click)="loginService.logout()">
+      <button  mat-menu-item (click)="onLogout()">
         <mat-icon>logout</mat-icon>
         <span>Cerrar sesión</span>
       </button>

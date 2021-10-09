@@ -6,19 +6,24 @@ import { CrearCuentaComponent } from './components/crear-cuenta/crear-cuenta.com
 import { CrearFundacionComponent } from './components/crear-cuenta/crear-fundacion/crear-fundacion.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './guards/auth.guard';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'crear-cuenta', component: CrearCuentaComponent },
   { path: 'crear-cuenta/crear-adoptante', component: CrearAdoptanteComponent },
   { path: 'crear-cuenta/crear-fundacion', component: CrearFundacionComponent },
-  { path: 'crear-cuenta/crear-adoptante-reactivo', component: CrearAdoptanteReactivoComponent},
+  {
+    path: 'crear-cuenta/crear-adoptante-reactivo',
+    component: CrearAdoptanteReactivoComponent,
+  },
   {
     path: 'dashboard',
     loadChildren: () =>
       import('./components/dashboard/dashboard.module').then(
         (x) => x.DashboardModule
       ),
+    canActivate: [AuthGuard],
   },
   {
     path: 'dashboard-adoptante',
@@ -26,10 +31,12 @@ const routes: Routes = [
       import(
         './components/dashboard-adoptante/dashboard-adoptante.module'
       ).then((x) => x.DashboardAdoptanteModule),
+    canActivate: [AuthGuard],
   }, //Carga perezosa
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  providers: [AuthGuard],
 })
 export class AppRoutingModule {}
