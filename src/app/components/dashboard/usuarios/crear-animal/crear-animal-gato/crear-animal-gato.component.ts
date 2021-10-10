@@ -6,6 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { CrearAnimalService } from 'src/app/services/crearAnimal.service';
 import { VacunasService } from 'src/app/services/vacunas.service';
 import { Vacuna } from 'src/app/components/interfaces/entidadVacuna';
+import { Router } from '@angular/router';
 
 export interface Vacuna_box {
   nombre: String;
@@ -29,7 +30,8 @@ export class CrearAnimalGatoComponent implements OnInit {
   constructor(
     public crearGatoService: CrearAnimalService,
     private sanitizer: DomSanitizer,
-    private getVacunasService: VacunasService
+    private getVacunasService: VacunasService,
+    private _router: Router
   ) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 19, 0, 1);
@@ -186,6 +188,7 @@ export class CrearAnimalGatoComponent implements OnInit {
         (res) => console.log(res),
         (err) => console.log(err)
       );
+      this._router.navigate(['/dashboard/animales']);
   }
 
   onPhotoSelected(event: any): void {
