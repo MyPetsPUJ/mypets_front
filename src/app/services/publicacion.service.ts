@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { ServicioBaseService } from './servicioBase.service';
 import {UserFundacion} from '../components/interfaces/userFundacion';
 import { Observable } from 'rxjs';
+import {map} from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +17,8 @@ export class PublicacionService {
   dashAdoptante: string = 'dashboard-adoptante'
   subTipoEntidad: string = 'publicaciones';
   entidadConsejos: string = 'consejos';
+
+  publis: EntidadPublicacion[] = [];
 
   publicaciones: EntidadPublicacion[] = [
     {
@@ -45,8 +48,8 @@ export class PublicacionService {
   ];
   constructor(private http: HttpClient) {}
 
-  getPublicaciones(id: string): Observable<EntidadPublicacion[]> {
-    return this.http.get<EntidadPublicacion[]>(
+  getPublicaciones(id: string) {
+    return this.http.get<{resultado: UserFundacion, publis: EntidadPublicacion[]}>(
       `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${id}`
     );
   }

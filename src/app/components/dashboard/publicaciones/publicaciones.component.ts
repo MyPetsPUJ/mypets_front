@@ -21,7 +21,23 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PublicacionesComponent implements OnInit {
   publicaciones: EntidadPublicacion[] = [];
   publi: EntidadPublicacion | undefined;
-  userFundacion: UserFundacion | undefined;
+  userFundacion: UserFundacion = {
+    nombreFund: '',
+    nombreEncar: '',
+    apellidosEncar: '',
+    tipo_doc: '',
+    num_doc: '',
+    fecha_creacion: '',
+    correo: '',
+    num_celular: '',
+    password: '',
+    urlImg: '',
+    tipo_usuario: '',
+    direccion: '',
+    mision: '',
+    vision: '',
+    publicaciones: []
+  };
   userId: string = '';
   id: string = '';
   displayedColumns: String[] = [
@@ -76,10 +92,12 @@ export class PublicacionesComponent implements OnInit {
   cargarPublicaciones() {
     this.publicacionService.getPublicaciones(this.userId).subscribe((res) => {
       console.log(res)
-      this.publicaciones = res
-      
-      
-     
+      console.log("publis", res.publis)
+      console.log("user", res.resultado)
+      this.userFundacion = res.resultado
+      console.log("ahora siiuuu", this.userFundacion)
+      this.publicaciones = res.publis
+      console.log("ahora si", this.publicaciones)
       // this.publicaciones = this.userFundacion.publicaciones;
     });
   }

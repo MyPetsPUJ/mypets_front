@@ -1,6 +1,6 @@
 <div class="alinear">
     <h1>{{data.publicacion.titulo}}</h1>
-    <img [src]="data.publicacion.imagenPath" width="70%">
+    <img [src]="'http://localhost:3000/' + data.publicacion.urlImg" width="70%">
     <p> </p>
     <p> </p>
     <div class="justificar"> 
@@ -8,5 +8,5 @@
     </div>
     <p> </p>
     <p> </p>
-    <p>publicado el {{data.publicacion.fecha  |  date:'dd/MM/yyyy'}}</p>
+    <p>Fecha de publicación: {{data.publicacion.fecha  |  date:'dd/MM/yyyy'}}</p>
 </div>
