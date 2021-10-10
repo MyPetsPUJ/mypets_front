@@ -3,6 +3,7 @@ import { MenuService } from 'src/app/services/menu.service';
 import { LoginService } from 'src/app/services/login.service';
 import { Menu } from '../../interfaces/menu';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -12,16 +13,18 @@ import { Subscription } from 'rxjs';
 export class NavbarComponent implements OnInit, OnDestroy {
   menu: Menu[] = [];
   userIsAuth = false;
+  userId: string = '';
   private authListenerSubs: Subscription | undefined;
 
   constructor(
     private menuService: MenuService,
-    public authService: LoginService
+    public authService: LoginService, private _router: Router
   ) {}
 
   ngOnInit(): void {
     this.correrNavbar();
     this.userIsAuth = this.authService.getIsAuth();
+    this.userId = this.authService.getUserId();
     this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuth => {
       this.userIsAuth = isAuth;
     });
@@ -56,5 +59,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   onLogout() {
     this.authService.logout();
+  }
+
+  verPublicaciones(id: string){
+    this._router.navigate(['/publicaciones', id]);
   }
 }

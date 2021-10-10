@@ -4,4 +4,5 @@ export interface EntidadPublicacion {
   fecha: string;
   urlImg: string;
   seccion: string;
+  autorPubli: string;
 }

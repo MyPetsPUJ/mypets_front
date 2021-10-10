@@ -1,3 +1,5 @@
+import { EntidadPublicacion } from "./entidadPublicacion";
+
 export interface UserFundacion {
   nombreFund: string;
   nombreEncar: string;
@@ -14,4 +16,5 @@ export interface UserFundacion {
   direccion: string;
   mision: string;
   vision: string;
+  publicaciones: Array<EntidadPublicacion>
 }

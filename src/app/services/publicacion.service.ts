@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { EntidadPublicacion } from '../components/interfaces/entidadPublicacion';
 import { HttpClient } from '@angular/common/http';
 import { ServicioBaseService } from './servicioBase.service';
+import {UserFundacion} from '../components/interfaces/userFundacion';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +24,7 @@ export class PublicacionService {
       fecha: Date().toLocaleString(),
       urlImg: '../../../assets/Images/dog-form.png',
       seccion: 'Adopción',
+      autorPubli: ''
     },
     {
       titulo: 'Lily esta sin hogar',
@@ -29,6 +32,7 @@ export class PublicacionService {
       fecha: Date().toLocaleString(),
       urlImg: 'src/assets/Images/dog-form.png',
       seccion: 'Adopción',
+      autorPubli: ''
     },
     {
       titulo: 'Adopta a Laura!',
@@ -36,15 +40,18 @@ export class PublicacionService {
       fecha: Date().toLocaleString(),
       urlImg: '../../../assets/Images/dog-form.png',
       seccion: 'Adopción',
+      autorPubli: ''
     },
   ];
   constructor(private http: HttpClient) {}
 
-  getPublicaciones() {
+  getPublicaciones(id: string): Observable<EntidadPublicacion[]> {
     return this.http.get<EntidadPublicacion[]>(
-      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}`
+      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${id}`
     );
   }
+
+
 
   getConsejos() {
     return this.http.get<EntidadPublicacion[]>(

@@ -19,7 +19,7 @@
     <span class="example-spacer"></span>
     <li *ngIf="userIsAuth"><a routerLink="animales-adoptados">Adopciones</a></li>
     <span class="example-spacer"></span>
-    <li *ngIf="userIsAuth"><a routerLink="publicaciones">Mis Publicaciones</a></li>
+    <li *ngIf="userIsAuth"><a [routerLink]="['publicaciones', userId]">Mis Publicaciones</a></li>
     <span class="example-spacer"></span>
   </ul>
   <span class="example-spacer"></span>

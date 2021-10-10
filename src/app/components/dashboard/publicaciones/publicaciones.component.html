@@ -1,4 +1,4 @@
-<div *ngIf="publicaciones.length > 0">
+<div>
   <div class="mat-elevation-z8" class="tam">
     <mat-toolbar>
       <span>Mis Publicaciones</span>
@@ -12,7 +12,7 @@
         <mat-icon> add</mat-icon>
       </button>
     </mat-toolbar>
-    <mat-form-field appearance="standard">
+    <!-- <mat-form-field appearance="standard">
       <mat-label>Filtro</mat-label>
       <input
         matInput
@@ -20,11 +20,11 @@
         placeholder="Ingrese su búsqueda"
         #input
       />
-    </mat-form-field>
-    <table mat-table [dataSource]="dataSource" matSort>
+    </mat-form-field> -->
+    <!-- <table mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="imagenPublicacion">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Imagen</th>
-        <td mat-cell *matCellDef="let element">
+        <td mat-cell *matCellDef="let element" *ngIf="userId === element.autorPubli" >
           <img [src]="element.imagenPath" width="100%" class="pointer circulo" matTooltip="ver detalles de publicación" 
           (click)="openDialog(element)"/>
         </td>
@@ -52,12 +52,55 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </table> -->
+    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
+    <div class="content">
+      <h2 class="titulo">Consejos</h2>
+      <div fxLayout="row wrap" fxLayoutGap="16px grid" >
+        <div
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="75%"
+          *ngFor="let publicacion of publicaciones"
+        >
+        <ng-container>
+          <mat-card class="mat-elevation-z8 example-card">
+            <mat-card-header>
+              <div mat-card-avatar>
+                <!-- <img [src]="logoFundacion" class="circulo" /> -->
+              </div>
+              <mat-card-title>{{publicacion.titulo }}</mat-card-title>
+              <!-- <mat-card-subtitle>{{ nombreFundacion }}</mat-card-subtitle> -->
+            </mat-card-header>
+            <div class="parent">
+              <img
+                class="container crop card"
+                mat-card-image
+                [src]="'http://localhost:3000/' + publicacion.urlImg"
+                alt="Photo of a Shiba Inu"
+              />
+            </div>
+            <!-- <div class="centro">
+              <button
+                mat-raised-button
+                color="warn"
+                routerLink="solicitud-adopcion"
+                (click)="openDialog(consejo)"
+              >
+                Visualizar consejo
+              </button>
+            </div> -->
+          </mat-card>
+        </ng-container>
+        </div>
+        
+      </div>
+    </div>
   </div>
   <button mat-button routerLink="/dashboard-adoptante">adoptante</button>
 </div>
-<div *ngIf="publicaciones.length == 0" class="tam">
+
+<!-- <div *ngIf="publicaciones.length == 0" class="tam">
   <mat-toolbar>
     <span>No hay publicaciones por mostrar</span>
     <button
@@ -71,4 +114,4 @@
     </button>
   </mat-toolbar>
   
-</div>
+</div> -->

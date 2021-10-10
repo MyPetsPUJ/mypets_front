@@ -42,7 +42,7 @@ const routes: Routes = [
       },
       {path: 'solicitudes',component: SolicitudesComponent},
       //{ path: 'publicaciones', component: PublicacionListComponent },
-      { path: 'publicaciones/:id', component: PublicacionPreviewComponent },
+      { path: 'publicaciones/:id', component: PublicacionesComponent },
     ],
   },
 ];

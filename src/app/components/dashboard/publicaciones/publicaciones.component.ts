@@ -3,12 +3,15 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { EntidadPublicacion } from '../../interfaces/entidadPublicacion';
+import { UserFundacion } from '../../interfaces/userFundacion';
 import { MatTableDataSource } from '@angular/material/table';
 import { PublicacionService } from 'src/app/services/publicacion.service';
 import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
 import { CrearPublicacionService } from 'src/app/services/crear-publicacion.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PublicacionPreviewComponent } from './publicacion-preview/publicacion-preview/publicacion-preview.component';
+import { LoginService } from 'src/app/services/login.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-publicaciones',
@@ -17,19 +20,29 @@ import { PublicacionPreviewComponent } from './publicacion-preview/publicacion-p
 })
 export class PublicacionesComponent implements OnInit {
   publicaciones: EntidadPublicacion[] = [];
+  publi: EntidadPublicacion | undefined;
+  userFundacion: UserFundacion | undefined;
+  userId: string = '';
+  id: string = '';
   displayedColumns: String[] = [
     'imagenPublicacion',
     'tituloPublicacion',
     'seccionPublicacion',
     'fechaPublicacion',
-    
   ];
+
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  
-  constructor(private publicacionService: CrearPublicacionService,private snackbar: MatSnackBar, 
-    public dialog: MatDialog) {}
+
+  constructor(
+    private publicacionService: PublicacionService,
+    private snackbar: MatSnackBar,
+    public dialog: MatDialog,
+    private authService: LoginService,
+    private route: ActivatedRoute,
+    private _router: Router
+  ) {}
 
   ngOnInit(): void {
     /*this.publicacionService.getPublicaciones()
@@ -37,24 +50,43 @@ export class PublicacionesComponent implements OnInit {
       res => console.log(res),
       err => console.log(err)
     )*/
+    this.userId = this.authService.getUserId();
+    console.log('Este es el id', this.userId);
     this.cargarPublicaciones();
+    // this.id = this.route.snapshot.paramMap.get('id')!;
+    // console.log('Id:', this.id);
+    // this.route.paramMap.subscribe((params) => {
+    //   if (params.has('id')) {
+    //     this.publicacionService
+    //       .getPublicaciones(params.get('id')!)
+    //       .subscribe((publis) => console.log(publis));
+    //   }
+    //   else{
+    //     return;
+    //   }
+    // });
   }
-  openDialog(publicacion: EntidadPublicacion)
-  {
+  openDialog(publicacion: EntidadPublicacion) {
     const dialogRef = this.dialog.open(PublicacionPreviewComponent, {
       width: '600px',
       height: '500px',
-      data: { publicacion: publicacion }
+      data: { publicacion: publicacion },
     });
   }
   cargarPublicaciones() {
-  this.publicaciones = this.publicacionService.getPublicaciones();
-  this.dataSource = new MatTableDataSource(this.publicaciones);
+    this.publicacionService.getPublicaciones(this.userId).subscribe((res) => {
+      console.log(res)
+      this.publicaciones = res
+      
+      
+     
+      // this.publicaciones = this.userFundacion.publicaciones;
+    });
   }
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
+  // ngAfterViewInit() {
+  //   this.dataSource.paginator = this.paginator;
+  //   this.dataSource.sort = this.sort;
+  // }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
