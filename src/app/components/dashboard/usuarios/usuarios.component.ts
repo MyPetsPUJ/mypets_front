@@ -7,7 +7,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { noop } from 'rxjs';
 import { AnimalService } from 'src/app/services/animal.service';
 import { CrearAnimalService } from 'src/app/services/crearAnimal.service';
+import { LoginService } from 'src/app/services/login.service';
 import { EntidadAnimal } from '../../interfaces/entidadAnimal';
+import { UserFundacion } from '../../interfaces/userFundacion';
 import { PetPreviewComponent } from './pet-preview/pet-preview.component';
 
 
@@ -19,19 +21,31 @@ import { PetPreviewComponent } from './pet-preview/pet-preview.component';
 })
 export class UsuariosComponent implements OnInit {
   animales: EntidadAnimal[] = [];
+  userId: string = '';
+  userFundacion: UserFundacion | undefined;
   displayedColumns: string[] = ['foto', 'edad', 'tipo', 'sexo', 'situacion', 'EsquemaVac', 'publicar'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private animalService: CrearAnimalService, private snackbar: MatSnackBar,
-    public dialog: MatDialog) { }
+  constructor(private crearAnimalService: CrearAnimalService, private snackbar: MatSnackBar,
+    public dialog: MatDialog, private authService: LoginService, private animalService: AnimalService) { }
 
   ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+    console.log('Este es el id', this.userId);
     this.cargarAnimales();
   }
+
   cargarAnimales() {
-    this.animales = this.animalService.getAnimales();
-    this.dataSource = new MatTableDataSource(this.animales);
+    // this.animales = this.crearAnimalService.getAnimales();
+    // this.dataSource = new MatTableDataSource(this.animales);
+    this.animalService.populateAnimales(this.userId).subscribe((res) => {
+      console.log("Animales:", res.animales);
+      console.log("User:", res.resultado);
+      this.userFundacion = res.resultado;
+      this.animales = res.animales;
+      this.dataSource = new MatTableDataSource(this.animales)
+    })
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -43,7 +57,7 @@ export class UsuariosComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   eliminarAnimal(index: number) {
-    this.animalService.eliminarAnimal(index);
+    this.crearAnimalService.eliminarAnimal(index);
     this.cargarAnimales();
     this.snackbar.open('Animal eliminado de manera correcta', '',
       {
@@ -60,7 +74,7 @@ export class UsuariosComponent implements OnInit {
     });
   }
   publicarAnimal(i: number, accion: string) {
-    this.animalService.ponerEnAdopcion(i, accion);
+    this.crearAnimalService.ponerEnAdopcion(i, accion);
     this.cargarAnimales();
     if (accion == 'publicar') {
       this.snackbar.open('Animal publicado en adopción', '',

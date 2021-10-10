@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Animal } from '../components/interfaces/usuario';
 import { EntidadAnimal } from '../components/interfaces/entidadAnimal';
 import { HttpClient } from '@angular/common/http';
+import { UserFundacion } from '../components/interfaces/userFundacion';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +11,10 @@ export class AnimalService {
   dominio: string = 'localhost';
   puerto: number = 3000;
   pathApi: string = 'api';
-  pathDashboard: string = 'dashboard-adoptante';
+  pathAdoptante: string = 'dashboard-adoptante';
   pathAdoptame: string = 'adoptame';
+  pathFundacion: string = 'dashboard';
+  pathMisAnimales: string = 'mis-animales';
 
   // animales: Animal[] = [
   //   {nombreAnimal: 'Paca', edad: 11, tipo: 'Gato', raza: 'Carey', tamano: 'Pequeño'},
@@ -23,10 +26,19 @@ export class AnimalService {
   constructor(private http: HttpClient) {}
   getAnimales() {
     return this.http.get<EntidadAnimal[]>(
-      `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathDashboard}/${this.pathAdoptame}`
+      `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathAdoptante}/${this.pathAdoptame}`
     );
   }
-  
+
+  populateAnimales(id: string) {
+    return this.http.get<{
+      resultado: UserFundacion;
+      animales: EntidadAnimal[];
+    }>(
+      `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathFundacion}/${this.pathMisAnimales}/${id}`
+    );
+  }
+
   // getNombre(index: number): string {
   //   return this.animales[index].nombreAnimal;
   // }

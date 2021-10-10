@@ -19,7 +19,7 @@
       <ng-container matColumnDef="foto">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Foto</th>
         <td mat-cell *matCellDef="let element">
-          <img [src]="element.urlImg" class="circulo pointer" [matTooltip]="element.nombre"
+          <img [src]="'http://localhost:3000/' + element.urlImg" class="circulo pointer" [matTooltip]="element.nombre"
             (click)="visualizarAnimal(element)">
         </td>
       </ng-container>

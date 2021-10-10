@@ -21,7 +21,7 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       { path: '', component: HomePageComponent },
-      { path: 'animales', component: UsuariosComponent },
+      { path: 'mis-animales', component: UsuariosComponent },
       { path: 'reportes', component: ReportesComponent },
       { path: 'mi_cuenta', component: MiCuentaComponent },
       { path: 'seleccion-animal', component: SeleccionAnimalComponent },
@@ -43,6 +43,8 @@ const routes: Routes = [
       {path: 'solicitudes',component: SolicitudesComponent},
       //{ path: 'publicaciones', component: PublicacionListComponent },
       { path: 'publicaciones/:id', component: PublicacionesComponent },
+      // {path: 'publicaciones/:id/preview', component: PublicacionPreviewComponent},
+      {path: 'mis-animales/:id', component: UsuariosComponent}
     ],
   },
 ];

@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { EntidadPublicacion } from '../components/interfaces/entidadPublicacion';
 import { HttpClient } from '@angular/common/http';
 import { ServicioBaseService } from './servicioBase.service';
-import {UserFundacion} from '../components/interfaces/userFundacion';
+import { UserFundacion } from '../components/interfaces/userFundacion';
 import { Observable } from 'rxjs';
-import {map} from 'rxjs/operators'
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,7 @@ export class PublicacionService {
   puerto: number = 3000;
   pathIntermedio: string = 'api';
   entidad: string = 'dashboard';
-  dashAdoptante: string = 'dashboard-adoptante'
+  dashAdoptante: string = 'dashboard-adoptante';
   subTipoEntidad: string = 'publicaciones';
   entidadConsejos: string = 'consejos';
 
@@ -27,7 +27,7 @@ export class PublicacionService {
       fecha: Date().toLocaleString(),
       urlImg: '../../../assets/Images/dog-form.png',
       seccion: 'Adopción',
-      autorPubli: ''
+      autorPubli: '',
     },
     {
       titulo: 'Lily esta sin hogar',
@@ -35,7 +35,7 @@ export class PublicacionService {
       fecha: Date().toLocaleString(),
       urlImg: 'src/assets/Images/dog-form.png',
       seccion: 'Adopción',
-      autorPubli: ''
+      autorPubli: '',
     },
     {
       titulo: 'Adopta a Laura!',
@@ -43,18 +43,19 @@ export class PublicacionService {
       fecha: Date().toLocaleString(),
       urlImg: '../../../assets/Images/dog-form.png',
       seccion: 'Adopción',
-      autorPubli: ''
+      autorPubli: '',
     },
   ];
   constructor(private http: HttpClient) {}
 
   getPublicaciones(id: string) {
-    return this.http.get<{resultado: UserFundacion, publis: EntidadPublicacion[]}>(
+    return this.http.get<{
+      resultado: UserFundacion;
+      publis: EntidadPublicacion[];
+    }>(
       `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${id}`
     );
   }
-
-
 
   getConsejos() {
     return this.http.get<EntidadPublicacion[]>(
