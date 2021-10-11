@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-publicacion-preview',
@@ -8,10 +8,18 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class PublicacionPreviewComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { 
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, 
+  public dialogRef: MatDialogRef<PublicacionPreviewComponent>) { 
   }
 
   ngOnInit(): void {
+  }
+  accion(nombre: string)
+  {
+    if(nombre == 'cancelar')
+    {
+      this.dialogRef.close();
+    }
   }
 
 }

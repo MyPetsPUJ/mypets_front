@@ -9,9 +9,7 @@
     <p> </p>
     <p> </p>
     <p>Fecha de publicación: {{data.publicacion.fecha  |  date:'dd/MM/yyyy'}}</p>
-</div>
-<div>
-    <button mat-raised-button color="warn" router-link="/dashboard/publicaciones">
+    <button mat-raised-button color="warn" (click)="accion('cancelar')">
         Cancelar
     </button>
 </div>
