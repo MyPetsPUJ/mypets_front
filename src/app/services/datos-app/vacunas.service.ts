@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Vacuna } from '../components/interfaces/entidadVacuna';
+import { Vacuna } from '../../components/interfaces/datos-app/entidadVacuna';
 
 @Injectable({
   providedIn: 'root',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CrearAnimalService } from 'src/app/services/crearAnimal.service';
-import { EntidadAnimal } from '../../interfaces/entidadAnimal';
-import { AnimalService } from 'src/app/services/animal.service';
+import { CrearAnimalService } from 'src/app/services/animal/crearAnimal.service';
+import { EntidadAnimal } from '../../interfaces/usuarios/entidadAnimal';
+import { AnimalService } from 'src/app/services/animal/animal.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AnimalPreviewComponent } from './animal-preview/animal-preview.component';
 

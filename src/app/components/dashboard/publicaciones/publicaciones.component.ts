@@ -3,14 +3,14 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { EntidadPublicacion } from '../../interfaces/entidadPublicacion';
-import { UserFundacion } from '../../interfaces/userFundacion';
+import { UserFundacion } from '../../interfaces/usuarios/userFundacion';
 import { MatTableDataSource } from '@angular/material/table';
-import { PublicacionService } from 'src/app/services/publicacion.service';
+import { PublicacionService } from 'src/app/services/publicacion/publicacion.service';
 import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
-import { CrearPublicacionService } from 'src/app/services/crear-publicacion.service';
+import { CrearPublicacionService } from 'src/app/services/publicacion/crear-publicacion.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PublicacionPreviewComponent } from './publicacion-preview/publicacion-preview/publicacion-preview.component';
-import { LoginService } from 'src/app/services/login.service';
+import { LoginService } from 'src/app/services/auth/login.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

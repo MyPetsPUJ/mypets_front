@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { UserFundacion } from '../components/interfaces/userFundacion';
+import { UserFundacion } from '../../components/interfaces/usuarios/userFundacion';
 
 @Injectable({
   providedIn: 'root',
@@ -37,5 +37,5 @@ export class FundacionService {
     );
   }
 
-  
+
 }

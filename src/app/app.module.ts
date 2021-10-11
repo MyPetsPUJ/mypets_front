@@ -21,7 +21,7 @@ import { CrearPublicacionComponent } from './components/dashboard/publicaciones/
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './components/interfaces/authInterceptor';
 import { HomeComponent } from './components/home/home.component';
-import { TokenInterceptorService } from './services/token-interceptor.service';
+import { TokenInterceptorService } from './services/auth/token-interceptor.service';
 import { CrearAdoptanteReactivoComponent } from './components/crear-cuenta/crear-adoptante-reactivo/crear-adoptante-reactivo.component';
 
 @NgModule({

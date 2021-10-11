@@ -7,7 +7,7 @@ import { TextoInteresComponent } from './texto-interes/texto-interes.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Coordenada } from '../../interfaces/entidadCoordenada';
-import { LoginService } from 'src/app/services/login.service';
+import { LoginService } from 'src/app/services/auth/login.service';
 import { Subscription } from 'rxjs';
 
 

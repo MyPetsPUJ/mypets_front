@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormularioAdopcion } from '../components/interfaces/formularioAdopcion';
+import { FormularioAdopcion } from '../../components/interfaces/formularios/formularioAdopcion';
 @Injectable({
   providedIn: 'root'
 })

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { EntidadEstadoSolicitudAdopcion } from '../components/interfaces/entidadEstadoSolicitudAdopcion';
+import { EntidadEstadoSolicitudAdopcion } from '../../components/interfaces/solicitud-adopcion/entidadEstadoSolicitudAdopcion';
 
 @Injectable({
   providedIn: 'root'

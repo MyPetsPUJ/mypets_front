@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { UserAdoptante } from '../components/interfaces/userAdoptante';
-import { InicioSesion } from '../components/interfaces/inicioSesion';
+import { UserAdoptante } from '../../components/interfaces/usuarios/userAdoptante';
+import { InicioSesion } from '../../components/interfaces/auth/inicioSesion';
 
 @Injectable({
   providedIn: 'root'

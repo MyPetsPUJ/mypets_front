@@ -3,10 +3,10 @@ import { NgForm } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { Vacuna } from 'src/app/components/interfaces/entidadVacuna';
+import { Vacuna } from 'src/app/components/interfaces/datos-app/entidadVacuna';
 
-import { CrearAnimalService } from 'src/app/services/crearAnimal.service';
-import { VacunasService } from 'src/app/services/vacunas.service';
+import { CrearAnimalService } from 'src/app/services/animal/crearAnimal.service';
+import { VacunasService } from 'src/app/services/datos-app/vacunas.service';
 
 interface HtmlInputEvent extends Event {
   target: (HTMLInputElement & EventTarget) | null;

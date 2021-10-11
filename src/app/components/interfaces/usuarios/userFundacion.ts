@@ -1,4 +1,4 @@
-import { EntidadPublicacion } from './entidadPublicacion';
+import { EntidadPublicacion } from '../entidadPublicacion';
 
 export interface UserFundacion {
   nombreFund: string;

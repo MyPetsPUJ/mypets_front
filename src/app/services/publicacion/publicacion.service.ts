@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { EntidadPublicacion } from '../components/interfaces/entidadPublicacion';
+import { EntidadPublicacion } from '../../components/interfaces/entidadPublicacion';
 import { HttpClient } from '@angular/common/http';
-import { ServicioBaseService } from './servicioBase.service';
-import { UserFundacion } from '../components/interfaces/userFundacion';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+//import { ServicioBaseService } from '../servicioBase.service';
+import { UserFundacion } from '../../components/interfaces/usuarios/userFundacion';
+
 
 @Injectable({
   providedIn: 'root',
