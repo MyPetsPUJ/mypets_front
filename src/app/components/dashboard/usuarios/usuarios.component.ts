@@ -5,11 +5,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { noop } from 'rxjs';
-import { AnimalService } from 'src/app/services/animal.service';
-import { CrearAnimalService } from 'src/app/services/crearAnimal.service';
-import { LoginService } from 'src/app/services/login.service';
-import { EntidadAnimal } from '../../interfaces/entidadAnimal';
-import { UserFundacion } from '../../interfaces/userFundacion';
+import { AnimalService } from 'src/app/services/animal/animal.service';
+import { CrearAnimalService } from 'src/app/services/animal/crearAnimal.service';
+import { LoginService } from 'src/app/services/auth/login.service';
+import { EntidadAnimal } from '../../interfaces/usuarios/entidadAnimal';
+import { UserFundacion } from '../../interfaces/usuarios/userFundacion';
 import { PetPreviewComponent } from './pet-preview/pet-preview.component';
 
 

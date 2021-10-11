@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { CrearAdoptanteService } from 'src/app/services/crearAdoptante.service';
-import { LocalidadesService } from 'src/app/services/localidades.service';
-import { Localidad } from '../../interfaces/entidadLocalidad';
+import { CrearAdoptanteService } from 'src/app/services/adoptante/crearAdoptante.service';
+import { LocalidadesService } from 'src/app/services/datos-app/localidades.service';
+import { Localidad } from '../../interfaces/datos-app/entidadLocalidad';
 
 
 @Component({

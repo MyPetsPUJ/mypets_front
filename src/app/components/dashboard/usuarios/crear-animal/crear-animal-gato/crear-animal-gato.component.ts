@@ -3,9 +3,9 @@ import { NgForm } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
-import { CrearAnimalService } from 'src/app/services/crearAnimal.service';
-import { VacunasService } from 'src/app/services/vacunas.service';
-import { Vacuna } from 'src/app/components/interfaces/entidadVacuna';
+import { CrearAnimalService } from 'src/app/services/animal/crearAnimal.service';
+import { VacunasService } from 'src/app/services/datos-app/vacunas.service';
+import { Vacuna } from 'src/app/components/interfaces/datos-app/entidadVacuna';
 import { Router } from '@angular/router';
 
 export interface Vacuna_box {

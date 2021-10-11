@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Animal } from '../components/interfaces/usuario';
-import { EntidadAnimal } from '../components/interfaces/entidadAnimal';
+
+import { EntidadAnimal } from '../../components/interfaces/usuarios/entidadAnimal';
 import { HttpClient } from '@angular/common/http';
-import { UserFundacion } from '../components/interfaces/userFundacion';
+import { UserFundacion } from '../../components/interfaces/usuarios/userFundacion';
 
 @Injectable({
   providedIn: 'root',

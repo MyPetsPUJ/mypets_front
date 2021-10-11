@@ -2,9 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { CrearAdoptanteService } from 'src/app/services/crearAdoptante.service';
-import { CrearAnimalService } from 'src/app/services/crearAnimal.service';
-import { FormularioAdopcion } from '../../interfaces/formularioAdopcion';
+import { CrearAdoptanteService } from 'src/app/services/adoptante/crearAdoptante.service';
+import { CrearAnimalService } from 'src/app/services/animal/crearAnimal.service';
+import { FormularioAdopcion } from '../../interfaces/formularios/formularioAdopcion';
 export interface Solicitud 
 {
   id: number;

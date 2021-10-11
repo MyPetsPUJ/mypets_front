@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MenuService } from 'src/app/services/menu.service';
-import { LoginService } from 'src/app/services/login.service';
+import { LoginService } from 'src/app/services/auth/login.service';
 import { Menu } from '../../interfaces/menu';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';

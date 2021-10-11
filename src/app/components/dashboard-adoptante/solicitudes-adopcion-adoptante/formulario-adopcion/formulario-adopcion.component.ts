@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { EnviarFormularioAdopcionService } from 'src/app/services/enviar-formulario-adopcion.service';
-import { UserAdoptante } from 'src/app/components/interfaces/userAdoptante';
-import { InformacionFamiliar } from 'src/app/components/interfaces/formularioInformacionFamiliar';
-import { InformacionRelacionada } from 'src/app/components/interfaces/formularioInformacionRelacionada';
-import { EntidadAnimal } from 'src/app/components/interfaces/entidadAnimal';
-import { Referencias } from 'src/app/components/interfaces/formularioReferencia';
-import { FormularioAdopcion } from 'src/app/components/interfaces/formularioAdopcion';
+import { EnviarFormularioAdopcionService } from 'src/app/services/formulario/enviar-formulario-adopcion.service';
+import { UserAdoptante } from 'src/app/components/interfaces/usuarios/userAdoptante';
+import { InformacionFamiliar } from 'src/app/components/interfaces/formularios/formularioInformacionFamiliar';
+import { InformacionRelacionada } from 'src/app/components/interfaces/formularios/formularioInformacionRelacionada';
+import { EntidadAnimal } from 'src/app/components/interfaces/usuarios/entidadAnimal';
+import { Referencias } from 'src/app/components/interfaces/formularios/formularioReferencia';
+import { FormularioAdopcion } from 'src/app/components/interfaces/formularios/formularioAdopcion';
 import { ThemePalette } from '@angular/material/core';
 
 export interface Vacuna_box {

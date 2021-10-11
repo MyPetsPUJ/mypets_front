@@ -10,9 +10,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MapsAPILoader } from '@agm/core';
 declare var google: any;
 
-import { CrearFundacionService } from 'src/app/services/crearFundacion.service';
-import { LocalidadesService } from 'src/app/services/localidades.service';
-import { Localidad } from '../../interfaces/entidadLocalidad';
+import { CrearFundacionService } from 'src/app/services/fundacion/crearFundacion.service';
+import { LocalidadesService } from 'src/app/services/datos-app/localidades.service';
+import { Localidad } from '../../interfaces/datos-app/entidadLocalidad';
 import { Router } from '@angular/router';
 
 interface HtmlInputEvent extends Event {

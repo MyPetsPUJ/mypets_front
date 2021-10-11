@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FundacionService } from 'src/app/services/fundacion.service';
-import { UserFundacion } from '../../interfaces/userFundacion';
+import { FundacionService } from 'src/app/services/fundacion/fundacion.service';
+import { UserFundacion } from '../../interfaces/usuarios/userFundacion';
 
 @Component({
   selector: 'app-fundaciones',

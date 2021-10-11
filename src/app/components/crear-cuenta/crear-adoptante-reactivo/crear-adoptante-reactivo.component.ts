@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
-import { CrearAdoptanteService } from 'src/app/services/crearAdoptante.service';
-import { Localidad } from '../../interfaces/entidadLocalidad';
-import { LocalidadesService } from 'src/app/services/localidades.service';
+import { CrearAdoptanteService } from 'src/app/services/adoptante/crearAdoptante.service';
+import { Localidad } from '../../interfaces/datos-app/entidadLocalidad';
+import { LocalidadesService } from 'src/app/services/datos-app/localidades.service';
 import { DomSanitizer } from '@angular/platform-browser';
 
 

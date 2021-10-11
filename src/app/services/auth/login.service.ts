@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { InicioSesion } from '../components/interfaces/inicioSesion';
+import { InicioSesion } from '../../components/interfaces/auth/inicioSesion';
 
 import { map } from 'rxjs/operators';
 import { Subject } from 'rxjs';
