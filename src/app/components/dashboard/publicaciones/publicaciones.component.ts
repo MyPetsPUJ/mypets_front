@@ -98,13 +98,13 @@ export class PublicacionesComponent implements OnInit {
       console.log("ahora siiuuu", this.userFundacion)
       this.publicaciones = res.publis
       console.log("ahora si", this.publicaciones)
-      // this.publicaciones = this.userFundacion.publicaciones;
+      this.dataSource = new MatTableDataSource(this.publicaciones)
     });
   }
-  // ngAfterViewInit() {
-  //   this.dataSource.paginator = this.paginator;
-  //   this.dataSource.sort = this.sort;
-  // }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
