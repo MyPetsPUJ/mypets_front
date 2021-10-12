@@ -24,9 +24,9 @@
     <span class="example-spacer"></span>
     <li><a routerLink="consejos">Consejos</a></li>
     <span class="example-spacer"></span>
-    <li><a routerLink="/login">Iniciar Sesión</a></li>
+    <li><a routerLink="/login" *ngIf="!usuarioAutenticado">Iniciar Sesión</a></li>
     <span class="example-spacer"></span>
-    <li><a routerLink="/crear-cuenta/crear-adoptante">Registrarse</a></li>
+    <li><a routerLink="/crear-cuenta/crear-adoptante" *ngIf="!usuarioAutenticado">Registrarse</a></li>
     <span class="example-spacer"></span>
     <li><a routerLink="solicitudes-adopcion-adoptante" *ngIf="usuarioAutenticado">Mis Solicitudes</a></li>
     <span class="example-spacer"></span>
