@@ -31,7 +31,6 @@ const routes: Routes = [
       import(
         './components/dashboard-adoptante/dashboard-adoptante.module'
       ).then((x) => x.DashboardAdoptanteModule),
-    canActivate: [AuthGuard],
   }, //Carga perezosa
 ];
 @NgModule({
