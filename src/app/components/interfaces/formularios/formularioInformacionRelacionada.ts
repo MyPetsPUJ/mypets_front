@@ -7,7 +7,7 @@ export interface InformacionRelacionada{
     mascotaAnterior: String;
     conoceCuidadosMascota: String;
     veterinarioDeConfianza: String;
-    conscienteResponsabilidad15años: String;
+    conscienteResponsabilidad15anos: String;
     actividadesConMascota: String;
     alternativaPaseador: String;
     espacioViviendaMascota: String;

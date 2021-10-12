@@ -25,7 +25,7 @@ export class CrearAdoptanteComponent implements OnInit {
     this.maxDate = new Date(currentYear - 18, 11, 31);
   }
   public archivos: any = [];
-  public previsualizacion: string | undefined;
+  public previsualizacion: string | any;
   localidades: Localidad[] = [];
   ngOnInit(): void {
     this.previsualizacion = '../../../assets/Images/adopt.png';
@@ -55,6 +55,7 @@ export class CrearAdoptanteComponent implements OnInit {
     }
     const datosAdoptante = {
       nombre: form.value.nombre,
+      foto: this.previsualizacion,
       apellidos: form.value.apellidos,
       fecha_nacimiento: form.value.fecha_nac,
       tipo_doc: form.value.tipo_doc,

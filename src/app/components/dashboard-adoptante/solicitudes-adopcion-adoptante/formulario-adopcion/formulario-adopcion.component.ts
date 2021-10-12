@@ -127,6 +127,7 @@ export class FormularioAdopcionComponent implements OnInit {
     }
     const adoptante: UserAdoptante = {
       nombre: form.value.nombresAdoptante,
+      foto: '',
       apellidos: form.value.apellidosAdoptante,
       fecha_nacimiento: form.value.fecha_nacimiento,
       tipo_doc: form.value.tipo_doc,
@@ -140,9 +141,9 @@ export class FormularioAdopcionComponent implements OnInit {
     };
     const informacionFamiliar: InformacionFamiliar = {
       numAdultos: form.value.numAdultos,
-      numNiños: form.value.numNiños,
+      numNinos: form.value.numNiños,
       edadesAdultos: form.value.edadesAdultos,
-      edadesNiños: form.value.edadesNiños,
+      edadesNinos: form.value.edadesNiños,
       numMascotas: form.value.numMascotas,
       razasMascotas: form.value.razasMascotas,
       temperamentoMascotas: form.value.temperamentoMascotas,
@@ -162,7 +163,7 @@ export class FormularioAdopcionComponent implements OnInit {
       mascotaAnterior: form.value.mascotaAnterior,
       conoceCuidadosMascota: form.value.conoceCuidadosMascota,
       veterinarioDeConfianza: form.value.veterinarioDeConfianza,
-      conscienteResponsabilidad15años:
+      conscienteResponsabilidad15anos:
         form.value.conscienteResponsabilidad15años,
       actividadesConMascota: form.value.actividadesConMascota,
       alternativaPaseador: form.value.alternativaPaseador,
