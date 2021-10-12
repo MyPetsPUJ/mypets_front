@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
-import { CrearAdoptanteService } from 'src/app/services/crearAdoptante.service';
-import { Localidad } from '../../interfaces/entidadLocalidad';
-import { LocalidadesService } from 'src/app/services/localidades.service';
+import { CrearAdoptanteService } from 'src/app/services/adoptante/crearAdoptante.service';
+import { Localidad } from '../../interfaces/datos-app/entidadLocalidad';
+import { LocalidadesService } from 'src/app/services/datos-app/localidades.service';
 import { DomSanitizer } from '@angular/platform-browser';
 
 
@@ -70,6 +70,7 @@ export class CrearAdoptanteReactivoComponent implements OnInit {
     console.log(this.formRegistro.value)
   }
   sendForm(): any{
+    /*
     const datosAdoptante = {
       nombre: this.formRegistro.value.nombre,
       apellidos: this.formRegistro.value.apellidos,
@@ -84,7 +85,7 @@ export class CrearAdoptanteReactivoComponent implements OnInit {
       tipo_usuario: 'Adoptante',
     };
     this.crearAdoptanteService.crearUsuarioAdoptante(datosAdoptante);
-
+    **/
   }
   onFileInput(event):any{
      const archivo = event.target.files[0];

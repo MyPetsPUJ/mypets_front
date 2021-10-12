@@ -1,6 +1,6 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
-import { EntidadEstadoSolicitudAdopcion } from '../../interfaces/entidadEstadoSolicitudAdopcion';
-import { EstadoSolicitudAdopcionService } from 'src/app/services/estado-solicitud-adopcion.service';
+import { EntidadEstadoSolicitudAdopcion } from '../../interfaces/solicitud-adopcion/entidadEstadoSolicitudAdopcion';
+import { EstadoSolicitudAdopcionService } from 'src/app/services/adopcion/estado-solicitud-adopcion.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';

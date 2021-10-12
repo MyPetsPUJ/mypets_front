@@ -10,9 +10,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MapsAPILoader } from '@agm/core';
 declare var google: any;
 
-import { CrearFundacionService } from 'src/app/services/crearFundacion.service';
-import { LocalidadesService } from 'src/app/services/localidades.service';
-import { Localidad } from '../../interfaces/entidadLocalidad';
+import { CrearFundacionService } from 'src/app/services/fundacion/crearFundacion.service';
+import { LocalidadesService } from 'src/app/services/datos-app/localidades.service';
+import { Localidad } from '../../interfaces/datos-app/entidadLocalidad';
+import { Router } from '@angular/router';
 
 interface HtmlInputEvent extends Event {
   target: (HTMLInputElement & EventTarget) | null;
@@ -30,7 +31,8 @@ export class CrearFundacionComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private getLocalidadesService: LocalidadesService,
     private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private _router: Router
   ) {
     const currentYear = new Date().getFullYear();
     this.maxDate = new Date();
@@ -107,6 +109,7 @@ export class CrearFundacionComponent implements OnInit {
         // const token = respuesta.token;
         // this.token = token;
       });
+      this._router.navigate(['/login']);
   }
 
   onPhotoSelected(event: any): void {

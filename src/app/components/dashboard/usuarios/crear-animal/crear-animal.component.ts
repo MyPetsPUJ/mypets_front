@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Vacuna } from 'src/app/components/interfaces/entidadVacuna';
+import { Router } from '@angular/router';
+import { Vacuna } from 'src/app/components/interfaces/datos-app/entidadVacuna';
 
-import { CrearAnimalService } from 'src/app/services/crearAnimal.service';
-import { VacunasService } from 'src/app/services/vacunas.service';
+import { CrearAnimalService } from 'src/app/services/animal/crearAnimal.service';
+import { VacunasService } from 'src/app/services/datos-app/vacunas.service';
 
 interface HtmlInputEvent extends Event {
   target: (HTMLInputElement & EventTarget) | null;
@@ -22,7 +23,8 @@ export class CrearAnimalComponent implements OnInit {
   constructor(
     public crearPerroService: CrearAnimalService,
     private sanitizer: DomSanitizer,
-    private getVacunasService: VacunasService
+    private getVacunasService: VacunasService,
+    private _router: Router
   ) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 19, 0, 1);
@@ -133,6 +135,7 @@ export class CrearAnimalComponent implements OnInit {
         (res) => console.log(res),
         (err) => console.log(err)
       );
+      this._router.navigate(['/dashboard/animales']);
   }
 
   onPhotoSelected(event: any): void {

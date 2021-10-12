@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Loader } from "@googlemaps/js-api-loader"
 import { MouseEvent as AGMMouseEvent } from '@agm/core';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
@@ -7,6 +7,8 @@ import { TextoInteresComponent } from './texto-interes/texto-interes.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Coordenada } from '../../interfaces/entidadCoordenada';
+import { LoginService } from 'src/app/services/auth/login.service';
+import { Subscription } from 'rxjs';
 
 
 
@@ -17,7 +19,7 @@ var activarPuntos: boolean = false;
   styleUrls: ['./inicio.component.css']
 })
 
-export class InicioComponent implements OnInit {
+export class InicioComponent implements OnInit, OnDestroy {
   geolocalizacion: google.maps.LatLng | any;
   latitude: number | any;
   longitude: number | any;
@@ -30,10 +32,21 @@ export class InicioComponent implements OnInit {
   direccion: string | any;
   textoInteres: string | any;
   tituloInteres: string | any;
-  constructor(public dialog: MatDialog, private _snackBar: MatSnackBar) {
+  private authStatusSub: Subscription | undefined;
+  userIsAuth = false;
+
+  constructor(public dialog: MatDialog, private _snackBar: MatSnackBar, private authService: LoginService) {
   }
   ngOnInit(): void {
     this.geolocalizar();
+    this.userIsAuth = this.authService.getIsAuth();
+    this.authStatusSub = this.authService.getAuthStatusListener().subscribe(isAuth => {
+      this.userIsAuth = isAuth;
+    });
+  }
+
+  ngOnDestroy(){
+    this.authStatusSub?.unsubscribe();
   }
   geolocalizar() {
     if ('geolocation' in navigator) {

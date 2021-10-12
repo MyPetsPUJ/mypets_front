@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { UserAdoptante } from '../components/interfaces/userAdoptante';
-import { InicioSesion } from '../components/interfaces/inicioSesion';
+import { UserAdoptante } from '../../components/interfaces/usuarios/userAdoptante';
+import { InicioSesion } from '../../components/interfaces/auth/inicioSesion';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,7 @@ export class CrearAdoptanteService {
   login: string = "login";
   adoptantes: UserAdoptante[] = [
     {nombre: "Andrés Felipe",
+    foto: "../../../assets/Images/andres.jpg",
       apellidos: "Barreto Mosquera",
       fecha_nacimiento: '03/09/1999',
       tipo_doc: 'Cédula de ciudadanía',
@@ -30,6 +31,7 @@ export class CrearAdoptanteService {
       tipo_usuario:'adoptante'},
 
       {nombre: "Juan Felipe",
+      foto: "../../../assets/Images/felipe.jpg",
       apellidos: "Vanegas Patiño",
       fecha_nacimiento: '04/12/1999',
       tipo_doc: 'Cédula de ciudadanía',
@@ -42,6 +44,7 @@ export class CrearAdoptanteService {
       tipo_usuario:'adoptante'},
 
       {nombre: "Carlos Eduardo",
+      foto: "../../../assets/Images/carlos.jpg",
       apellidos: "Vanegas Briñez",
       fecha_nacimiento: '02/07/1979',
       tipo_doc: 'Cédula de ciudadanía',

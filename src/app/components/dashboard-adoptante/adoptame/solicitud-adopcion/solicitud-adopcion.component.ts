@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { EnviarSolicitudAdopcionService } from 'src/app/services/enviar-solicitud-adopcion.service';
+import { EnviarSolicitudAdopcionService } from 'src/app/services/adopcion/enviar-solicitud-adopcion.service';
 
 
 @Component({

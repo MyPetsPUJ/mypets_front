@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CrearAnimalService } from 'src/app/services/crearAnimal.service';
-import { EntidadAnimal } from '../../interfaces/entidadAnimal';
-import { AnimalService } from 'src/app/services/animal.service';
+import { CrearAnimalService } from 'src/app/services/animal/crearAnimal.service';
+import { EntidadAnimal } from '../../interfaces/usuarios/entidadAnimal';
+import { AnimalService } from 'src/app/services/animal/animal.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AnimalPreviewComponent } from './animal-preview/animal-preview.component';
 
@@ -14,27 +14,29 @@ export class AdoptameComponent implements OnInit {
   animales: EntidadAnimal[] = [];
   nombreFundacion: string | undefined;
   logoFundacion: string | undefined;
-  constructor(private animalService: CrearAnimalService,  public dialog: MatDialog) {}
+  constructor(private animalService: AnimalService,  public dialog: MatDialog) {}
   ngOnInit(): void {
-    this.cargarAnimalesXFundacion();
+    // this.cargarAnimalesXFundacion();
     
-    /** 
+     
     this.animalService.getAnimales().subscribe({
       next: (res) => {
+        console.log(res)
         this.animales = res;
+        console.log("animales", this.animales)
       },
       error: (error) => {
         console.log(error);
       }
     });
-    */
+    
   }
-    cargarAnimalesXFundacion()
-   {
-      this.animales = this.animalService.getAnimales();
-      this.nombreFundacion = 'Perritos Felices';
-      this.logoFundacion = "../../../assets/Images/fundacion_logo.png"
-    }
+  //   cargarAnimalesXFundacion()
+  //  {
+  //     this.animales = this.animalService.getAnimales();
+  //     this.nombreFundacion = 'Perritos Felices';
+  //     this.logoFundacion = "../../../assets/Images/fundacion_logo.png"
+  //   }
    openPreview(animal: EntidadAnimal | any) 
    {
     const dialogRef = this.dialog.open(AnimalPreviewComponent, {

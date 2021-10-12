@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
-import { CrearPublicacionService } from 'src/app/services/crear-publicacion.service';
+import { CrearPublicacionService } from 'src/app/services/publicacion/crear-publicacion.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';

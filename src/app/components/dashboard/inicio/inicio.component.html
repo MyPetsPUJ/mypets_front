@@ -6,12 +6,12 @@
 
     <agm-map class="mapa" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" (mapClick)="mapClicked($event)"
         [mapTypeControl]="true" (mapReady)="mapReady($event)">
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="activarPuntos()">
+      <mat-menu #menu="matMenu" >
+        <button *ngIf="userIsAuth" mat-menu-item (click)="activarPuntos()">
           <mat-icon>room</mat-icon>
           <span>Fijar un punto de interés</span>
         </button>
-        <button mat-menu-item (click)="eliminarPuntos()">
+        <button *ngIf="userIsAuth" mat-menu-item (click)="eliminarPuntos()">
             <mat-icon>delete</mat-icon>
             <span>Eliminar todos los puntos de interés</span>
           </button>

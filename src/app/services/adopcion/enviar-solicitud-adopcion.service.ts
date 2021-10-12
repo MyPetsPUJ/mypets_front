@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { EntidadSolicitudAdopcion } from '../components/interfaces/entidadSolicitudAdopcion';
+import { EntidadSolicitudAdopcion } from '../../components/interfaces/solicitud-adopcion/entidadSolicitudAdopcion';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({

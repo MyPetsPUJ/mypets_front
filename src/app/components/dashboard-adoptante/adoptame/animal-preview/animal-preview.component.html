@@ -16,6 +16,6 @@
     </mat-grid-list>
     <p> </p>
     <p> </p>
-    <button mat-raised-button color="warn">Quiero adoptar</button>
+    <button mat-raised-button color="warn" *ngIf="usuarioAutenticado">Quiero adoptar</button>
 </div>
 

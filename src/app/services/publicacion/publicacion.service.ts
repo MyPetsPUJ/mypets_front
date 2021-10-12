@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { EntidadPublicacion } from '../components/interfaces/entidadPublicacion';
+import { EntidadPublicacion } from '../../components/interfaces/entidadPublicacion';
 import { HttpClient } from '@angular/common/http';
-import { ServicioBaseService } from './servicioBase.service';
+//import { ServicioBaseService } from '../servicioBase.service';
+import { UserFundacion } from '../../components/interfaces/usuarios/userFundacion';
+
 
 @Injectable({
   providedIn: 'root',
@@ -11,9 +13,11 @@ export class PublicacionService {
   puerto: number = 3000;
   pathIntermedio: string = 'api';
   entidad: string = 'dashboard';
-  dashAdoptante: string = 'dashboard-adoptante'
+  dashAdoptante: string = 'dashboard-adoptante';
   subTipoEntidad: string = 'publicaciones';
   entidadConsejos: string = 'consejos';
+
+  publis: EntidadPublicacion[] = [];
 
   publicaciones: EntidadPublicacion[] = [
     {
@@ -22,6 +26,7 @@ export class PublicacionService {
       fecha: Date().toLocaleString(),
       urlImg: '../../../assets/Images/dog-form.png',
       seccion: 'Adopción',
+      autorPubli: '',
     },
     {
       titulo: 'Lily esta sin hogar',
@@ -29,6 +34,7 @@ export class PublicacionService {
       fecha: Date().toLocaleString(),
       urlImg: 'src/assets/Images/dog-form.png',
       seccion: 'Adopción',
+      autorPubli: '',
     },
     {
       titulo: 'Adopta a Laura!',
@@ -36,13 +42,17 @@ export class PublicacionService {
       fecha: Date().toLocaleString(),
       urlImg: '../../../assets/Images/dog-form.png',
       seccion: 'Adopción',
+      autorPubli: '',
     },
   ];
   constructor(private http: HttpClient) {}
 
-  getPublicaciones() {
-    return this.http.get<EntidadPublicacion[]>(
-      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}`
+  getPublicaciones(id: string) {
+    return this.http.get<{
+      resultado: UserFundacion;
+      publis: EntidadPublicacion[];
+    }>(
+      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${id}`
     );
   }
 

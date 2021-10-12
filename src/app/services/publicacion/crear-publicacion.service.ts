@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { EntidadPublicacion } from '../components/interfaces/entidadPublicacion';
+import { EntidadPublicacion } from '../../components/interfaces/entidadPublicacion';
 @Injectable({
   providedIn: 'root',
 })
@@ -26,7 +26,7 @@ export class CrearPublicacionService {
   //     });
   // }
   publicaciones: EntidadPublicacion[] = [
-    { titulo: 'Consejos para perros grandes', cuerpo: 'Limpialos y bañalos', fecha: '17/09/2021', urlImg: '../../../assets/Images/adoptante.jpg', seccion: 'perros grandes' }
+    { titulo: 'Consejos para perros grandes', cuerpo: 'Limpialos y bañalos', fecha: '17/09/2021', urlImg: '../../../assets/Images/adoptante.jpg', seccion: 'perros grandes', autorPubli: '' }
   ]
   crearPublicacion(
     titulo: string,

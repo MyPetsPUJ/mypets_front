@@ -25,6 +25,7 @@ import { TextoInteresComponent } from './inicio/texto-interes/texto-interes.comp
 import { AnimalesAdoptadosComponent } from './animales-adoptados/animales-adoptados.component';
 import { PetPreviewComponent } from './usuarios/pet-preview/pet-preview.component';
 import { SolicitudesComponent } from './solicitudes/solicitudes.component';
+import { FormulariosViewComponent } from './solicitudes/formularios-view/formularios-view.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { SolicitudesComponent } from './solicitudes/solicitudes.component';
     TextoInteresComponent,
     AnimalesAdoptadosComponent,
     PetPreviewComponent,
-    SolicitudesComponent
+    SolicitudesComponent,
+    FormulariosViewComponent
   ],
   imports: [
     CommonModule,

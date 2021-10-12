@@ -3,9 +3,9 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { CrearAdoptanteService } from 'src/app/services/crearAdoptante.service';
-import { CrearFundacionService } from 'src/app/services/crearFundacion.service';
-import { LoginService } from 'src/app/services/login.service';
+import { CrearAdoptanteService } from 'src/app/services/adoptante/crearAdoptante.service';
+import { CrearFundacionService } from 'src/app/services/fundacion/crearFundacion.service';
+import { LoginService } from 'src/app/services/auth/login.service';
 
 
 @Component({

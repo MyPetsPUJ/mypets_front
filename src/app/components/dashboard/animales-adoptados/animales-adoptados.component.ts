@@ -3,10 +3,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { AnyKeys } from 'mongoose';
-import { CrearAdoptanteService } from 'src/app/services/crearAdoptante.service';
-import { CrearAnimalService } from 'src/app/services/crearAnimal.service';
-import { EntidadAnimal } from '../../interfaces/entidadAnimal';
-import { UserAdoptante } from '../../interfaces/userAdoptante';
+import { CrearAdoptanteService } from 'src/app/services/adoptante/crearAdoptante.service';
+import { CrearAnimalService } from 'src/app/services/animal/crearAnimal.service';
+import { EntidadAnimal } from '../../interfaces/usuarios/entidadAnimal';
+import { UserAdoptante } from '../../interfaces/usuarios/userAdoptante';
 export interface UserData {
   nombre: string;
   cedula: string;
@@ -44,11 +44,11 @@ export class AnimalesAdoptadosComponent implements OnInit {
     var j = 0;
     for(i = 0; i < this.animales.length; i++)
     {
-      if(this.animales[i].idPapa != '')
+      if(this.animales[i].owner != '')
       {
         for(j = 0; j < this.adoptantes.length; j++)
         {
-          if(this.animales[i].idPapa == this.adoptantes[j].num_doc)
+          if(this.animales[i].owner == this.adoptantes[j].num_doc)
           {
             this.infoMostrar = {nombre: this.adoptantes[j].nombre + ' ' + this.adoptantes[j].apellidos,
             cedula: this.adoptantes[j].num_doc,
