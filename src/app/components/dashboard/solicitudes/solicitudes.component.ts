@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CrearAdoptanteService } from 'src/app/services/adoptante/crearAdoptante.service';
 import { CrearAnimalService } from 'src/app/services/animal/crearAnimal.service';
 import { FormularioAdopcion } from '../../interfaces/formularios/formularioAdopcion';
+import { FormulariosViewComponent } from './formularios-view/formularios-view.component';
 export interface Solicitud 
 {
   id: number;
@@ -37,10 +39,18 @@ export class SolicitudesComponent implements OnInit {
   solicitudAdopcion: FormularioAdopcion |  undefined;
   solicitudesAdopcion: FormularioAdopcion[] = [];
   idSolicitud: number = Math.floor(Math.random() * (1000000 - 1) + 0);
-  constructor(private adoptanteService: CrearAdoptanteService, private animalService: CrearAnimalService) { 
+  constructor(private adoptanteService: CrearAdoptanteService, private animalService: CrearAnimalService,
+      private dialog: MatDialog) { 
   
   }
-
+  openDialog(solicitud: FormularioAdopcion) {
+    console.log(solicitud);
+    const dialogRef = this.dialog.open(FormulariosViewComponent, {
+      width: '830px',
+      height: '600px',
+      data: { formulario: solicitud },
+    });
+  }
   ngOnInit(): void {
     this.solicitudAdopcion = 
     {
@@ -48,9 +58,9 @@ export class SolicitudesComponent implements OnInit {
       animalAdopcion: this.animalService.getAnimales()[0],
       informacionFamiliar: {
         numAdultos: '4',
-        numNiños: '2',
+        numNinos: '2',
         edadesAdultos: '87',
-        edadesNiños: '16',
+        edadesNinos: '16',
         numMascotas: '3',
         razasMascotas: 'Schnauzer, carey y 2 hamsters',
         temperamentoMascotas: 'Amigable',
@@ -71,7 +81,7 @@ export class SolicitudesComponent implements OnInit {
         mascotaAnterior: 'SI',
         conoceCuidadosMascota: 'SI',
         veterinarioDeConfianza: 'SI',
-        conscienteResponsabilidad15años: 'SI',
+        conscienteResponsabilidad15anos: 'SI',
         actividadesConMascota: 'Llevarla con usted de viaje, Llevarla a parques',
         alternativaPaseador: 'SI',
         espacioViviendaMascota: 'Dentro de la casa, Dormirá conmigo',

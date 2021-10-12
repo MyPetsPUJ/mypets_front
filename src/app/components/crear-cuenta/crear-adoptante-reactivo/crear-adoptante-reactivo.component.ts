@@ -70,6 +70,7 @@ export class CrearAdoptanteReactivoComponent implements OnInit {
     console.log(this.formRegistro.value)
   }
   sendForm(): any{
+    /*
     const datosAdoptante = {
       nombre: this.formRegistro.value.nombre,
       apellidos: this.formRegistro.value.apellidos,
@@ -84,7 +85,7 @@ export class CrearAdoptanteReactivoComponent implements OnInit {
       tipo_usuario: 'Adoptante',
     };
     this.crearAdoptanteService.crearUsuarioAdoptante(datosAdoptante);
-
+    **/
   }
   onFileInput(event):any{
      const archivo = event.target.files[0];

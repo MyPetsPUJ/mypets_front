@@ -1,7 +1,8 @@
 import { EntidadAnimal } from "./entidadAnimal";
 
 export interface UserAdoptante {
-    nombre: string; 
+    nombre: string;
+    foto: string; 
     apellidos: string; 
     fecha_nacimiento: string;
     tipo_doc: string;

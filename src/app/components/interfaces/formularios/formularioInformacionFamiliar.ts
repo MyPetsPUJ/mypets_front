@@ -1,8 +1,8 @@
 export interface InformacionFamiliar{
     numAdultos: String;
-    numNiños: String;
+    numNinos: String;
     edadesAdultos : String;
-    edadesNiños : String;
+    edadesNinos : String;
     numMascotas: String;
     razasMascotas: String;
     temperamentoMascotas: String;
