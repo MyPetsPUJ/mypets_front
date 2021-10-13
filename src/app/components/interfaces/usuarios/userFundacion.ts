@@ -7,7 +7,8 @@ export interface UserFundacion {
   tipo_doc: string;
   num_doc: string;
   fecha_creacion: string;
-  // localidad: string;
+  latitud: number;
+  longitud: number;
   correo: string;
   num_celular: string;
   password: string;

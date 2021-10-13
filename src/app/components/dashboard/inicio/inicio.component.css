@@ -1,12 +1,20 @@
 .full 
 {
-    width: 100vw;
-    height: 90vh;
+    width: 59%;
+    margin-left: auto;
+    position: absolute;
+    right: 15px;
+    top: 60px;
+    border-color: black;
+    border-width: 4px;
+    border-style: solid;
+    
 }
 .mapa
 {
-    height: 90vh;
-    width: 100%;
+    
+    height: 83vh;
+
 }
 .example-spacer 
 {
@@ -20,3 +28,42 @@
 {
     margin-right: 10px;
 }
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+  .tablaTamano 
+  {
+      width: 38%;
+      display: inline-block;
+      position: absolute;
+      left: 13px;
+      background-color: white;
+      
+  }
+  .pointer{
+      cursor: pointer;
+  }
+  .aumentoTam 
+  {
+      transform: scale(1.5);
+  }
+  .color 
+  {
+    background-color: beige;
+    width: 100%;
+    height: 92%;
+  }
+  .centrar{
+    position:relative;
+    text-align: center;
+    left: -430px;
+  }

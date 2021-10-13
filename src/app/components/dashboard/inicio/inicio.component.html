@@ -2,55 +2,103 @@
 <div class= "full" id = "map">
 </div>
 -->
-<div class="full" id="map">
-
-    <agm-map class="mapa" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" (mapClick)="mapClicked($event)"
-        [mapTypeControl]="true" (mapReady)="mapReady($event)">
-      <mat-menu #menu="matMenu" >
-        <button *ngIf="userIsAuth" mat-menu-item (click)="activarPuntos()">
-          <mat-icon>room</mat-icon>
-          <span>Fijar un punto de interés</span>
-        </button>
-        <button *ngIf="userIsAuth" mat-menu-item (click)="eliminarPuntos()">
-            <mat-icon>delete</mat-icon>
-            <span>Eliminar todos los puntos de interés</span>
-          </button>
-      </mat-menu>
-
-
-        <button id="Settings" class="toggle-button controls button" mat-icon-button
-        [matMenuTriggerFor]="menu"
-        aria-label="Example icon-button with a menu">
-            <mat-icon aria-hidden="true">settings</mat-icon>
-        </button>
-        
-        <agm-marker [latitude]="latitude" [longitude]="longitude" >
-            <agm-info-window>
-                <div>
-                    <h2>
-                        Estás aquí
-                    </h2>
-                </div>
-            </agm-info-window>
-        </agm-marker>
-        <agm-marker *ngFor="let coord of coordenadas" [latitude]="coord.latitude" [longitude]="coord.longitude">
-            <agm-info-window>
-                <div>
-                    <h2>{{coord.titulo}}</h2>
-                    <p>
-                        {{coord.descripcion}}
-                    </p>
-                    <p>
-                        direccion: {{coord.direccion}}
-                    </p>
-                <div class="alinearDer">
-                    <mat-icon matTooltip="editar punto" class="pointer" (click)="editarPunto(coord.latitude,coord.longitude)">edit</mat-icon>
-                    <mat-icon matTooltip="eliminar punto" class="pointer" (click)="eliminarPunto(coord.latitude,coord.longitude)">delete</mat-icon>
-                    
-                </div>
-                
-                </div>
-            </agm-info-window>
-        </agm-marker>
-    </agm-map>
+<div class="color">
+    <div class="centrar">
+        <h1><b> <i>Lista de eventos </i></b></h1>
+    </div>
+    <div class="tablaTamano">
+        <mat-form-field appearance="standard">
+            <mat-label>Búsqueda</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="ej. 'Vacunación'" #input>
+          </mat-form-field>
+          
+          <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort>
+          
+              <!-- ID Column -->
+              <ng-container matColumnDef="evento">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Evento </th>
+                <td mat-cell *matCellDef="let row"> {{row.titulo}} </td>
+              </ng-container>
+          
+              <!-- Progress Column -->
+              <ng-container matColumnDef="direccion">
+                <th mat-header-cell *matHeaderCellDef > Dirección </th>
+                <td mat-cell *matCellDef="let row"> {{row.direccion}} </td>
+              </ng-container>
+          
+              <!-- Name Column -->
+              <ng-container matColumnDef="accion">
+                <th mat-header-cell *matHeaderCellDef >Acción </th>
+                <td mat-cell *matCellDef="let row"> 
+                    <mat-icon class="pointer" matTooltip="Ver punto" (click)="verPunto(row.latitude,row.longitude)">visibility</mat-icon>   
+                    <mat-icon class="pointer" matTooltip="Editar punto" (click)="editarPunto(row.latitude,row.longitude)">edit</mat-icon>   
+                    <mat-icon class="pointer" matTooltip="Eliminar punto" (click)="eliminarPunto(row.latitude,row.longitude)">delete</mat-icon>   
+                </td>
+              </ng-container>
+          
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          
+              <!-- Row shown when there is no matching data. -->
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No hay resultados</td>
+              </tr>
+            </table>
+          
+            <mat-paginator #paginator [pageSizeOptions]="[7]" aria-label="Select page of users"></mat-paginator>
+          </div>
+          
+    </div>
+    <div class="full" id="map">
+    
+        <agm-map class="mapa" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" (mapClick)="mapClicked($event)"
+            [mapTypeControl]="false" (mapReady)="mapReady($event)">
+          <mat-menu #menu="matMenu" >
+            <button *ngIf="userIsAuth" mat-menu-item (click)="activarPuntos()">
+              <mat-icon>room</mat-icon>
+              <span>Fijar un punto de interés</span>
+            </button>
+            <button *ngIf="userIsAuth" mat-menu-item (click)="eliminarPuntos()">
+                <mat-icon>delete</mat-icon>
+                <span>Eliminar todos los puntos de interés</span>
+              </button>
+          </mat-menu>
+    
+    
+            <button id="Settings" class="toggle-button controls button" mat-icon-button
+            [matMenuTriggerFor]="menu"
+            aria-label="Example icon-button with a menu"
+            matTooltip="Desplegar opciones de mapa">
+                <mat-icon aria-hidden="true" class="aumentoTam">event</mat-icon>
+            </button>
+            
+            <agm-marker [latitude]="latitudeMarker" [longitude]="longitudeMarker" >
+                <agm-info-window>
+                    <div>
+                        <h2>
+                            Estás aquí
+                        </h2>
+                    </div>
+                </agm-info-window>
+            </agm-marker>
+            <agm-marker *ngFor="let coord of coordenadas" [latitude]="coord.latitude" [longitude]="coord.longitude" [iconUrl]="verde">
+                <agm-info-window>
+                    <div>
+                        <h2>{{coord.titulo}}</h2>
+                        <p>
+                            {{coord.descripcion}}
+                        </p>
+                        <p>
+                            direccion: {{coord.direccion}}
+                        </p>
+                    <div class="alinearDer">
+                        <mat-icon matTooltip="editar punto" class="pointer" (click)="editarPunto(coord.latitude,coord.longitude)">edit</mat-icon>
+                        <mat-icon matTooltip="eliminar punto" class="pointer" (click)="eliminarPunto(coord.latitude,coord.longitude)">delete</mat-icon>
+                    </div>
+                    </div>
+                </agm-info-window>
+            </agm-marker>
+        </agm-map>
+    </div>
 </div>

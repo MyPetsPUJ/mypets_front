@@ -28,6 +28,8 @@ export class PublicacionesComponent implements OnInit {
     tipo_doc: '',
     num_doc: '',
     fecha_creacion: '',
+    latitud:0,
+    longitud: 0,
     correo: '',
     num_celular: '',
     password: '',

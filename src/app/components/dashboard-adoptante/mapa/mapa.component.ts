@@ -1,6 +1,9 @@
 import { LatLng } from '@agm/core';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { ListaFundacionesComponent } from './lista-fundaciones/lista-fundaciones.component';
 
 @Component({
@@ -9,13 +12,17 @@ import { ListaFundacionesComponent } from './lista-fundaciones/lista-fundaciones
   styleUrls: ['./mapa.component.css']
 })
 
-export class MapaComponent implements OnInit {
+export class MapaComponent implements OnInit{
   latitude: number | any;
   longitude: number | any;
   map:any;
   infoFunds: any[] = [];
   cargar: boolean = false;
   clicks: number = 0;
+  displayedColumns: string[] = ['nombre', 'distancia','duracion','direccion'];
+  dataSource!: MatTableDataSource<any>;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -62,6 +69,7 @@ export class MapaComponent implements OnInit {
         var i = Number(0);
         for(i = 0; i< coordenadasFund.length; i++)
         {
+          console.log(coordenadasFund[i])
           directionsService.route({
             origin: origin,
             destination: coordenadasFund[i],
@@ -84,9 +92,12 @@ export class MapaComponent implements OnInit {
                 dir: direccion
               }
               this.infoFunds.push(info);
+              //console.log(this.infoFunds[0])
               if (this.infoFunds.length == coordenadasFund.length)
               {
-                this.cargar = true;
+                //this.cargar = true;
+                this.dataSource = new MatTableDataSource(this.infoFunds);
+                this.dataSource.paginator = this.paginator;
               }
               
             }
@@ -138,5 +149,16 @@ export class MapaComponent implements OnInit {
       });
     })
   }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
 
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 }

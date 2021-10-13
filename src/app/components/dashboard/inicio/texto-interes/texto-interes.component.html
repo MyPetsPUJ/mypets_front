@@ -13,5 +13,6 @@
             <textarea matInput placeholder="Ej. horarios, gente permitida, tipos de animales, etc." class="tam" id="txtInput">{{data.texto}}</textarea>
           </mat-form-field>
     </form>
-    <button mat-raised-button (click)="guardarTexto()">Aceptar</button>
+    <button mat-raised-button (click)="guardarTexto('aceptar')">Aceptar</button>
+    <button mat-raised-button (click)="guardarTexto('cancelar')">Cancelar</button>
 </div>
