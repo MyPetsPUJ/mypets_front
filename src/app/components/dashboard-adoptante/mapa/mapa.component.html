@@ -38,7 +38,7 @@
                             {{element[column]}}
                         </div>
                         <div *ngIf="column=='accion'">
-                            <mat-icon class="pointer" matTooltip="Ver fundación">visibility</mat-icon>
+                            <mat-icon class="pointer" matTooltip="Ver fundación" (click)="cambiarVista(element['latitud'],element['longitud'])">visibility</mat-icon>
                         </div>
                         <div *ngIf="cargar">
                             <div *ngIf="column=='duracion'">
@@ -61,7 +61,7 @@
     </div>
     
     <div class="full" id="map">
-        <agm-map class="mapa" [latitude]="latitude" [longitude]="longitude" [zoom]="11" (mapReady)="mapReady($event)">
+        <agm-map class="mapa" [latitude]="latitude" [longitude]="longitude" [zoom]="12" (mapReady)="mapReady($event)">
             
     
     
@@ -70,7 +70,7 @@
                 (click)="calcularRuta()">
                 <mat-icon aria-hidden="true">directions_car</mat-icon>
             </button>
-            <agm-marker [latitude]="latitude" [longitude]="longitude">
+            <agm-marker [latitude]="latitudeMarker" [longitude]="longitudeMarker">
                 <agm-info-window>
                     <div>
                         <p>
@@ -90,9 +90,12 @@
                         
                     </div>
                     <div class="texto">
-                        <button mat-raised-button color="warn">Ver más</button>
-                    </div>
-                    
+                        <button mat-raised-button color="warn" (click)="verFundacion(fund)">Ver más</button>
+                        <button mat-raised-button >
+                            <mat-icon >pets</mat-icon>
+                            Ver animales
+                          </button>
+                    </div>    
                 </agm-info-window>
             </agm-marker>
             

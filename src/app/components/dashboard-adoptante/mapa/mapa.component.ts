@@ -18,6 +18,8 @@ import { ListaFundacionesComponent } from './lista-fundaciones/lista-fundaciones
 export class MapaComponent implements OnInit {
   latitude: number | any;
   longitude: number | any;
+  latitudeMarker: number | any;
+  longitudeMarker: number | any;
   map: any;
   infoFunds: any[] = [];
   cargar: boolean = false;
@@ -42,6 +44,8 @@ export class MapaComponent implements OnInit {
       navigator.geolocation.getCurrentPosition((position) => {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
+        this.latitudeMarker = this.latitude;
+        this.longitudeMarker = this.longitude;
         console.log(this.latitude + ' ' + this.longitude);
       });
     }
@@ -173,5 +177,18 @@ export class MapaComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+  verFundacion(fundacion: UserFundacion)
+  {
+    const dialogRef = this.dialog.open(ListaFundacionesComponent, {
+      width: '700px',
+      height: '600px',
+      data: { fundacion: fundacion}
+    });
+  }
+  cambiarVista(latitud: number, longitud: number)
+  {
+    this.latitude = latitud;
+    this.longitude = longitud;
   }
 }

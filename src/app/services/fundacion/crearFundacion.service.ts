@@ -73,8 +73,8 @@ export class CrearFundacionService {
       urlImg: '../../../assets/Images/fundacion3.png',
       tipo_usuario: 'fundacion',
       direccion: 'Cl. 165 #7 – 52, Bogotá, Colombia',
-      mision: 'misión 3',
-      vision: 'visión 3',
+      mision: 'Satisfacer y superar las expectativas de nuestros clientes, a través de una experiencia de compra que combine de manera óptima productos, servicio, entorno y convivencia, logrando así su reiterada preferencia.',
+      vision: 'Contribuir al mejoramiento de la calidad de vida de nuestros clientes en cada una de las comunidades en las que insertamos.',
       publicaciones: []
     },
     {
