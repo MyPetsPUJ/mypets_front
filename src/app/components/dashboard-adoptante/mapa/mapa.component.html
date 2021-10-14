@@ -1,79 +1,103 @@
-<div class="centrar">
-    <button mat-raised-button (click)="calcularRuta()">Cargar fundaciones</button>
-</div>
-<div class="tablaTamano">
-    <mat-form-field appearance="standard">
-        <mat-label>Búsqueda</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="ej. 'Vacunación'" #input>
-      </mat-form-field>
-      
-      <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort>
-      
-          <!-- ID Column -->
-          <ng-container matColumnDef="nombre">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Fundación </th>
-            <td mat-cell *matCellDef="let row"> {{row.nombreFundacion}} </td>
-          </ng-container>
-      
-          <!-- Progress Column -->
-          <ng-container matColumnDef="distancia">
-            <th mat-header-cell *matHeaderCellDef > Distancia </th>
-            <td mat-cell *matCellDef="let row"> {{row.distancia}} </td>
-          </ng-container>
-      
-          <!-- Name Column -->
-          <ng-container matColumnDef="duracion">
-            <th mat-header-cell *matHeaderCellDef >Duración(viaje) </th>
-            <td mat-cell *matCellDef="let row"> 
-                {{row.duracion}}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="direccion">
-            <th mat-header-cell *matHeaderCellDef >Dirección </th>
-            <td mat-cell *matCellDef="let row"> 
-                {{row.dir}}    
-            </td>
-          </ng-container>
-      
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      
-          <!-- Row shown when there is no matching data. -->
-          <tr class="mat-row" *matNoDataRow>
-            <td class="mat-cell" colspan="4">No hay resultados</td>
-          </tr>
-        </table>
-      
-        <mat-paginator #paginator [pageSizeOptions]="[5]" aria-label="Select page of users"></mat-paginator>
-      </div>
-      
-</div>
-
-<div class="full" id= "map">
-    <agm-map class="mapa" [latitude]="latitude" [longitude]="longitude" [zoom] = "20" (mapReady)="mapReady($event)">
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="calcularRuta()">
-              <mat-icon>room</mat-icon>
-              <span>Mostrar lista de fundaciones</span>
-            </button>
-          </mat-menu>
+<div class="color">
+    <div class="centrar">
+        <h2>Lista de fundaciones</h2>
+    </div>
+    <div class="tablaTamano">
+        <mat-form-field appearance="standard">
+            <mat-label>Búsqueda</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="ej. 'Vacunación'" #input>
+        </mat-form-field>
+    
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns; let i = index">
+                    <th mat-header-cell *matHeaderCellDef>
+                        <div *ngIf="column=='nombreFund'">
+                            Nombre
+                        </div>
+                        <div *ngIf="column=='direccion'">
+                            Dirección
+                        </div>
+                        <div *ngIf="column=='accion'">
+                            Acción
+                        </div>
+                        <div *ngIf="cargar">
+                            <div *ngIf="column=='distancia'">
+                                Distancia
+                            </div>
+                            <div *ngIf="column=='duracion'">
+                                Tiempo de viaje
+                            </div>
+                        </div>
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div *ngIf="column=='nombreFund'">
+                            {{element[column]}}
+                        </div>
+                        <div *ngIf="column=='direccion'">
+                            {{element[column]}}
+                        </div>
+                        <div *ngIf="column=='accion'">
+                            <mat-icon class="pointer" matTooltip="Ver fundación">visibility</mat-icon>
+                        </div>
+                        <div *ngIf="cargar">
+                            <div *ngIf="column=='duracion'">
+                                {{element[column]}}
+                            </div>
+                            <div *ngIf="column=='distancia'">
+                                {{element[column]}}
+                            </div>
+                        </div>
+                        
+                    </td>
+                </ng-container>
+    
+                <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+            </table>
+            <mat-paginator #paginator [pageSizeOptions]="[5]" aria-label="Select page of users"> </mat-paginator>
+        </div>
+    
+    </div>
+    
+    <div class="full" id="map">
+        <agm-map class="mapa" [latitude]="latitude" [longitude]="longitude" [zoom]="11" (mapReady)="mapReady($event)">
+            
     
     
-            <button id="Settings" class="toggle-button controls button" mat-icon-button
-            [matMenuTriggerFor]="menu"
-            aria-label="Example icon-button with a menu">
-                <mat-icon aria-hidden="true">settings</mat-icon>
+            <button id="Settings" class="toggle-button controls button" mat-icon-button 
+                aria-label="Example icon-button with a menu" matTooltip="Cargar tiempos y distancias de viaje"
+                (click)="calcularRuta()">
+                <mat-icon aria-hidden="true">directions_car</mat-icon>
             </button>
-        <agm-marker [latitude]="latitude" [longitude]="longitude">
-            <agm-info-window>
-                <div>
-                    <p>
-                        Estás aquí
-                    </p>
-                </div>
-            </agm-info-window>
-        </agm-marker>
-    </agm-map>
+            <agm-marker [latitude]="latitude" [longitude]="longitude">
+                <agm-info-window>
+                    <div>
+                        <p>
+                            Estás aquí
+                        </p>
+                    </div>
+                </agm-info-window>
+            </agm-marker>
+    
+            
+            <agm-marker *ngFor="let fund of fundaciones" [latitude]="fund.latitud" [longitude]="fund.longitud"
+                [iconUrl]="amarillo">
+                <agm-info-window>
+                    <div class="texto">
+                        <h2>{{fund.nombreFund}}</h2>
+                        <img [src]="fund.urlImg" class="container crop">
+                        
+                    </div>
+                    <div class="texto">
+                        <button mat-raised-button color="warn">Ver más</button>
+                    </div>
+                    
+                </agm-info-window>
+            </agm-marker>
+            
+    
+        </agm-map>
+    </div>
 </div>
+
