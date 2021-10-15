@@ -2,14 +2,13 @@
   <h2 class="titulo">Animales en adopción</h2>
   <div fxLayout="row wrap" fxLayoutGap="16px grid">
     <div
-    fxFlex="25%"
-    fxFlex.xs="100%"
-    fxFlex.sm="75%"
+      fxFlex="25%"
+      fxFlex.xs="100%"
+      fxFlex.sm="75%"
       *ngFor="let animal of animales"
-      
     >
       <!-- TODO: agregar esto *ngIf="animal.enAdopcion" -->
-      <mat-card class="mat-elevation-z8" >
+      <mat-card class="mat-elevation-z8">
         <mat-card-header>
           <!-- <div mat-card-avatar>
             <img [src]="logoFundacion" class="circulo" />
@@ -27,22 +26,16 @@
         </div>
 
         <mat-card-content>
-          <div class="cortarTexto"> 
+          <div class="cortarTexto">
             {{ animal.descripcion }}
           </div>
-          
         </mat-card-content>
         <div class="centro">
-          <button
-            mat-raised-button
-            color="warn"
-            (click)="openPreview(animal)"
-          >
+          <button mat-raised-button color="warn" (click)="openPreview(animal)">
             Ver a detalle
           </button>
         </div>
       </mat-card>
-      
     </div>
   </div>
 </div>
