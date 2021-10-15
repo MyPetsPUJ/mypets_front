@@ -1,54 +1,62 @@
-<div class="mat-elevation-z8" class="tam">
-    <mat-toolbar>
-      <span>Lista de fundaciones </span>
-    </mat-toolbar>
-    <mat-form-field appearance="standard">
-        <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-      </mat-form-field>
-      
-      <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort>
-      
-          <!-- ID Column -->
-          <ng-container matColumnDef="nombre">
-            <th mat-header-cell *matHeaderCellDef> Nombre </th>
-            <td mat-cell *matCellDef="let row"> {{row.nombreFundacion}} </td>
-          </ng-container>
-      
-          <!-- Progress Column -->
-          <ng-container matColumnDef="distancia">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Distancia </th>
-            <td mat-cell *matCellDef="let row"> {{row.distancia}} </td>
-          </ng-container>
-      
-          <!-- Name Column -->
-          <ng-container matColumnDef="duracion">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Viaje (en carro) </th>
-            <td mat-cell *matCellDef="let row"> {{row.duracion}} </td>
-          </ng-container>
-      
-          <!-- Fruit Column -->
-          <ng-container matColumnDef="direccion">
-            <th mat-header-cell *matHeaderCellDef > Dirección </th>
-            <td mat-cell *matCellDef="let row"> {{row.dir}} </td>
-          </ng-container>
-      
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      
-          <!-- Row shown when there is no matching data. -->
-          <tr class="mat-row" *matNoDataRow>
-            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-          </tr>
-        </table>
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+<div class="alinear">
+  <h1><b> <i> {{data.fundacion.nombreFund}} </i> </b></h1>
+  <img [src]="data.fundacion.urlImg" mat-card-image width="70%" class="container crop">
+  <h3>
+    <div>
+      <b>Fecha de creación: </b>
+      <i>{{data.fundacion.fecha_creacion}}</i>
+    </div>
+    </h3>
+  <mat-grid-list cols="1" rowHeight="50px">
+      <mat-grid-tile colspan="1" rowspan="2">
+        <div>
+          <h1><b>Misión</b></h1>
+          <i>{{data.fundacion.mision}}</i>
+        </div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="2">
+          <div>
+            <h1><b>Visión</b></h1>
+            <i>{{data.fundacion.vision}}</i>
+          </div>
+          </mat-grid-tile>
+  </mat-grid-list>
+  <p> </p>
+  <p> </p>
+  <h1>Información de contacto</h1>
+  <mat-grid-list cols="2" rowHeight="50px">
+    <mat-grid-tile colspan="1" rowspan="2">
+      <div>
+        <mat-icon class="icon">person</mat-icon>
+        <b>Persona encargada</b> <br>
+        <i>{{data.fundacion.nombreEncar}} {{data.fundacion.apellidosEncar}}</i>
       </div>
-      <p> </p>
-      <p> </p>
-      <p> </p>
-      <div class="centro">
-        <button mat-raised-button (click)="accion('cerrar')" color="primary" >Cerrar</button>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="1" rowspan="2">
+      <div>
+        <mat-icon class="icon">place</mat-icon>
+        <b>Dirección</b> <br>
+        <i>{{data.fundacion.direccion}}</i>
       </div>
-      
-  </div>
+    </mat-grid-tile>
+    
+    <mat-grid-tile colspan="1" rowspan="2">
+      <div>
+        <mat-icon class="icon">phone_android</mat-icon>
+        <b>Celular</b> <br>
+        <i>{{data.fundacion.num_celular}}</i>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="1" rowspan="2">
+      <div>
+        <mat-icon class="icon">mail</mat-icon>
+        <b>Correo electrónico</b> <br>
+        <i>{{data.fundacion.correo}}</i>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <p> </p>
+  <p> </p>
+</div>

@@ -1,76 +1,32 @@
-table {
-    width: 100%;
-}
-th
+.alinear
 {
-    width: 10%;
-}
-.pointer 
-{
-    cursor: pointer;
-}
-.mat-form-field {
-    font-size: 14px;
-    width: 100%;
-}
-.tam 
-{
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-}
-.example-spacer 
-{
-    flex: 1 1 auto;
-}
-.tam1 
-{
-    margin-left: auto;
-}
-tr.example-detail-row {
-    height: 0;
-  }
-  
-  tr.example-element-row:not(.example-expanded-row):hover {
-    background: whitesmoke;
-  }
-  
-  tr.example-element-row:not(.example-expanded-row):active {
-    background: #efefef;
-  }
-  
-  .example-element-row td {
-    border-bottom-width: 0;
-  }
-  
-  .example-element-detail {
-    overflow: hidden;
-    display: flex;
-  }
-  
-  .example-element-diagram {
-    min-width: 80px;
-    border: 2px solid black;
-    padding: 8px;
-    font-weight: lighter;
-    margin: 8px 0;
-    height: 104px;
-  }
-  
-  .example-element-symbol {
-    font-weight: bold;
-    font-size: 40px;
-    line-height: normal;
-  }
-  
-  .example-element-description {
-    padding: 16px;
-  }
-  
-  .example-element-description-attribution {
-    opacity: 0.5;
-  }
-  .centro 
-  {
     text-align: center;
+}
+.justificar 
+{
+    text-align: justify;
+    text-justify: inter-word;
+}
+mat-grid-tile {
+    background: beige;
   }
+  .container {
+    width: 340px;
+    height: 200px;
+    overflow: hidden;
+}
+.container > .crop {
+    position:absolute;
+    left: -100%;
+    right: -100%;
+    top: -100%;
+    bottom: -100%;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
+}
+.icon 
+{
+  position: relative;
+  top:100%;
+}

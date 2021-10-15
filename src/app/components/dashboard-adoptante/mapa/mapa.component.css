@@ -3,8 +3,8 @@
     width: 59%;
     margin-left: auto;
     position: absolute;
-    right: 15px;
-    top: 60px;
+    right: 1%;
+    top: 9%;
     border-color: black;
     border-width: 4px;
     border-style: solid;
@@ -24,10 +24,6 @@
 {
     cursor: pointer;
 }
-.alinearDer 
-{
-    margin-right: 10px;
-}
 table {
     width: 100%;
   }
@@ -45,7 +41,7 @@ table {
       width: 38%;
       display: inline-block;
       position: absolute;
-      left: 13px;
+      left: 1%;
       background-color: white;
       
   }
@@ -65,5 +61,24 @@ table {
   .centrar{
     position:relative;
     text-align: center;
-    left: -430px;
+    right: 32%;
   }
+  .container {
+    width: 250px;
+    height: 150px;
+    overflow: hidden;
+}
+.container > .crop {
+    position:absolute;
+    left: -100%;
+    right: -100%;
+    top: -100%;
+    bottom: -100%;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
+}
+.texto 
+{
+    text-align: center;
+}

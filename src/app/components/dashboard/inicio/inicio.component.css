@@ -3,8 +3,8 @@
     width: 59%;
     margin-left: auto;
     position: absolute;
-    right: 15px;
-    top: 60px;
+    right: 1%;
+    top: 9%;
     border-color: black;
     border-width: 4px;
     border-style: solid;
@@ -42,11 +42,11 @@ table {
   }
   .tablaTamano 
   {
-      width: 38%;
-      display: inline-block;
-      position: absolute;
-      left: 13px;
-      background-color: white;
+    width: 38%;
+    display: inline-block;
+    position: absolute;
+    left: 1%;
+    background-color: white;
       
   }
   .pointer{
@@ -65,5 +65,5 @@ table {
   .centrar{
     position:relative;
     text-align: center;
-    left: -430px;
+    right: 32%;
   }

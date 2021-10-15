@@ -10,6 +10,8 @@ export interface UserFundacion {
   latitud: number;
   longitud: number;
   correo: string;
+  distancia: string;
+  duracion: string;
   num_celular: string;
   password: string;
   urlImg: string;
