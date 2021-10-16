@@ -181,6 +181,9 @@ export class InicioComponent implements OnInit, OnDestroy {
           this.puntoInteres.titulo = result.titulo;
           this.puntoInteres.descripcion = result.texto;
           this.puntoInteres.autorPuntoDeInteres = this.userId;
+          console.log("Ubi", result.ubicacion)
+          this.puntoInteres.ubicacion = result.ubicacion;
+
 
           coordinates = {
             latitude: $event.coords.lat,
