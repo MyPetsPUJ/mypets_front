@@ -1,62 +1,99 @@
+<div class="todo">
+  
+
 <head>
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
 </head>
+
+
+  
+
 <body>
   
   <div class="container"> 
     <div class="heading">
       <h3> <span>Nuestras mascotas</span></h3>
     </div>
-    <div class= "box">
+    <div *ngFor="let animal of animales; index as i; first as isFirst">
+      <div class= "box">
+        <div *ngIf="i < columnas/3">
+          <div class= "dream">
+            <img
+              class="container crop card"
+              mat-card-image
+              [src]="'http://localhost:3000/' + animal.urlImg"
+              alt="Foto de un animal"
+            />
+            <div class=descripcion>
 
-      <div class= "dream">
-        <figure>
-          <img src='../../../assets/Images/1.jpg' alt='missing' />
-          <figcaption>Caption goes here</figcaption>
-      </figure>
-        <img src="../../../assets/Images/2.jpg" alt="">
-        <img src="../../../assets/Images/3.jpg" alt="">
-        <img src="../../../assets/Images/4.jpg" alt="">
-        <img src="../../../assets/Images/5.jpg" alt="">
-        <img src="../../../assets/Images/16.jpg" alt="">
-        <img src="../../../assets/Images/17.jpg" alt="">
-        <img src="../../../assets/Images/18.jpg" alt="">
+              <mat-card-content>
+                <div class="nombreAnimal"> 
+                  {{ animal.nombre }}
+                </div>
+                <div class="razaAnimal"> 
+                  {{ animal.raza }}
+                </div>
+                
+              </mat-card-content>
+            </div>
+            
+          </div>
+        </div>
+        <div *ngIf="i >= columnas/3 && i < columnas*0.66">
+          <div class= "dream">
+            <img
+              class="container crop card"
+              mat-card-image
+              [src]="'http://localhost:3000/' + animal.urlImg"
+              alt="Foto de un animal"
+            />
+            <div class=descripcion>
+
+              <mat-card-content>
+                <div class="nombreAnimal"> 
+                  {{ animal.nombre }}
+                </div>
+                <div class="razaAnimal"> 
+                  {{ animal.raza }}
+                </div>
+                
+              </mat-card-content>
+            </div>
+            
+          </div>
+        </div>
+
+        <div *ngIf="i >= columnas*0.66">
+          <div class= "dream">
+            <img
+              class="container crop card"
+              mat-card-image
+              [src]="'http://localhost:3000/' + animal.urlImg"
+              alt="Foto de un animal"
+            />
+            <div class=descripcion>
+
+              <mat-card-content>
+                <div class="nombreAnimal"> 
+                  {{ animal.nombre }}
+                </div>
+                <div class="razaAnimal"> 
+                  {{ animal.raza }}
+                </div>
+                
+              </mat-card-content>
+            </div>
+          
+          </div>
+        </div>
         
       </div>
-
-      <div class= "dream">
-        <img src="../../../assets/Images/20.jpg" alt="">
-        <img src="../../../assets/Images/6.jpg" alt="">
-        <img src="../../../assets/Images/7.jpg" alt="">
-        <img src="../../../assets/Images/8.jpg" alt="">
-        <img src="../../../assets/Images/9.jpg" alt="">
-        <img src="../../../assets/Images/10.jpg" alt="">
-        <img src="../../../assets/Images/18.png" alt="">
-        
-        
-        
-      </div>
-
-      <div class= "dream">
-        <img src="../../../assets/Images/11.jpg" alt="">
-        <img src="../../../assets/Images/12.jpg" alt="">
-        <img src="../../../assets/Images/13.jpg" alt="">
-        <img src="../../../assets/Images/22.jpg" alt="">
-        <img src="../../../assets/Images/14.jpg" alt="">
-        <img src="../../../assets/Images/15.jpg" alt="">
-        <img src="../../../assets/Images/19.jpg" alt="">
-        <img src="../../../assets/Images/5.jpg" alt="">
-        
-      </div>
-
     </div>
-
-    <div class="btn">
-      <a href="#">Ver más animales</a>
-    </div>
-
+    
+   
 
   </div>
 </body>
+</div>
