@@ -1,6 +1,6 @@
 <div class="color">
     <div class="centrar">
-        <h2>Lista de fundaciones</h2>
+        <h2>Lista de Fundaciones</h2>
     </div>
     <div class="tablaTamano">
         <mat-form-field appearance="standard">
@@ -81,12 +81,12 @@
             </agm-marker>
     
             
-            <agm-marker *ngFor="let fund of fundaciones" [latitude]="fund.latitud" [longitude]="fund.longitud"
+            <agm-marker *ngFor="let fund of fundacionesBack" [latitude]="fund.latitud" [longitude]="fund.longitud"
                 [iconUrl]="amarillo">
                 <agm-info-window>
                     <div class="texto">
                         <h2>{{fund.nombreFund}}</h2>
-                        <img [src]="fund.urlImg" class="container crop">
+                        <img [src]="'http://localhost:3000/' + fund.urlImg" class="container crop">
                         
                     </div>
                     <div class="texto">

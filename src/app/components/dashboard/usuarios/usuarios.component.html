@@ -1,12 +1,12 @@
-<div *ngIf="animales.length > 0">
+<mat-toolbar>
+  <span>Mis Animales</span>
+  <button mat-fab color="primary" class="tam1" matTooltip="Agregar nuevo animal"
+    routerLink="/dashboard/seleccion-animal">
+    <mat-icon> add</mat-icon>
+  </button>
+</mat-toolbar><div *ngIf="animales.length > 0">
   <div class="mat-elevation-z8" class="tam">
-    <mat-toolbar>
-      <span>Mis Animales</span>
-      <button mat-fab color="primary" class="tam1" matTooltip="Agregar nuevo animal"
-        routerLink="/dashboard/seleccion-animal">
-        <mat-icon> add</mat-icon>
-      </button>
-    </mat-toolbar>
+    
     <mat-form-field appearance="standard">
       <mat-label>Filtro</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ingrese su búsqueda" #input />

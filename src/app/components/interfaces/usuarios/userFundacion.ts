@@ -21,4 +21,5 @@ export interface UserFundacion {
   vision: string;
   publicaciones: Array<EntidadPublicacion>;
   ubicacion: any;
+  _id: string;
 }

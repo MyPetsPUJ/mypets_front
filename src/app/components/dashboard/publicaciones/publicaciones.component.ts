@@ -42,6 +42,7 @@ export class PublicacionesComponent implements OnInit {
     vision: '',
     publicaciones: [],
     ubicacion: null,
+    _id: '',
   };
   userId: string = '';
   id: string = '';

@@ -29,7 +29,7 @@ export class InicioComponent implements OnInit, OnDestroy {
     titulo: '',
     descripcion: '',
     direccion: '',
-    autorPunto: '',
+    autorPuntoDeInteres: '',
     ubicacion: null,
     latitud: 0,
     longitud: 0,
@@ -77,6 +77,7 @@ export class InicioComponent implements OnInit, OnDestroy {
     vision: '',
     publicaciones: [],
     ubicacion: null,
+    _id: '',
   };
   displayedColumns: string[] = ['evento', 'direccion', 'accion'];
   dataSource!: MatTableDataSource<any>;

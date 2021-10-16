@@ -11,6 +11,7 @@ export class MapServiceService {
   puerto: number = 3000;
   apiPath: string = 'api';
   dashboardPath: string = 'dashboard';
+  adoptantePath: string = 'dashboard-adoptante';
   mapaPath: string = 'mapa';
 
   constructor(private http: HttpClient) {}
@@ -29,6 +30,12 @@ export class MapServiceService {
   getPuntosDeInteres(id: string) {
     return this.http.get<{ fundacion: UserFundacion; puntos: PuntoInteres[] }>(
       `http://${this.dominio}:${this.puerto}/${this.apiPath}/${this.dashboardPath}/${this.mapaPath}/${id}`
+    );
+  }
+
+  mostrarPuntosDeInteres() {
+    return this.http.get<{ fundaciones: UserFundacion[]; puntos: PuntoInteres[] }>(
+      `http://${this.dominio}:${this.puerto}/${this.apiPath}/${this.adoptantePath}/${this.mapaPath}`
     );
   }
 }
