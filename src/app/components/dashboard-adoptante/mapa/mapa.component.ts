@@ -35,7 +35,7 @@ export class MapaComponent implements OnInit {
 
   ngOnInit(): void {
     this.geolocalizar();
-    this.fundaciones = this.servicioFundacion.getFundaciones();
+    // this.fundaciones = this.servicioFundacion.getFundaciones();
     this.dataSource = new MatTableDataSource(this.fundaciones);
   }
 

@@ -15,6 +15,8 @@ import { MatTableDataSource } from '@angular/material/table';
 
 import { PuntoInteres } from '../../interfaces/entidadPuntoInteres';
 import { MapServiceService } from 'src/app/services/map-service.service';
+import { Router } from '@angular/router';
+import { UserFundacion } from '../../interfaces/usuarios/userFundacion';
 
 var activarPuntos: boolean = false;
 @Component({
@@ -54,6 +56,28 @@ export class InicioComponent implements OnInit, OnDestroy {
   private authStatusSub: Subscription | undefined;
   userIsAuth = false;
   userId: string = '';
+  fundacion: UserFundacion = {
+    nombreFund: '',
+    nombreEncar: '',
+    apellidosEncar: '',
+    tipo_doc: '',
+    num_doc: '',
+    fecha_creacion: '',
+    latitud:0,
+    longitud: 0,
+    distancia: '',
+    duracion: '',
+    correo: '',
+    num_celular: '',
+    password: '',
+    urlImg: '',
+    tipo_usuario: '',
+    direccion: '',
+    mision: '',
+    vision: '',
+    publicaciones: [],
+    ubicacion: null,
+  };
   displayedColumns: string[] = ['evento', 'direccion', 'accion'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -62,7 +86,8 @@ export class InicioComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     private _snackBar: MatSnackBar,
     private authService: LoginService,
-    private mapService: MapServiceService
+    private mapService: MapServiceService,
+    private _router: Router
   ) {}
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
@@ -83,7 +108,11 @@ export class InicioComponent implements OnInit, OnDestroy {
     //Aquí hace falta una línea que cargue puntos de interés desde la BD
     this.mapService.getPuntosDeInteres(this.userId).subscribe((res) => {
       console.log('Respuesta', res);
-      console.log('Fundacion', res.fundacion);
+      console.log('Fundacion', res.fundacion.ubicacion);
+      this.fundacion = res.fundacion;
+      this.fundacion.longitud = res.fundacion.ubicacion.coordinates[0];
+      this.fundacion.latitud = res.fundacion.ubicacion.coordinates[1];
+      this.fundacion.direccion = res.fundacion.ubicacion.direccionFormateada;
       this.puntosDeInteres = res.puntos;
       console.log('Puntos: ', this.puntosDeInteres);
       for (let index = 0; index < this.puntosDeInteres.length; index++) {
@@ -96,12 +125,14 @@ export class InicioComponent implements OnInit, OnDestroy {
         this.puntosDeInteres[index].direccion =
           res.puntos[index].ubicacion.direccionFormateada;
       }
-      console.log('Punto 1 long', this.puntosDeInteres[0].longitud);
-      console.log('Punto 2 lat', this.puntosDeInteres[1].latitud);
+      // console.log('Punto 1 long', this.puntosDeInteres[0].longitud);
+      // console.log('Punto 2 lat', this.puntosDeInteres[1].latitud);
       // console.log('longitud', res.puntos[0].ubicacion.coordinates[0]);
       // console.log('latitud', res.puntos[0].ubicacion.coordinates[1]);
     });
-    this.dataSource = new MatTableDataSource<Coordenada>(this.coordenadas);
+    this.dataSource = new MatTableDataSource<PuntoInteres>(
+      this.puntosDeInteres
+    );
     this.dataSource.paginator = this.paginator;
   }
   ngOnDestroy() {
@@ -171,6 +202,7 @@ export class InicioComponent implements OnInit, OnDestroy {
             horizontalPosition: 'center',
             verticalPosition: 'bottom',
           });
+          
           this.cargarDatos();
         } else {
           this._snackBar.open(
