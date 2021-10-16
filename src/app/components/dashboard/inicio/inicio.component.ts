@@ -126,15 +126,16 @@ export class InicioComponent implements OnInit, OnDestroy {
         this.puntosDeInteres[index].direccion =
           res.puntos[index].ubicacion.direccionFormateada;
       }
+      this.dataSource = new MatTableDataSource<PuntoInteres>(
+        this.puntosDeInteres
+      );
       // console.log('Punto 1 long', this.puntosDeInteres[0].longitud);
       // console.log('Punto 2 lat', this.puntosDeInteres[1].latitud);
       // console.log('longitud', res.puntos[0].ubicacion.coordinates[0]);
       // console.log('latitud', res.puntos[0].ubicacion.coordinates[1]);
     });
-    this.dataSource = new MatTableDataSource<PuntoInteres>(
-      this.puntosDeInteres
-    );
-    this.dataSource.paginator = this.paginator;
+    
+    // this.dataSource.paginator = this.paginator;
   }
   ngOnDestroy() {
     this.authStatusSub?.unsubscribe();

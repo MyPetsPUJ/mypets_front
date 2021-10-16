@@ -50,7 +50,7 @@ export class MapaComponent implements OnInit {
     this.mapService.mostrarPuntosDeInteres().subscribe((res) => {
       // console.log('Respuesta: ', res.fundaciones[3].ubicacion.coordinates[0]);
       this.fundacionesBack = res.fundaciones;
-      console.log("Fundaciones", this.fundacionesBack)
+      console.log('Fundaciones', this.fundacionesBack);
       this.puntosDeInteres = res.puntos;
       console.log('Autor', this.puntosDeInteres[0].autorPuntoDeInteres);
 
@@ -75,8 +75,8 @@ export class MapaComponent implements OnInit {
         this.puntosDeInteres[index].direccion =
           res.puntos[index].ubicacion.direccionFormateada;
       }
+      this.dataSource = new MatTableDataSource(this.fundacionesBack);
     });
-    this.dataSource = new MatTableDataSource(this.fundacionesBack);
   }
 
   geolocalizar() {
