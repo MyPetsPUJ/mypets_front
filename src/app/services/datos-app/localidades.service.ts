@@ -14,7 +14,7 @@ export class LocalidadesService {
   fundacion: string = 'crear-fundacion';
 
   constructor(private http: HttpClient) {}
-
+ 
   getLocalidadesAdoptante() {
     return this.http.get<Localidad[]>(
       `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.signUp}/${this.adoptante}`

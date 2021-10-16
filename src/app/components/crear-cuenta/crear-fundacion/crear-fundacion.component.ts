@@ -14,6 +14,8 @@ import { CrearFundacionService } from 'src/app/services/fundacion/crearFundacion
 import { LocalidadesService } from 'src/app/services/datos-app/localidades.service';
 import { Localidad } from '../../interfaces/datos-app/entidadLocalidad';
 import { Router } from '@angular/router';
+import { TipoDocsService } from 'src/app/services/datos-app/tipo-docs.service';
+import {TipoDoc}  from '../../interfaces/datos-app/entidadTipoDoc';
 
 interface HtmlInputEvent extends Event {
   target: (HTMLInputElement & EventTarget) | null;
@@ -26,10 +28,19 @@ interface HtmlInputEvent extends Event {
 })
 export class CrearFundacionComponent implements OnInit {
   maxDate: Date | any;
+  tipo_docs: TipoDoc[] = [];
+  public previsualizacion: string | undefined;
+  file!: File;
+  photoSelected: string | ArrayBuffer = '';
+  localidades: Localidad[] = [];
+  latitud: number | any;
+  longitud: number | any;
+
   constructor(
     public crearFundacionService: CrearFundacionService,
     private sanitizer: DomSanitizer,
     private getLocalidadesService: LocalidadesService,
+    private getTipoDocService: TipoDocsService,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private _router: Router
@@ -38,12 +49,7 @@ export class CrearFundacionComponent implements OnInit {
     this.maxDate = new Date();
   }
   //public archivos: any = [];
-  public previsualizacion: string | undefined;
-  file!: File;
-  photoSelected: string | ArrayBuffer = '';
-  localidades: Localidad[] = [];
-  latitud: number | any;
-  longitud: number | any;
+  
   @ViewChild('search')
   public searchElementRef: ElementRef | any;
   ngOnInit(): void {
@@ -59,24 +65,24 @@ export class CrearFundacionComponent implements OnInit {
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
           if (place.geometry === undefined || place.geometry == null) {
             return;
-          }
-          else 
-          {
+          } else {
             this.longitud = place.geometry.location?.lng();
             this.latitud = place.geometry.location?.lat();
           }
         });
       });
     });
-    this.getLocalidadesService.getLocalidadesFundacion().subscribe(
+    this.getTipoDocService.getTipoDocFundacion().subscribe(
       (res) => {
-        this.localidades = res;
+        this.tipo_docs = res;
       },
       (err) => console.log(err)
     );
+
+
   }
 
-  tipo_doc: any[] = ['Cédula de ciudadanía', 'Cédula de extranjería'];
+  // tipo_doc: any[] = ['Cédula de ciudadanía', 'Cédula de extranjería'];
 
   onSignUp(form: NgForm) {
     console.log(this.latitud);
@@ -109,7 +115,7 @@ export class CrearFundacionComponent implements OnInit {
         // const token = respuesta.token;
         // this.token = token;
       });
-      this._router.navigate(['/login']);
+    this._router.navigate(['/login']);
   }
 
   onPhotoSelected(event: any): void {

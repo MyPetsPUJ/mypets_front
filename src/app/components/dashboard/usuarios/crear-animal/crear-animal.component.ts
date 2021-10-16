@@ -4,8 +4,10 @@ import { ThemePalette } from '@angular/material/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Vacuna } from 'src/app/components/interfaces/datos-app/entidadVacuna';
+import { DatosAnimal } from 'src/app/components/interfaces/datos-app/entidadDatosAnimal';
 
 import { CrearAnimalService } from 'src/app/services/animal/crearAnimal.service';
+import { DatosAnimalService } from 'src/app/services/datos-app/datos-animal.service';
 import { VacunasService } from 'src/app/services/datos-app/vacunas.service';
 
 interface HtmlInputEvent extends Event {
@@ -20,21 +22,32 @@ interface HtmlInputEvent extends Event {
 export class CrearAnimalComponent implements OnInit {
   minDate: Date | any;
   maxDate: Date | any;
+  // edades: DatosAnimal[] = [];
+  // tipos: DatosAnimal[] = [];
+  // generos: DatosAnimal[] = [];
+  // tamanos: DatosAnimal[] = [];
+  // color_ojos: DatosAnimal[] = [];
+  // tipo_pelajes: DatosAnimal[] = [];
+  // desparasitado: DatosAnimal[] = [];
+  // situacion: DatosAnimal[] = [];
+  vacunas: Vacuna[] = [];
+  public archivos: any = [];
+  public previsualizacion: string | undefined;
+  file!: File;
+  photoSelected: string | ArrayBuffer = '';
+
   constructor(
     public crearPerroService: CrearAnimalService,
     private sanitizer: DomSanitizer,
     private getVacunasService: VacunasService,
+    private getDatosAnimalService: DatosAnimalService,
     private _router: Router
   ) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 19, 0, 1);
     this.maxDate = new Date();
   }
-  vacunas: Vacuna[] = []
-  public archivos: any = [];
-  public previsualizacion: string | undefined;
-  file!: File;
-  photoSelected: string | ArrayBuffer = '';
+  
   ngOnInit(): void {
     this.previsualizacion = '../../../assets/Images/dog-form.png';
     this.getVacunasService.getVacunasPerro().subscribe(
@@ -43,6 +56,10 @@ export class CrearAnimalComponent implements OnInit {
       },
       (err) => console.log(err)
     );
+
+    
+
+
   }
   tiles: any[] = [
     { text: 'One', cols: 3, rows: 1, color: 'lightblue' },
@@ -50,6 +67,8 @@ export class CrearAnimalComponent implements OnInit {
     { text: 'Three', cols: 1, rows: 1, color: 'lightpink' },
     { text: 'Four', cols: 2, rows: 1, color: '#DDBDF1' },
   ];
+
+
   edad: any[] = [
     'menos de 1 mes ',
     '1 mes',
@@ -135,7 +154,7 @@ export class CrearAnimalComponent implements OnInit {
         (res) => console.log(res),
         (err) => console.log(err)
       );
-      this._router.navigate(['/dashboard/animales']);
+    this._router.navigate(['/dashboard/animales']);
   }
 
   onPhotoSelected(event: any): void {

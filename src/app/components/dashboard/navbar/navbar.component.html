@@ -13,7 +13,7 @@
     <span class="example-spacer"></span>
     <li><a routerLink="/dashboard">Home</a></li>
     <span class="example-spacer"></span>
-    <li><a routerLink="mapa">Mapa</a></li>
+    <li *ngIf="userIsAuth"><a [routerLink]="['mapa', userId]">Mapa</a></li>
     <span class="example-spacer"></span>
     <li *ngIf="userIsAuth"><a routerLink="mis-animales">Mis Animales</a></li>
     <span class="example-spacer"></span>

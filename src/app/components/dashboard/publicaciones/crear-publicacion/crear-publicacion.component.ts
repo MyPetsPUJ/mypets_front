@@ -47,60 +47,57 @@ export class CrearPublicacionComponent implements OnInit {
   ]; //Dato quemado para poder compilar, luego borrar
 
   onCrearPublicacion(form: NgForm) {
-    if(this.photoSelected == "../../../assets/Images/no-image.png")
-      {
-        this._snackBar.open('Por favor seleccione una imágen para la publicación','', {
+    if (this.photoSelected == '../../../assets/Images/no-image.png') {
+      this._snackBar.open(
+        'Por favor seleccione una imágen para la publicación',
+        '',
+        {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        }
+      );
+    } else if (form.invalid || form.value.seccionPublicacion == '') {
+      if (form.value.seccionPublicacion == '') {
+        this._snackBar.open('Por favor rellene los espacios solicitados', '', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
+      } else {
+        this._snackBar.open('Por favor rellene los espacios solicitados', '', {
           duration: 3000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom',
         });
       }
-    else if (form.invalid || form.value.seccionPublicacion == '')  {
-      
-      if(form.value.seccionPublicacion == '')
-      {
-        this._snackBar.open('Por favor rellene los espacios solicitados','', {
-          duration: 3000,
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom',
-        });
-      }
-      else 
-      {
-        this._snackBar.open('Por favor rellene los espacios solicitados','', {
-          duration: 3000,
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom',
-        });
-      }
-    }
-    else 
-    {
-      this.crearPublicacionService.crearPublicacionQuemada(form.value.nombrePublicacion,
-        form.value.cuerpoPublicacion,
-        this.fechaPublicacion,
-        this.photoSelected,
-        form.value.seccionPublicacion);
-      this.crearPublicacionService
-      .crearPublicacion(
+    } else {
+      this.crearPublicacionService.crearPublicacionQuemada(
         form.value.nombrePublicacion,
         form.value.cuerpoPublicacion,
         this.fechaPublicacion,
-        this.file,
+        this.photoSelected,
         form.value.seccionPublicacion
-      )
-      .subscribe(
-        (res) => console.log(res),
-        (err) => console.log(err)
       );
-      this._snackBar.open('Publicación creada','', {
+      this.crearPublicacionService
+        .crearPublicacion(
+          form.value.nombrePublicacion,
+          form.value.cuerpoPublicacion,
+          this.fechaPublicacion,
+          this.file,
+          form.value.seccionPublicacion
+        )
+        .subscribe(
+          (res) => console.log(res),
+          (err) => console.log(err)
+        );
+      this._snackBar.open('Publicación creada', '', {
         duration: 3000,
         horizontalPosition: 'center',
         verticalPosition: 'bottom',
       });
       this.router.navigate([['']]);
     }
-    
   }
 
   onPhotoSelected(event: any): void {

@@ -188,7 +188,7 @@ export class CrearAnimalGatoComponent implements OnInit {
         (res) => console.log(res),
         (err) => console.log(err)
       );
-      this._router.navigate(['/dashboard/animales']);
+    this._router.navigate(['/dashboard/animales']);
   }
 
   onPhotoSelected(event: any): void {

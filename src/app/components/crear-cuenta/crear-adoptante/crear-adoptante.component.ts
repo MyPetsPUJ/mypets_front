@@ -4,7 +4,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { CrearAdoptanteService } from 'src/app/services/adoptante/crearAdoptante.service';
 import { LocalidadesService } from 'src/app/services/datos-app/localidades.service';
 import { Localidad } from '../../interfaces/datos-app/entidadLocalidad';
-
+import { Genero } from '../../interfaces/datos-app/entidadGenero';
+import { GenerosService } from 'src/app/services/datos-app/generos.service';
+import { TipoDocsService } from 'src/app/services/datos-app/tipo-docs.service';
+import { TipoDoc } from '../../interfaces/datos-app/entidadTipoDoc';
 
 @Component({
   selector: 'app-crear-adoptante',
@@ -14,11 +17,15 @@ import { Localidad } from '../../interfaces/datos-app/entidadLocalidad';
 export class CrearAdoptanteComponent implements OnInit {
   minDate: Date | any;
   maxDate: Date | any;
+  generos: Genero[] = [];
+  tipo_docs: TipoDoc[] = [];
 
   constructor(
     public crearAdoptanteService: CrearAdoptanteService,
     private sanitizer: DomSanitizer,
-    private getLocalidadesService: LocalidadesService
+    private getLocalidadesService: LocalidadesService,
+    private getGenerosService: GenerosService,
+    private getTipoDocService: TipoDocsService
   ) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 110, 0, 1);
@@ -31,10 +38,19 @@ export class CrearAdoptanteComponent implements OnInit {
     this.previsualizacion = '../../../assets/Images/adopt.png';
     this.getLocalidadesService.getLocalidadesAdoptante().subscribe(
       (res) => {
-        this.localidades = res;
+        console.log(res);
       },
       (err) => console.log(err)
     );
+
+    this.getTipoDocService.getTipoDocAdoptante().subscribe(
+      (res) => {
+        console.log(res)
+      },
+      (err) => console.log(err)
+    );
+
+
   }
   tiles: any[] = [
     { text: 'One', cols: 3, rows: 1, color: 'lightblue' },

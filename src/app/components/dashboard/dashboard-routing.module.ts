@@ -25,8 +25,8 @@ const routes: Routes = [
       { path: 'reportes', component: ReportesComponent },
       { path: 'mi_cuenta', component: MiCuentaComponent },
       { path: 'seleccion-animal', component: SeleccionAnimalComponent },
-      { path: 'mapa', component: InicioComponent},
-      { path:'animales-adoptados',component: AnimalesAdoptadosComponent},
+      { path: 'mapa/:id', component: InicioComponent },
+      { path: 'animales-adoptados', component: AnimalesAdoptadosComponent },
       {
         path: 'seleccion-animal/crear-animal-perro',
         component: CrearAnimalComponent,
@@ -35,16 +35,16 @@ const routes: Routes = [
         path: 'seleccion-animal/crear-animal-gato',
         component: CrearAnimalGatoComponent,
       },
-      {path: 'publicaciones', component: PublicacionesComponent},
+      { path: 'publicaciones', component: PublicacionesComponent },
       {
         path: 'publicaciones/crear-publicacion',
         component: CrearPublicacionComponent,
       },
-      {path: 'solicitudes',component: SolicitudesComponent},
+      { path: 'solicitudes', component: SolicitudesComponent },
       //{ path: 'publicaciones', component: PublicacionListComponent },
       { path: 'publicaciones/:id', component: PublicacionesComponent },
       // {path: 'publicaciones/:id/preview', component: PublicacionPreviewComponent},
-      {path: 'mis-animales/:id', component: UsuariosComponent}
+      { path: 'mis-animales/:id', component: UsuariosComponent },
     ],
   },
 ];

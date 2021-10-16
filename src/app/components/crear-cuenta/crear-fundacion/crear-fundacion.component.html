@@ -46,8 +46,8 @@
                         <mat-form-field appearance="fill" class="ancho">
                             <mat-label>Tipo de documento</mat-label>
                             <mat-select name="tipo_doc" ngModel #tipo_docInput="ngModel">
-                                <mat-option *ngFor="let tipo_doc of tipo_doc" [value]="tipo_doc" >
-                                    {{tipo_doc}}
+                                <mat-option *ngFor="let tipo_doc of tipo_docs" [value]="tipo_doc" >
+                                    {{tipo_doc.nombre}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>

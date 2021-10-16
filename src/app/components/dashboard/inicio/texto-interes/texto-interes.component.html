@@ -1,6 +1,12 @@
 <div>
     <h1>Ingrese los datos solicitados del punto de interés</h1>
     <form [formGroup]="form">
+        <h3>Ingrese la dirección del punto de interés</h3>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label></mat-label>
+            <input matInput placeholder="Ej. Carrera 7#45-12" id="direccionPunto" 
+            formControlName="direccionLugar" required matInput autocomplete="off">
+        </mat-form-field>
         <h3>Ingrese el título del punto de interés</h3>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label></mat-label>
@@ -12,6 +18,7 @@
             <mat-label></mat-label>
             <textarea matInput placeholder="Ej. horarios, gente permitida, tipos de animales, etc." class="tam" id="txtInput">{{data.texto}}</textarea>
           </mat-form-field>
+          
     </form>
     <button mat-raised-button (click)="guardarTexto('aceptar')">Aceptar</button>
     <button mat-raised-button (click)="guardarTexto('cancelar')">Cancelar</button>
