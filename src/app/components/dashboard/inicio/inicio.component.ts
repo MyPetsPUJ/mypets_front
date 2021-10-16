@@ -180,6 +180,7 @@ export class InicioComponent implements OnInit, OnDestroy {
           this.puntoInteres.direccion = result.direccion;
           this.puntoInteres.titulo = result.titulo;
           this.puntoInteres.descripcion = result.texto;
+          this.puntoInteres.autorPuntoDeInteres = this.userId;
 
           coordinates = {
             latitude: $event.coords.lat,
@@ -197,6 +198,8 @@ export class InicioComponent implements OnInit, OnDestroy {
             coordinates
           );
           this.coordenadas.push(coordinates);
+          console.log("punto de interes", this.puntoInteres)
+          console.log(this.userId);
           this.mapService.crearPuntoInteres(this.puntoInteres, this.userId);
           this._snackBar.open('Punto de interés creado', '', {
             duration: 3000,

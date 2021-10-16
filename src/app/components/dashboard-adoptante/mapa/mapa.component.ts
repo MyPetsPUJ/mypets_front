@@ -22,6 +22,8 @@ export class MapaComponent implements OnInit {
   latitudeMarker: number | any;
   longitudeMarker: number | any;
   map: any;
+  verde: string | any;
+  azul: string | any;
   infoFunds: any[] = [];
   cargar: boolean = false;
   clicks: number = 0;
@@ -43,6 +45,8 @@ export class MapaComponent implements OnInit {
   ngOnInit(): void {
     this.geolocalizar();
     // this.fundaciones = this.servicioFundacion.getFundaciones();
+    this.azul = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
+    this.verde = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
     this.mapService.mostrarPuntosDeInteres().subscribe((res) => {
       // console.log('Respuesta: ', res.fundaciones[3].ubicacion.coordinates[0]);
       this.fundacionesBack = res.fundaciones;
@@ -72,7 +76,7 @@ export class MapaComponent implements OnInit {
           res.puntos[index].ubicacion.direccionFormateada;
       }
     });
-    this.dataSource = new MatTableDataSource(this.fundaciones);
+    this.dataSource = new MatTableDataSource(this.fundacionesBack);
   }
 
   geolocalizar() {
@@ -168,13 +172,13 @@ export class MapaComponent implements OnInit {
       this.displayedColumns[4] = 'accion';
       this.cargar = true;
       //console.log(this.infoFunds);
-      for (i = 0; i < this.infoFunds.length; i++) {
-        this.llenarFundaciones(
-          i,
-          this.infoFunds[i].distancia,
-          this.infoFunds[i].duracion
-        );
-      }
+      // for (i = 0; i < this.infoFunds.length; i++) {
+      //   this.llenarFundaciones(
+      //     i,
+      //     this.infoFunds[i].distancia,
+      //     this.infoFunds[i].duracion
+      //   );
+      // }
     }
   }
 
