@@ -91,6 +91,43 @@
   font-size: 50px;
 }
 
+.listaDeFiltros {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.filtro {
+  padding-right: 15px;
+}
+.mat-form-field {
+  background-color: #afc7a4ad;
+  border-radius: 5px;
+}
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-subscript-wrapper {
+  padding: 0px;
+}
+.filtro mat-checkbox {
+  background-color: #afc7a4ad;
+  border: #222;
+  width: 300px;
+  height: 30px;
+}
+mat-checkbox {
+  padding-bottom: 25px;
+}
+.buscarAnimal {
+  background-color: #6c6bb4ad;
+  color: white;
+  border: #222;
+  justify-content: center;
+  width: 150px;
+  height: 40px;
+}
+
 .container .box {
   display: flex;
   flex-direction: row;

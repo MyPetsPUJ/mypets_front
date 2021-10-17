@@ -16,7 +16,7 @@
     </div>
     <div class="contenedorFiltro2">
       <div class="heading">
-        <h3><span>Filtros</span></h3>
+      
         <div class="listaDeFiltros">
           <div class="filtro">
             <mat-form-field appearance="fill" class="ancho">
@@ -33,7 +33,7 @@
             </mat-form-field>
           </div>
           <div class="filtro">
-            <mat-form-field appearance="fill" class="ancho">
+            <mat-form-field appearance="fill" class="no-padding">
               <mat-label>Color ojos</mat-label>
               <mat-select
                 name="color_ojos"
@@ -61,7 +61,13 @@
             </mat-form-field>
           </div>
           <div class="filtro">
-            <button>Organizar por mayor tiempo en espera </button> 
+            <mat-checkbox name="organizar" ngModel #organizarInput="ngModel" >Organizar por mayor tiempo en espera</mat-checkbox>
+            <mat-checkbox name="organizar" ngModel #organizarInput="ngModel" >Organizar por edad</mat-checkbox>
+          </div>
+          <div class="filtro">
+            <div class="buscarAnimal">
+              Busca tu nueva mascota
+            </div>
           </div>
         </div>
       </div>
