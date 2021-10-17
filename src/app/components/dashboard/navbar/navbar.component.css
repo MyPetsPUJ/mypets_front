@@ -8,7 +8,7 @@ nav {
   justify-content: space-around;
   align-items: center;
   min-height: 8vh;
-  background-color: #5d4954;
+  background-color: #6ebf4bba;
   font-family: "Poppins", sans-serif;
 }
 
@@ -97,13 +97,9 @@ nav {
 .toggle .line3 {
   transform: rotate(45deg) translate(-5px, -6px);
 }
-.example-spacer 
-{
-    flex: 1 1 auto;
+.example-spacer {
+  flex: 1 1 auto;
 }
-.pointer 
-{
+.pointer {
   cursor: pointer;
-  
 }
-

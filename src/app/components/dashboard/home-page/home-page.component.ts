@@ -14,6 +14,21 @@ export class HomePageComponent implements OnInit {
   users: string[] = ['Felipe Perez','Andres Castro','Felipe Vanegas'];
   animales: EntidadAnimal[] = [];
   columnas:number=0;
+  especie:string[]=["Perro","Gato"];
+  color_ojos: any[] = [
+    'Azul',
+    'Verde',
+    'Marrón',
+    'Dorado',
+    'Negro',
+    'Heterocromía',
+  ];
+  tipo_pelaje: any[] = [
+    'Pelaje duro',
+    'Pelaje rizado',
+    'Pelaje corto',
+    'Pelaje largo',
+  ];
   valoresColumna1:number[]=[];
   valoresColumna2:number[]=[];
   valoresColumna3:number[]=[];
