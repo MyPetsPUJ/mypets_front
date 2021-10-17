@@ -30,7 +30,11 @@ export class InicioComponent implements OnInit, OnDestroy {
     descripcion: '',
     direccion: '',
     autorPuntoDeInteres: '',
-    ubicacion: null,
+    ubicacion: {
+      type: 'Point',
+      coordinates: Array<number>(),
+      direccionFormateada: '',
+    },
     latitud: 0,
     longitud: 0,
   };
@@ -63,7 +67,7 @@ export class InicioComponent implements OnInit, OnDestroy {
     tipo_doc: '',
     num_doc: '',
     fecha_creacion: '',
-    latitud:0,
+    latitud: 0,
     longitud: 0,
     distancia: '',
     duracion: '',
@@ -76,7 +80,11 @@ export class InicioComponent implements OnInit, OnDestroy {
     mision: '',
     vision: '',
     publicaciones: [],
-    ubicacion: null,
+    ubicacion: {
+      type: 'Point',
+      coordinates: Array<number>(),
+      direccionFormateada: '',
+    },
     _id: '',
   };
   displayedColumns: string[] = ['evento', 'direccion', 'accion'];
@@ -116,15 +124,18 @@ export class InicioComponent implements OnInit, OnDestroy {
       this.fundacion.direccion = res.fundacion.ubicacion.direccionFormateada;
       this.puntosDeInteres = res.puntos;
       console.log('Puntos: ', this.puntosDeInteres);
+
       for (let index = 0; index < this.puntosDeInteres.length; index++) {
         console.log('Entrando a longitud');
-        this.puntosDeInteres[index].longitud =
-          res.puntos[index].ubicacion.coordinates[0];
+        console.log(this.puntosDeInteres[index].ubicacion.coordinates[0]);
+        // this.puntosDeInteres[index].longitud =
+        //   res.puntos[index].ubicacion.coordinates[0];
         console.log('Entrando a latitud');
-        this.puntosDeInteres[index].latitud =
-          res.puntos[index].ubicacion.coordinates[1];
-        this.puntosDeInteres[index].direccion =
-          res.puntos[index].ubicacion.direccionFormateada;
+        console.log(this.puntosDeInteres[index].ubicacion.coordinates[1]);
+        // this.puntosDeInteres[index].latitud =
+        //   res.puntos[index].ubicacion.coordinates[1];
+        // this.puntosDeInteres[index].direccion =
+        //   res.puntos[index].ubicacion.direccionFormateada;
       }
       this.dataSource = new MatTableDataSource<PuntoInteres>(
         this.puntosDeInteres
@@ -134,7 +145,7 @@ export class InicioComponent implements OnInit, OnDestroy {
       // console.log('longitud', res.puntos[0].ubicacion.coordinates[0]);
       // console.log('latitud', res.puntos[0].ubicacion.coordinates[1]);
     });
-    
+
     // this.dataSource.paginator = this.paginator;
   }
   ngOnDestroy() {
@@ -168,6 +179,7 @@ export class InicioComponent implements OnInit, OnDestroy {
         ubicacion: null,
       };
       console.log('coordenadaSize ' + this.coordenadas.length);
+      console.log("Puntoooo", this.puntoInteres);
       const dialogRef = this.dialog.open(TextoInteresComponent, {
         disableClose: true,
         width: '600px',
@@ -178,39 +190,46 @@ export class InicioComponent implements OnInit, OnDestroy {
       dialogRef.afterClosed().subscribe((result) => {
         if (result.accion == 'aceptar') {
           console.log('The dialog was closed');
+          console.log("Dir", result.direccion)
           this.puntoInteres.direccion = result.direccion;
           this.puntoInteres.titulo = result.titulo;
           this.puntoInteres.descripcion = result.texto;
           this.puntoInteres.autorPuntoDeInteres = this.userId;
-          console.log("Ubi", result.ubicacion)
-          this.puntoInteres.ubicacion = result.ubicacion;
+          // console.log('Ubi', result.ubicacion);
+          // this.puntoInteres.ubicacion = result.ubicacion;
+          this.puntoInteres.latitud = $event.coords.lat;
+          this.puntoInteres.longitud = $event.coords.lng;
+          this.puntoInteres.ubicacion.coordinates[0] = $event.coords.lng;
+          this.puntoInteres.ubicacion.coordinates[1] = $event.coords.lat;
+          console.log("Una coord",this.puntoInteres.ubicacion.coordinates[1])
+          
 
-
-          coordinates = {
-            latitude: $event.coords.lat,
-            longitude: $event.coords.lng,
-            titulo: this.puntoInteres.titulo,
-            descripcion: this.puntoInteres.descripcion,
-            direccion: this.puntoInteres.direccion,
-            ubicacion: this.puntoInteres.ubicacion,
-            autorPunto: this.userId,
-          };
+          // coordinates = {
+          //   latitude: $event.coords.lat,
+          //   longitude: $event.coords.lng,
+          //   titulo: this.puntoInteres.titulo,
+          //   descripcion: this.puntoInteres.descripcion,
+          //   direccion: this.puntoInteres.direccion,
+          //   ubicacion: this.puntoInteres.ubicacion,
+          //   autorPunto: this.userId,
+          // };
           this.geoCodificacionInversa(
             geocoder,
-            coordinates.latitude,
-            coordinates.longitude,
-            coordinates
+            this.puntoInteres.ubicacion.coordinates[1],
+            this.puntoInteres.ubicacion.coordinates[0],
+            this.puntoInteres
           );
-          this.coordenadas.push(coordinates);
-          console.log("punto de interes", this.puntoInteres)
-          console.log(this.userId);
+          console.log('After geocodificación inversa', this.puntoInteres);
+          // this.coordenadas.push(coordinates);
+          console.log('punto de interes', this.puntoInteres);
+
           this.mapService.crearPuntoInteres(this.puntoInteres, this.userId);
           this._snackBar.open('Punto de interés creado', '', {
             duration: 3000,
             horizontalPosition: 'center',
             verticalPosition: 'bottom',
           });
-          
+
           this.cargarDatos();
         } else {
           this._snackBar.open(
@@ -233,7 +252,7 @@ export class InicioComponent implements OnInit, OnDestroy {
     geocodificador: google.maps.Geocoder,
     latitud: number,
     longitud: number,
-    coordinates: Coordenada
+    puntoDeInteres: PuntoInteres
   ) {
     const latlng = {
       lat: latitud,
@@ -243,7 +262,7 @@ export class InicioComponent implements OnInit, OnDestroy {
       .geocode({ location: latlng })
       .then((response) => {
         if (response.results[0]) {
-          coordinates.direccion = response.results[0].formatted_address;
+          puntoDeInteres.direccion = response.results[0].formatted_address;
         }
       })
       .catch((e) => window.alert('Geocoder failed due to: ' + e));

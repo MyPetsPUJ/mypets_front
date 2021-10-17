@@ -82,7 +82,7 @@
                     </div>
                 </agm-info-window>
             </agm-marker>
-            <agm-marker *ngFor="let punto of puntosDeInteres" [latitude]="punto.latitud" [longitude]="punto.longitud" [iconUrl]="verde">
+            <agm-marker *ngFor="let punto of puntosDeInteres" [latitude]="punto.ubicacion.coordinates[1]" [longitude]="punto.ubicacion.coordinates[0]" [iconUrl]="verde">
                 <agm-info-window>
                     <div>
                         <h2>{{punto.titulo}}</h2>

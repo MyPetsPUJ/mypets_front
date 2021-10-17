@@ -53,6 +53,7 @@ export class MapaComponent implements OnInit {
       console.log('Fundaciones', this.fundacionesBack);
       this.puntosDeInteres = res.puntos;
       console.log('Autor', this.puntosDeInteres[0].autorPuntoDeInteres);
+      console.log('Direccion', this.puntosDeInteres[0].direccion)
 
       for (let indexF = 0; indexF < this.fundacionesBack.length; indexF++) {
         console.log('F longitud');
@@ -64,7 +65,7 @@ export class MapaComponent implements OnInit {
         this.fundacionesBack[indexF].direccion =
           res.fundaciones[indexF].ubicacion.direccionFormateada;
       }
-
+      this.dataSource = new MatTableDataSource(this.fundacionesBack);
       for (let index = 0; index < this.puntosDeInteres.length; index++) {
         console.log('Entrando a longitud');
         this.puntosDeInteres[index].longitud =
@@ -75,7 +76,6 @@ export class MapaComponent implements OnInit {
         this.puntosDeInteres[index].direccion =
           res.puntos[index].ubicacion.direccionFormateada;
       }
-      this.dataSource = new MatTableDataSource(this.fundacionesBack);
     });
   }
 
