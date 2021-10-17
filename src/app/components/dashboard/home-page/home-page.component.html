@@ -1,99 +1,109 @@
 <div class="todo">
   
 
-<head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
-</head>
-
-
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+  </head>
   
-
-<body>
   
-  <div class="container"> 
-    <div class="heading">
-      <h3> <span>Nuestras mascotas</span></h3>
-    </div>
-    <div *ngFor="let animal of animales; index as i; first as isFirst">
-      <div class= "box">
-        <div *ngIf="columnas< i">
-          <div class= "dream">
-            <img
-              class="container crop card"
-              mat-card-image
-              [src]="'http://localhost:3000/' + animal.urlImg"
-              alt="Foto de un animal"
-            />
-            <div class=descripcion>
+    
+  
+  <body>
 
-              <mat-card-content>
-                <div class="nombreAnimal"> 
-                  {{ animal.nombre }}
-                </div>
-                <div class="razaAnimal"> 
-                  {{ animal.raza }}
-                </div>
-                
-              </mat-card-content>
-            </div>
-            
-          </div>
-        </div>
-        <div *ngIf="i >= columnas/3 && i < columnas*0.66">
-          <div class= "dream">
-            <img
-              class="container crop card"
-              mat-card-image
-              [src]="'http://localhost:3000/' + animal.urlImg"
-              alt="Foto de un animal"
-            />
-            <div class=descripcion>
-
-              <mat-card-content>
-                <div class="nombreAnimal"> 
-                  {{ animal.nombre }}
-                </div>
-                <div class="razaAnimal"> 
-                  {{ animal.raza }}
-                </div>
-                
-              </mat-card-content>
-            </div>
-            
-          </div>
-        </div>
-
-        <div *ngIf="i >= columnas*0.66">
-          <div class= "dream">
-            <img
-              class="container crop card"
-              mat-card-image
-              [src]="'http://localhost:3000/' + animal.urlImg"
-              alt="Foto de un animal"
-            />
-            <div class=descripcion>
-
-              <mat-card-content>
-                <div class="nombreAnimal"> 
-                  {{ animal.nombre }}
-                </div>
-                <div class="razaAnimal"> 
-                  {{ animal.raza }}
-                </div>
-                
-              </mat-card-content>
-            </div>
-          
-          </div>
-        </div>
-        
+    <div class=contenedorFiltro>
+      <div class="heading">
+        <h3> <span>Adopta, ¡no compres!</span></h3>
       </div>
     </div>
     
-   
+    <div class="container"> 
+      <div class="heading">
+        <h3> <span>Nuestras mascotas</span></h3>
+      </div>
+      <div class= "box"> 
+          
+            <div class= "dream">
+              <div *ngFor="let animal of animales; index as i">
+                <div *ngIf="valoresColumna1.includes(i)">
+                    <img
+                      class="container crop card"
+                      mat-card-image
+                      [src]="'http://localhost:3000/' + animal.urlImg"
+                      alt="Foto de un animal"
+                    />
+                    <div class=descripcion>
+        
+                      <mat-card-content>
+                      <div class="nombreAnimal"> 
+                        {{ animal.nombre }}
+                      </div>
+                      <div class="razaAnimal"> 
+                        {{ animal.raza }}
+                      </div>
+                        
+                      </mat-card-content>
+                    </div>
+                 </div>
+              </div>
+            </div>
+            <div class= "dream">
+              <div *ngFor="let animal of animales; index as i">
+                <div *ngIf="valoresColumna2.includes(i)">
+                    <img
+                      class="container crop card"
+                      mat-card-image
+                      [src]="'http://localhost:3000/' + animal.urlImg"
+                      alt="Foto de un animal"
+                    />
+                    <div class=descripcion>
+        
+                      <mat-card-content>
+                      <div class="nombreAnimal"> 
+                        {{ animal.nombre }}
+                      </div>
+                      <div class="razaAnimal"> 
+                        {{ animal.raza }}
+                      </div>
+                        
+                      </mat-card-content>
+                    </div>
+                 </div>
+              </div>
+            </div>
+            <div class= "dream">
+              <div *ngFor="let animal of animales; index as i">
+                <div *ngIf="valoresColumna3.includes(i)">
+                    <img
+                      class="container crop card"
+                      mat-card-image
+                      [src]="'http://localhost:3000/' + animal.urlImg"
+                      alt="Foto de un animal"
+                    />
+                    <div class=descripcion>
+        
+                      <mat-card-content>
+                      <div class="nombreAnimal"> 
+                        {{ animal.nombre }}
+                      </div>
+                      <div class="razaAnimal"> 
+                        {{ animal.raza }}
+                      </div>
+                        
+                      </mat-card-content>
+                    </div>
+                 </div>
+              </div>
+            </div>
 
+
+        
+         
+    </div>
+      
+     
+  
+    </div>
+  </body>
   </div>
-</body>
-</div>

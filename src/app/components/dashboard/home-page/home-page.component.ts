@@ -13,10 +13,11 @@ import { MatDialog } from '@angular/material/dialog';
 export class HomePageComponent implements OnInit {
   users: string[] = ['Felipe Perez','Andres Castro','Felipe Vanegas'];
   animales: EntidadAnimal[] = [];
-  columnas:number=this.animales.length;
+  columnas:number=0;
   valoresColumna1:number[]=[];
   valoresColumna2:number[]=[];
   valoresColumna3:number[]=[];
+  validador:number=0;
   nombreFundacion: string | undefined;
   logoFundacion: string | undefined;
   
@@ -24,11 +25,18 @@ export class HomePageComponent implements OnInit {
   constructor(private animalService: AnimalService,  public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    
     this.animalService.getAnimales().subscribe({
       next: (res) => {
         console.log(res)
         this.animales = res;
-        console.log("animales", this.animales)
+        this.columnas=this.animales.length;
+        console.log(this.validador)
+        this.dividirColumnas();
+        console.log(this.valoresColumna1)
+        console.log(this.valoresColumna2)
+        console.log(this.valoresColumna3)
+        
       
       },
       error: (error) => {
@@ -38,30 +46,24 @@ export class HomePageComponent implements OnInit {
     
   }
   dividirColumnas(): void{
-    for(var i=1;i<=this.animales.length;i+3)
+    for(var i=0;i<this.columnas;i++)
     { 
-      this.valoresColumna1.push(i);
-      this.valoresColumna2.push(i+2);
-      this.valoresColumna3.push(i+3);
-
-      if(this.animales.length - i < 3 )
+      if(this.validador==0)
       {
-        this.valoresColumna2.push(i+4)
-        this.valoresColumna3.push(i+5)
-        this.valoresColumna1.push(i+6)
-        break;
+        this.valoresColumna1.push(i)
+        this.validador++;
       }
-      if(this.animales.length - i < 2 )
+      else if(this.validador==1)
       {
-        this.valoresColumna2.push(i+4)
-        this.valoresColumna1.push(i+5)
-        break;
+        this.valoresColumna2.push(i)
+        this.validador++;
       }
-      if(this.animales.length - i < 1 )
+      else if(this.validador==2)
       {
-        this.valoresColumna2.push(i+4)
-        break;
+        this.valoresColumna3.push(i)
+        this.validador=0;
       }
+      
       
     }
   }
