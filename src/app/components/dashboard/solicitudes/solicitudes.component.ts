@@ -89,7 +89,6 @@ export class SolicitudesComponent implements OnInit {
         disposicionMudarseConElAnimal: 'SI',
         disposicionPasearAlAnimalPerro: 'NO',
         disposicionAdaptacionAnimal: 'El tiempo que sea necesario',
-        tiempoAdaptacionAnimal:'',
         asumirGastosAnimal: 'yo',
         adoptanteAlternativoAusencia: 'Mis hermanas',
         permisionTenenciaAnimales: 'SI'
