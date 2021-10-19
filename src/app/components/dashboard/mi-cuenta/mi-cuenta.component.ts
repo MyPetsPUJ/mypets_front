@@ -1,7 +1,9 @@
-import { Component, OnInit} from '@angular/core';
+import { MapsAPILoader } from '@agm/core';
+import { Component, ElementRef, NgZone, OnInit, ViewChild} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { VerFotoComponent } from './ver-foto/ver-foto.component';
 
 @Component({
@@ -14,23 +16,54 @@ export class MiCuentaComponent implements OnInit {
   '5.Usme', '6. Tunjuelito', '7.Bosa', '8.Kennedy','9.Fontibón','10.Engativá','11.Suba','12.Barrios Unidos',
   '13.Teusaquillo','14.Los Mártires', '15.Antonio Nariño', '16.Puente Aranda', '17.Candelaria',
   '18.Rafael Uribe Uribe','19.Ciudad Bolivar','20.Sumapaz'];
-  form: FormGroup;
-  constructor(private sanitizer: DomSanitizer, private fb: FormBuilder, public dialog: MatDialog) {
-    this.form = this.fb.group({
-      nombreFundacion: ['Perritos felices', Validators.required],
-      nombreEncargado: ['Juan Felipe', Validators.required],
-      apellidosEncargado: ['Vanegas Patiño', Validators.required],
-      fechaCreacion: ['12/4/1999', Validators.required],
-      localidad: ['8.Kennedy', Validators.required],
-      correo: ['j_vanegas@javeriana.edu.co', Validators.required],
-      numCelular: [3205586237, Validators.required],
-      contrasena: ['12345', Validators.required]
-    })
+  form: FormGroup | any;
+  documentos: String[] =['Cédula de ciudadanía','Cédula de extranjería','Pasaporte']
+  @ViewChild('search') searchElementRef: ElementRef| any;
+  nombreFun:String | any;
+
+  constructor(private sanitizer: DomSanitizer, private fb: FormBuilder, public dialog: MatDialog,
+    private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone,
+    private _router: Router) {
    }
   public archivos: any = [];
   public previsualizacion: string | undefined;
   
   ngOnInit(): void {
+    this.nombreFun = "Perritos felices";
+    var fecha = new Date(2005,2,24);
+    this.form = this.fb.group({
+      nombreFundacion: [this.nombreFun, Validators.required],
+      nombreEncargado: ['Juan Felipe', Validators.required],
+      apellidosEncargado: ['Vanegas Patiño', Validators.required],
+      fechaCreacion: [fecha, Validators.required],
+      localidad: ['8.Kennedy', Validators.required],
+      correo: ['j_vanegas@javeriana.edu.co', Validators.required],
+      numCelular: [3205586237, Validators.required],
+      contrasena: ['12345', Validators.required],
+      tipo_doc: ['Cédula de ciudadanía',Validators.required],
+      num_doc:['1233511884',Validators.required],
+      mision:['Hacer a los animales felices', Validators.required],
+      vision:['En 5 años ser la fundación más grande de Colombia',Validators.required],
+      direccionPunto:['Cl 2 #91c-85',Validators.required],
+
+    })
+    this.mapsAPILoader.load().then(() => {
+      let autocomplete = new google.maps.places.Autocomplete(
+        this.searchElementRef.nativeElement,
+        { types: ['address'] }
+      );
+      autocomplete.setComponentRestrictions({ country: ['co'] });
+      autocomplete.addListener('place_changed', () => {
+        this.ngZone.run(() => {
+          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+          if (place.geometry === undefined || place.geometry == null) {
+            return;
+          } else {
+          }
+        });
+      });
+    });
     this.previsualizacion = "../../../assets/Images/pet-hotel.png"
   }
   onFileInput(event): any

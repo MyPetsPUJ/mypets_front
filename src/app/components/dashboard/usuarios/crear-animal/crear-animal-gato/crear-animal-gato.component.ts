@@ -44,6 +44,7 @@ export class CrearAnimalGatoComponent implements OnInit {
   file!: File;
   photoSelected: string | ArrayBuffer = '';
   ngOnInit(): void {
+    
     this.previsualizacion = '../../../assets/Images/cat-form.png';
     this.getVacunasService.getVacunasGato().subscribe(
       (res) => {

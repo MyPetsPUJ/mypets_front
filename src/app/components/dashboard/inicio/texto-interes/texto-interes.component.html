@@ -3,9 +3,9 @@
     <form [formGroup]="form">
         <h3>Ingrese la dirección del punto de interés</h3>
         <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label></mat-label>
-            <input matInput placeholder="Ej. Carrera 7#45-12" id="direccionPunto" 
-            formControlName="direccionLugar" required matInput autocomplete="off">
+            <mat-label>Dirección</mat-label>
+            <input matInput #search autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
+            id="direccionPunto">    
         </mat-form-field>
         <h3>Ingrese el título del punto de interés</h3>
         <mat-form-field class="example-full-width" appearance="fill">

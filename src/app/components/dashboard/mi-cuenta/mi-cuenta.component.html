@@ -1,8 +1,8 @@
 <div>
     <mat-card styles="margin-top: 10px;" class="image">
-        <h2>Mi cuenta - nombre de la fundación</h2>
+        <h2>Mi cuenta - {{nombreFun}}</h2>
         <form>
-            <mat-card>
+            <mat-card class="color">
                 <div>
                         <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />
                 </div>
@@ -41,6 +41,36 @@
                                 <input matInput autocomplete="off" formControlName="apellidosEncargado">
                             </mat-form-field>
                         </mat-grid-tile>
+
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho">
+                                <mat-label>Tipo de documento</mat-label>
+                                <mat-select formControlName="tipo_doc">
+                                    <mat-option *ngFor="let item of documentos"[value]="item">{{item}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </mat-grid-tile>
+
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho">
+                                <mat-label>Número de documento</mat-label>
+                                <input matInput autocomplete="off" formControlName="num_doc">
+                            </mat-form-field>
+                        </mat-grid-tile>
+
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho">
+                                <mat-label>Misión</mat-label>
+                                <input matInput autocomplete="off" formControlName="mision">
+                            </mat-form-field>
+                        </mat-grid-tile>
+
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho">
+                                <mat-label>Visión</mat-label>
+                                <input matInput autocomplete="off" formControlName="vision">
+                            </mat-form-field>
+                        </mat-grid-tile>
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field class="ancho" appearance="fill">
                                 <mat-label>Fecha de creación</mat-label>
@@ -50,13 +80,10 @@
                             </mat-form-field>
                         </mat-grid-tile>
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field appearance="fill" class="ancho">
-                                <mat-label>Localidad</mat-label>
-                                <mat-select formControlName="localidad">
-                                    <mat-option *ngFor="let item of localidad" [value]="item">
-                                        {{item}}
-                                    </mat-option>
-                                </mat-select>
+                            <mat-form-field class="ancho" appearance="fill">
+                                <mat-label>Dirección</mat-label>
+                                <input matInput #search autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
+                                formControlName="direccionPunto">    
                             </mat-form-field>
                         </mat-grid-tile>
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -80,8 +107,7 @@
                         </mat-grid-tile>
                     </mat-grid-list>
                     <div class="centro">
-                        <button mat-raised-button color="primary" style="margin: 16px;" class="tamano">Crear
-                            cuenta</button>
+                        <button mat-raised-button color="primary" style="margin: 16px;" class="tamano">Modificar</button>
                         <button mat-raised-button color="accent" class="tamano"
                             routerLink="/dashboard">Cancelar</button>
                     </div>

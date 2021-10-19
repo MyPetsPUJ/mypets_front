@@ -1,18 +1,21 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, ElementRef, Inject, NgZone, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { MapServiceService } from 'src/app/services/map-service.service';
 import { PuntoInteres } from 'src/app/components/interfaces/entidadPuntoInteres';
+import { MapsAPILoader } from '@agm/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-texto-interes',
   templateUrl: './texto-interes.component.html',
   styleUrls: ['./texto-interes.component.css'],
 })
+
 export class TextoInteresComponent implements OnInit {
-  
+  @ViewChild('search') searchElementRef: ElementRef| any;
   direccionDevuelta: string | any;
   tituloDevuelta: string | any;
   textoDevuelta: string | any;
@@ -21,7 +24,10 @@ export class TextoInteresComponent implements OnInit {
     public dialogRef: MatDialogRef<TextoInteresComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _snackBar: MatSnackBar,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone,
+    private _router: Router
   ) {
     this.form = this.fb.group({
       direccionLugar: [this.data.direccion, Validators.required],
@@ -30,8 +36,25 @@ export class TextoInteresComponent implements OnInit {
     console.log(this.data.texto);
     this.textoDevuelta = this.data.texto;
   }
+  ngOnInit(): void {
+    this.mapsAPILoader.load().then(() => {
+      let autocomplete = new google.maps.places.Autocomplete(
+        this.searchElementRef.nativeElement,
+        { types: ['address'] }
+      );
+      autocomplete.setComponentRestrictions({ country: ['co'] });
+      autocomplete.addListener('place_changed', () => {
+        this.ngZone.run(() => {
+          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+          if (place.geometry === undefined || place.geometry == null) {
+            return;
+          } else {
+          }
+        });
+      });
+    });
 
-  ngOnInit(): void {}
+  }
   guardarTexto(nombre: string) {
     if (nombre == 'aceptar') {
       this.direccionDevuelta = (
