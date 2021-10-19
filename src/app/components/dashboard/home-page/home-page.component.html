@@ -16,16 +16,11 @@
     </div>
     <div class="contenedorFiltro2">
       <div class="heading">
-      
         <div class="listaDeFiltros">
           <div class="filtro">
             <mat-form-field appearance="fill" class="ancho">
               <mat-label>Especie</mat-label>
-              <mat-select
-                name="especie"
-                ngModel
-                #especieAnimalInput="ngModel"
-              >
+              <mat-select name="especie" ngModel #especieAnimalInput="ngModel">
                 <mat-option *ngFor="let item of especie" [value]="item">
                   {{ item }}
                 </mat-option>
@@ -35,11 +30,7 @@
           <div class="filtro">
             <mat-form-field appearance="fill" class="no-padding">
               <mat-label>Color ojos</mat-label>
-              <mat-select
-                name="color_ojos"
-                ngModel
-                #color_ojosInput="ngModel"
-              >
+              <mat-select name="color_ojos" ngModel #color_ojosInput="ngModel">
                 <mat-option *ngFor="let item of color_ojos" [value]="item">
                   {{ item }}
                 </mat-option>
@@ -61,13 +52,15 @@
             </mat-form-field>
           </div>
           <div class="filtro">
-            <mat-checkbox name="organizar" ngModel #organizarInput="ngModel" >Organizar por mayor tiempo en espera</mat-checkbox>
-            <mat-checkbox name="organizar" ngModel #organizarInput="ngModel" >Organizar por edad</mat-checkbox>
+            <mat-checkbox name="organizar" ngModel #organizarInput="ngModel"
+              >Organizar por mayor tiempo en espera</mat-checkbox
+            >
+            <mat-checkbox name="organizar" ngModel #organizarInput="ngModel"
+              >Organizar por edad</mat-checkbox
+            >
           </div>
           <div class="filtro">
-            <div class="buscarAnimal">
-              Busca tu nueva mascota
-            </div>
+            <div class="buscarAnimal">Busca tu nueva mascota</div>
           </div>
         </div>
       </div>
@@ -81,12 +74,14 @@
         <div class="dream">
           <div *ngFor="let animal of animales; index as i">
             <div *ngIf="valoresColumna1.includes(i)">
-              <img
-                class="container crop card"
-                mat-card-image
-                [src]="'http://localhost:3000/' + animal.urlImg"
-                alt="Foto de un animal"
-              />
+              <div class="verAnimal" (click)="openPreview(animal)">
+                <img
+                  class="container crop card"
+                  mat-card-image
+                  [src]="'http://localhost:3000/' + animal.urlImg"
+                  alt="Foto de un animal"
+                />
+              </div>
               <div class="descripcion">
                 <mat-card-content>
                   <div class="nombreAnimal">
@@ -103,12 +98,14 @@
         <div class="dream">
           <div *ngFor="let animal of animales; index as i">
             <div *ngIf="valoresColumna2.includes(i)">
-              <img
-                class="container crop card"
-                mat-card-image
-                [src]="'http://localhost:3000/' + animal.urlImg"
-                alt="Foto de un animal"
-              />
+              <div class="verAnimal" (click)="openPreview(animal)">
+                <img
+                  class="container crop card"
+                  mat-card-image
+                  [src]="'http://localhost:3000/' + animal.urlImg"
+                  alt="Foto de un animal"
+                />
+              </div>
               <div class="descripcion">
                 <mat-card-content>
                   <div class="nombreAnimal">
@@ -125,12 +122,14 @@
         <div class="dream">
           <div *ngFor="let animal of animales; index as i">
             <div *ngIf="valoresColumna3.includes(i)">
-              <img
-                class="container crop card"
-                mat-card-image
-                [src]="'http://localhost:3000/' + animal.urlImg"
-                alt="Foto de un animal"
-              />
+              <div class="verAnimal" (click)="openPreview(animal)">
+                <img
+                  class="container crop card"
+                  mat-card-image
+                  [src]="'http://localhost:3000/' + animal.urlImg"
+                  alt="Foto de un animal"
+                />
+              </div>
               <div class="descripcion">
                 <mat-card-content>
                   <div class="nombreAnimal">

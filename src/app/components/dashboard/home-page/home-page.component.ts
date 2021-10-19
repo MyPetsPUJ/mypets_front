@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { EntidadAnimal } from '../../interfaces/usuarios/entidadAnimal';
 import { AnimalService } from 'src/app/services/animal/animal.service';
 import { MatDialog } from '@angular/material/dialog';
+import { MatDatepickerBase } from '@angular/material/datepicker/datepicker-base';
+import { AnimalPreviewComponent } from './animal-preview/animal-preview.component';
 
 
 
@@ -11,10 +13,9 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-  users: string[] = ['Felipe Perez','Andres Castro','Felipe Vanegas'];
   animales: EntidadAnimal[] = [];
   columnas:number=0;
-  especie:string[]=["Perro","Gato"];
+  especie:string[]=["Perro","Gato","No importa"];
   color_ojos: any[] = [
     'Azul',
     'Verde',
@@ -22,19 +23,24 @@ export class HomePageComponent implements OnInit {
     'Dorado',
     'Negro',
     'Heterocromía',
+    'No importa'
   ];
   tipo_pelaje: any[] = [
     'Pelaje duro',
     'Pelaje rizado',
     'Pelaje corto',
     'Pelaje largo',
+    'No importa'
   ];
+  tiempoDeEspera:boolean= false;
+  edad:boolean= false;
   valoresColumna1:number[]=[];
   valoresColumna2:number[]=[];
   valoresColumna3:number[]=[];
   validador:number=0;
   nombreFundacion: string | undefined;
   logoFundacion: string | undefined;
+
   
 
   constructor(private animalService: AnimalService,  public dialog: MatDialog) { }
@@ -82,5 +88,12 @@ export class HomePageComponent implements OnInit {
       
     }
   }
+  openPreview(animal: EntidadAnimal | any) 
+   {
+    const dialogRef = this.dialog.open(AnimalPreviewComponent, {
+      
+      data: { animal: animal}
+    });
+   }
  
 }

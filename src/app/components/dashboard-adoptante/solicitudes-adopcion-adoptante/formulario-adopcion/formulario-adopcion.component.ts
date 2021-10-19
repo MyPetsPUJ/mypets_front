@@ -163,8 +163,7 @@ export class FormularioAdopcionComponent implements OnInit {
       mascotaAnterior: form.value.mascotaAnterior,
       conoceCuidadosMascota: form.value.conoceCuidadosMascota,
       veterinarioDeConfianza: form.value.veterinarioDeConfianza,
-      conscienteResponsabilidad15anos:
-        form.value.conscienteResponsabilidad15años,
+      conscienteResponsabilidad15anos:form.value.conscienteResponsabilidad15años,
       actividadesConMascota: form.value.actividadesConMascota,
       alternativaPaseador: form.value.alternativaPaseador,
       espacioViviendaMascota: form.value.espacioViviendaMascota,
@@ -172,7 +171,6 @@ export class FormularioAdopcionComponent implements OnInit {
       disposicionMudarseConElAnimal: form.value.disposicionMudarseConElAnimal,
       disposicionPasearAlAnimalPerro: form.value.disposicionPasearAlAnimalPerro,
       disposicionAdaptacionAnimal: form.value.disposicionAdaptacionAnimal,
-      tiempoAdaptacionAnimal: form.value.tiempoAdaptacionAnimal,
       asumirGastosAnimal: form.value.asumirGastosAnimal,
       adoptanteAlternativoAusencia: form.value.adoptanteAlternativoAusencia,
       permisionTenenciaAnimales: form.value.permisionTenenciaAnimales,

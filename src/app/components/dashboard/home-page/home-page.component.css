@@ -97,6 +97,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .filtro {
   padding-right: 15px;
 }
@@ -113,7 +114,7 @@
 .filtro mat-checkbox {
   background-color: #afc7a4ad;
   border: #222;
-  width: 300px;
+  width: 350px;
   height: 30px;
 }
 mat-checkbox {
@@ -190,7 +191,18 @@ figcaption {
   display: flex;
   flex-direction: column;
 }
-
+.verAnimal {
+  cursor: pointer;
+}
+@media only screen and (max-width: 1193px) {
+  .listaDeFiltros {
+    flex-direction: column;
+    width: 100%;
+  }
+  .filtro {
+    padding-bottom: 15px;
+  }
+}
 @media only screen and (max-width: 769px) {
   .container .box {
     flex-direction: column;

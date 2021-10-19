@@ -15,7 +15,6 @@ export interface InformacionRelacionada{
     disposicionMudarseConElAnimal: String;
     disposicionPasearAlAnimalPerro: String;
     disposicionAdaptacionAnimal: String;
-    tiempoAdaptacionAnimal: String;
     asumirGastosAnimal: String;
     adoptanteAlternativoAusencia: String;
     permisionTenenciaAnimales: String;

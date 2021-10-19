@@ -236,10 +236,10 @@
                   <mat-form-field class="ancho">
                     <mat-label>Número de mascotas en la casa</mat-label>
                     <input
-                      name="fundacionSolicitud"
+                      name="numMascotas"
                       ngModel
                       type="number"
-                      #fundacionSolicitudInput="ngModel"
+                      #numMascotasInput="ngModel"
                       required
                       matInput
                     />
@@ -427,9 +427,9 @@
                   <mat-form-field appearance="fill" class="ancho">
                     <mat-label>¿En qué lugar vivirá la mascota?</mat-label>
                     <mat-select
-                      name="lugarDeVivienda"
+                      name="lugarViviendaDeMascota"
                       ngModel
-                      #tipoDocAdoptanteInput="ngModel"
+                      #lugarViviendaDeMascotaInput="ngModel"
                       required
                     >
                       <mat-option
@@ -605,9 +605,9 @@
                       <h1>Escoja los lugares donde podrá dormir el animal:</h1>
                       <li *ngFor="let casa of casaDeLaMascota" class="items">
                         <mat-checkbox
-                          name="casaDeLaMascota"
+                          name="espacioViviendaMascota"
                           ngModel
-                          #casaDeLaMascotaInput="ngModel"
+                          #espacioViviendaMascotaInput="ngModel"
                         >
                           {{ casa }}
                         </mat-checkbox>
@@ -640,9 +640,9 @@
                       al día (en caso de que sea perro)?</mat-label
                     >
                     <mat-select
-                      name="alternativaPaseador"
+                      name="disposicionPasearAlAnimalPerro"
                       ngModel
-                      #alternativaPaseadorInput="ngModel"
+                      #disposicionPasearAlAnimalPerroInput="ngModel"
                       required
                     >
                       <mat-option *ngFor="let item of decision" [value]="item">
@@ -814,10 +814,10 @@
                   <mat-form-field class="ancho">
                     <mat-label>Nombres del familiar</mat-label>
                     <input
-                      name="nombresFamiliar"
+                      name="nombresAmigo"
                       ngModel
                       type="text"
-                      #nombresAdoptanteInput="ngModel"
+                      #nombresAmigoInput="ngModel"
                       required
                       matInput
                     />
@@ -827,10 +827,10 @@
                   <mat-form-field class="ancho">
                     <mat-label>Apellidos del familiar</mat-label>
                     <input
-                      name="apellidosFamiliar"
+                      name="apellidosAmigo"
                       ngModel
                       type="text"
-                      #apellidosFamiliarInput="ngModel"
+                      #apellidosAmigoInput="ngModel"
                       required
                       matInput
                     />
