@@ -3,6 +3,7 @@ import { EntidadAnimal } from '../../interfaces/usuarios/entidadAnimal';
 import { AnimalService } from 'src/app/services/animal/animal.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDatepickerBase } from '@angular/material/datepicker/datepicker-base';
+import { AnimalPreviewComponent } from './animal-preview/animal-preview.component';
 
 
 
@@ -87,5 +88,12 @@ export class HomePageComponent implements OnInit {
       
     }
   }
+  openPreview(animal: EntidadAnimal | any) 
+   {
+    const dialogRef = this.dialog.open(AnimalPreviewComponent, {
+      
+      data: { animal: animal}
+    });
+   }
  
 }

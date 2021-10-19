@@ -27,6 +27,7 @@ import { PetPreviewComponent } from './usuarios/pet-preview/pet-preview.componen
 import { SolicitudesComponent } from './solicitudes/solicitudes.component';
 import { FormulariosViewComponent } from './solicitudes/formularios-view/formularios-view.component';
 import { FooterComponent } from './footer/footer.component';
+import { AnimalPreviewComponent } from './home-page/animal-preview/animal-preview.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { FooterComponent } from './footer/footer.component';
     PetPreviewComponent,
     SolicitudesComponent,
     FormulariosViewComponent,
-    FooterComponent
+    FooterComponent,
+    AnimalPreviewComponent
   ],
   imports: [
     CommonModule,
