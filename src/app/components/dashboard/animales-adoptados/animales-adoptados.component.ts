@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -7,13 +8,11 @@ import { CrearAdoptanteService } from 'src/app/services/adoptante/crearAdoptante
 import { CrearAnimalService } from 'src/app/services/animal/crearAnimal.service';
 import { EntidadAnimal } from '../../interfaces/usuarios/entidadAnimal';
 import { UserAdoptante } from '../../interfaces/usuarios/userAdoptante';
+import { PreviewComponent } from './preview/preview.component';
 export interface UserData {
-  nombre: string;
-  cedula: string;
-  correo_contacto: string;
-  num_telefono: string;
-  foto_animal: string;
-  animal: string;
+  dueno: UserAdoptante;
+  animal: EntidadAnimal;
+  fecha: Date
 }
 
 /**
@@ -26,15 +25,16 @@ export interface UserData {
   styleUrls: ['./animales-adoptados.component.css']
 })
 export class AnimalesAdoptadosComponent implements OnInit {
-  displayedColumns: string[] = ['foto_animal','nombre_animal', 'nombre_dueño', 'cedula', 'correo','telefono'];
+  displayedColumns: string[] = ['foto_animal', 'nombre_animal', 'nombre_dueño', 'cedula', 'fecha', 'accion'];
   dataSource: MatTableDataSource<UserData> | any;
   adoptantes: UserAdoptante[] = [];
-  animales : EntidadAnimal[] = [];
+  animales: EntidadAnimal[] = [];
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
   listaInfo: UserData[] = [];
   infoMostrar: UserData | any;
-  constructor(private adoptanteService: CrearAdoptanteService, private animalService: CrearAnimalService) { 
+  constructor(private adoptanteService: CrearAdoptanteService, private animalService: CrearAnimalService,
+    private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -42,22 +42,19 @@ export class AnimalesAdoptadosComponent implements OnInit {
     this.animales = this.animalService.getAnimales();
     var i = 0;
     var j = 0;
-    for(i = 0; i < this.animales.length; i++)
-    {
-      if(this.animales[i].owner != '')
-      {
-        for(j = 0; j < this.adoptantes.length; j++)
-        {
-          if(this.animales[i].owner == this.adoptantes[j].num_doc)
+    for (i = 0; i < this.adoptantes.length; i++) {
+      if (this.adoptantes[i].animales.length >= 1) {
+        for (j = 0; j < this.adoptantes[i].animales.length; j++) {
+          var ano = Math.random() * (2021 - 2020) + 2020;
+          var mes = Math.random() * (2021 - 2020) + 2020;
+          this.infoMostrar =
           {
-            this.infoMostrar = {nombre: this.adoptantes[j].nombre + ' ' + this.adoptantes[j].apellidos,
-            cedula: this.adoptantes[j].num_doc,
-            correo_contacto:this.adoptantes[j].correo,
-            num_telefono: this.adoptantes[j].num_celular,
-            animal: this.animales[i].nombre,
-            foto_animal: this.animales[i].urlImg}
-            this.listaInfo.push(this.infoMostrar);
+            dueno:this.adoptantes[i],
+            animal: this.adoptantes[i].animales[j],
+            fecha: new Date(Math.random() * (2021 - 2019) + 2019)
           }
+          //console.log(this.adoptantes[i].animales[j]);
+          this.listaInfo.push(this.infoMostrar);
         }
       }
     }
@@ -74,6 +71,25 @@ export class AnimalesAdoptadosComponent implements OnInit {
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
+    }
+  }
+  accion(nombre: string , adoptante: UserAdoptante, animal: EntidadAnimal)
+  {
+    if(nombre == 'adoptante')
+    {
+      const dialogRef = this.dialog.open(PreviewComponent, {
+        width: '830px',
+        height: '600px',
+        data: { adoptante: adoptante, accion:'adoptante' },
+      });
+    }
+    if(nombre == 'mascota')
+    {
+      const dialogRef = this.dialog.open(PreviewComponent, {
+        width: '830px',
+        height: '600px',
+        data: { animal: animal, accion:'mascota' },
+      });
     }
   }
 }

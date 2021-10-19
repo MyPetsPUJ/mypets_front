@@ -1,3 +1,4 @@
+
 <div class="alinear">
   <h1>{{ data.animal.nombre }}</h1>
   <img
@@ -35,5 +36,5 @@
   <p></p>
   <p></p>
   <button mat-raised-button *ngIf="usuarioAutenticado">Quiero adoptar</button>
-  <a href="http://localhost:4200/dashboard" class="close"></a>
+  <a href="http://localhost:4200/dashboard" class="close" (click)="accion('cerrar')"></a>
 </div>

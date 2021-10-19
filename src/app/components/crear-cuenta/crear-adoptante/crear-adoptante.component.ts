@@ -82,6 +82,7 @@ export class CrearAdoptanteComponent implements OnInit {
       num_celular: form.value.num_cel,
       password: form.value.password,
       tipo_usuario: 'Adoptante',
+      animales: []
     }; //TODO pasar objetos y no params
     //this.authservice.crearUsuarioAdoptante(datosAdoptante);
     this.crearAdoptanteService.crearUsuarioAdoptante(datosAdoptante);

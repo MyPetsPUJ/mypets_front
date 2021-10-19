@@ -13,4 +13,5 @@ export interface UserAdoptante {
     num_celular:string; 
     password: string;
     tipo_usuario: string;
+    animales: EntidadAnimal[];
 }

@@ -57,13 +57,12 @@ export class HomePageComponent implements OnInit {
         console.log(this.valoresColumna1)
         console.log(this.valoresColumna2)
         console.log(this.valoresColumna3)
-        
-      
       },
       error: (error) => {
         console.log(error);
       }
     });
+    //console.log(this.animales);
     
   }
   dividirColumnas(): void{

@@ -28,6 +28,7 @@ import { SolicitudesComponent } from './solicitudes/solicitudes.component';
 import { FormulariosViewComponent } from './solicitudes/formularios-view/formularios-view.component';
 import { FooterComponent } from './footer/footer.component';
 import { AnimalPreviewComponent } from './home-page/animal-preview/animal-preview.component';
+import { PreviewComponent } from './animales-adoptados/preview/preview.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { AnimalPreviewComponent } from './home-page/animal-preview/animal-previe
     SolicitudesComponent,
     FormulariosViewComponent,
     FooterComponent,
-    AnimalPreviewComponent
+    AnimalPreviewComponent,
+    PreviewComponent
   ],
   imports: [
     CommonModule,

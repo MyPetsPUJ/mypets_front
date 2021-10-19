@@ -51,7 +51,7 @@ export class CrearAnimalService {
       descripcion: 'Es muy juguetona',
       esquema_vac: 'Rabia',
       tipo_animal: 'Perro',
-      owner: '1233511884',
+      owner: '',
       enAdopcion: false
     },
     {
@@ -69,7 +69,7 @@ export class CrearAnimalService {
       descripcion: 'Es muy cariñoso',
       esquema_vac: 'Rabia',
       tipo_animal: 'Perro',
-      owner: '1233511885',
+      owner: '',
       enAdopcion: false
     },
     {
@@ -105,7 +105,7 @@ export class CrearAnimalService {
       descripcion: 'Es muy gordo',
       esquema_vac: 'Refuerzo triple felina',
       tipo_animal: 'Gato',
-      owner: '1233511886',
+      owner: '',
       enAdopcion: false
     },
   ];

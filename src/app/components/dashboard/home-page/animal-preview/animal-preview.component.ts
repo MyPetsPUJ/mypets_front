@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { LoginService } from 'src/app/services/auth/login.service';
 @Component({
@@ -13,7 +13,8 @@ export class AnimalPreviewComponent implements OnInit, OnDestroy {
   userId: string = '';
   private authListenerSubs: Subscription | undefined;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private authService: LoginService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private authService: LoginService,
+  public dialogRef: MatDialogRef<AnimalPreviewComponent>) { }
 
   ngOnInit(): void {
       this.usuarioAutenticado = this.authService.getIsAuth();
@@ -25,6 +26,11 @@ export class AnimalPreviewComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     this.authListenerSubs?.unsubscribe();
   }
-  
-
+  accion(nombre: string)
+  {
+    if(nombre == 'cerrar')
+    {
+      this.dialogRef.close();
+    }
+  }
 }

@@ -17,3 +17,10 @@ table {
     margin-left: auto;
     margin-right: auto;
   }
+.pointer 
+{
+  cursor: pointer;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
