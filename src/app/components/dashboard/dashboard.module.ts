@@ -29,6 +29,7 @@ import { FormulariosViewComponent } from './solicitudes/formularios-view/formula
 import { FooterComponent } from './footer/footer.component';
 import { AnimalPreviewComponent } from './home-page/animal-preview/animal-preview.component';
 import { PreviewComponent } from './animales-adoptados/preview/preview.component';
+import { FundacionesComponent } from './fundaciones/fundaciones.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { PreviewComponent } from './animales-adoptados/preview/preview.component
     FormulariosViewComponent,
     FooterComponent,
     AnimalPreviewComponent,
-    PreviewComponent
+    PreviewComponent,
+    FundacionesComponent
   ],
   imports: [
     CommonModule,

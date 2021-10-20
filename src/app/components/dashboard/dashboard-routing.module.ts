@@ -15,6 +15,7 @@ import { PublicacionPreviewComponent } from './publicaciones/publicacion-preview
 import { HomePageComponent } from './home-page/home-page.component';
 import { AnimalesAdoptadosComponent } from './animales-adoptados/animales-adoptados.component';
 import { SolicitudesComponent } from './solicitudes/solicitudes.component';
+import { FundacionesComponent } from './fundaciones/fundaciones.component';
 const routes: Routes = [
   {
     path: '',
@@ -45,6 +46,7 @@ const routes: Routes = [
       { path: 'publicaciones/:id', component: PublicacionesComponent },
       // {path: 'publicaciones/:id/preview', component: PublicacionPreviewComponent},
       { path: 'mis-animales/:id', component: UsuariosComponent },
+      { path:'fundaciones', component: FundacionesComponent}
     ],
   },
 ];

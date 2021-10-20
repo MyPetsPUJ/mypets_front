@@ -1,0 +1,28 @@
+.content {
+  padding: 30px;
+}
+
+mat-card {
+  margin: auto;
+  width: 35%;
+  display: block;
+  margin-top: 2rem;
+}
+
+.header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}
+
+.titulo {
+  text-align: center;
+}
+
+.margen {
+  margin-left: 40px;
+}
+
+.imagen {
+  width: 500px;
+  height: 500px;
+}

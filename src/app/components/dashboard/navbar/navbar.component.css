@@ -59,17 +59,20 @@ nav {
     right: 0px;
     height: 92vh;
     top: 8vh;
-    background-color: #6ebf4bba;
+    background-color: green;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 50%;
     transform: translateX(100%);
     transition: transform 0.5s ease-in;
-    z-index: 9999;
+    color: white;
   }
   .nav-links li {
     opacity: 0;
+  }
+  .nav-links a {
+    z-index: 9999;
   }
   .burger {
     display: block;

@@ -1,0 +1,13 @@
+<mat-card *ngFor="let fundacion of fundaciones">
+  <mat-card-subtitle>
+    {{ fundacion.nombreFund }}
+  </mat-card-subtitle>
+  <img [src]="'http://localhost:3000/' + fundacion.urlImg" mat-card-image />
+  <mat-card-content>
+    <p>
+      Fecha de creación: {{ fundacion.fecha_creacion | date: "dd/MM/yyyy" }}
+    </p>
+    <!-- <p>Estamos ubicados en: {{fundacion.localidad}}</p> -->
+    <p>Contacto: {{ fundacion.num_celular }}</p>
+  </mat-card-content>
+</mat-card>
