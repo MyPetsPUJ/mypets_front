@@ -98,14 +98,15 @@ export class MapaComponent implements OnInit {
     var i = Number(0);
     var direcciones: any[] = [];
     var direccion: any;
-    for (i = 0; i < this.fundaciones.length; i++) {
+    for (i = 0; i < this.fundacionesBack.length; i++) {
       direccion = {
-        lat: this.fundaciones[i].latitud,
-        lng: this.fundaciones[i].longitud,
+        lat: this.fundacionesBack[i].latitud,
+        lng: this.fundacionesBack[i].longitud,
       };
       direcciones.push(direccion);
     }
     if (!this.cargar) {
+      var cont = 0;
       for (i = 0; i < direcciones.length; i++) {
         directionsService.route(
           {
@@ -122,6 +123,7 @@ export class MapaComponent implements OnInit {
               var tiempoViaje = String(
                 response?.routes[0].legs[0].duration?.text
               );
+              //console.log("COORDS" + response?.routes[0].legs[0].end_location.lat() + response?.routes[0].legs[0].end_location.lng());
               //console.log(response);
               //var direccion = String(response?.routes[0].legs[0].end_address);
               //console.log('Coordenada ' + i + ' distancia: ' + distancia);
@@ -132,23 +134,29 @@ export class MapaComponent implements OnInit {
               info = {
                 distancia: distancia,
                 duracion: tiempoViaje,
-                direccion: response?.routes[0].legs[0].end_address,
+                lat: response?.routes[0].legs[0].end_location.lat(),
+                lng:response?.routes[0].legs[0].end_location.lng(),
+                direccion: response?.routes[0].legs[0].end_address
               };
               this.infoFunds.push(info);
+              cont++;
               var j;
               var k;
-              if (this.infoFunds.length == this.fundaciones.length) {
-                console.log(this.infoFunds.length);
+              if (this.infoFunds.length == this.fundacionesBack.length) {
                 for (j = 0; j < this.infoFunds.length; j++) {
                   for (k = 0; k < this.infoFunds.length; k++) {
                     if (
-                      this.infoFunds[j].direccion ==
-                      this.fundaciones[k].direccion
+                      this.infoFunds[j].lat ==
+                      this.fundacionesBack[k].latitud && this.infoFunds[j].lng == this.fundacionesBack[k].longitud
                     ) {
-                      this.fundaciones[k].distancia =
-                        this.infoFunds[j].distancia;
-                      this.fundaciones[k].duracion = this.infoFunds[j].duracion;
-                      console.log(this.fundaciones[k].distancia);
+                      this.fundacionesBack[k].distancia = this.infoFunds[j].distancia;
+                      this.fundacionesBack[k].duracion = this.infoFunds[j].duracion;
+                      console.log(this.fundacionesBack[k].distancia);
+                    }
+                    else if(this.infoFunds[j].direccion == this.fundacionesBack[k].direccion)
+                    {
+                      this.fundacionesBack[k].distancia = this.infoFunds[j].distancia;
+                      this.fundacionesBack[k].duracion = this.infoFunds[j].duracion;
                     }
                   }
                 }
