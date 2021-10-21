@@ -90,7 +90,8 @@ export class HomePageComponent implements OnInit {
   openPreview(animal: EntidadAnimal | any) 
    {
     const dialogRef = this.dialog.open(AnimalPreviewComponent, {
-      
+      width: '600px',
+      height: '500px',
       data: { animal: animal}
     });
    }

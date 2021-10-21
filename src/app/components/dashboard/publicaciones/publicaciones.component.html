@@ -1,5 +1,5 @@
 <div *ngIf="publicaciones.length > 0">
-  <div class="mat-elevation-z8" class="tam">
+  <div class="mat-elevation-z8" class="tam class example-container">
     <mat-toolbar>
       <span>Mis Publicaciones</span>
       <button
@@ -21,45 +21,51 @@
         #input
       />
     </mat-form-field>
-    <table mat-table [dataSource]="dataSource" matSort>
+    <mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="imagenPublicacion">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Imagen</th>
-        <td mat-cell *matCellDef="let element">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Imagen</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Imágen: </span>
           <img [src]="'http://localhost:3000/' + element.urlImg" width="100%" class="pointer circulo" 
-            (click)="openDialog(element)"/>
-        </td>
+            (click)="openDialog(element)"
+            matTooltip="Ver publicación"/>
+        </mat-cell>
       </ng-container>
       <ng-container matColumnDef="tituloPublicacion">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Titulo</th>
-        <td mat-cell *matCellDef="let element">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Título</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Título: </span>
           {{ element.titulo}}
-        </td>
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="cuerpoPublicacion">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Descripcion</th>
-        <td mat-cell *matCellDef="let element">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Descripción</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Descripción: </span>
           {{ element.cuerpo}}
-        </td>
+        </mat-cell>
       </ng-container>
       <ng-container matColumnDef="seccionPublicacion">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Sección</th>
-        <td mat-cell *matCellDef="let element">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Sección</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Sección: </span>
           {{ element.seccion}}
-        </td>
+        </mat-cell>
       </ng-container>
       <ng-container matColumnDef="fechaPublicacion">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
           Fecha de publicación
-        </th>
-        <td mat-cell *matCellDef="let element">
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Fecha: </span>
           {{ element.fecha |  date:'dd/MM/yyyy'}}
-        </td>
+        </mat-cell>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </div>
 </div>
