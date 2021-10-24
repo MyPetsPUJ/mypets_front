@@ -1,27 +1,52 @@
-.alinear
-{
-    text-align: center;
+* {
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: bolder;
 }
-.justificar 
-{
-    text-align: justify;
-    text-justify: inter-word;
+h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: bolder;
+}
+
+button {
+  background-color: green;
+  color: white;
+}
+.alinear {
+  text-align: center;
+  width: 75%;
+  justify-content: center;
+  margin: auto;
+}
+.justificar {
+  text-align: center;
+  text-justify: inter-word;
 }
 mat-grid-tile {
-    background: beige;
-  }
-  .container {
-    width: 340px;
-    height: 200px;
-    overflow: hidden;
+  background: rgb(149, 173, 149);
 }
-.container > .crop {
-    position:absolute;
-    left: -100%;
-    right: -100%;
-    top: -100%;
-    bottom: -100%;
-    margin: auto;
-    min-height: 100%;
-    min-width: 100%;
+.container {
+  overflow: hidden;
+}
+.close {
+  opacity: 0.3;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before,
+.close:after {
+  position: absolute;
+  right: 450px;
+  top: 50px;
+  content: " ";
+  height: 33px;
+  width: 2px;
+  background-color: #333;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
 }

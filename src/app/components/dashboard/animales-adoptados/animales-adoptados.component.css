@@ -3,6 +3,8 @@
 .contenedor {
   padding-bottom: 30px;
   padding-top: 30px;
+  text-align: center;
+  align-items: center;
 }
 .tam {
   padding-top: 30px;
@@ -48,6 +50,9 @@ table {
 .mat-paginator {
   background-color: rgb(80, 150, 95);
   color: white;
+}
+.mat-row {
+  background-color: #f5f5f5;
 }
 .circulo {
   width: 100px;

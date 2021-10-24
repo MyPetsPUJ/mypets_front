@@ -1,3 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap");
+h1 {
+  font-family: "Proza Libre", sans-serif;
+  text-align: center;
+  vertical-align: middle;
+  margin: auto;
+  font-size: 27px;
+}
 table {
   width: 100%;
 }
@@ -22,11 +30,10 @@ th {
 .tam1 {
   margin-left: auto;
 }
-.circulo
-{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+.circulo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
 .example-container {
   display: flex;
@@ -44,18 +51,18 @@ th {
   display: none;
 }
 
-@media(max-width: 600px) {
+@media (max-width: 600px) {
   .mobile-label {
     width: 80px;
     display: inline-block;
-        font-weight: bold;
+    font-weight: bold;
   }
 
   .mat-header-row {
     display: none;
   }
 
-  .mat-row { 
+  .mat-row {
     flex-direction: column;
     align-items: start;
     padding: 8px 24px;

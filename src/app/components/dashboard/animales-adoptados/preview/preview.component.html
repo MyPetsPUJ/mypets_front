@@ -1,94 +1,105 @@
 <div *ngIf="data.accion == 'adoptante'" class="alinear">
-<h1><b> Datos del adoptante </b></h1>
-    <img [src]="data.adoptante.foto" mat-card-image width="70%" class="container crop">
-    <!--Toca colocar un atributo de foto al adoptante-->
-    <h3><b> {{data.adoptante.nombre}}  {{data.adoptante.apellidos}} </b></h3>
-    <p> </p>
-    <p> </p>
-    <mat-grid-list cols="2" rowHeight="50px">
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Correo:</b><br>
-                <i>{{data.adoptante.correo}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Fecha de nacimiento:</b><br>
-                <i>{{data.adoptante.fecha_nacimiento}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Localidad:</b><br>
-                <i>{{data.adoptante.localidad}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Sexo:</b><br>
-                <i>{{data.adoptante.genero}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Núm. de contacto:</b><br>
-                <i>{{data.adoptante.num_celular}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Documento:</b><br>
-                <i>{{data.adoptante.tipo_doc}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Núm. documento:</b><br>
-                <i>{{data.adoptante.num_doc}}</i>
-            </div>
-             </mat-grid-tile>
-    </mat-grid-list>
-    <p> </p>
-    <p> </p>
-    <button mat-raised-button (click)="accion('cerrar')" color="warn">Cerrar</button>
+  <h1><b> Datos del adoptante </b></h1>
+  <img
+    [src]="data.adoptante.foto"
+    mat-card-image
+    width="70%"
+    class="container crop"
+  />
+  <!--Toca colocar un atributo de foto al adoptante-->
+  <h3>
+    <b> {{ data.adoptante.nombre }} {{ data.adoptante.apellidos }} </b>
+  </h3>
+  <p></p>
+  <p></p>
+  <mat-grid-list cols="2" rowHeight="50px">
+    <mat-grid-tile colspan="1" rowspan="1">
+      <div>
+        <b>Correo:</b><br />
+        <i>{{ data.adoptante.correo }}</i>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1">
+      <div>
+        <b>Fecha de nacimiento:</b><br />
+        <i>{{ data.adoptante.fecha_nacimiento }}</i>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1">
+      <div>
+        <b>Localidad:</b><br />
+        <i>{{ data.adoptante.localidad }}</i>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1">
+      <div>
+        <b>Sexo:</b><br />
+        <i>{{ data.adoptante.genero }}</i>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1">
+      <div>
+        <b>Núm. de contacto:</b><br />
+        <i>{{ data.adoptante.num_celular }}</i>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1">
+      <div>
+        <b>Documento:</b><br />
+        <i>{{ data.adoptante.tipo_doc }}</i>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1">
+      <div>
+        <b>Núm. documento:</b><br />
+        <i>{{ data.adoptante.num_doc }}</i>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <p></p>
+  <p></p>
+  <button mat-raised-button (click)="accion('cerrar')" color="primary">
+    Cerrar
+  </button>
 </div>
 
-<div *ngIf="data.accion=='mascota'" class="alinear">
-    <h1>{{ data.animal.nombre }}</h1>
-    <img
-      [src]="data.animal.urlImg"
-      mat-card-image
-      width="70%"
-      class="container crop"
-    />
-    <p></p>
-    <p></p>
-    <div class="justificar">{{ data.animal.descripcion }}</div>
-    <p></p>
-    <p></p>
-    <mat-grid-list cols="2" rowHeight="50px">
-      <mat-grid-tile colspan="1" rowspan="1"
-        >Raza: {{ data.animal.raza }}</mat-grid-tile
-      >
-      <mat-grid-tile colspan="1" rowspan="1"
-        >Sexo: {{ data.animal.sexo }}</mat-grid-tile
-      >
-      <mat-grid-tile colspan="1" rowspan="1"
-        >Edad: {{ data.animal.edad }}</mat-grid-tile
-      >
-      <mat-grid-tile colspan="1" rowspan="1"
-        >Situación: {{ data.animal.situacion }}</mat-grid-tile
-      >
-      <mat-grid-tile colspan="1" rowspan="1"
-        >Esquema de vacunación: {{ data.animal.esquema_vac }}</mat-grid-tile
-      >
-      <mat-grid-tile colspan="1" rowspan="1"
-        >Fecha de vacuna:
-        {{ data.animal.ultima_vac | date: "dd/MM/yyyy" }}</mat-grid-tile
-      >
-    </mat-grid-list>
-    <p></p>
-    <p></p>
-    <button mat-raised-button (click)="accion('cerrar')" color="primary">Cerrar</button>
+<div *ngIf="data.accion == 'mascota'" class="alinear">
+  <h1>{{ data.animal.nombre }}</h1>
+  <img
+    [src]="data.animal.urlImg"
+    mat-card-image
+    width="70%"
+    class="container crop"
+  />
+  <p></p>
+  <p></p>
+  <div class="justificar">{{ data.animal.descripcion }}</div>
+  <p></p>
+  <p></p>
+  <mat-grid-list cols="2" rowHeight="50px">
+    <mat-grid-tile colspan="1" rowspan="1"
+      >Raza: {{ data.animal.raza }}</mat-grid-tile
+    >
+    <mat-grid-tile colspan="1" rowspan="1"
+      >Sexo: {{ data.animal.sexo }}</mat-grid-tile
+    >
+    <mat-grid-tile colspan="1" rowspan="1"
+      >Edad: {{ data.animal.edad }}</mat-grid-tile
+    >
+    <mat-grid-tile colspan="1" rowspan="1"
+      >Situación: {{ data.animal.situacion }}</mat-grid-tile
+    >
+    <mat-grid-tile colspan="1" rowspan="1"
+      >Esquema de vacunación: {{ data.animal.esquema_vac }}</mat-grid-tile
+    >
+    <mat-grid-tile colspan="1" rowspan="1"
+      >Fecha de vacuna:
+      {{ data.animal.ultima_vac | date: "dd/MM/yyyy" }}</mat-grid-tile
+    >
+  </mat-grid-list>
+  <p></p>
+  <p></p>
+  <button mat-raised-button (click)="accion('cerrar')" color="primary">
+    Cerrar
+  </button>
 </div>
