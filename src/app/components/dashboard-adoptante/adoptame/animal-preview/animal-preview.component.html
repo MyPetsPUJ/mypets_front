@@ -16,6 +16,11 @@
     </mat-grid-list>
     <p> </p>
     <p> </p>
-    <button mat-raised-button color="warn" *ngIf="usuarioAutenticado">Quiero adoptar</button>
+    <div *ngIf="!enviado">
+        <button mat-raised-button color="primary" *ngIf="usuarioAutenticado" (click)="solicitud(data.animal,'enviar')">Quiero adoptar</button>
+    </div>
+    <div *ngIf="enviado">
+        <button mat-raised-button color="warn" *ngIf="usuarioAutenticado" (click)="solicitud(data.animal,'cancelar')">Cancelar solicitud</button>
+    </div>
 </div>
 

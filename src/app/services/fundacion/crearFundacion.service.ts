@@ -13,28 +13,30 @@ export class CrearFundacionService {
   entidad: string = 'crear-cuenta';
   subTipoEntidad: string = 'crear-fundacion';
   login: string = 'login';
-  // fundaciones: UserFundacion[] = [
-  //   {
-  //     nombreFund: 'Fundacion 1',
-  //     nombreEncar: 'Encargado ',
-  //     apellidosEncar: '1',
-  //     tipo_doc: 'Cédula de ciudadanía',
-  //     distancia: '',
-  //     duracion: '',
-  //     num_doc: '123456789',
-  //     fecha_creacion: '09/02/2001',
-  //     latitud: 4.741765335769153,
-  //     longitud: -74.02332319625492,
-  //     correo: 'correo1@gmail.com',
-  //     num_celular: '3205586234',
-  //     password: 'password1',
-  //     urlImg: '../../../assets/Images/fundacion1.png',
-  //     tipo_usuario: 'fundacion',
-  //     direccion: 'Kr 19B - Cl 24, Bogotá, Colombia',
-  //     mision: 'misión 1',
-  //     vision: 'visión 1',
-  //     publicaciones: []
-  //   },
+   fundaciones: UserFundacion[] = [
+     {
+       nombreFund: 'Fundacion 1',
+       nombreEncar: 'Encargado ',
+       apellidosEncar: '1',
+       tipo_doc: 'Cédula de ciudadanía',
+       distancia: '',
+       duracion: '',
+       num_doc: '123456789',
+       fecha_creacion: '09/02/2001',
+       latitud: 4.741765335769153,
+       longitud: -74.02332319625492,
+       correo: 'correo1@gmail.com',
+       num_celular: '3205586234',
+       password: 'password1',
+       urlImg: '../../../assets/Images/fundacion1.png',
+       tipo_usuario: 'fundacion',
+       direccion: 'Kr 19B - Cl 24, Bogotá, Colombia',
+       mision: 'misión 1',
+       vision: 'visión 1',
+       publicaciones: [],
+       ubicacion: '',
+       _id: '123'
+     },
   //   {
   //     nombreFund: 'Fundacion 2',
   //     nombreEncar: 'Encargado ',
@@ -161,7 +163,7 @@ export class CrearFundacionService {
   //     vision: 'visión 7',
   //     publicaciones: []
   //   }
-  // ];
+   ];
 
   constructor(
     private servicioBase: ServicioBaseService,
@@ -178,9 +180,9 @@ export class CrearFundacionService {
   //     userFundacion
   //   );
   // }
-  // getFundaciones() {
-  //   return this.fundaciones;
-  // }
+   getFundaciones() {
+     return this.fundaciones;
+   }
   crearUsuarioFundacion(
     nombreFund: string,
     nombreEncar: string,
