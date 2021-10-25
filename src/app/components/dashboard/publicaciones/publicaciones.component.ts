@@ -105,6 +105,7 @@ export class PublicacionesComponent implements OnInit {
       this.publicaciones = res.publis
       console.log("ahora si", this.publicaciones)
       this.dataSource = new MatTableDataSource(this.publicaciones)
+      setTimeout(() => this.dataSource.paginator = this.paginator);
     });
   }
   ngAfterViewInit() {

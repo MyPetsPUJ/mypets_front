@@ -117,6 +117,7 @@ export class SolicitudesComponent implements OnInit {
     this.solicitudesAdopcion.push(this.solicitudAdopcion);
 
     this.dataSource = new MatTableDataSource(this.solicitudesAdopcion);
+    setTimeout(() => this.dataSource.paginator = this.paginator);
   }
 
 }

@@ -44,14 +44,11 @@ export class UsuariosComponent implements OnInit {
       console.log("User:", res.resultado);
       this.userFundacion = res.resultado;
       this.animales = res.animales;
-      this.dataSource = new MatTableDataSource(this.animales)
-    })
+      this.dataSource = new MatTableDataSource(this.animales);
+      setTimeout(() => this.dataSource.paginator = this.paginator);
+    });
+    
   }
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

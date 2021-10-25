@@ -1,43 +1,48 @@
 <div class="si hay solicitudes">
-    <div class="mat-elevation-z8" class="tam">
+    <div class="mat-elevation-z8" class="tam example-container">
         <mat-toolbar>
             <span>Solicitudes de adopción</span>
         </mat-toolbar>
-        <table mat-table [dataSource]="dataSource" matSort>
+        <mat-table [dataSource]="dataSource" matSort>
             <ng-container matColumnDef="idSolicitud"> 
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>id solicitud</th>
-              <td mat-cell *matCellDef="let element">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>id solicitud</mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="mobile-label">Solicitud: </span>
                   {{idSolicitud}}
-              </td>
+              </mat-cell>
             </ng-container>
             <ng-container matColumnDef="animalSolicitud">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>nombre mascota</th>
-              <td mat-cell *matCellDef="let element">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>nombre mascota</mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="mobile-label">Mascota: </span>
                   {{element.animalAdopcion.nombre}}
-              </td>
+              </mat-cell>
             </ng-container>
             <ng-container matColumnDef="nombreSolicitante">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>nombre interesado</th>
-              <td mat-cell *matCellDef="let element">
+              <mat-header-cell  *matHeaderCellDef mat-sort-header>nombre interesado</mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="mobile-label">Interesado: </span>
                 {{element.adoptante.nombre + element.adoptante.apellidos}}
-              </td>
+              </mat-cell>
             </ng-container>
             <ng-container matColumnDef="localidadSolicitante">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              <mat-header-cell *matHeaderCellDef mat-sort-header>
                 Localidad
-              </th>
-              <td mat-cell *matCellDef="let element">
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="mobile-label">Localidad: </span>
                 {{element.adoptante.localidad}}
-              </td>
+              </mat-cell>
             </ng-container>
             <ng-container matColumnDef="numeroSolicitante">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                <mat-header-cell *matHeaderCellDef mat-sort-header>
                   Celular
-                </th>
-                <td mat-cell *matCellDef="let element">
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element">
                   <!-- {{element.adoptante.num_celular}}-->
+                  <span class="mobile-label">Celular: </span>
                   <button mat-raised-button (click)="openDialog(element)">Action</button>
-                </td>
+                </mat-cell>
               </ng-container>
               
               <!--
@@ -51,9 +56,9 @@
               </ng-container>
               -->
       
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-          </table>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+          </mat-table>
           <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
     </div>
 </div>

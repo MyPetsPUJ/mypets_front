@@ -7,6 +7,7 @@ import { CrearAnimalService } from 'src/app/services/animal/crearAnimal.service'
 import { VacunasService } from 'src/app/services/datos-app/vacunas.service';
 import { Vacuna } from 'src/app/components/interfaces/datos-app/entidadVacuna';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface Vacuna_box {
   nombre: String;
@@ -31,7 +32,8 @@ export class CrearAnimalGatoComponent implements OnInit {
     public crearGatoService: CrearAnimalService,
     private sanitizer: DomSanitizer,
     private getVacunasService: VacunasService,
-    private _router: Router
+    private _router: Router,
+    private _snackbar: MatSnackBar
   ) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 19, 0, 1);
@@ -189,7 +191,9 @@ export class CrearAnimalGatoComponent implements OnInit {
         (res) => console.log(res),
         (err) => console.log(err)
       );
-    this._router.navigate(['/dashboard/animales']);
+      this.mensaje('crear');
+    this._router.navigate(['/dashboard/mis-animales']);
+    
   }
 
   onPhotoSelected(event: any): void {
@@ -231,4 +235,15 @@ export class CrearAnimalGatoComponent implements OnInit {
         return null;
       }
     });
+    mensaje(accion:string)
+    {
+      if(accion == 'crear')
+      {
+        this._snackbar.open('Animal creado de forma exitosa', '', {
+          duration: 5000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
+      }
+    }
 }
