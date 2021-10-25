@@ -13,6 +13,7 @@ export class EnviarSolicitudAdopcionService {
   entidad: string = "dashboard-adoptante";
   subTipoEntidad: string = "adoptame";
   subTipoEntidadII: string = "solicitud-adopcion";
+  subTipoEntidadIII: string = " solicitud-adoptante"
 
   constructor(private http: HttpClient) { }
 
@@ -23,6 +24,10 @@ export class EnviarSolicitudAdopcionService {
     .subscribe(respuesta => {
       console.log(respuesta);
     })
-
+  }
+  getSolicitudesAdoptante(id: string)
+  {
+    return this.http.get<EntidadSolicitudAdopcion[]>(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.subTipoEntidadIII}/${id}`
+    )
   }
 }
