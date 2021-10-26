@@ -147,7 +147,7 @@ export class SolicitudesComponent implements OnInit {
     this.solicitudesAdopcion = [];
     for(var i = 0; i < this.solicitudService.getSolicitudesQuemadas().length; i++)
     {
-      if(this.solicitudService.getSolicitudesQuemadas()[i].estado1 == 'En espera')
+      if(this.solicitudService.getSolicitudesQuemadas()[i].estado == 'En espera')
       {
         this.solicitudesAdopcion.push(this.solicitudService.getSolicitudesQuemadas()[i]);
       }
@@ -163,10 +163,14 @@ export class SolicitudesComponent implements OnInit {
       {
         if(this.solicitudesAdopcion[index] == this.solicitudService.getSolicitudesQuemadas()[i])
         {
-          this.solicitudService.getSolicitudesQuemadas()[i].estado1 = nombre;
+          this.solicitudService.getSolicitudesQuemadas()[i].estado = nombre;
           if(nombre == 'Aceptado')
           {
-            this.solicitudService.getSolicitudesQuemadas()[i].estado2 = 'En espera';
+            this.solicitudService.getSolicitudesQuemadas()[i].estado = nombre + ', formulario no enviado.';
+          }
+          if (nombre == 'Rechazado')
+          {
+            this.solicitudService.getSolicitudesQuemadas()[i].estado = nombre + ', sin posibilidad de enviar formulario.';
           }
         }
       }

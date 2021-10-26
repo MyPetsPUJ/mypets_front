@@ -82,7 +82,16 @@ getAdoptantes()
 {
   return this.adoptantes;
 }
-
+getIndex(adoptante: UserAdoptante):Number
+{
+  var value;
+  for(var i = 0; i < this.adoptantes.length; i++)
+  {
+    if(adoptante == this.adoptantes[i])
+      value = i;
+  }
+  return value;
+}
 }
 
 
