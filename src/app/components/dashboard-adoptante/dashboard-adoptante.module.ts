@@ -17,6 +17,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { ListaFundacionesComponent } from './mapa/lista-fundaciones/lista-fundaciones.component';
 import { ConsejoPreviewComponent } from './consejos/consejo-preview/consejo-preview.component';
 import { AnimalPreviewComponent } from './adoptame/animal-preview/animal-preview.component';
+import { PreviewAnimalComponent } from './home-page/preview-animal/preview-animal.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -34,7 +36,9 @@ import { AnimalPreviewComponent } from './adoptame/animal-preview/animal-preview
     HomePageComponent,
     ListaFundacionesComponent,
     ConsejoPreviewComponent,
-    AnimalPreviewComponent
+    AnimalPreviewComponent,
+    PreviewAnimalComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
