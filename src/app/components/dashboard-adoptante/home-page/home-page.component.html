@@ -9,6 +9,10 @@
   </head>
 
   <body>
+  <form action="home-page.component.ts"
+  (ngSubmit)="filtrarAnimales(filtros)"
+  #filtros="ngForm"
+ >
     <div class="contenedorFiltro">
       <div class="heading">
         <h3><span>Adopta, ¡no compres!</span></h3>
@@ -20,7 +24,7 @@
           <div class="filtro">
             <mat-form-field appearance="fill" class="ancho">
               <mat-label>Especie</mat-label>
-              <mat-select name="especie" ngModel #especieAnimalInput="ngModel">
+              <mat-select name="especieAnimal" ngModel #especieAnimalInput="ngModel">
                 <mat-option *ngFor="let item of especie" [value]="item">
                   {{ item }}
                 </mat-option>
@@ -52,19 +56,37 @@
             </mat-form-field>
           </div>
           <div class="filtro">
-            <mat-checkbox name="organizar" ngModel #organizarInput="ngModel"
-              >Organizar por mayor tiempo en espera</mat-checkbox
-            >
-            <mat-checkbox name="organizar" ngModel #organizarInput="ngModel"
-              >Organizar por edad</mat-checkbox
-            >
+            <mat-form-field appearance="fill" class="ancho">
+              <mat-label>Fundacion</mat-label>
+              <mat-select
+                name="fundacion"
+                ngModel
+                #fundacionInput="ngModel"
+              >
+                <mat-option *ngFor="let item of fundacionesPrueba" [value]="item">
+                  {{ item }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
           <div class="filtro">
-            <div class="buscarAnimal">Busca tu nueva mascota</div>
+            <mat-checkbox value="true" name="organizar" ngModel #organizarInput="ngModel"
+              >Organizar por mayor tiempo en espera</mat-checkbox
+            >
+            
+            
+          </div>
+          <div class="filtro">
+            <div class="buscarAnimal">
+              <button
+              type="submit"
+              >Busca tu nueva mascota</button>
+              </div>
           </div>
         </div>
       </div>
     </div>
+  </form>
 
     <div class="container">
       <div class="heading">

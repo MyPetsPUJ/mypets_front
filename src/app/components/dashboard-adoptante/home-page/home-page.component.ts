@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { EntidadAnimal } from '../../interfaces/usuarios/entidadAnimal';
 import { AnimalService } from 'src/app/services/animal/animal.service';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { PreviewAnimalComponent } from './preview-animal/preview-animal.component';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home-page',
@@ -11,6 +13,7 @@ import { PreviewAnimalComponent } from './preview-animal/preview-animal.componen
 })
 export class HomePageComponent implements OnInit {
   animales: EntidadAnimal[] = [];
+  animales2: EntidadAnimal[] = [];
   columnas:number=0;
   especie:string[]=["Perro","Gato","No importa"];
   color_ojos: any[] = [
@@ -29,6 +32,10 @@ export class HomePageComponent implements OnInit {
     'Pelaje largo',
     'No importa'
   ];
+  fundacionesPrueba: any[] = [
+    'Perritos Felices',
+    'Fundacion CR7'
+  ]
   tiempoDeEspera:boolean= false;
   edad:boolean= false;
   valoresColumna1:number[]=[];
@@ -38,7 +45,7 @@ export class HomePageComponent implements OnInit {
   nombreFundacion: string | undefined;
   logoFundacion: string | undefined;
 
-  constructor(private animalService: AnimalService,  public dialog: MatDialog) { }
+  constructor(private animalService: AnimalService, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.animalService.getAnimales().subscribe({
@@ -85,6 +92,56 @@ export class HomePageComponent implements OnInit {
       height: '500px',
       data: { animal: animal}
     });
+   }
+   filtrarAnimales(form: NgForm){
+    const datosFiltro ={
+      especie : form.value.especieAnimal,
+      colorOjos: form.value.color_ojos,
+      tipoPelaje: form.value.tipo_pelaje,
+      organizar : form.value.organizar,
+      fundacion : form.value.fundacion
+    }
+    console.log(datosFiltro);
+    this.animales=this.animales2;
+    if(datosFiltro.especie != null && datosFiltro.especie != "No importa")
+    {
+      for(var i=0;i<this.animales.length;i++)
+      {
+        if(this.animales[i].tipo_animal!=datosFiltro.especie)
+        {
+            this.animales.splice(i,1);
+        }
+      }
+
+    }
+    if(datosFiltro.colorOjos != null && datosFiltro.colorOjos != "No importa")
+    {
+      for(var i=0;i<this.animales.length;i++)
+      {
+        if(this.animales[i].color_ojos!=datosFiltro.colorOjos)
+        {
+            this.animales.splice(i,1);
+        }
+      }
+
+    }
+    if(datosFiltro.tipoPelaje != null && datosFiltro.tipoPelaje != "No importa")
+    {
+      for(var i=0;i<this.animales.length;i++)
+      {
+        if(this.animales[i].tipo_pelaje!=datosFiltro.tipoPelaje)
+        {
+            this.animales.splice(i,1);
+        }
+      }
+
+    }
+    if(datosFiltro.organizar == "true")
+    {
+      this.animales.reverse();
+
+    }
+    this.ngOnInit();
    }
 
 }
