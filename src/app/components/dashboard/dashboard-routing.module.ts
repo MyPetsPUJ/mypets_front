@@ -24,7 +24,7 @@ const routes: Routes = [
       { path: '', component: HomePageComponent },
       { path: 'mis-animales', component: UsuariosComponent },
       { path: 'reportes', component: ReportesComponent },
-      { path: 'mi_cuenta', component: MiCuentaComponent },
+      { path: 'mi_cuenta/:id', component: MiCuentaComponent },
       { path: 'seleccion-animal', component: SeleccionAnimalComponent },
       { path: 'mapa/:id', component: InicioComponent },
       { path: 'animales-adoptados', component: AnimalesAdoptadosComponent },

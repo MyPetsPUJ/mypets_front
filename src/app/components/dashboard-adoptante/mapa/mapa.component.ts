@@ -52,8 +52,7 @@ export class MapaComponent implements OnInit {
       this.fundacionesBack = res.fundaciones;
       console.log('Fundaciones', this.fundacionesBack);
       this.puntosDeInteres = res.puntos;
-      console.log('Autor', this.puntosDeInteres[0].autorPuntoDeInteres);
-      console.log('Direccion', this.puntosDeInteres[0].direccion)
+      console.log(this.puntosDeInteres)
 
       for (let indexF = 0; indexF < this.fundacionesBack.length; indexF++) {
         console.log('F longitud');

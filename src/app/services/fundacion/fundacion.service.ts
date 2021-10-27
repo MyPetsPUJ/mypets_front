@@ -12,6 +12,8 @@ export class FundacionService {
   puerto: number = 3000;
   pathApi: string = 'api';
   pathDashboard: string = 'dashboard-adoptante';
+  pathDashFund: string = 'dashboard';
+  pathPerfil: string = 'mi_cuenta';
   pathFundaciones: string = 'get-fundaciones';
 
   constructor(private http: HttpClient) {}
@@ -37,5 +39,9 @@ export class FundacionService {
     );
   }
 
-
+  getFundacionById(id: string) {
+    return this.http.get<UserFundacion>(
+      `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathDashFund}/${this.pathPerfil}/${id}`
+    );
+  }
 }
