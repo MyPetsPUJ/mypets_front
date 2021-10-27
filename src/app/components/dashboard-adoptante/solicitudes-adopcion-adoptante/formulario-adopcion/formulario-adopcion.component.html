@@ -919,10 +919,11 @@
                 mat-raised-button
                 color="accent"
                 class="tamano"
-                routerLink="/dashboard-adoptante/adoptame"
+                (click)="salir()"
               >
                 Cancelar
               </button>
+              <button mat-raised-button (click)="enviarFormQuemado()">Datos quemados</button>
             </div>
           </form>
         </form>

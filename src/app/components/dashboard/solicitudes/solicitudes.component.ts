@@ -74,71 +74,10 @@ export class SolicitudesComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this.formAdopcion = 
-    {
-      adoptante: this.adoptanteService.getAdoptantes()[0],
-      animalAdopcion: this.animalService.getAnimales()[0],
-      informacionFamiliar: {
-        numAdultos: '4',
-        numNinos: '2',
-        edadesAdultos: '87',
-        edadesNinos: '16',
-        numMascotas: '3',
-        razasMascotas: 'Schnauzer, carey y 2 hamsters',
-        temperamentoMascotas: 'Amigable',
-        tiempoConMascotas: '11',
-        nombreFamiliarContacto: 'Angela Patiño',
-        numeroFamiliarContacto: '3057471184',
-        familiaresDeAcuerdo: 'SI',
-        familiaresAlergias: 'NO',
-        familiaresPlaneaEmbarazo: 'NO'
-      },
-      informacionRelacionada: 
-      {
-        tiempoEnCasaHoras: '12',
-        horaRegresoCasa: 'Hasta las 6 P.M',
-        lugarViviendaDeMascota: 'Casa',
-        patioInteriorJugar: 'Zonas verdes cercanas, Parques en las zonas de domicilio',
-        veterinarioGastos: 'Menos de 50 mil pesos',
-        mascotaAnterior: 'SI',
-        conoceCuidadosMascota: 'SI',
-        veterinarioDeConfianza: 'SI',
-        conscienteResponsabilidad15anos: 'SI',
-        actividadesConMascota: 'Llevarla con usted de viaje, Llevarla a parques',
-        alternativaPaseador: 'SI',
-        espacioViviendaMascota: 'Dentro de la casa, Dormirá conmigo',
-        razonesAdopcion:'Me gustán las mascotas y considero que le puedo dar una buena vida a mi peludito',
-        disposicionMudarseConElAnimal: 'SI',
-        disposicionPasearAlAnimalPerro: 'NO',
-        disposicionAdaptacionAnimal: 'El tiempo que sea necesario',
-        asumirGastosAnimal: 'yo',
-        adoptanteAlternativoAusencia: 'Mis hermanas',
-        permisionTenenciaAnimales: 'SI'
-      },
-      referenciaFamiliar: 
-      {
-        nombres:'Angela Yesenia',
-        apellidos: 'Patiño Gantiva',
-        numFijo: 'No aplica',
-        numCelular: '3057471184',
-        parentezco: 'Padre o madre',
-        tiempoDeConocimiento: ''
-      },
-      referenciaPersonal: 
-      {
-        nombres:'Juan Sebastian',
-        apellidos: 'Martinez Alvarado',
-        numFijo: 'No aplica',
-        numCelular: '3205586321',
-        parentezco: '',
-        tiempoDeConocimiento: 'Entre 2 y 5 años'
-      }
     
-    }
-    this.formulariosAdopcion.push(this.formAdopcion);
+    //this.formulariosAdopcion.push(this.formAdopcion);
 
-    this.dataSource = new MatTableDataSource(this.formulariosAdopcion);
-    setTimeout(() => this.dataSource.paginator = this.paginator);
+    
     this.cargarSolicitudes();
     
   }
@@ -147,11 +86,17 @@ export class SolicitudesComponent implements OnInit {
     this.solicitudesAdopcion = [];
     for(var i = 0; i < this.solicitudService.getSolicitudesQuemadas().length; i++)
     {
-      if(this.solicitudService.getSolicitudesQuemadas()[i].estado1 == 'En espera')
+      if(this.solicitudService.getSolicitudesQuemadas()[i].estado == 'En espera')
       {
         this.solicitudesAdopcion.push(this.solicitudService.getSolicitudesQuemadas()[i]);
       }
+      if(this.solicitudService.getSolicitudesQuemadas()[i].estado == 'Aceptado, formulario en espera de respuesta.')
+      {
+        this.formulariosAdopcion.push(this.solicitudService.getSolicitudesQuemadas()[i].formulario);
+      }
     }
+    this.dataSource = new MatTableDataSource(this.formulariosAdopcion);
+    setTimeout(() => this.dataSource.paginator = this.paginator);
     this.dataSource1 = new MatTableDataSource (this.solicitudesAdopcion);
     setTimeout(() => this.dataSource1.paginator = this.paginator1);
   }
@@ -163,10 +108,14 @@ export class SolicitudesComponent implements OnInit {
       {
         if(this.solicitudesAdopcion[index] == this.solicitudService.getSolicitudesQuemadas()[i])
         {
-          this.solicitudService.getSolicitudesQuemadas()[i].estado1 = nombre;
+          this.solicitudService.getSolicitudesQuemadas()[i].estado = nombre;
           if(nombre == 'Aceptado')
           {
-            this.solicitudService.getSolicitudesQuemadas()[i].estado2 = 'En espera';
+            this.solicitudService.getSolicitudesQuemadas()[i].estado = nombre + ', formulario no enviado.';
+          }
+          if (nombre == 'Rechazado')
+          {
+            this.solicitudService.getSolicitudesQuemadas()[i].estado = nombre + ', sin posibilidad de enviar formulario.';
           }
         }
       }

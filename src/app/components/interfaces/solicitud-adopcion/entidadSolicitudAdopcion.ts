@@ -10,6 +10,5 @@ export interface EntidadSolicitudAdopcion{
     animal:EntidadAnimal;
     formulario:FormularioAdopcion;
     fecha:string;
-    estado1:string;
-    estado2: string;
+    estado:string;
 }

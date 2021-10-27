@@ -25,9 +25,9 @@ export class CrearPublicacionService {
   //       console.log(respuesta);
   //     });
   // }
-  publicaciones: EntidadPublicacion[] = [
-    { titulo: 'Consejos para perros grandes', cuerpo: 'Limpialos y bañalos', fecha: '17/09/2021', urlImg: '../../../assets/Images/adoptante.jpg', seccion: 'perros grandes', autorPubli: '' }
-  ]
+  // publicaciones: EntidadPublicacion[] = [
+  //   { titulo: 'Consejos para perros grandes', cuerpo: 'Limpialos y bañalos', fecha: '17/09/2021', urlImg: '../../../assets/Images/adoptante.jpg', seccion: 'perros grandes', autorPubli: '' }
+  // ]
   crearPublicacion(
     titulo: string,
     cuerpo: string,
@@ -47,23 +47,23 @@ export class CrearPublicacionService {
       fd
     );
   }
-  getPublicaciones() {
-    return this.publicaciones;
-  }
-  crearPublicacionQuemada(titulo: string,
-    cuerpo: string,
-    fecha: string,
-    imagen: string,
-    seccion: string)
-    {
-      this.publicacion = 
-      {
-        cuerpo: cuerpo,
-        titulo: titulo,
-        fecha: fecha,
-        imagenPath: imagen,
-        seccion: seccion
-      }
-      this.publicaciones.unshift(this.publicacion);
-    }
+  // getPublicaciones() {
+  //   return this.publicaciones;
+  // }
+//   crearPublicacionQuemada(titulo: string,
+//     cuerpo: string,
+//     fecha: string,
+//     imagen: string,
+//     seccion: string)
+//     {
+//       this.publicacion = 
+//       {
+//         cuerpo: cuerpo,
+//         titulo: titulo,
+//         fecha: fecha,
+//         imagenPath: imagen,
+//         seccion: seccion
+//       }
+//       this.publicaciones.unshift(this.publicacion);
+//     }
 }

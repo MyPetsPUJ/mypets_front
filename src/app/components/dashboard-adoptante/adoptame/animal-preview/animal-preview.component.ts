@@ -34,7 +34,7 @@ export class AnimalPreviewComponent implements OnInit, OnDestroy {
       for(var i = 0; i < this.solicitudService.getSolicitudesQuemadas().length; i++)
       {
         if(this.solicitudService.getSolicitudesQuemadas()[i].adoptante == this.data.adoptante
-           && this.solicitudService.getSolicitudesQuemadas()[i] == this.data.animal)
+           && this.solicitudService.getSolicitudesQuemadas()[i].animal == this.data.animal)
         {
           this.enviado = true;
         }
@@ -56,8 +56,7 @@ export class AnimalPreviewComponent implements OnInit, OnDestroy {
         animal: animal,
         formulario: this.form,
         fecha: Date().toLocaleString(),
-        estado1: 'En espera',
-        estado2: ''
+        estado: 'En espera',
       }
       this.solicitudService.addSolicitud(this.solicitudAdop);
       this.enviado = true;
