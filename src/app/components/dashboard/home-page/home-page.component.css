@@ -105,12 +105,7 @@
   background-color: #afc7a4ad;
   border-radius: 5px;
 }
-::ng-deep .mat-form-field-underline {
-  display: none;
-}
-::ng-deep .mat-form-field-appearance-fill .mat-form-field-subscript-wrapper {
-  padding: 0px;
-}
+
 .filtro mat-checkbox {
   background-color: #afc7a4ad;
   border: #222;
