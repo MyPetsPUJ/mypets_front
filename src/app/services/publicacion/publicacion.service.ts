@@ -19,32 +19,6 @@ export class PublicacionService {
 
   publis: EntidadPublicacion[] = [];
 
-  // publicaciones: EntidadPublicacion[] = [
-  //   {
-  //     titulo: 'Se busca dueño para Betto',
-  //     cuerpo: 'Beto es un perro cariñoso con 6 años de vida',
-  //     fecha: Date().toLocaleString(),
-  //     urlImg: '../../../assets/Images/dog-form.png',
-  //     seccion: 'Adopción',
-  //     autorPubli: '',
-  //   },
-  //   {
-  //     titulo: 'Lily esta sin hogar',
-  //     cuerpo: 'Lily actualmente se encuentra en busca de',
-  //     fecha: Date().toLocaleString(),
-  //     urlImg: 'src/assets/Images/dog-form.png',
-  //     seccion: 'Adopción',
-  //     autorPubli: '',
-  //   },
-  //   {
-  //     titulo: 'Adopta a Laura!',
-  //     cuerpo: 'Laura fue abandonada por su familia',
-  //     fecha: Date().toLocaleString(),
-  //     urlImg: '../../../assets/Images/dog-form.png',
-  //     seccion: 'Adopción',
-  //     autorPubli: '',
-  //   },
-  // ];
   constructor(private http: HttpClient) {}
 
   getPublicaciones(id: string) {
@@ -53,6 +27,12 @@ export class PublicacionService {
       publis: EntidadPublicacion[];
     }>(
       `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${id}`
+    );
+  }
+
+  getPublicacion(id: string) {
+    return this.http.get<EntidadPublicacion>(
+      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.editarPath}/${id}`
     );
   }
 
@@ -76,6 +56,12 @@ export class PublicacionService {
     return this.http.put(
       `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.editarPath}`,
       fd
+    );
+  }
+
+  deletePublicacion(id: string) {
+    return this.http.delete(
+      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.editarPath}/${id}`
     );
   }
 }

@@ -53,9 +53,9 @@ export class PublicacionesComponent implements OnInit {
     'fechaPublicacion',
   ];
 
-  dataSource!: MatTableDataSource<any>;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  // dataSource!: MatTableDataSource<any>;
+  // @ViewChild(MatPaginator) paginator!: MatPaginator;
+  // @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
     private publicacionService: PublicacionService,
@@ -88,32 +88,35 @@ export class PublicacionesComponent implements OnInit {
     //   }
     // });
   }
-  openDialog(publicacion: EntidadPublicacion) {
-    this._router.navigate(['/dashboard/publicaciones/editar-publicacion']);
-    const dialogRef = this.dialog.open(PublicacionPreviewComponent, {
-      width: '600px',
-      height: '500px',
-      data: { publicacion: publicacion },
-    });
-  }
+  // openDialog(publicacion: EntidadPublicacion) {
+  //   this._router.navigate(['/dashboard/publicaciones/editar-publicacion']);
+  //   const dialogRef = this.dialog.open(PublicacionPreviewComponent, {
+  //     width: '600px',
+  //     height: '500px',
+  //     data: { publicacion: publicacion },
+  //   });
+  // }
   cargarPublicaciones() {
     this.publicacionService.getPublicaciones(this.userId).subscribe((res) => {
-      
       this.userFundacion = res.resultado;
       console.log('ahora siiuuu', this.userFundacion);
       this.publicaciones = res.publis;
       console.log('ahora si', this.publicaciones);
-      this.dataSource = new MatTableDataSource(this.publicaciones);
-      setTimeout(() => (this.dataSource.paginator = this.paginator));
+      // this.dataSource = new MatTableDataSource(this.publicaciones);
+      // setTimeout(() => (this.dataSource.paginator = this.paginator));
     });
   }
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  // applyFilter(event: Event) {
+  //   const filterValue = (event.target as HTMLInputElement).value;
+  //   this.dataSource.filter = filterValue.trim().toLowerCase();
+  // }
+
+  onPublicacionSelected(id: string) {
+  this._router.navigate(['/dashboard/publicaciones/editar-publicacion', id])   
   }
 }

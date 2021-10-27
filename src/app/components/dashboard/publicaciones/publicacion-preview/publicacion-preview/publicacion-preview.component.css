@@ -7,3 +7,15 @@
     text-align: justify;
     text-justify: inter-word;
 }
+
+.img-fluid{
+    margin: 2%;
+}
+
+.form-group{
+    margin: 2%;
+}
+
+.btn{
+    margin: 2%;
+}
