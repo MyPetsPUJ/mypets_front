@@ -28,7 +28,7 @@ export class PublicacionesComponent implements OnInit {
     tipo_doc: '',
     num_doc: '',
     fecha_creacion: '',
-    latitud:0,
+    latitud: 0,
     longitud: 0,
     distancia: '',
     duracion: '',
@@ -89,6 +89,7 @@ export class PublicacionesComponent implements OnInit {
     // });
   }
   openDialog(publicacion: EntidadPublicacion) {
+    this._router.navigate(['/dashboard/publicaciones/editar-publicacion']);
     const dialogRef = this.dialog.open(PublicacionPreviewComponent, {
       width: '600px',
       height: '500px',
@@ -97,15 +98,13 @@ export class PublicacionesComponent implements OnInit {
   }
   cargarPublicaciones() {
     this.publicacionService.getPublicaciones(this.userId).subscribe((res) => {
-      console.log(res)
-      console.log("publis", res.publis)
-      console.log("user", res.resultado)
-      this.userFundacion = res.resultado
-      console.log("ahora siiuuu", this.userFundacion)
-      this.publicaciones = res.publis
-      console.log("ahora si", this.publicaciones)
-      this.dataSource = new MatTableDataSource(this.publicaciones)
-      setTimeout(() => this.dataSource.paginator = this.paginator);
+      
+      this.userFundacion = res.resultado;
+      console.log('ahora siiuuu', this.userFundacion);
+      this.publicaciones = res.publis;
+      console.log('ahora si', this.publicaciones);
+      this.dataSource = new MatTableDataSource(this.publicaciones);
+      setTimeout(() => (this.dataSource.paginator = this.paginator));
     });
   }
   ngAfterViewInit() {

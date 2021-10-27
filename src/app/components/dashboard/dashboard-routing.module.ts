@@ -44,9 +44,12 @@ const routes: Routes = [
       { path: 'solicitudes', component: SolicitudesComponent },
       //{ path: 'publicaciones', component: PublicacionListComponent },
       { path: 'publicaciones/:id', component: PublicacionesComponent },
-      // {path: 'publicaciones/:id/preview', component: PublicacionPreviewComponent},
+      {
+        path: 'publicaciones/editar-publicacion',
+        component: PublicacionPreviewComponent,
+      },
       { path: 'mis-animales/:id', component: UsuariosComponent },
-      { path:'fundaciones', component: FundacionesComponent}
+      { path: 'fundaciones', component: FundacionesComponent },
     ],
   },
 ];
