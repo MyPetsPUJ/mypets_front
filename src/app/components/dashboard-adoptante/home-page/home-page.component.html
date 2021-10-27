@@ -63,9 +63,10 @@
                 ngModel
                 #fundacionInput="ngModel"
               >
-                <mat-option *ngFor="let item of fundacionesPrueba" [value]="item">
-                  {{ item }}
+                <mat-option *ngFor="let item of fundaciones" [value]="item">
+                  {{ item.nombreFund }} 
                 </mat-option>
+          
               </mat-select>
             </mat-form-field>
           </div>
