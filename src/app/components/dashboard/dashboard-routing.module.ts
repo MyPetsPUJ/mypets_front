@@ -45,7 +45,7 @@ const routes: Routes = [
       //{ path: 'publicaciones', component: PublicacionListComponent },
       { path: 'publicaciones/:id', component: PublicacionesComponent },
       {
-        path: 'publicaciones/editar-publicacion',
+        path: 'publicaciones/editar-publicacion/:id',
         component: PublicacionPreviewComponent,
       },
       { path: 'mis-animales/:id', component: UsuariosComponent },

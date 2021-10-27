@@ -3,6 +3,7 @@ import { EntidadSolicitudAdopcion } from '../../components/interfaces/solicitud-
 import { HttpClient } from '@angular/common/http';
 import { UserAdoptante } from 'src/app/components/interfaces/usuarios/userAdoptante';
 import { EntidadAnimal } from 'src/app/components/interfaces/usuarios/entidadAnimal';
+import { UserFundacion } from 'src/app/components/interfaces/usuarios/userFundacion';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +16,14 @@ export class EnviarSolicitudAdopcionService {
   entidad: string = "dashboard-adoptante";
   subTipoEntidad: string = "adoptame";
   subTipoEntidadII: string = "solicitud-adopcion";
-  subTipoEntidadIII: string = " solicitud-adoptante";
+  subTipoEntidadIII: string = "solicitud-adoptante";
+  subTipoEntidadIV: string = "solicitud-fundacion";
   solicitudes: EntidadSolicitudAdopcion[] =[];
 
   constructor(private http: HttpClient) { }
 
 
-  solicitudAdopcion(entidadSolicitudAdopcion : EntidadSolicitudAdopcion)
+  postSolicitudAdopcion(entidadSolicitudAdopcion : EntidadSolicitudAdopcion)
     {
     this.http.post(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.subTipoEntidadII}`, entidadSolicitudAdopcion)
     .subscribe(respuesta => {
@@ -32,6 +34,16 @@ export class EnviarSolicitudAdopcionService {
   {
     return this.http.get<EntidadSolicitudAdopcion[]>(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.subTipoEntidadIII}/${id}`
     )
+  }
+  populateSolicitudesFundaciones(id: string) {
+    return this.http.get<{
+      fundacion: UserFundacion;
+      solicitudes: EntidadSolicitudAdopcion[];
+      adoptantes: UserAdoptante[];
+      animales: EntidadAnimal[];
+    }>(
+      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.subTipoEntidadIV}/${id}`
+    );
   }
   addSolicitud(solicitud: EntidadSolicitudAdopcion)
   {

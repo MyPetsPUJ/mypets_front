@@ -1,6 +1,55 @@
-<div class="alinear">
+<div class="row" *ngIf="!publicacion; else main_content">
+    <h1>Cargando...</h1>
+
+</div>
+
+<ng-template #main_content>
+<div class="row">
+    <div class="col-md-5">
+        <div class="card">
+            <!-- <img [src]="'http://localhost:3000/' + publicacion.urlImg" class="img-fluid"> -->
+            <input #fileInput type="file" (change)="onPhotoSelected($event)" style="display:none;" />
+                    <img [src]=" photoSelected || 'http://localhost:3000/' + publicacion.urlImg"  class="img-fluid" matTooltip="Desplegar opciones de foto"
+                            [matMenuTriggerFor]="menu">
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="fileInput.click()">
+                                <mat-icon>perm_media</mat-icon>
+                                <span>Cambiar foto</span>
+                                <input (change)="onPhotoSelected($event)" type="file">
+                            </button>
+                        </mat-menu>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="card">
+            <form  class="card-body">
+                <div class="form-group">
+                    <!-- <mat-label>Título de publi</mat-label> -->
+                    <input type="text" class="form-control" placeholder="Titulo de publicación" [value]="publicacion.titulo">
+                </div>
+                <div class="form-group">
+                    <textarea rows="12" class="form-control" placeholder="Cuerpo de publicación" [value]="publicacion.cuerpo"></textarea>
+                </div>
+                <button class="btn btn-primary btn-block" >
+                    Modificar 
+                </button>
+
+                <button class="btn btn-danger" (click)="deletePublicacion(publicacion._id!)">Eliminar </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</ng-template>
+
+
+
+
+
+
+<!-- <div class="alinear">
 <form action="publicacion-preview.component.ts" (ngSubmit)="editarPublicacion(updatePubliForm)" #updatePubliForm="ngForm" method="post">
-    <!-- <h1>{{data.publicacion.titulo}}</h1> -->
+    <h1>{{data.publicacion.titulo}}</h1>
     <input name="titulo" matInput type="text" value="{{data.publicacion.titulo}}">
     <img name="img" [src]="'http://localhost:3000/' + data.publicacion.urlImg" width="70%">
     <p> </p>
@@ -9,8 +58,8 @@
     
     <div class="justificar"> 
         <textarea name="cuerpo" id="" cols="30" rows="10">{{data.publicacion.cuerpo}}</textarea>
-        <!-- <input matInput value="{{data.publicacion.cuerpo}}" type="text"> -->
-        <!-- <input matInput value="{{data.publicacion.cuerpo}}" type="text"> -->
+        <input matInput value="{{data.publicacion.cuerpo}}" type="text">
+        <input matInput value="{{data.publicacion.cuerpo}}" type="text">
     </div>
     <p> </p>
     <p> </p>
@@ -20,4 +69,4 @@
         Cancelar
     </button>
 </form>
-</div>
+</div> -->
