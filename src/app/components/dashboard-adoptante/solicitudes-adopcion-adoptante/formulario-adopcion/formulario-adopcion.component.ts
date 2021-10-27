@@ -10,6 +10,7 @@ import { FormularioAdopcion } from 'src/app/components/interfaces/formularios/fo
 import { ThemePalette } from '@angular/material/core';
 import { EntidadSolicitudAdopcion } from 'src/app/components/interfaces/solicitud-adopcion/entidadSolicitudAdopcion';
 import { Router } from '@angular/router';
+import { EnviarSolicitudAdopcionService } from 'src/app/services/adopcion/enviar-solicitud-adopcion.service';
 
 
 export interface Vacuna_box {
@@ -27,11 +28,13 @@ export interface Vacuna_box {
 export class FormularioAdopcionComponent implements OnInit {
   constructor(
     public enviarFormularioAdopcionService: EnviarFormularioAdopcionService,
-    private router: Router
+    private router: Router,
+    private solicitudService: EnviarSolicitudAdopcionService
   ) {
   }
   @Input() data: any;
   @Output() salida: EventEmitter<any> = new EventEmitter();
+  formAdopcion: FormularioAdopcion | undefined;
   ngOnInit(): void {
     console.log(this.data);
   }
@@ -232,5 +235,79 @@ export class FormularioAdopcionComponent implements OnInit {
   salir()
   {
     this.salida.emit(false);
+  }
+  enviarFormQuemado()
+  {
+    this.formAdopcion = 
+    {
+      adoptante: this.data.adoptante,
+      animalAdopcion: this.data.animal,
+      informacionFamiliar: {
+        numAdultos: '4',
+        numNinos: '2',
+        edadesAdultos: '87',
+        edadesNinos: '16',
+        numMascotas: '3',
+        razasMascotas: 'Schnauzer, carey y 2 hamsters',
+        temperamentoMascotas: 'Amigable',
+        tiempoConMascotas: '11',
+        nombreFamiliarContacto: 'Angela Patiño',
+        numeroFamiliarContacto: '3057471184',
+        familiaresDeAcuerdo: 'SI',
+        familiaresAlergias: 'NO',
+        familiaresPlaneaEmbarazo: 'NO'
+      },
+      informacionRelacionada: 
+      {
+        tiempoEnCasaHoras: '12',
+        horaRegresoCasa: 'Hasta las 6 P.M',
+        lugarViviendaDeMascota: 'Casa',
+        patioInteriorJugar: 'Zonas verdes cercanas, Parques en las zonas de domicilio',
+        veterinarioGastos: 'Menos de 50 mil pesos',
+        mascotaAnterior: 'SI',
+        conoceCuidadosMascota: 'SI',
+        veterinarioDeConfianza: 'SI',
+        conscienteResponsabilidad15anos: 'SI',
+        actividadesConMascota: 'Llevarla con usted de viaje, Llevarla a parques',
+        alternativaPaseador: 'SI',
+        espacioViviendaMascota: 'Dentro de la casa, Dormirá conmigo',
+        razonesAdopcion:'Me gustán las mascotas y considero que le puedo dar una buena vida a mi peludito',
+        disposicionMudarseConElAnimal: 'SI',
+        disposicionPasearAlAnimalPerro: 'NO',
+        disposicionAdaptacionAnimal: 'El tiempo que sea necesario',
+        asumirGastosAnimal: 'yo',
+        adoptanteAlternativoAusencia: 'Mis hermanas',
+        permisionTenenciaAnimales: 'SI'
+      },
+      referenciaFamiliar: 
+      {
+        nombres:'Angela Yesenia',
+        apellidos: 'Patiño Gantiva',
+        numFijo: 'No aplica',
+        numCelular: '3057471184',
+        parentezco: 'Padre o madre',
+        tiempoDeConocimiento: ''
+      },
+      referenciaPersonal: 
+      {
+        nombres:'Juan Sebastian',
+        apellidos: 'Martinez Alvarado',
+        numFijo: 'No aplica',
+        numCelular: '3205586321',
+        parentezco: '',
+        tiempoDeConocimiento: 'Entre 2 y 5 años'
+      }
+    }
+    var index;
+    for(var i = 0; i < this.solicitudService.getSolicitudesQuemadas().length; i++)
+    {
+      if(this.data == this.solicitudService.getSolicitudesQuemadas()[i])
+      {
+        this.solicitudService.solicitudes[i].formulario = this.formAdopcion; // asigna el formulario a la solicitud 
+        this.solicitudService.solicitudes[i].estado = 'Aceptado, formulario en espera de respuesta.'; 
+        index = i;
+      }
+    }
+    this.salir()
   }
 }
