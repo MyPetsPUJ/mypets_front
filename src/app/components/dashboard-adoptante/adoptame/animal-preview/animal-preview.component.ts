@@ -45,20 +45,20 @@ export class AnimalPreviewComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     this.authListenerSubs?.unsubscribe();
   }
-  solicitud(animal: EntidadAnimal,accion: string)
+  solicitud(animal: EntidadAnimal|any,accion: string)
   {
     if(accion == 'enviar')
     {
       this.solicitudAdop = 
       {
         adoptante: this.data.adoptante,
-        idFundacion:"123",
+        idFundacion:animal.ownerFundacion,
         animal: animal,
         formulario: this.form,
         fecha: Date().toLocaleString(),
         estado: 'En espera',
       }
-      this.solicitudService.addSolicitud(this.solicitudAdop);
+      this.solicitudService.postSolicitudAdopcion(this.solicitudAdop);
       this.enviado = true;
     }
     if(accion == 'cancelar')
