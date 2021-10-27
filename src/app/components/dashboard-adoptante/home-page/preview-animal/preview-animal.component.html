@@ -1,6 +1,11 @@
 <div class="alinear">
   <h1>{{ data.animal.nombre }}</h1>
-  <img [src]="data.animal.urlImg" mat-card-image class="container crop" />
+  <img
+    [src]="'http://localhost:3000/' + data.animal.urlImg"
+    mat-card-image
+    width="70%"
+    class="container crop"
+  />
   <p></p>
   <p></p>
   <div class="justificar">{{ data.animal.descripcion }}</div>
@@ -29,5 +34,5 @@
   </mat-grid-list>
   <p></p>
   <p></p>
-  <button mat-raised-button color="primary">Quiero adoptar</button>
+  <button mat-raised-button (click)="accion('cerrar')">Cerrar</button>
 </div>

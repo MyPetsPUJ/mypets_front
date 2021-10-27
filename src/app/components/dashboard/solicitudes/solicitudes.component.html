@@ -1,7 +1,12 @@
-<div class="si hay solicitudes">
-    <div class="mat-elevation-z8" class="tam example-container">
+<div [formGroup] = "estados" class="tam">
+  <h1>Seleccione que desea ver</h1>
+  <p><mat-checkbox formControlName="solicitudesAdop">Solicitudes de adopcion</mat-checkbox></p>
+  <p><mat-checkbox formControlName="formulariosAdop">Formularios adopción</mat-checkbox></p>
+</div>
+<div class="si hay solicitudes" [formGroup]="estados">
+    <div class="mat-elevation-z8" class="tam example-container" *ngIf="estados.controls.formulariosAdop.value">
         <mat-toolbar>
-            <span>Solicitudes de adopción</span>
+            <span>Formularios de adopción</span>
         </mat-toolbar>
         <mat-table [dataSource]="dataSource" matSort>
             <ng-container matColumnDef="idSolicitud"> 
@@ -62,6 +67,82 @@
           <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
     </div>
 </div>
-<div class="si no hay solicitudes">
 
+
+
+<div class="si hay solicitudes" [formGroup]="estados">
+  <div class="mat-elevation-z8" class="tam example-container" *ngIf="estados.controls.solicitudesAdop.value">
+      <mat-toolbar>
+          <span>Solicitudes de adopción</span>
+      </mat-toolbar>
+      <mat-table [dataSource]="dataSource1" matSort>
+          <ng-container matColumnDef="foto"> 
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Foto</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <span class="mobile-label">Foto: </span>
+              <img [src]="'http://localhost:3000/' + element.animal.urlImg" width="100%" class="circulo" />
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="interesado">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Interesado</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <span class="mobile-label">Interesado: </span>
+                {{element.adoptante.nombre}}  {{element.adoptante.apellidos}}
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="localidad">
+            <mat-header-cell  *matHeaderCellDef mat-sort-header>Localidad</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <span class="mobile-label">Localidad: </span>
+              {{element.adoptante.localidad}}
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="celular">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Número celular
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <span class="mobile-label">Núm. celular: </span>
+              {{element.adoptante.num_celular}}
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="accion">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>
+                Acción
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element; let i = index">
+                <!-- {{element.adoptante.num_celular}}-->
+                <span class="mobile-label">Acción: </span>
+                <mat-icon class="pointer" matTooltip="Ver información adicional de interesado" (click)="accion('adoptante',i)">person</mat-icon>
+                <i style="color: white">....</i>
+                <mat-icon class="pointer" matTooltip="Aceptar solicitud 
+                (Permitir que el interesado envíe un formulario de adopción)" [ngStyle]="{'color':'green'}" 
+                (click)="accion('Aceptado',i)">thumb_up</mat-icon>
+                <i style="color: white">....</i>
+                <mat-icon class="pointer" matTooltip="Rechazar solicitud 
+                (El interesado no podrá enviar ningún formulario de adopción)" [ngStyle]="{'color':'red'}"
+                (click)="accion('Rechazado',i)">thumb_down</mat-icon>
+
+              </mat-cell>
+            </ng-container>
+            
+            <!--
+            <ng-container matColumnDef="fechaSolicitud">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Fecha de solicitud
+              </th>
+              <td mat-cell *matCellDef="let element">
+                  {{element.fecha}}
+              </td>
+            </ng-container>
+            -->
+    
+          <mat-header-row *matHeaderRowDef="displayedColumns1"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns1"></mat-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+  <button mat-raised-button routerLink="/dashboard-adoptante">dashboard-adoptante</button>
 </div>
+
+

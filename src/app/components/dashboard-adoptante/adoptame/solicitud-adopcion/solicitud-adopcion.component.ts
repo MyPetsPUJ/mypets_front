@@ -30,7 +30,7 @@ export class SolicitudAdopcionComponent implements OnInit {
       direccion: form.value.direccion, numeroCelular: form.value.numeroCelular, correoElectronico: form.value.correoElectronico, ocupacion: form.value.ocupacion, 
       mascotaSolicitud: form.value.mascotaSolicitud, fundacionSolicitud: form.value.fundacionSolicitud};
     //this.authservice.crearUsuarioAdoptante(datosAdoptante);
-    this.enviarSolicitudAdopcionService.solicitudAdopcion(datosAdoptante);
+    //this.enviarSolicitudAdopcionService.solicitudAdopcion(datosAdoptante);
   }
 
 }

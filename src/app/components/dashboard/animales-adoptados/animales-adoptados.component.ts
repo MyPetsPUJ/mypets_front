@@ -9,6 +9,7 @@ import { CrearAnimalService } from 'src/app/services/animal/crearAnimal.service'
 import { EntidadAnimal } from '../../interfaces/usuarios/entidadAnimal';
 import { UserAdoptante } from '../../interfaces/usuarios/userAdoptante';
 import { PreviewComponent } from './preview/preview.component';
+
 export interface UserData {
   dueno: UserAdoptante;
   animal: EntidadAnimal;
@@ -31,6 +32,8 @@ export class AnimalesAdoptadosComponent implements OnInit {
   animales: EntidadAnimal[] = [];
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
+  
+
   listaInfo: UserData[] = [];
   infoMostrar: UserData | any;
   constructor(private adoptanteService: CrearAdoptanteService, private animalService: CrearAnimalService,
@@ -38,6 +41,7 @@ export class AnimalesAdoptadosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.adoptantes = this.adoptanteService.getAdoptantes();
     this.animales = this.animalService.getAnimales();
     var i = 0;

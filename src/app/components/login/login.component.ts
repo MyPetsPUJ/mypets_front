@@ -13,6 +13,7 @@ import { LoginService } from 'src/app/services/auth/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
+
 export class LoginComponent implements OnInit {
   form: FormGroup;
   loading = false;
@@ -31,7 +32,8 @@ export class LoginComponent implements OnInit {
       contrasena: ['', Validators.required], //inicia vacio y el espacio es requerido
     });
   }
-
+  selected=-1;
+  
   getToken() {
     return this.token;
   }

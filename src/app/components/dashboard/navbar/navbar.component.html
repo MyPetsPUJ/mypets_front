@@ -16,19 +16,19 @@
     <span class="example-spacer"></span>
     <li><a routerLink="/dashboard">Home</a></li>
     <span class="example-spacer"></span>
-    <li *ngIf="userIsAuth"><a [routerLink]="['mapa', userId]">Mapa</a></li>
+    <li><a [routerLink]="['mapa', userId]">Mapa</a></li>
     <span class="example-spacer"></span>
-    <li *ngIf="userIsAuth"><a routerLink="mis-animales">Mis Animales</a></li>
+    <li ><a routerLink="mis-animales">Mis Animales</a></li>
     <span class="example-spacer"></span>
-    <li *ngIf="userIsAuth">
+    <li >
       <a routerLink="animales-adoptados">Adopciones</a>
     </li>
     <span class="example-spacer"></span>
-    <li *ngIf="userIsAuth">
+    <li >
       <a [routerLink]="['publicaciones', userId]">Mis Publicaciones</a>
     </li>
     <span class="example-spacer"></span>
-    <li *ngIf="userIsAuth"><a routerLink="fundaciones">Fundaciones</a></li>
+    <li ><a routerLink="fundaciones">Fundaciones</a></li>
     <span class="example-spacer"></span>
   </ul>
   <span class="example-spacer"></span>

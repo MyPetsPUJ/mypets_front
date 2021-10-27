@@ -1,38 +1,43 @@
-.body 
-{
-    display: flex;
-    justify-content: center;
-    height: 100%;
-    align-items: center;
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+.body {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  background-image: url(src\assets\Images\cats-background.png);
 }
-.login
-{
-    width: 100%;
-    max-width: 330px;
-    text-align: center;
+.login {
+  width: 100%;
+  max-width: 330px;
+  text-align: center;
+  padding: 20px;
+  background-color: #f5f5f5;
 }
-.ancho 
-{
-    width: 80%;
-
+.ancho {
+  width: 80%;
 }
-.tituloInicial 
-{
-    font-size: 35px;
-    font: papyrus;
+.mat-raised-button {
+  border-radius: 0%;
 }
-.button
-{
-    height: 50px;
+.tituloInicial {
+  font-size: 35px;
+  font-family: "Fredoka One", cursive;
 }
-.spinner 
-{
-    margin: 0 auto;
+.button {
+  height: 50px;
+}
+.spinner {
+  margin: 0 auto;
+}
+.selectores {
+  padding-bottom: 15px;
 }
 .mat-radio-button ~ .mat-radio-button {
-    margin-left: 16px;
-  }
-.colorLabel 
-{
-    color: grey;
+  margin-left: 16px;
+}
+.colorLabel {
+  color: grey;
+}
+.login a {
+  font-size: smaller;
 }

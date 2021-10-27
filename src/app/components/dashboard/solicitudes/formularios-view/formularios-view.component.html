@@ -1,340 +1,398 @@
-<div *ngIf="pag==0" class="alinear">
+<div *ngIf="data.accion=='formulario'">
+    <div *ngIf="pag==0" class="alinear">
+        <h1><b> Datos del interesado </b></h1>
+        <img [src]="data.formulario.adoptante.foto" mat-card-image width="70%" class="container crop">
+        <!--Toca colocar un atributo de foto al adoptante-->
+        <h3><b> {{data.formulario.adoptante.nombre}}  {{data.formulario.adoptante.apellidos}} </b></h3>
+        <p> </p>
+        <p> </p>
+        <mat-grid-list cols="2" rowHeight="50px">
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Correo:</b><br>
+                    <i>{{data.formulario.adoptante.correo}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Fecha de nacimiento:</b><br>
+                    <i>{{data.formulario.adoptante.fecha_nacimiento}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Localidad:</b><br>
+                    <i>{{data.formulario.adoptante.localidad}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Sexo:</b><br>
+                    <i>{{data.formulario.adoptante.genero}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Núm. de contacto:</b><br>
+                    <i>{{data.formulario.adoptante.num_celular}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Documento:</b><br>
+                    <i>{{data.formulario.adoptante.tipo_doc}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Núm. documento:</b><br>
+                    <i>{{data.formulario.adoptante.num_doc}}</i>
+                </div>
+                 </mat-grid-tile>
+        </mat-grid-list>
+        <p> </p>
+        <p> </p>
+        <button mat-raised-button (click)="accion('siguiente')" color="primary">siguiente</button>
+    </div>
+    <div *ngIf="pag==1" class="alinear">
+        <h1><b> Información familiar </b></h1>
+        <img src="../../../assets/Images/siluetafamilia.png" mat-card-image width="70%" class="container crop">
+        <!--Toca colocar un atributo de foto al adoptante-->
+        <p> </p>
+        <p> </p>
+        <mat-grid-list cols="2" rowHeight="70px">
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Adultos en casa:</b><br>
+                    <i>{{data.formulario.informacionFamiliar.numAdultos}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Niños en casa:</b><br>
+                    <i>{{data.formulario.informacionFamiliar.numNinos}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Edad de persona mas longeva:</b><br>
+                    <i>{{data.formulario.informacionFamiliar.edadesAdultos}} años</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Edad de persona mas jóven:</b><br>
+                    <i>{{data.formulario.informacionFamiliar.edadesNinos}} años</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Núm. de mascotas en casa:</b><br>
+                    <i>{{data.formulario.informacionFamiliar.numMascotas}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Mascotas:</b><br>
+                    <i>{{data.formulario.informacionFamiliar.razasMascotas}}</i>
+                </div>
+                </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Temperamento general de mascotas:</b><br>
+                    <i>{{data.formulario.informacionFamiliar.temperamentoMascotas}}</i>
+                </div>
+                </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Mayor tiempo con mascotas:</b><br>
+                    <i>{{data.formulario.informacionFamiliar.tiempoConMascotas}} años</i>
+                </div>
+                </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Nombre de familiar de contacto:</b><br>
+                    <i>{{data.formulario.informacionFamiliar.nombreFamiliarContacto}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Teléfono de contacto(familiar):</b><br>
+                    <i>{{data.formulario.informacionFamiliar.numeroFamiliarContacto}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>¿Todos los familiares están de acuerdo con la adopción?</b><br>
+                    <i>{{data.formulario.informacionFamiliar.familiaresDeAcuerdo}}</i>
+                </div>
+                </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>¿Hay personas con alergias, asma o enfermedades respiratorias?</b><br>
+                    <i>{{data.formulario.informacionFamiliar.familiaresAlergias}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>¿Hay personas que planean un embarazo en el próximo año en su casa?</b><br>
+                    <i>{{data.formulario.informacionFamiliar.familiaresPlaneaEmbarazo}}</i>
+                </div>
+                 </mat-grid-tile>    
+        </mat-grid-list>
+        <p> </p>
+        <p> </p>
+        <button mat-raised-button (click)="accion('anterior')">anterior</button>
+        <button mat-raised-button (click)="accion('siguiente')" color="primary">siguiente</button>
+    </div>
+    <div *ngIf="pag==2" class="alinear">
+        <h1><b> Información relacionada con tenencia de mascotas </b></h1>
+        <img src="../../../assets/Images/silueta-perro.png" mat-card-image width="70%" class="container crop">
+        <!--Toca colocar un atributo de foto al adoptante-->
+        <p> </p>
+        <p> </p>
+        <mat-grid-list cols="2" rowHeight="70px">
+            <mat-grid-tile colspan="1" rowspan="2">
+                <div>
+                    <b>Horas en las que permanece afuera: </b> <br> 
+                    <i>{{data.formulario.informacionRelacionada.tiempoEnCasaHoras}} horas </i>
+                </div>
+                </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="2">
+                <div>
+                    <b> Hora aproximada en la que la mascota estaría sola: </b><br> 
+                <i>{{data.formulario.informacionRelacionada.horaRegresoCasa}} horas </i>
+                </div>
+                </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="2">
+                <div>
+                    <b> Lugar de vivienda de la mascota:</b><br>
+                    <i>{{data.formulario.informacionRelacionada.lugarViviendaDeMascota}}</i>
+                </div>
+                </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="2">
+                <div>
+                    <b> Gastos estimados en el mes:</b> <br>
+                    <i>{{data.formulario.informacionRelacionada.veterinarioGastos}}</i>
+                </div>
+                </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="2">
+                <div>
+                    <b>Lugares donde podrá jugar la mascota:</b><br>
+                    <i>{{data.formulario.informacionRelacionada.patioInteriorJugar}}</i>
+                </div>
+                  </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="2">
+                <div>
+                    <b>¿Ha tenido mascotas anteriormente?</b> <br>
+                    <i>{{data.formulario.informacionRelacionada.mascotaAnterior}}</i>
+                </div>
+                </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="2">
+                <div>
+                    <b>¿Conoce los cuidados básicos de una mascota?</b><br>
+                    <i>{{data.formulario.informacionRelacionada.conoceCuidadosMascota}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="2">
+                <div>
+                    <b>¿Tiene veterinario de confianza?</b><br>
+                    <i>{{data.formulario.informacionRelacionada.veterinarioDeConfianza}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="2">
+                <div>
+                    <b>¿Es consciente que una mascota es una responsabilidad de aproximadamente 15 años?</b><br>
+                    <i>{{data.formulario.informacionRelacionada.conscienteResponsabilidad15anos}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="2">
+                <div>
+                    <b> Actividades que podría realizar:</b><br>
+                    <i>{{data.formulario.informacionRelacionada.actividadesConMascota}}</i>
+                </div>
+                </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="2">
+                <div>
+                    <b>¿Estaría dispuesto a buscar distintas alternativas como colegio, paseador, entrenador y demás?:</b><br>
+                    <i>{{data.formulario.informacionRelacionada.alternativaPaseador}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="2">
+                <div>
+                    <b> Lugares en los cuáles podría dormir el animal:</b><br>
+                    <i>{{data.formulario.informacionRelacionada.espacioViviendaMascota}}</i>
+                </div>
+                </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="2">
+                <div>
+                    <b>¿Estaría dispuesto a lleva el animal en caso de mudanza?:</b><br>
+                    <i>{{data.formulario.informacionRelacionada.disposicionMudarseConElAnimal}}</i>
+                </div>
+                </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="2">
+                <div>
+                    <b>¿Estaría dispuesto a pasear al animal al menos dos veces al día?(Perro)</b><br>
+                    <i>{{data.formulario.informacionRelacionada.disposicionPasearAlAnimalPerro}}</i>
+                </div>
+                </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="2">
+                <div>
+                    <b>¿Cuánto tiempo estaría dispuesto a dar para que el animal se adapte al nuevo entorno?</b><br>
+                    <i>{{data.formulario.informacionRelacionada.disposicionAdaptacionAnimal}}</i>
+                </div>
+                </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="2">
+                <div>
+                    <b>¿Quién asumirá los gastos de la mascota?</b><br>
+                    <i>{{data.formulario.informacionRelacionada.asumirGastosAnimal}}</i>
+                </div>
+                </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="2">
+                <div>
+                    <b>¿Quién cuidará la mascota en caso de que usted no lo pueda seguir haciendo? </b><br>
+                    <i>{{data.formulario.informacionRelacionada.adoptanteAlternativoAusencia}}</i>
+                </div>
+                </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="2">
+                <div>
+                    <b>¿En su lugar de residencia permiten tener animales? </b><br>
+                    <i>{{data.formulario.informacionRelacionada.permisionTenenciaAnimales}}</i>
+                </div>
+                </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="3">
+                <div>
+                    <b>¿Porqué quiere adoptar a {{data.formulario.animalAdopcion.nombre}}?:</b><br>
+                    <i> {{data.formulario.informacionRelacionada.razonesAdopcion}} </i>
+                </div>
+               </mat-grid-tile>
+            
+    
+        </mat-grid-list>
+        <p> </p>
+        <p> </p>
+        <button mat-raised-button (click)="accion('anterior')">anterior</button>
+        <button mat-raised-button (click)="accion('siguiente')" color="primary">siguiente</button>
+    </div>
+    <div *ngIf="pag==3" class="alinear">
+        <h1><b> Referencias </b></h1>
+        <img src="../../../assets/Images/casa.png" mat-card-image width="70%" class="container crop">
+        <!--Toca colocar un atributo de foto al adoptante-->
+        <h3><b> Referencia familiar </b></h3>
+        <p> </p>
+        <mat-grid-list cols="2" rowHeight="50px">
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Nombre completo:</b><br>
+                    <i>{{data.formulario.referenciaFamiliar.nombres}} {{data.formulario.referenciaFamiliar.apellidos}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Número celular:</b><br>
+                    <i>{{data.formulario.referenciaFamiliar.numCelular}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Número fijo:</b><br>
+                    <i>{{data.formulario.referenciaFamiliar.numFijo}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Parentezco:</b><br>
+                    <i>{{data.formulario.referenciaFamiliar.parentezco}}</i>
+                </div>
+                 </mat-grid-tile>
+        </mat-grid-list>
+        <h3><b> Referencia personal </b></h3>
+        <p> </p>
+        <mat-grid-list cols="2" rowHeight="50px">
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Nombre completo:</b><br>
+                    <i>{{data.formulario.referenciaPersonal.nombres}} {{data.formulario.referenciaPersonal.apellidos}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Número celular:</b><br>
+                    <i>{{data.formulario.referenciaPersonal.numCelular}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Número fijo:</b><br>
+                    <i>{{data.formulario.referenciaPersonal.numFijo}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Tiempo de conocimiento:</b><br>
+                    <i>{{data.formulario.referenciaPersonal.tiempoDeConocimiento}}</i>
+                </div>
+                 </mat-grid-tile>
+        </mat-grid-list>
+    
+        <p> </p>
+        <p> </p>
+        <button mat-raised-button (click)="accion('anterior')" >anterior</button>
+        <button mat-raised-button (click)="accion('cerrar')" class="rojo">Cerrar</button>
+    </div>
+</div>
+<div *ngIf="data.accion=='adoptante'" class="alinear">
     <h1><b> Datos del interesado </b></h1>
-    <img [src]="data.formulario.adoptante.foto" mat-card-image width="70%" class="container crop">
-    <!--Toca colocar un atributo de foto al adoptante-->
-    <h3><b> {{data.formulario.adoptante.nombre}}  {{data.formulario.adoptante.apellidos}} </b></h3>
-    <p> </p>
-    <p> </p>
-    <mat-grid-list cols="2" rowHeight="50px">
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Correo:</b><br>
-                <i>{{data.formulario.adoptante.correo}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Fecha de nacimiento:</b><br>
-                <i>{{data.formulario.adoptante.fecha_nacimiento}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Localidad:</b><br>
-                <i>{{data.formulario.adoptante.localidad}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Sexo:</b><br>
-                <i>{{data.formulario.adoptante.genero}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Núm. de contacto:</b><br>
-                <i>{{data.formulario.adoptante.num_celular}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Documento:</b><br>
-                <i>{{data.formulario.adoptante.tipo_doc}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Núm. documento:</b><br>
-                <i>{{data.formulario.adoptante.num_doc}}</i>
-            </div>
-             </mat-grid-tile>
-    </mat-grid-list>
-    <p> </p>
-    <p> </p>
-    <button mat-raised-button (click)="accion('siguiente')" color="primary">siguiente</button>
-</div>
-<div *ngIf="pag==1" class="alinear">
-    <h1><b> Información familiar </b></h1>
-    <img src="../../../assets/Images/siluetafamilia.png" mat-card-image width="70%" class="container crop">
-    <!--Toca colocar un atributo de foto al adoptante-->
-    <p> </p>
-    <p> </p>
-    <mat-grid-list cols="2" rowHeight="70px">
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Adultos en casa:</b><br>
-                <i>{{data.formulario.informacionFamiliar.numAdultos}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Niños en casa:</b><br>
-                <i>{{data.formulario.informacionFamiliar.numNinos}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Edad de persona mas longeva:</b><br>
-                <i>{{data.formulario.informacionFamiliar.edadesAdultos}} años</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Edad de persona mas jóven:</b><br>
-                <i>{{data.formulario.informacionFamiliar.edadesNinos}} años</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Núm. de mascotas en casa:</b><br>
-                <i>{{data.formulario.informacionFamiliar.numMascotas}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Mascotas:</b><br>
-                <i>{{data.formulario.informacionFamiliar.razasMascotas}}</i>
-            </div>
-            </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Temperamento general de mascotas:</b><br>
-                <i>{{data.formulario.informacionFamiliar.temperamentoMascotas}}</i>
-            </div>
-            </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Mayor tiempo con mascotas:</b><br>
-                <i>{{data.formulario.informacionFamiliar.tiempoConMascotas}} años</i>
-            </div>
-            </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Nombre de familiar de contacto:</b><br>
-                <i>{{data.formulario.informacionFamiliar.nombreFamiliarContacto}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Teléfono de contacto(familiar):</b><br>
-                <i>{{data.formulario.informacionFamiliar.numeroFamiliarContacto}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>¿Todos los familiares están de acuerdo con la adopción?</b><br>
-                <i>{{data.formulario.informacionFamiliar.familiaresDeAcuerdo}}</i>
-            </div>
-            </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>¿Hay personas con alergias, asma o enfermedades respiratorias?</b><br>
-                <i>{{data.formulario.informacionFamiliar.familiaresAlergias}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>¿Hay personas que planean un embarazo en el próximo año en su casa?</b><br>
-                <i>{{data.formulario.informacionFamiliar.familiaresPlaneaEmbarazo}}</i>
-            </div>
-             </mat-grid-tile>    
-    </mat-grid-list>
-    <p> </p>
-    <p> </p>
-    <button mat-raised-button (click)="accion('anterior')">anterior</button>
-    <button mat-raised-button (click)="accion('siguiente')" color="primary">siguiente</button>
-</div>
-<div *ngIf="pag==2" class="alinear">
-    <h1><b> Información relacionada con tenencia de mascotas </b></h1>
-    <img src="../../../assets/Images/silueta-perro.png" mat-card-image width="70%" class="container crop">
-    <!--Toca colocar un atributo de foto al adoptante-->
-    <p> </p>
-    <p> </p>
-    <mat-grid-list cols="2" rowHeight="70px">
-        <mat-grid-tile colspan="1" rowspan="2">
-            <div>
-                <b>Horas en las que permanece afuera: </b> <br> 
-                <i>{{data.formulario.informacionRelacionada.tiempoEnCasaHoras}} horas </i>
-            </div>
-            </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="2">
-            <div>
-                <b> Hora aproximada en la que la mascota estaría sola: </b><br> 
-            <i>{{data.formulario.informacionRelacionada.horaRegresoCasa}} horas </i>
-            </div>
-            </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="2">
-            <div>
-                <b> Lugar de vivienda de la mascota:</b><br>
-                <i>{{data.formulario.informacionRelacionada.lugarViviendaDeMascota}}</i>
-            </div>
-            </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="2">
-            <div>
-                <b> Gastos estimados en el mes:</b> <br>
-                <i>{{data.formulario.informacionRelacionada.veterinarioGastos}}</i>
-            </div>
-            </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="2">
-            <div>
-                <b>Lugares donde podrá jugar la mascota:</b><br>
-                <i>{{data.formulario.informacionRelacionada.patioInteriorJugar}}</i>
-            </div>
-              </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="2">
-            <div>
-                <b>¿Ha tenido mascotas anteriormente?</b> <br>
-                <i>{{data.formulario.informacionRelacionada.mascotaAnterior}}</i>
-            </div>
-            </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="2">
-            <div>
-                <b>¿Conoce los cuidados básicos de una mascota?</b><br>
-                <i>{{data.formulario.informacionRelacionada.conoceCuidadosMascota}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="2">
-            <div>
-                <b>¿Tiene veterinario de confianza?</b><br>
-                <i>{{data.formulario.informacionRelacionada.veterinarioDeConfianza}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="2">
-            <div>
-                <b>¿Es consciente que una mascota es una responsabilidad de aproximadamente 15 años?</b><br>
-                <i>{{data.formulario.informacionRelacionada.conscienteResponsabilidad15anos}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="2">
-            <div>
-                <b> Actividades que podría realizar:</b><br>
-                <i>{{data.formulario.informacionRelacionada.actividadesConMascota}}</i>
-            </div>
-            </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="2">
-            <div>
-                <b>¿Estaría dispuesto a buscar distintas alternativas como colegio, paseador, entrenador y demás?:</b><br>
-                <i>{{data.formulario.informacionRelacionada.alternativaPaseador}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="2">
-            <div>
-                <b> Lugares en los cuáles podría dormir el animal:</b><br>
-                <i>{{data.formulario.informacionRelacionada.espacioViviendaMascota}}</i>
-            </div>
-            </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="2">
-            <div>
-                <b>¿Estaría dispuesto a lleva el animal en caso de mudanza?:</b><br>
-                <i>{{data.formulario.informacionRelacionada.disposicionMudarseConElAnimal}}</i>
-            </div>
-            </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="2">
-            <div>
-                <b>¿Estaría dispuesto a pasear al animal al menos dos veces al día?(Perro)</b><br>
-                <i>{{data.formulario.informacionRelacionada.disposicionPasearAlAnimalPerro}}</i>
-            </div>
-            </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="2">
-            <div>
-                <b>¿Cuánto tiempo estaría dispuesto a dar para que el animal se adapte al nuevo entorno?</b><br>
-                <i>{{data.formulario.informacionRelacionada.disposicionAdaptacionAnimal}}</i>
-            </div>
-            </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="2">
-            <div>
-                <b>¿Quién asumirá los gastos de la mascota?</b><br>
-                <i>{{data.formulario.informacionRelacionada.asumirGastosAnimal}}</i>
-            </div>
-            </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="2">
-            <div>
-                <b>¿Quién cuidará la mascota en caso de que usted no lo pueda seguir haciendo? </b><br>
-                <i>{{data.formulario.informacionRelacionada.adoptanteAlternativoAusencia}}</i>
-            </div>
-            </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="2">
-            <div>
-                <b>¿En su lugar de residencia permiten tener animales? </b><br>
-                <i>{{data.formulario.informacionRelacionada.permisionTenenciaAnimales}}</i>
-            </div>
-            </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="3">
-            <div>
-                <b>¿Porqué quiere adoptar a {{data.formulario.animalAdopcion.nombre}}?:</b><br>
-                <i> {{data.formulario.informacionRelacionada.razonesAdopcion}} </i>
-            </div>
-           </mat-grid-tile>
-        
-
-    </mat-grid-list>
-    <p> </p>
-    <p> </p>
-    <button mat-raised-button (click)="accion('anterior')">anterior</button>
-    <button mat-raised-button (click)="accion('siguiente')" color="primary">siguiente</button>
-</div>
-<div *ngIf="pag==3" class="alinear">
-    <h1><b> Referencias </b></h1>
-    <img src="../../../assets/Images/casa.png" mat-card-image width="70%" class="container crop">
-    <!--Toca colocar un atributo de foto al adoptante-->
-    <h3><b> Referencia familiar </b></h3>
-    <p> </p>
-    <mat-grid-list cols="2" rowHeight="50px">
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Nombre completo:</b><br>
-                <i>{{data.formulario.referenciaFamiliar.nombres}} {{data.formulario.referenciaFamiliar.apellidos}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Número celular:</b><br>
-                <i>{{data.formulario.referenciaFamiliar.numCelular}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Número fijo:</b><br>
-                <i>{{data.formulario.referenciaFamiliar.numFijo}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Parentezco:</b><br>
-                <i>{{data.formulario.referenciaFamiliar.parentezco}}</i>
-            </div>
-             </mat-grid-tile>
-    </mat-grid-list>
-    <h3><b> Referencia personal </b></h3>
-    <p> </p>
-    <mat-grid-list cols="2" rowHeight="50px">
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Nombre completo:</b><br>
-                <i>{{data.formulario.referenciaPersonal.nombres}} {{data.formulario.referenciaPersonal.apellidos}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Número celular:</b><br>
-                <i>{{data.formulario.referenciaPersonal.numCelular}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Número fijo:</b><br>
-                <i>{{data.formulario.referenciaPersonal.numFijo}}</i>
-            </div>
-             </mat-grid-tile>
-        <mat-grid-tile colspan="1" rowspan="1">
-            <div>
-                <b>Tiempo de conocimiento:</b><br>
-                <i>{{data.formulario.referenciaPersonal.tiempoDeConocimiento}}</i>
-            </div>
-             </mat-grid-tile>
-    </mat-grid-list>
-
-    <p> </p>
-    <p> </p>
-    <button mat-raised-button (click)="accion('anterior')" >anterior</button>
+        <img [src]="data.adoptante.foto" mat-card-image width="70%" class="container crop">
+        <!--Toca colocar un atributo de foto al adoptante-->
+        <h3><b> {{data.adoptante.nombre}}  {{data.adoptante.apellidos}} </b></h3>
+        <p> </p>
+        <p> </p>
+        <mat-grid-list cols="2" rowHeight="50px">
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Correo:</b><br>
+                    <i>{{data.adoptante.correo}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Fecha de nacimiento:</b><br>
+                    <i>{{data.adoptante.fecha_nacimiento}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Localidad:</b><br>
+                    <i>{{data.adoptante.localidad}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Sexo:</b><br>
+                    <i>{{data.adoptante.genero}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Núm. de contacto:</b><br>
+                    <i>{{data.adoptante.num_celular}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Documento:</b><br>
+                    <i>{{data.adoptante.tipo_doc}}</i>
+                </div>
+                 </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <div>
+                    <b>Núm. documento:</b><br>
+                    <i>{{data.adoptante.num_doc}}</i>
+                </div>
+                 </mat-grid-tile>
+        </mat-grid-list>
+        <p> </p>
+        <p> </p>
+        <button mat-raised-button (click)="accion('cerrar')" class="rojo">Cerrar</button>
 </div>

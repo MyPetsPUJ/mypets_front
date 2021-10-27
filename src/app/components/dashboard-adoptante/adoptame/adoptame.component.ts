@@ -4,6 +4,7 @@ import { EntidadAnimal } from '../../interfaces/usuarios/entidadAnimal';
 import { AnimalService } from 'src/app/services/animal/animal.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AnimalPreviewComponent } from './animal-preview/animal-preview.component';
+import { CrearAdoptanteService } from 'src/app/services/adoptante/crearAdoptante.service';
 
 @Component({
   selector: 'app-adoptame',
@@ -14,11 +15,12 @@ export class AdoptameComponent implements OnInit {
   animales: EntidadAnimal[] = [];
   nombreFundacion: string | undefined;
   logoFundacion: string | undefined;
-  constructor(private animalService: AnimalService,  public dialog: MatDialog) {}
+  constructor(private animalService: AnimalService,  public dialog: MatDialog,
+    private adoptanteService: CrearAdoptanteService) {}
   ngOnInit(): void {
     // this.cargarAnimalesXFundacion();
     
-     
+    
     this.animalService.getAnimales().subscribe({
       next: (res) => {
         console.log(res)
@@ -39,10 +41,11 @@ export class AdoptameComponent implements OnInit {
   //   }
    openPreview(animal: EntidadAnimal | any) 
    {
+     
     const dialogRef = this.dialog.open(AnimalPreviewComponent, {
       width: '600px',
       height: '500px',
-      data: { animal: animal}
+      data: { animal: animal, adoptante: this.adoptanteService.getAdoptantes()[1]}
     });
    }
 }

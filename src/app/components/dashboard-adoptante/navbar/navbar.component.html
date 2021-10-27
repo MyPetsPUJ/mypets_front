@@ -24,11 +24,15 @@
     <span class="example-spacer"></span>
     <li><a routerLink="consejos">Consejos</a></li>
     <span class="example-spacer"></span>
-    <li><a routerLink="/login" *ngIf="!usuarioAutenticado">Iniciar Sesión</a></li>
+    <li>
+      <a routerLink="solicitudes-adopcion-adoptante" *ngIf="usuarioAutenticado"
+        >Mis Solicitudes</a
+      >
+    </li>
     <span class="example-spacer"></span>
-    <li><a routerLink="/crear-cuenta/crear-adoptante" *ngIf="!usuarioAutenticado">Registrarse</a></li>
-    <span class="example-spacer"></span>
-    <li><a routerLink="solicitudes-adopcion-adoptante" *ngIf="usuarioAutenticado">Mis Solicitudes</a></li>
+    <li>
+      <a routerLink="/login" *ngIf="!usuarioAutenticado">Iniciar Sesión</a>
+    </li>
     <span class="example-spacer"></span>
   </ul>
   <span class="example-spacer"></span>
@@ -39,8 +43,8 @@
       [ngStyle]="{ color: 'white' }"
       >more_vert</mat-icon
     >
-    
-    <mat-menu #menu="matMenu" >
+
+    <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="mi_cuenta">
         <mat-icon>account_circle</mat-icon>
         <span>Mi cuenta</span>

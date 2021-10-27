@@ -54,9 +54,8 @@ export class HomePageComponent implements OnInit {
         this.columnas=this.animales.length;
         console.log(this.validador)
         this.dividirColumnas();
-        console.log(this.valoresColumna1)
-        console.log(this.valoresColumna2)
-        console.log(this.valoresColumna3)
+  
+        console.log(this.animales)
       },
       error: (error) => {
         console.log(error);

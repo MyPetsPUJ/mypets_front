@@ -1,15 +1,14 @@
+import { FormularioAdopcion } from "../formularios/formularioAdopcion";
+import { EntidadAnimal } from "../usuarios/entidadAnimal";
+import { UserAdoptante } from "../usuarios/userAdoptante";
+import { UserFundacion } from "../usuarios/userFundacion";
+
 export interface EntidadSolicitudAdopcion{
-    nombresAdoptante: string;
-    apellidosAdoptante: string;
-    edadAdoptante: number;
-    tipoDocAdoptante: string;
-    numDocAdoptante: number;
-    localidad: string;
-    barrio: string;
-    direccion: string;
-    numeroCelular: number;
-    correoElectronico: string;
-    ocupacion: string;
-    mascotaSolicitud: string;
-    fundacionSolicitud: string;
+       
+    adoptante:UserAdoptante;
+    idFundacion:string;
+    animal:EntidadAnimal;
+    formulario:FormularioAdopcion;
+    fecha:string;
+    estado:string;
 }

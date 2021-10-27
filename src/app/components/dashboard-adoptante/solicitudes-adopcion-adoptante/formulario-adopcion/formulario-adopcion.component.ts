@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { EnviarFormularioAdopcionService } from 'src/app/services/formulario/enviar-formulario-adopcion.service';
 import { UserAdoptante } from 'src/app/components/interfaces/usuarios/userAdoptante';
@@ -8,6 +8,9 @@ import { EntidadAnimal } from 'src/app/components/interfaces/usuarios/entidadAni
 import { Referencias } from 'src/app/components/interfaces/formularios/formularioReferencia';
 import { FormularioAdopcion } from 'src/app/components/interfaces/formularios/formularioAdopcion';
 import { ThemePalette } from '@angular/material/core';
+import { EntidadSolicitudAdopcion } from 'src/app/components/interfaces/solicitud-adopcion/entidadSolicitudAdopcion';
+import { Router } from '@angular/router';
+
 
 export interface Vacuna_box {
   nombre: String;
@@ -23,10 +26,15 @@ export interface Vacuna_box {
 })
 export class FormularioAdopcionComponent implements OnInit {
   constructor(
-    public enviarFormularioAdopcionService: EnviarFormularioAdopcionService
-  ) {}
-
-  ngOnInit(): void {}
+    public enviarFormularioAdopcionService: EnviarFormularioAdopcionService,
+    private router: Router
+  ) {
+  }
+  @Input() data: any;
+  @Output() salida: EventEmitter<any> = new EventEmitter();
+  ngOnInit(): void {
+    console.log(this.data);
+  }
   tiempoConocimiento: any[] = [
     'Entre 0 y 2 años',
     'Entre 2 y 5 años',
@@ -220,5 +228,9 @@ export class FormularioAdopcionComponent implements OnInit {
     };
     //this.authservice.crearUsuarioAdoptante(datosAdoptante);
     this.enviarFormularioAdopcionService.formularioAdopcion(formularioAdopcion);
+  }
+  salir()
+  {
+    this.salida.emit(false);
   }
 }
