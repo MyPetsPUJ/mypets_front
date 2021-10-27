@@ -1,15 +1,23 @@
 <div class="alinear">
-    <h1>{{data.publicacion.titulo}}</h1>
-    <img [src]="'http://localhost:3000/' + data.publicacion.urlImg" width="70%">
+<form action="publicacion-preview.component.ts" (ngSubmit)="editarPublicacion(updatePubliForm)" #updatePubliForm="ngForm" method="post">
+    <!-- <h1>{{data.publicacion.titulo}}</h1> -->
+    <input name="titulo" matInput type="text" value="{{data.publicacion.titulo}}">
+    <img name="img" [src]="'http://localhost:3000/' + data.publicacion.urlImg" width="70%">
     <p> </p>
     <p> </p>
+
+    
     <div class="justificar"> 
-        {{data.publicacion.cuerpo}}
+        <textarea name="cuerpo" id="" cols="30" rows="10">{{data.publicacion.cuerpo}}</textarea>
+        <!-- <input matInput value="{{data.publicacion.cuerpo}}" type="text"> -->
+        <!-- <input matInput value="{{data.publicacion.cuerpo}}" type="text"> -->
     </div>
     <p> </p>
     <p> </p>
-    <p>Fecha de publicación: {{data.publicacion.fecha  |  date:'dd/MM/yyyy'}}</p>
+    <p name="fecha">Fecha de publicación: {{data.publicacion.fecha  |  date:'dd/MM/yyyy'}}</p>
+    <button mat-raised-button type="submit" color="primary">Modificar Publicación</button>
     <button mat-raised-button color="warn" (click)="accion('cancelar')">
         Cancelar
     </button>
+</form>
 </div>

@@ -72,13 +72,13 @@ export class CrearPublicacionComponent implements OnInit {
         });
       }
     } else {
-      this.crearPublicacionService.crearPublicacionQuemada(
-        form.value.nombrePublicacion,
-        form.value.cuerpoPublicacion,
-        this.fechaPublicacion,
-        this.photoSelected,
-        form.value.seccionPublicacion
-      );
+      // this.crearPublicacionService.crearPublicacionQuemada(
+      //   form.value.nombrePublicacion,
+      //   form.value.cuerpoPublicacion,
+      //   this.fechaPublicacion,
+      //   this.photoSelected,
+      //   form.value.seccionPublicacion
+      // );
       this.crearPublicacionService
         .crearPublicacion(
           form.value.nombrePublicacion,

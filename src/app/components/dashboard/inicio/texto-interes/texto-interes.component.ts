@@ -1,4 +1,11 @@
-import { Component, ElementRef, Inject, NgZone, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Inject,
+  NgZone,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -13,9 +20,8 @@ import { Router } from '@angular/router';
   templateUrl: './texto-interes.component.html',
   styleUrls: ['./texto-interes.component.css'],
 })
-
 export class TextoInteresComponent implements OnInit {
-  @ViewChild('search') searchElementRef: ElementRef| any;
+  @ViewChild('search') searchElementRef: ElementRef | any;
   direccionDevuelta: string | any;
   tituloDevuelta: string | any;
   textoDevuelta: string | any;
@@ -53,7 +59,6 @@ export class TextoInteresComponent implements OnInit {
         });
       });
     });
-
   }
   guardarTexto(nombre: string) {
     if (nombre == 'aceptar') {
@@ -67,13 +72,16 @@ export class TextoInteresComponent implements OnInit {
         document.getElementById('txtInput') as HTMLInputElement
       ).value;
       if (this.direccionDevuelta == '') {
-        this._snackBar.open('Proporcione una dirección para el punto de interés', '', {
-          duration: 3000,
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom',
-        });
-      }
-      else if (this.tituloDevuelta == '') {
+        this._snackBar.open(
+          'Proporcione una dirección para el punto de interés',
+          '',
+          {
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom',
+          }
+        );
+      } else if (this.tituloDevuelta == '') {
         this._snackBar.open('Proporcione un título a su punto de interés', '', {
           duration: 3000,
           horizontalPosition: 'center',
