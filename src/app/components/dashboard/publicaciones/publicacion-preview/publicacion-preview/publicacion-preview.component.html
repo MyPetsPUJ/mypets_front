@@ -7,7 +7,17 @@
 <div class="row">
     <div class="col-md-5">
         <div class="card">
-            <img [src]="'http://localhost:3000/' + publicacion.urlImg" class="img-fluid">
+            <!-- <img [src]="'http://localhost:3000/' + publicacion.urlImg" class="img-fluid"> -->
+            <input #fileInput type="file" (change)="onPhotoSelected($event)" style="display:none;" />
+                    <img [src]=" photoSelected || 'http://localhost:3000/' + publicacion.urlImg"  class="img-fluid" matTooltip="Desplegar opciones de foto"
+                            [matMenuTriggerFor]="menu">
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="fileInput.click()">
+                                <mat-icon>perm_media</mat-icon>
+                                <span>Cambiar foto</span>
+                                <input (change)="onPhotoSelected($event)" type="file">
+                            </button>
+                        </mat-menu>
         </div>
     </div>
     <div class="col-md-7">

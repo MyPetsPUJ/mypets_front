@@ -43,6 +43,7 @@ export class PublicacionService {
   }
 
   editarPublicacion(
+    id: string,
     titulo: string,
     cuerpo: string,
     imagen: File,
@@ -54,7 +55,7 @@ export class PublicacionService {
     fd.append('image', imagen);
     fd.append('seccion', seccion);
     return this.http.put(
-      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.editarPath}`,
+      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.editarPath}/${id}`,
       fd
     );
   }
@@ -64,4 +65,6 @@ export class PublicacionService {
       `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.editarPath}/${id}`
     );
   }
+
+  
 }

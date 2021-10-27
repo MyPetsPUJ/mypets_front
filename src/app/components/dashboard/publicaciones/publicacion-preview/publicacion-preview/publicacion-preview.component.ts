@@ -15,6 +15,8 @@ import { ActivatedRoute } from '@angular/router';
 export class PublicacionPreviewComponent implements OnInit {
   userId: string = '';
   publicacionId: string = '';
+  file!: File;
+  photoSelected: string | ArrayBuffer = '';
   publicacion: EntidadPublicacion = {
     titulo: '',
     cuerpo: '',
@@ -22,6 +24,19 @@ export class PublicacionPreviewComponent implements OnInit {
     urlImg: '',
     seccion: '',
   };
+
+  seccion: any[] = [
+    'Adquisición',
+    'Adultos',
+    'Alimentación',
+    'Cambios en mi mascota',
+    'Cachorros',
+    'Cuidados y bienestar',
+    'Entrenamiento',
+    'Nutrición',
+    'Salud',
+  ];
+  previsualizacion: string = '';
   constructor(
     // @Inject(MAT_DIALOG_DATA) public data: any,
     // public dialogRef: MatDialogRef<PublicacionPreviewComponent>,
@@ -38,7 +53,9 @@ export class PublicacionPreviewComponent implements OnInit {
       this.publicacionService
         .getPublicacion(this.publicacionId)
         .subscribe((res) => {
+          this.previsualizacion = res.urlImg;
           this.publicacion = res;
+          
         });
     });
   }
@@ -48,6 +65,16 @@ export class PublicacionPreviewComponent implements OnInit {
   //     this.dialogRef.close();
   //   }
   // }
+
+  onPhotoSelected(event: any): void {
+    if (event.target?.files && event.target.files[0]) {
+      this.file = <File>event.target.files[0];
+      //image preview
+      const reader = new FileReader();
+      reader.onload = (e) => (this.photoSelected = reader.result as string);
+      reader.readAsDataURL(this.file);
+    }
+  }
 
   editarPublicacion(form: NgForm) {
     console.log(form.value);
