@@ -33,7 +33,7 @@ export class CrearAnimalService {
       descripcion: 'Dwayne Douglas Johnson2​(Hayward, California; 2 de mayo de 1972) es un actor y luchador profesional estadounidense, conocido popularmente como «La Roca» o «The Rock».2​Se desempeñó como luchador profesional para la WWE hasta su retirada oficial en 2019, con el objetivo de centrarse en su carrera artística. Johnson ha participado en una gran diversidad de películas siendo premiado en bastantes de ellas, siendo su papel como Luke Hobbs en The Fast and the Furious uno de los más reconocidos.',
       esquema_vac: 'Triple felina',
       tipo_animal: 'Gato',
-      owner: '',
+      ownerFundacion: '',
       enAdopcion: false
     },
     {
@@ -51,7 +51,7 @@ export class CrearAnimalService {
       descripcion: 'Es muy juguetona',
       esquema_vac: 'Rabia',
       tipo_animal: 'Perro',
-      owner: '',
+      ownerFundacion: '',
       enAdopcion: false
     },
     {
@@ -69,7 +69,7 @@ export class CrearAnimalService {
       descripcion: 'Es muy cariñoso',
       esquema_vac: 'Rabia',
       tipo_animal: 'Perro',
-      owner: '',
+      ownerFundacion: '',
       enAdopcion: false
     },
     {
@@ -87,7 +87,7 @@ export class CrearAnimalService {
       descripcion: 'Es muy cansón',
       esquema_vac: 'Ninguno',
       tipo_animal: 'Gato',
-      owner: '',
+      ownerFundacion: '',
       enAdopcion: false
     },
     {
@@ -105,7 +105,7 @@ export class CrearAnimalService {
       descripcion: 'Es muy gordo',
       esquema_vac: 'Refuerzo triple felina',
       tipo_animal: 'Gato',
-      owner: '',
+      ownerFundacion: '',
       enAdopcion: false
     },
   ];
