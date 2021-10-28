@@ -149,7 +149,8 @@ export class FormularioAdopcionComponent implements OnInit {
       correo: form.value.correo,
       password: form.value.password,
       tipo_usuario: form.value.tipo_usuario,
-      animales: []
+      animales: [],
+      solicitudesAdoptante: []
     };
     const informacionFamiliar: InformacionFamiliar = {
       numAdultos: form.value.numAdultos,

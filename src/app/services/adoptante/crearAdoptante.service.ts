@@ -15,7 +15,9 @@ export class CrearAdoptanteService {
   puerto: number = 3000;
   pathIntermedio: string = "api";
   entidad: string = "crear-cuenta";
+  entidadII: string = "dashboard-adoptante";
   subTipoEntidad: string = "crear-adoptante";
+  subTipoEntidadII: string = "traer-adoptante";
   login: string = "login";
   adoptantes: UserAdoptante[] = []
   constructor(private http: HttpClient, servicioAnimal: CrearAnimalService) { 
@@ -36,8 +38,8 @@ export class CrearAdoptanteService {
         animales: 
         [
           servicioAnimal.getAnimales()[0]
-        ]
-        ,
+        ],
+        solicitudesAdoptante:[]
     },
         {nombre: "Juan Felipe",
         foto: "../../../assets/Images/felipe.jpg",
@@ -53,7 +55,8 @@ export class CrearAdoptanteService {
         tipo_usuario:'adoptante',
         animales: [
           servicioAnimal.getAnimales()[1]
-        ]  
+        ],
+        solicitudesAdoptante:[]  
       },
   
         {nombre: "Carlos Eduardo",
@@ -68,7 +71,8 @@ export class CrearAdoptanteService {
         num_celular:'3205586239', 
         password: 'Carlos1235',
         tipo_usuario:'adoptante',
-        animales:[]},
+        animales:[],
+        solicitudesAdoptante:[]},
     ]
   }
 
@@ -77,7 +81,20 @@ export class CrearAdoptanteService {
     .subscribe(respuesta => {
       console.log(respuesta);
     });
-}
+  }
+
+  getAdoptanteById(id: string) {
+    return this.http.get<UserAdoptante>(
+      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidadII}/${this.subTipoEntidadII}/${id}`
+    );
+  }
+  getAdoptantes2(){
+    return this.http.get<UserAdoptante[]>(
+      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidadII}`
+    );
+  }
+
+
 getAdoptantes()
 {
   return this.adoptantes;
