@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { EnviarSolicitudAdopcionService } from 'src/app/services/adopcion/enviar-solicitud-adopcion.service';
 import { CrearAdoptanteService } from 'src/app/services/adoptante/crearAdoptante.service';
+import { AnimalService } from 'src/app/services/animal/animal.service';
 import { CrearAnimalService } from 'src/app/services/animal/crearAnimal.service';
 import { LoginService } from 'src/app/services/auth/login.service';
 import { FormularioAdopcion } from '../../interfaces/formularios/formularioAdopcion';
@@ -69,7 +70,7 @@ export class SolicitudesComponent implements OnInit {
   fundacion: UserFundacion | undefined;
 
 
-  constructor(private authService: LoginService,private adoptanteService: CrearAdoptanteService, private animalService: CrearAnimalService,
+  constructor(private authService: LoginService,private adoptanteService: CrearAdoptanteService, private animalService: AnimalService,
       private dialog: MatDialog, fb: FormBuilder, private solicitudService: EnviarSolicitudAdopcionService) {
         this.estados = fb.group 
         ({
@@ -99,6 +100,7 @@ export class SolicitudesComponent implements OnInit {
   {
     this.fundacionId = this.authService.getUserId();
     this.solicitudService.populateSolicitudesFundaciones(this.fundacionId).subscribe((res)=> {
+      console.log(res);
       console.log("Fundacion:", res.fundacion);
       console.log("solicitudes:", res.solicitudes);
       console.log("adoptantes:", res.adoptantes);
@@ -107,6 +109,18 @@ export class SolicitudesComponent implements OnInit {
       this.solicitudesAdopcion2 = res.solicitudes;
       this.adoptantesAnimales = res.adoptantes;
       this.animales = res.animales;
+      if(this.fundacion?._id == this.fundacionId)
+      console.log("Si son iguales");
+    });
+    
+    this.animalService.getAnimales().subscribe({
+      next: (res) => {
+        //console.log(res);
+        this.animales = res;
+      },
+      error: (error) => {
+        console.log(error);
+      }
     });
   }
 

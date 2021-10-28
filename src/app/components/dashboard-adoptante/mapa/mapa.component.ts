@@ -29,13 +29,15 @@ export class MapaComponent implements OnInit {
   clicks: number = 0;
   fundacionesBack: UserFundacion[] = [];
   puntosDeInteres: PuntoInteres[] = [];
-  displayedColumns: string[] = ['nombreFund', 'direccion', 'accion'];
+  displayedColumns: string[] = ['nombreFund', 'direccion', 'num_celular','accion'];
   columnsToDisplay: string[] = this.displayedColumns.slice();
   amarillo: string = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   fundaciones: UserFundacion[] = [];
+  ancho: number | any;
+  largo: number | any;
   constructor(
     public dialog: MatDialog,
     public servicioFundacion: CrearFundacionService,
@@ -44,6 +46,9 @@ export class MapaComponent implements OnInit {
 
   ngOnInit(): void {
     this.geolocalizar();
+    this.ancho = document.documentElement.clientWidth;
+    
+    this.largo = document.documentElement.clientHeight;
     // this.fundaciones = this.servicioFundacion.getFundaciones();
     this.azul = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
     this.verde = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
