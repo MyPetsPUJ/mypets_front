@@ -7,6 +7,7 @@ import { EntidadPublicacion } from 'src/app/components/interfaces/entidadPublica
 import { PublicacionService } from 'src/app/services/publicacion/publicacion.service';
 import { ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'app-publicacion-preview',
   templateUrl: './publicacion-preview.component.html',
@@ -55,7 +56,6 @@ export class PublicacionPreviewComponent implements OnInit {
         .subscribe((res) => {
           this.previsualizacion = res.urlImg;
           this.publicacion = res;
-          
         });
     });
   }
@@ -76,11 +76,19 @@ export class PublicacionPreviewComponent implements OnInit {
     }
   }
 
-  editarPublicacion(form: NgForm) {
-    console.log(form.value);
-    if (form.invalid) {
-      return;
-    }
+  editarPublicacion(titulo: HTMLInputElement, cuerpo: HTMLTextAreaElement) {
+    this.publicacionService
+      .editarPublicacion(
+        this.publicacionId,
+        titulo.value,
+        cuerpo.value,
+        this.file
+      )
+      .subscribe((res) => {
+        console.log(res);
+        this._router.navigate(['dashboard/publicaciones', this.userId]);
+      });
+    
   }
 
   deletePublicacion(id: string) {
