@@ -149,7 +149,8 @@ export class FormularioAdopcionComponent implements OnInit {
       correo: form.value.correo,
       password: form.value.password,
       tipo_usuario: form.value.tipo_usuario,
-      animales: []
+      animales: [],
+      solicitudesAdoptante: []
     };
     const informacionFamiliar: InformacionFamiliar = {
       numAdultos: form.value.numAdultos,
@@ -202,7 +203,7 @@ export class FormularioAdopcionComponent implements OnInit {
       esquema_vac: form.value.esquema_vac,
       urlImg: form.value.urlImg,
       tipo_animal: form.value.tipo_animal,
-      owner: form.value.tipo_doc,
+      ownerFundacion: form.value.tipo_doc,
       enAdopcion: true,
     };
     const referenciaFamiliar: Referencias = {

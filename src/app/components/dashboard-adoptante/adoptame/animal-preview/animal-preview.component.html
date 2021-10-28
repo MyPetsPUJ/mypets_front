@@ -17,10 +17,10 @@
     <p> </p>
     <p> </p>
     <div *ngIf="!enviado">
-        <button mat-raised-button color="primary" *ngIf="usuarioAutenticado" (click)="solicitud(data.animal,'enviar')">Quiero adoptar</button>
+        <button mat-raised-button color="primary" *ngIf="usuarioAutenticado" (click)="solicitud(data.animal,userAdoptante,'enviar')">Quiero adoptar</button>
     </div>
     <div *ngIf="enviado">
-        <button mat-raised-button color="warn" *ngIf="usuarioAutenticado" (click)="solicitud(data.animal,'cancelar')">Cancelar solicitud</button>
+        <button mat-raised-button color="warn" *ngIf="usuarioAutenticado" (click)="solicitud(data.animal,userAdoptante,'cancelar')">Cancelar solicitud</button>
     </div>
 </div>
 

@@ -2,7 +2,126 @@
 <div class= "full" id = "map">
 </div>
 -->
-<div class="color">
+<div *ngIf="ancho < 830">
+    <h1><b> <i>Lista de eventos </i></b></h1>
+    <div>
+        <mat-form-field appearance="standard">
+            <mat-label>Búsqueda</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="ej. 'Vacunación'" #input>
+          </mat-form-field>
+          
+          <div class="mat-elevation-z8">
+            <mat-table [dataSource]="dataSource" matSort>
+          
+              <!-- ID Column -->
+              <ng-container matColumnDef="evento">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Evento </mat-header-cell>
+                <mat-cell *matCellDef="let row"> 
+                    <span class="mobile-label">Evento: </span>
+                    {{row.titulo}} </mat-cell>
+              </ng-container>
+          
+              <!-- Progress Column -->
+              <ng-container matColumnDef="direccion">
+                <mat-header-cell *matHeaderCellDef > Dirección </mat-header-cell>
+                <mat-cell *matCellDef="let row"> 
+                    <span class="mobile-label">Dirección: </span>
+                    {{row.direccion}} </mat-cell>
+              </ng-container>
+          
+              <!-- Name Column -->
+              <ng-container matColumnDef="accion">
+                <mat-header-cell *matHeaderCellDef >Acción </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <span class="mobile-label">Acción: </span> 
+                    <mat-icon class="pointer" matTooltip="Ver punto" (click)="verPunto(row.latitude,row.longitude)">visibility</mat-icon>   
+                    <mat-icon class="pointer" matTooltip="Editar punto" (click)="editarPunto(row.latitude,row.longitude)">edit</mat-icon>   
+                    <mat-icon class="pointer" matTooltip="Eliminar punto" (click)="eliminarPunto(row.latitude,row.longitude)">delete</mat-icon>   
+                </mat-cell>
+              </ng-container>
+          
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          
+              <!-- Row shown when there is no matching data. -->
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No hay resultados</td>
+              </tr>
+            </mat-table>
+          
+            <mat-paginator #paginator [pageSizeOptions]="[7]" aria-label="Select page of users"></mat-paginator>
+          </div>
+    </div>
+    <div >
+    
+        <agm-map class="mapa" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" (mapClick)="mapClicked($event)"
+            [mapTypeControl]="false" (mapReady)="mapReady($event)">
+          <mat-menu #menu="matMenu" >
+            <button *ngIf="userIsAuth" mat-menu-item (click)="activarPuntos()">
+              <mat-icon>room</mat-icon>
+              <span>Fijar un punto de interés</span>
+            </button>
+            <button *ngIf="userIsAuth" mat-menu-item (click)="eliminarPuntos()">
+                <mat-icon>delete</mat-icon>
+                <span>Eliminar todos los puntos de interés</span>
+              </button>
+          </mat-menu>
+
+    
+            <button id="Settings" class="toggle-button controls button" mat-icon-button
+            [matMenuTriggerFor]="menu"
+            aria-label="Example icon-button with a menu"
+            matTooltip="Desplegar opciones de mapa">
+                <mat-icon aria-hidden="true" class="aumentoTam">event</mat-icon>
+            </button>
+            
+            <agm-marker [latitude]="latitudeMarker" [longitude]="longitudeMarker" >
+                <agm-info-window>
+                    <div>
+                        <h2>
+                            Estás aquí
+                        </h2>
+                    </div>
+                </agm-info-window>
+            </agm-marker>
+            <agm-marker *ngFor="let punto of puntosDeInteres" [latitude]="punto.ubicacion.coordinates[1]" [longitude]="punto.ubicacion.coordinates[0]" [iconUrl]="verde">
+                <agm-info-window>
+                    <div>
+                        <h2>{{punto.titulo}}</h2>
+                        <p>
+                            {{punto.descripcion}}
+                        </p>
+                        <p>
+                            Dirección: {{punto.direccion}}
+                        </p>
+                    <div class="alinearDer">
+                        <mat-icon matTooltip="editar punto" class="pointer" (click)="editarPunto(coord.latitude,coord.longitude)">edit</mat-icon>
+                        <mat-icon matTooltip="eliminar punto" class="pointer" (click)="eliminarPunto(coord.latitude,coord.longitude)">delete</mat-icon>
+                    </div>
+                    </div>
+                </agm-info-window>
+            </agm-marker>
+            <agm-marker [latitude]="fundacion.latitud" [longitude]="fundacion.longitud" [iconUrl]="azul">
+              <agm-info-window>
+                  <div>
+                      <h2>{{fundacion.nombreFund}}</h2>
+                      <p>
+                          {{fundacion.correo}}
+                      </p>
+                      <p>
+                          Dirección: {{fundacion.direccion}}
+                      </p>
+                  <div class="alinearDer">
+                      <mat-icon matTooltip="editar punto" class="pointer" (click)="editarPunto(coord.latitude,coord.longitude)">edit</mat-icon>
+                      <mat-icon matTooltip="eliminar punto" class="pointer" (click)="eliminarPunto(coord.latitude,coord.longitude)">delete</mat-icon>
+                  </div>
+                  </div>
+              </agm-info-window>
+          </agm-marker>
+        </agm-map>
+    </div>
+</div>
+<div class="color" *ngIf="ancho >= 830">
     <div class="centrar">
         <h1><b> <i>Lista de eventos </i></b></h1>
     </div>
@@ -69,7 +188,7 @@
                 <span>Eliminar todos los puntos de interés</span>
               </button>
           </mat-menu>
-    
+
     
             <button id="Settings" class="toggle-button controls button" mat-icon-button
             [matMenuTriggerFor]="menu"

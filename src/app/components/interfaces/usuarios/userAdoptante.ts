@@ -1,3 +1,4 @@
+import { EntidadSolicitudAdopcion } from "../solicitud-adopcion/entidadSolicitudAdopcion";
 import { EntidadAnimal } from "./entidadAnimal";
 
 export interface UserAdoptante {
@@ -14,4 +15,5 @@ export interface UserAdoptante {
     password: string;
     tipo_usuario: string;
     animales: EntidadAnimal[];
+    solicitudesAdoptante: EntidadSolicitudAdopcion[];
 }
