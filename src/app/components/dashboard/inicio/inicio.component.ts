@@ -91,6 +91,8 @@ export class InicioComponent implements OnInit, OnDestroy {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  ancho: number | any;
+  largo: number | any
   constructor(
     public dialog: MatDialog,
     private _snackBar: MatSnackBar,
@@ -99,6 +101,13 @@ export class InicioComponent implements OnInit, OnDestroy {
     private _router: Router
   ) {}
   ngOnInit(): void {
+    this.ancho = document.documentElement.clientWidth;
+    
+    this.largo = document.documentElement.clientHeight;
+    console.log(this.largo);
+    console.log(this.ancho);
+    window.addEventListener("resize",this.displayWindowSize);
+
     this.userId = this.authService.getUserId();
     console.log('Este es el user id--', this.userId);
     this.cargarDatos();
@@ -112,6 +121,14 @@ export class InicioComponent implements OnInit, OnDestroy {
       .subscribe((isAuth) => {
         this.userIsAuth = isAuth;
       });
+  }
+  displayWindowSize()
+  {
+    var w = document.documentElement.clientWidth;
+    var h = document.documentElement.clientHeight;
+    this.ancho = w;
+    this.largo = h;
+    console.log('ancho: ' + this.ancho + ' largo: ' + this.largo);
   }
   cargarDatos() {
     //Aquí hace falta una línea que cargue puntos de interés desde la BD

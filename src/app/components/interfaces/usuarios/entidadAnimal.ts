@@ -13,6 +13,6 @@ export interface EntidadAnimal {
   esquema_vac: string;
   urlImg: string;
   tipo_animal: string;
-  owner: string;
+  ownerFundacion: string;
   enAdopcion: boolean;
 }

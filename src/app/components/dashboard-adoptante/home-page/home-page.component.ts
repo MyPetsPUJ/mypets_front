@@ -16,6 +16,29 @@ export class HomePageComponent implements OnInit {
   animales: EntidadAnimal[] = [];
   animales2: EntidadAnimal[] = [];
   fundaciones: UserFundacion[]=[];
+  fundacionNoImporta: UserFundacion={
+    nombreFund: "No importa",
+  nombreEncar: "",
+  apellidosEncar: "",
+  tipo_doc: "",
+  num_doc: "",
+  fecha_creacion: "",
+  latitud: 0,
+  longitud: 0,
+  correo: "",
+  distancia: "",
+  duracion: "",
+  num_celular: "",
+  password: "",
+  urlImg: "",
+  tipo_usuario: "",
+  direccion: "",
+  mision: "",
+  vision: "",
+  publicaciones: [],
+  ubicacion: "",
+  _id: "No importa"
+  };
   columnas:number=0;
   especie:string[]=["Perro","Gato","No importa"];
   color_ojos: any[] = [
@@ -179,13 +202,11 @@ export class HomePageComponent implements OnInit {
   }
   tamanoArreglo=this.animales.length;
   this.borrarAnimal=[];
-    if(datosFiltro.fundacion != "")
+    if(datosFiltro.fundacion != "" && datosFiltro.fundacion.nombreFund != "No importa")
     {
-    console.log(this.fundaciones);
       for(var i=0;i<this.animales.length;i++)
       {
-        console.log(this.animales[i].owner);
-        if(this.animales[i].owner != datosFiltro.fundacion._id)
+        if(this.animales[i].ownerFundacion != datosFiltro.fundacion._id)
         {
           this.borrarAnimal[i]="borrar";
         }
@@ -210,6 +231,7 @@ export class HomePageComponent implements OnInit {
      this.fundacionService.getFundaciones().subscribe({
        next:(res)=>{
          this.fundaciones=res;
+         this.fundaciones.push(this.fundacionNoImporta);
          console.log(this.fundaciones);
        },
        error: (error) => {

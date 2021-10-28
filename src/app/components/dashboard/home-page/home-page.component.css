@@ -106,12 +106,6 @@
   border-radius: 5px;
 }
 
-.filtro mat-checkbox {
-  background-color: #afc7a4ad;
-  border: #222;
-  width: 350px;
-  height: 30px;
-}
 mat-checkbox {
   padding-bottom: 25px;
 }
@@ -122,6 +116,9 @@ mat-checkbox {
   justify-content: center;
   width: 150px;
   height: 40px;
+}
+.mat-select .mat-select-trigger {
+  margin: 1em 0;
 }
 
 .container .box {

@@ -1,17 +1,37 @@
 <div *ngIf="publicaciones.length > 0">
-  <div class="mat-elevation-z8" class="tam class example-container">
-    <mat-toolbar>
-      <h1>Mis Publicaciones</h1>
-      <button
-        mat-fab
-        color="primary"
-        class="tam1"
-        matTooltip="Agregar publicacion"
-        routerLink="/dashboard/publicaciones/crear-publicacion"
-      >
-        <mat-icon> add</mat-icon>
-      </button>
-    </mat-toolbar>
+  <mat-toolbar>
+    <h1>Mis Publicaciones</h1>
+    <button
+      mat-fab
+      color="primary"
+      class="tam1"
+      matTooltip="Agregar publicacion"
+      routerLink="/dashboard/publicaciones/crear-publicacion"
+    >
+      <mat-icon> add</mat-icon>
+    </button>
+  </mat-toolbar>
+   
+  <div class="row">
+    <div class="col-md-4 p-4" *ngFor="let publicacion of publicaciones">
+      <div class="card card-publi" (click)="onPublicacionSelected(publicacion._id!)">
+        <div class="card-header">
+          {{publicacion.titulo}}
+        </div>
+        <img [src]="'http://localhost:3000/' + publicacion.urlImg" class="img-card-top w-80">
+        <div class="card-body">
+          {{publicacion.cuerpo}}
+        </div>
+        <div class="class-footer">
+          Fecha de publicación: {{publicacion.fecha | date: "mm/dd/yy"}}
+        </div>
+      </div>
+
+    </div>
+  </div>
+  
+  <!-- <div class="mat-elevation-z8" class="tam class example-container">
+    
     <mat-form-field appearance="standard">
       <mat-label>Filtro</mat-label>
       <input
@@ -79,7 +99,7 @@
       <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
     </mat-table>
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-  </div>
+  </div> -->
 </div>
 <div *ngIf="publicaciones.length == 0" class="tam">
   <mat-toolbar>

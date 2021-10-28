@@ -19,32 +19,6 @@ export class PublicacionService {
 
   publis: EntidadPublicacion[] = [];
 
-  // publicaciones: EntidadPublicacion[] = [
-  //   {
-  //     titulo: 'Se busca dueño para Betto',
-  //     cuerpo: 'Beto es un perro cariñoso con 6 años de vida',
-  //     fecha: Date().toLocaleString(),
-  //     urlImg: '../../../assets/Images/dog-form.png',
-  //     seccion: 'Adopción',
-  //     autorPubli: '',
-  //   },
-  //   {
-  //     titulo: 'Lily esta sin hogar',
-  //     cuerpo: 'Lily actualmente se encuentra en busca de',
-  //     fecha: Date().toLocaleString(),
-  //     urlImg: 'src/assets/Images/dog-form.png',
-  //     seccion: 'Adopción',
-  //     autorPubli: '',
-  //   },
-  //   {
-  //     titulo: 'Adopta a Laura!',
-  //     cuerpo: 'Laura fue abandonada por su familia',
-  //     fecha: Date().toLocaleString(),
-  //     urlImg: '../../../assets/Images/dog-form.png',
-  //     seccion: 'Adopción',
-  //     autorPubli: '',
-  //   },
-  // ];
   constructor(private http: HttpClient) {}
 
   getPublicaciones(id: string) {
@@ -56,6 +30,12 @@ export class PublicacionService {
     );
   }
 
+  getPublicacion(id: string) {
+    return this.http.get<EntidadPublicacion>(
+      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.editarPath}/${id}`
+    );
+  }
+
   getConsejos() {
     return this.http.get<EntidadPublicacion[]>(
       `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.dashAdoptante}/${this.entidadConsejos}`
@@ -63,6 +43,7 @@ export class PublicacionService {
   }
 
   editarPublicacion(
+    id: string,
     titulo: string,
     cuerpo: string,
     imagen: File,
@@ -74,8 +55,16 @@ export class PublicacionService {
     fd.append('image', imagen);
     fd.append('seccion', seccion);
     return this.http.put(
-      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.editarPath}`,
+      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.editarPath}/${id}`,
       fd
     );
   }
+
+  deletePublicacion(id: string) {
+    return this.http.delete(
+      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.editarPath}/${id}`
+    );
+  }
+
+  
 }

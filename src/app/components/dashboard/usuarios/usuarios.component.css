@@ -156,4 +156,12 @@ tr.example-element-row:not(.example-expanded-row):active {
     align-items: start;
     padding: 8px 24px;
   }
+
+  .card-publi {
+    cursor: pointer;
+  }
+
+  .card-publi:hover {
+    border: 1px solid #333;
+  }
 }
