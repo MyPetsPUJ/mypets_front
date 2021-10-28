@@ -44,4 +44,22 @@ export class FundacionService {
       `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathDashFund}/${this.pathPerfil}/${id}`
     );
   }
+
+  editarFundacion(
+    id: string,
+    nombreFund: string,
+    nombreEncar: string,
+    apellidosEncar: string,
+    tipo_doc: string,
+    num_doc: string,
+    mision: string,
+    vision: string,
+    fecha_creacion: string,
+    direccion: string,
+    correo: string,
+    num_celular: string,
+    contraseña: string
+  ){
+    
+  }
 }

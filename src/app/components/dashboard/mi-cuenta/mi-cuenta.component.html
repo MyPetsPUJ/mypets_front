@@ -4,12 +4,13 @@
         <form action="mi-cuenta.component.ts" (ngSubmit)="updatePerfil(updateProfile)" #updateProfile="ngForm" method="POST">
             <mat-card class="color">
                 <div>
-                        <img [src]="'http://localhost:3000/' + fundacion.urlImg"  width="10%" alt="">
-                        <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />
+                        <!-- <img [src]="'http://localhost:3000/' + fundacion.urlImg"  width="10%" alt="">
+                        <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" /> -->
                 </div>
                 <div class="centro">
-                    <img [src]="previsualizacion" width="15%" class="pointer" matTooltip="Desplegar opciones de foto"
-                        [matMenuTriggerFor]="menu">
+                    <input #fileInput type="file" (change)="onPhotoSelected($event)" style="display:none;" />
+                    <img [src]=" photoSelected || 'http://localhost:3000/' + fundacion.urlImg" width="20%" matTooltip="Desplegar opciones de foto"
+                            [matMenuTriggerFor]="menu">
                     <mat-menu #menu="matMenu">
                         <button mat-menu-item (click)="verFoto()">
                             <mat-icon>visibility</mat-icon>
@@ -47,7 +48,7 @@
                             <mat-form-field class="ancho">
                                 <mat-label>Tipo de documento</mat-label>
                                 <mat-select>
-                                    <mat-option *ngFor="let item of documentos"[value]="item">{{item}}</mat-option>
+                                    <mat-option required *ngFor="let item of documentos"[value]="item">{{item}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </mat-grid-tile>
@@ -103,7 +104,7 @@
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field class="ancho">
                                 <mat-label>Contraseña</mat-label>
-                                <input matInput type="password" autocomplete="off" >
+                                <input required matInput type="password" autocomplete="off" >
                             </mat-form-field>
                         </mat-grid-tile>
                     </mat-grid-list>

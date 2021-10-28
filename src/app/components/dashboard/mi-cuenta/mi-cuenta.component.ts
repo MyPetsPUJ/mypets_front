@@ -18,6 +18,8 @@ import { VerFotoComponent } from './ver-foto/ver-foto.component';
 export class MiCuentaComponent implements OnInit {
   userId = '';
   inputValue = '';
+  file!: File;
+  photoSelected: string | ArrayBuffer = '';
   fundacion: UserFundacion = {
     nombreFund: '',
     nombreEncar: '',
@@ -62,7 +64,6 @@ export class MiCuentaComponent implements OnInit {
     this.userId = this.authService.getUserId();
     this.fundacionService.getFundacionById(this.userId).subscribe((res) => {
       this.fundacion = res
-      console.log("Fundacion", this.fundacion.urlImg)
     })
     this.nombreFun = "Perritos felices"; 
     var fecha = new Date(2005,2,24);
@@ -101,6 +102,17 @@ export class MiCuentaComponent implements OnInit {
     });
     this.previsualizacion = "../../../assets/Images/pet-hotel.png"
   }
+
+  onPhotoSelected(event: any): void {
+    if (event.target?.files && event.target.files[0]) {
+      this.file = <File>event.target.files[0];
+      //image preview
+      const reader = new FileReader();
+      reader.onload = (e) => (this.photoSelected = reader.result as string);
+      reader.readAsDataURL(this.file);
+    }
+  }
+
   onFileInput(event): any
   {
     const archivo = event.target.files[0];
@@ -138,7 +150,7 @@ export class MiCuentaComponent implements OnInit {
       {
         width: '500px',
         height: '500px',
-        data:{foto: this.previsualizacion}
+        data:{foto: this.fundacion.urlImg}
       });
   }
 
