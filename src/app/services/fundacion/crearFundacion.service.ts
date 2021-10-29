@@ -21,7 +21,7 @@ export class CrearFundacionService {
        tipo_doc: 'Cédula de ciudadanía',
        distancia: '',
        duracion: '',
-       num_doc: '123456789',
+       num_doc: 1234567,
        fecha_creacion: '09/02/2001',
        latitud: 4.741765335769153,
        longitud: -74.02332319625492,

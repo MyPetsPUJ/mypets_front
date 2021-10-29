@@ -58,8 +58,46 @@ export class FundacionService {
     direccion: string,
     correo: string,
     num_celular: string,
-    contraseña: string
-  ){
-    
+    contraseña: string,
+    imagen: File
+  ) {
+    if (!imagen) {
+      const fd = new FormData();
+      fd.append('nombreFund', nombreFund);
+      fd.append('nombreEncar', nombreEncar);
+      fd.append('apellidosEncar', apellidosEncar);
+      fd.append('tipo_doc', tipo_doc);
+      fd.append('num_doc', num_doc);
+      fd.append('mision', mision);
+      fd.append('vision', vision);
+      fd.append('fecha_creacion', fecha_creacion);
+      fd.append('correo', correo);
+      fd.append('direccion', direccion);
+      fd.append('num_celular', num_celular);
+      fd.append('password', contraseña);
+      return this.http.put(
+        `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathDashFund}/${this.pathPerfil}/${id}`,
+        fd
+      );
+    } else {
+      const fd = new FormData();
+      fd.append('nombreFund', nombreFund);
+      fd.append('nombreEncar', nombreEncar);
+      fd.append('apellidosEncar', apellidosEncar);
+      fd.append('tipo_doc', tipo_doc);
+      fd.append('num_doc', num_doc);
+      fd.append('mision', mision);
+      fd.append('vision', vision);
+      fd.append('fecha_creacion', fecha_creacion);
+      fd.append('correo', correo);
+      fd.append('direccion', direccion);
+      fd.append('num_celular', num_celular);
+      fd.append('password', contraseña);
+      fd.append('image', imagen);
+      return this.http.put(
+        `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathDashFund}/${this.pathPerfil}/${id}`,
+        fd
+      );
+    }
   }
 }

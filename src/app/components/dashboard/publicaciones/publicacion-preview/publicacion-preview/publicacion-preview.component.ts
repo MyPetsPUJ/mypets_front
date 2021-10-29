@@ -7,7 +7,6 @@ import { EntidadPublicacion } from 'src/app/components/interfaces/entidadPublica
 import { PublicacionService } from 'src/app/services/publicacion/publicacion.service';
 import { ActivatedRoute } from '@angular/router';
 
-
 @Component({
   selector: 'app-publicacion-preview',
   templateUrl: './publicacion-preview.component.html',
@@ -88,7 +87,6 @@ export class PublicacionPreviewComponent implements OnInit {
         console.log(res);
         this._router.navigate(['dashboard/publicaciones', this.userId]);
       });
-    
   }
 
   deletePublicacion(id: string) {

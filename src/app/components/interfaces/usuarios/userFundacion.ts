@@ -5,7 +5,7 @@ export interface UserFundacion {
   nombreEncar: string;
   apellidosEncar: string;
   tipo_doc: string;
-  num_doc: string;
+  num_doc: number;
   fecha_creacion: string;
   latitud: number;
   longitud: number;
