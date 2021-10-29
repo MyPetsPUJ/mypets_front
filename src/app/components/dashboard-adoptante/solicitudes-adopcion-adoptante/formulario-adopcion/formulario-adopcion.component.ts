@@ -138,7 +138,7 @@ export class FormularioAdopcionComponent implements OnInit {
     }
     const adoptante: UserAdoptante = {
       nombre: form.value.nombresAdoptante,
-      foto: '',
+      urlImg: '',
       apellidos: form.value.apellidosAdoptante,
       fecha_nacimiento: form.value.fecha_nacimiento,
       tipo_doc: form.value.tipo_doc,

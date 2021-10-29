@@ -45,7 +45,7 @@
     >
 
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="mi_cuenta">
+      <button mat-menu-item [routerLink]="['mi_cuenta', userId]">
         <mat-icon>account_circle</mat-icon>
         <span>Mi cuenta</span>
       </button>

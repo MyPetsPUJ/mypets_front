@@ -1,0 +1,111 @@
+<div>
+    <mat-card styles="margin-top: 10px;" class="image flex-me" >
+        <h2>Mi cuenta - {{adoptante.nombre}} {{adoptante.apellidos}} </h2>
+        <form >
+            <mat-card class="color">
+                <div>
+                        <!-- <img [src]="'http://localhost:3000/' + fundacion.urlImg"  width="10%" alt="">
+                        <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" /> -->
+                </div>
+                <div class="centro">
+                    <!-- <input #fileInput type="file" (change)="onPhotoSelected($event)" style="display:none;" /> -->
+                    <img [src]=" photoSelected " width="20%" matTooltip="Desplegar opciones de foto"
+                            [matMenuTriggerFor]="menu">
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item >
+                            <mat-icon>visibility</mat-icon>
+                            <span>Ver foto</span>
+                        </button>
+                        <button mat-menu-item (click)="fileInput.click()">
+                            <mat-icon>perm_media</mat-icon>
+                            <span>Cambiar foto</span>
+                            <input #fileInput (change)="onPhotoSelected($event)" type="file">
+                        </button>
+                    </mat-menu>
+                </div>
+                <form >
+                    <mat-grid-list cols="2" rowHeight="60px">
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho">
+                                <mat-label>Nombre del adoptante</mat-label>
+                                <input #nombreFund matInput [value]="adoptante.nombre" autocomplete="off">
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho">
+                                <mat-label>Apellidos del adoptante</mat-label>
+                                <input #apellidosEncar matInput [value]="adoptante.apellidos" autocomplete="off" >
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho">
+                                <mat-label>Tipo de documento</mat-label>
+                                <mat-select [(value)]="tipo_doc">
+                                    <mat-option required *ngFor="let item of documentos"[value]="item">{{item}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </mat-grid-tile>
+
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho">
+                                <mat-label>Número de documento</mat-label>
+                                <input #num_doc [value]="adoptante.num_doc" matInput autocomplete="off" >
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho" appearance="fill">
+                                <mat-label>Fecha de nacimiento</mat-label>
+                                <input #fecha_creacion [matDatepicker]="picker" [value] matInput >
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker touchUi #picker></mat-datepicker>
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho">
+                                <mat-label>Género</mat-label>
+                                <mat-select [(value)]="tipo_doc">
+                                    <mat-option required *ngFor="let item of documentos"[value]="item">{{item}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho">
+                                <mat-label>Localidad</mat-label>
+                                <mat-select [(value)]="tipo_doc">
+                                    <mat-option required *ngFor="let item of documentos"[value]="item">{{item}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho">
+                                <mat-label>Correo electrónico</mat-label>
+                                <input #correo [value]="adoptante.correo" matInput autocomplete="off">
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho">
+                                <mat-label>Número de celular</mat-label>
+                                <span matPrefix>+57 &nbsp;</span>
+                                <input #num_celular [value]="adoptante.num_celular" type="tel" matInput placeholder="555-555-1234" autocomplete="off" >
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho">
+                                <mat-label>Contraseña</mat-label>
+                                <input #password required matInput type="password" autocomplete="off" >
+                            </mat-form-field>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                    <div class="centro">
+                        <button mat-raised-button type="submit" color="primary" style="margin: 16px;" class="tamano">Modificar</button>
+                        <button mat-raised-button color="accent" class="tamano"
+                            routerLink="/dashboard">Cancelar</button>
+                    </div>
+                </form>
+            </mat-card>
+        </form>
+
+    </mat-card>
+
+
+</div>

@@ -71,7 +71,7 @@ export class CrearAdoptanteComponent implements OnInit {
     }
     const datosAdoptante = {
       nombre: form.value.nombre,
-      foto: this.previsualizacion,
+      urlImg: this.previsualizacion,
       apellidos: form.value.apellidos,
       fecha_nacimiento: form.value.fecha_nac,
       tipo_doc: form.value.tipo_doc,
