@@ -73,6 +73,7 @@ export class LoginComponent implements OnInit {
         .inicioSesion(datosLogin)
         .subscribe({
           next: (respuesta) => {
+            console.log(respuesta)
             this.exitoFundacion(datosLogin.correo);
           },
           error: (e) => {

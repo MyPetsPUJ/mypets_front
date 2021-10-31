@@ -71,8 +71,8 @@
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field class="ancho">
                                 <mat-label>Localidad</mat-label>
-                                <mat-select [(value)]="tipo_doc">
-                                    <mat-option required *ngFor="let item of documentos"[value]="item">{{item}}</mat-option>
+                                <mat-select [(value)]="adoptante.localidad">
+                                    <mat-option required *ngFor="let localidad of localidades">{{localidad}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </mat-grid-tile>

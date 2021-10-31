@@ -29,7 +29,7 @@ export class MiCuentaAdoptanteComponent implements OnInit {
   tipo_doc: string = '';
   file!: File;
   photoSelected: string | ArrayBuffer = '';
-  localidad: any[] = [
+  localidades: any[] = [
     '1.Usaquén',
     '2.Chapinero',
     '3.Santa Fé',

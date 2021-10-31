@@ -7,7 +7,7 @@ import { CrearFundacionComponent } from './components/crear-cuenta/crear-fundaci
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
-import {AuthGuardAdoptante} from './guards/authAdoptante.guard'
+import { AuthGuardAdoptante } from './guards/authAdoptante.guard';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -32,7 +32,6 @@ const routes: Routes = [
       import(
         './components/dashboard-adoptante/dashboard-adoptante.module'
       ).then((x) => x.DashboardAdoptanteModule),
-      canActivate: [AuthGuardAdoptante],
   }, //Carga perezosa
 ];
 @NgModule({

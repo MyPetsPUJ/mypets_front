@@ -61,6 +61,7 @@ export class LoginService {
           console.log('Respuesta', res);
           const token = res.token;
           this.token = token;
+          console.log('Tipo_usuario', res.tipo_usuario);
           if (token) {
             const expiresInDuration = res.expiresIn;
             this.setAuthTimer(expiresInDuration);
@@ -68,6 +69,7 @@ export class LoginService {
             this.userId = res.userId;
             if (res.tipo_usuario == this.userType) {
               this.tipo_usuario = true;
+              console.log('BOOL', this.tipo_usuario);
             }
             this.authStatusListener.next(true);
             const now = new Date();
