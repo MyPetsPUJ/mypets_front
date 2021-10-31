@@ -4,18 +4,17 @@ import { AnimalService } from 'src/app/services/animal/animal.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDatepickerBase } from '@angular/material/datepicker/datepicker-base';
 import { AnimalPreviewComponent } from './animal-preview/animal-preview.component';
-
-
+import { LoginService } from 'src/app/services/auth/login.service';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+  styleUrls: ['./home-page.component.css'],
 })
 export class HomePageComponent implements OnInit {
   animales: EntidadAnimal[] = [];
-  columnas:number=0;
-  especie:string[]=["Perro","Gato","No importa"];
+  columnas: number = 0;
+  especie: string[] = ['Perro', 'Gato', 'No importa'];
   color_ojos: any[] = [
     'Azul',
     'Verde',
@@ -23,76 +22,63 @@ export class HomePageComponent implements OnInit {
     'Dorado',
     'Negro',
     'Heterocromía',
-    'No importa'
+    'No importa',
   ];
   tipo_pelaje: any[] = [
     'Pelaje duro',
     'Pelaje rizado',
     'Pelaje corto',
     'Pelaje largo',
-    'No importa'
+    'No importa',
   ];
-  tiempoDeEspera:boolean= false;
-  edad:boolean= false;
-  valoresColumna1:number[]=[];
-  valoresColumna2:number[]=[];
-  valoresColumna3:number[]=[];
-  validador:number=0;
+  tiempoDeEspera: boolean = false;
+  edad: boolean = false;
+  valoresColumna1: number[] = [];
+  valoresColumna2: number[] = [];
+  valoresColumna3: number[] = [];
+  validador: number = 0;
   nombreFundacion: string | undefined;
   logoFundacion: string | undefined;
+  tipoUser: string = '';
 
-  
-
-  constructor(private animalService: AnimalService,  public dialog: MatDialog) { }
+  constructor(private animalService: AnimalService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    
     this.animalService.getAnimales().subscribe({
       next: (res) => {
-        console.log(res)
+        console.log(res);
         this.animales = res;
-        this.columnas=this.animales.length;
-        console.log(this.validador)
+        this.columnas = this.animales.length;
+        console.log(this.validador);
         this.dividirColumnas();
-  
-        console.log(this.animales)
+
+        console.log(this.animales);
       },
       error: (error) => {
         console.log(error);
-      }
+      },
     });
     //console.log(this.animales);
-    
   }
-  dividirColumnas(): void{
-    for(var i=0;i<this.columnas;i++)
-    { 
-      if(this.validador==0)
-      {
-        this.valoresColumna1.push(i)
+  dividirColumnas(): void {
+    for (var i = 0; i < this.columnas; i++) {
+      if (this.validador == 0) {
+        this.valoresColumna1.push(i);
         this.validador++;
-      }
-      else if(this.validador==1)
-      {
-        this.valoresColumna2.push(i)
+      } else if (this.validador == 1) {
+        this.valoresColumna2.push(i);
         this.validador++;
+      } else if (this.validador == 2) {
+        this.valoresColumna3.push(i);
+        this.validador = 0;
       }
-      else if(this.validador==2)
-      {
-        this.valoresColumna3.push(i)
-        this.validador=0;
-      }
-      
-      
     }
   }
-  openPreview(animal: EntidadAnimal | any) 
-   {
+  openPreview(animal: EntidadAnimal | any) {
     const dialogRef = this.dialog.open(AnimalPreviewComponent, {
       width: '600px',
       height: '500px',
-      data: { animal: animal}
+      data: { animal: animal },
     });
-   }
- 
+  }
 }
