@@ -57,6 +57,10 @@ export class MiCuentaAdoptanteComponent implements OnInit {
     'Cédula de extranjería',
     'Pasaporte',
   ];
+  generos: String[] = [
+    'Masculino',
+    'Femenino',
+  ];
 
   constructor(
     private authService: LoginService,
@@ -67,6 +71,7 @@ export class MiCuentaAdoptanteComponent implements OnInit {
     this.userId = this.authService.getUserId();
     this.adoptanteService.getAdoptanteById(this.userId).subscribe((res) => {
       this.adoptante = res;
+      console.log('Localidad', this.adoptante);
     });
   }
 

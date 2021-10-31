@@ -92,7 +92,7 @@
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <mat-form-field class="ancho">
                 <mat-label>Tipo de documento</mat-label>
-                <mat-select [(value)]="tipo_doc">
+                <mat-select [(value)]="fundacion.tipo_doc">
                   <mat-option
                     required
                     *ngFor="let item of documentos"
@@ -144,7 +144,7 @@
                 <input
                   #fecha_creacion
                   [matDatepicker]="picker"
-                  [value]="fundacion.fecha_creacion | date: 'dd/MM/yyyy'"
+                  [value]="fecha | date: 'dd/MM/yyyy'"
                   matInput
                 />
                 <mat-datepicker-toggle

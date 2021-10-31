@@ -9,7 +9,7 @@
                 </div>
                 <div class="centro">
                     <!-- <input #fileInput type="file" (change)="onPhotoSelected($event)" style="display:none;" /> -->
-                    <img [src]=" photoSelected " width="20%" matTooltip="Desplegar opciones de foto"
+                    <img [src]=" photoSelected || 'http://localhost:3000/' + adoptante.urlImg " width="20%" matTooltip="Desplegar opciones de foto"
                             [matMenuTriggerFor]="menu">
                     <mat-menu #menu="matMenu">
                         <button mat-menu-item >
@@ -40,7 +40,7 @@
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field class="ancho">
                                 <mat-label>Tipo de documento</mat-label>
-                                <mat-select [(value)]="tipo_doc">
+                                <mat-select [(value)]="adoptante.tipo_doc">
                                     <mat-option required *ngFor="let item of documentos"[value]="item">{{item}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
@@ -63,8 +63,8 @@
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field class="ancho">
                                 <mat-label>Género</mat-label>
-                                <mat-select [(value)]="tipo_doc">
-                                    <mat-option required *ngFor="let item of documentos"[value]="item">{{item}}</mat-option>
+                                <mat-select [(value)]="adoptante.genero">
+                                    <mat-option required *ngFor="let item of generos"[value]="item">{{item}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </mat-grid-tile>
@@ -72,7 +72,7 @@
                             <mat-form-field class="ancho">
                                 <mat-label>Localidad</mat-label>
                                 <mat-select [(value)]="adoptante.localidad">
-                                    <mat-option required *ngFor="let localidad of localidades">{{localidad}}</mat-option>
+                                    <mat-option required *ngFor="let localidad of localidades"[value]="localidad">{{localidad}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </mat-grid-tile>
