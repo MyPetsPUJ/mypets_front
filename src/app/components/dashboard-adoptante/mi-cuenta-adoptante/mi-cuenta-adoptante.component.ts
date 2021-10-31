@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdoptanteService } from 'src/app/services/adoptante/adoptante.service';
 import { LoginService } from 'src/app/services/auth/login.service';
 import { UserAdoptante } from '../../interfaces/usuarios/userAdoptante';
@@ -10,6 +11,7 @@ import { UserAdoptante } from '../../interfaces/usuarios/userAdoptante';
 })
 export class MiCuentaAdoptanteComponent implements OnInit {
   userId: string = '';
+  genero: string = '';
   adoptante: UserAdoptante = {
     nombre: '',
     urlImg: '',
@@ -27,6 +29,7 @@ export class MiCuentaAdoptanteComponent implements OnInit {
     solicitudesAdoptante: [],
   };
   tipo_doc: string = '';
+  localidad: string = '';
   file!: File;
   photoSelected: string | ArrayBuffer = '';
   localidades: any[] = [
@@ -57,21 +60,21 @@ export class MiCuentaAdoptanteComponent implements OnInit {
     'Cédula de extranjería',
     'Pasaporte',
   ];
-  generos: String[] = [
-    'Masculino',
-    'Femenino',
-  ];
+  generos: String[] = ['Masculino', 'Femenino'];
 
   constructor(
     private authService: LoginService,
-    private adoptanteService: AdoptanteService
+    private adoptanteService: AdoptanteService,
+    private _router: Router
   ) {}
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
     this.adoptanteService.getAdoptanteById(this.userId).subscribe((res) => {
       this.adoptante = res;
-      console.log('Localidad', this.adoptante);
+      this.genero = res.genero;
+      this.localidad = res.localidad;
+      this.tipo_doc = res.tipo_doc;
     });
   }
 
@@ -83,5 +86,38 @@ export class MiCuentaAdoptanteComponent implements OnInit {
       reader.onload = (e) => (this.photoSelected = reader.result as string);
       reader.readAsDataURL(this.file);
     }
+  }
+
+  updateAdoptante(
+    nombre: HTMLInputElement,
+    apellidos: HTMLInputElement,
+    tipo_doc: string,
+    num_doc: HTMLInputElement,
+    fecha_nac: HTMLInputElement,
+    genero: string,
+    localidad: string,
+    correo: HTMLInputElement,
+    num_celular: HTMLInputElement,
+    password: HTMLInputElement
+  ) {
+    this.adoptanteService
+      .editarAdoptante(
+        this.userId,
+        nombre.value,
+        apellidos.value,
+        tipo_doc,
+        num_doc.value,
+        fecha_nac.value,
+        genero,
+        localidad,
+        correo.value,
+        num_celular.value,
+        password.value,
+        this.file
+      )
+      .subscribe((res) => {
+        console.log('RESPUESTA', res);
+        this._router.navigate(['dashboard-adoptante']);
+      });
   }
 }

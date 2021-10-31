@@ -79,6 +79,7 @@ export class MiCuentaComponent implements OnInit {
     this.fundacionService.getFundacionById(this.userId).subscribe((res) => {
       this.fundacion = res;
       this.fecha = this.fundacion.fecha_creacion;
+      this.tipo_doc = this.fundacion.tipo_doc;
     });
     // this.nombreFun = 'Perritos felices';
     // var fecha = new Date(2005, 2, 24);
