@@ -12,6 +12,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { PublicacionPreviewComponent } from './publicacion-preview/publicacion-preview/publicacion-preview.component';
 import { LoginService } from 'src/app/services/auth/login.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-publicaciones',
@@ -20,6 +22,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PublicacionesComponent implements OnInit {
   publicaciones: EntidadPublicacion[] = [];
+  publicaciones2: EntidadPublicacion[] = [];
+
   publi: EntidadPublicacion | undefined;
   userFundacion: UserFundacion = {
     nombreFund: '',
@@ -52,6 +56,19 @@ export class PublicacionesComponent implements OnInit {
     'seccionPublicacion',
     'fechaPublicacion',
   ];
+  seccion: any[] = [
+    'Adquisición',
+    'Adultos',
+    'Alimentación',
+    'Cambios en mi mascota',
+    'Cachorros',
+    'Cuidados y bienestar',
+    'Entrenamiento',
+    'Nutrición',
+    'Salud',
+    'Cualquiera'
+  ];
+  borrarAnimal:string[]=[];
 
   // dataSource!: MatTableDataSource<any>;
   // @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -101,6 +118,7 @@ export class PublicacionesComponent implements OnInit {
       this.userFundacion = res.resultado;
       console.log('ahora siiuuu', this.userFundacion);
       this.publicaciones = res.publis;
+      this.publicaciones2 = Array.from(this.publicaciones);
       console.log('ahora si', this.publicaciones);
       // this.dataSource = new MatTableDataSource(this.publicaciones);
       // setTimeout(() => (this.dataSource.paginator = this.paginator));
@@ -118,5 +136,30 @@ export class PublicacionesComponent implements OnInit {
 
   onPublicacionSelected(id: string) {
   this._router.navigate(['/dashboard/publicaciones/editar-publicacion', id])   
+  }
+  filtrarPublicaciones($event){
+    console.log($event=="Alimentación");
+    this.publicaciones=Array.from(this.publicaciones2);
+    let tamanoArreglo=this.publicaciones.length;
+    this.borrarAnimal=[];
+    if($event!="Cualquiera")
+    {
+    
+      for(var i=0;i<this.publicaciones.length;i++)
+      {
+        if(this.publicaciones[i].seccion != $event)
+        {
+          this.borrarAnimal[i]="borrar";
+        }
+      }
+      
+      while (tamanoArreglo--) {
+        if (this.borrarAnimal[tamanoArreglo] === "borrar") {
+          this.publicaciones.splice(tamanoArreglo, 1);
+        }
+    }
+  }
+    console.log(this.publicaciones)
+
   }
 }

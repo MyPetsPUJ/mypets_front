@@ -1,38 +1,51 @@
-.centro
-{
-    text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap");
+
+h2 {
+  font-family: "Proza Libre", sans-serif;
+  text-align: center;
+  vertical-align: middle;
+  margin: auto;
+  font-size: 27px;
 }
-.ancho
-{
-    width: 90%;
+.cuerpo {
+  padding-bottom: 15px;
 }
-.margen 
-{
-    height: 100px;
-   width: 1120px;
-   margin: auto;
-   background-image: url(src\assets\Images\fundacion_background.jpg);
+.centro {
+  text-align: center;
+  padding-bottom: 30px;
 }
-.tamano 
-{
-    text-align: center;
-    width: 120px;
-    height: 35px;
+.ancho {
+  width: 90%;
 }
-.pointer 
-{
-    cursor: pointer;
+.margen {
+  height: 100px;
+  width: 1120px;
+  margin: auto;
+  background-image: url(src\assets\Images\fundacion_background.jpg);
 }
-.image 
-{
-    background-image: url(src\assets\Images\fundacion_background.jpg);
-    height: 90%;
+.tamano {
+  text-align: center;
+  width: 120px;
+  height: 35px;
 }
-.color 
-{
-    background-color: beige;
+.tamano2 {
+  text-align: center;
+  width: 120px;
+  height: 35px;
+  color: white;
+  background-color: black;
+}
+.pointer {
+  cursor: pointer;
+}
+.image {
+  background-image: url(src\assets\Images\fundacion_background.jpg);
+  height: 90%;
+}
+.color {
+  padding-top: 15px;
+  background-color: beige;
 }
 .flex-me {
-    
-    flex-flow: row wrap;
-  }
+  flex-flow: row wrap;
+}

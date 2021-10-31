@@ -128,8 +128,6 @@ export class HomePageComponent implements OnInit {
    filtrarAnimales(form: NgForm){
     const datosFiltro ={
       especie : form.value.especieAnimal,
-      colorOjos: form.value.color_ojos,
-      tipoPelaje: form.value.tipo_pelaje,
       organizar : form.value.organizar,
       fundacion : form.value.fundacion
     }
@@ -164,42 +162,6 @@ export class HomePageComponent implements OnInit {
     tamanoArreglo=this.animales.length;
     this.borrarAnimal=[];
     }
-    if(datosFiltro.colorOjos != "" && datosFiltro.colorOjos != "No importa")
-    {
-    
-      for(var i=0;i<this.animales.length;i++)
-      {
-        if(this.animales[i].color_ojos != datosFiltro.colorOjos)
-        {
-          this.borrarAnimal[i]="borrar";
-        }
-      }
-      
-      while (tamanoArreglo--) {
-        if (this.borrarAnimal[tamanoArreglo] === "borrar") {
-          this.animales.splice(tamanoArreglo, 1);
-        }
-    }
-  }
-  tamanoArreglo=this.animales.length;
-  this.borrarAnimal=[];
-    if(datosFiltro.tipoPelaje != "" && datosFiltro.tipoPelaje != "No importa")
-    {
-    
-      for(var i=0;i<this.animales.length;i++)
-      {
-        if(this.animales[i].tipo_pelaje != datosFiltro.tipoPelaje)
-        {
-          this.borrarAnimal[i]="borrar";
-        }
-      }
-      
-      while (tamanoArreglo--) {
-        if (this.borrarAnimal[tamanoArreglo] === "borrar") {
-          this.animales.splice(tamanoArreglo, 1);
-        }
-    }
-  }
   tamanoArreglo=this.animales.length;
   this.borrarAnimal=[];
     if(datosFiltro.fundacion != "" && datosFiltro.fundacion.nombreFund != "No importa")

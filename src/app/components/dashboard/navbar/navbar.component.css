@@ -9,30 +9,38 @@ nav {
   justify-content: space-around;
   align-items: center;
   min-height: 8vh;
-  background-color: #6ebf4bba;
+  background-color: white;
   font-family: "Poppins", sans-serif;
 }
-
+mat-icon {
+  color: black;
+}
 .logo {
   color: rgb(256, 256, 256);
   text-transform: uppercase;
   letter-spacing: 5px;
   font-size: 20px;
 }
+.logout {
+  cursor: pointer;
+}
 .nav-links {
   display: flex;
   justify-content: space-around;
-  width: 60%;
+  width: 50%;
+  padding-top: 15px;
+  white-space: nowrap;
 }
 .nav-links li {
   list-style: none;
 }
 .nav-links a {
-  color: rgb(256, 256, 256);
+  color: #6ebf4bba;
   text-decoration: none;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   font-weight: bold;
   font-size: 14px;
+  padding-right: 25px;
 }
 .burger {
   display: none;

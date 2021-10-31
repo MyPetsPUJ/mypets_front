@@ -1,123 +1,234 @@
 <div>
-    <mat-card styles="margin-top: 10px;" class="image flex-me" >
-        <h2>Mi cuenta - {{fundacion.nombreFund}}</h2>
-        <form >
-            <mat-card class="color">
-                <div>
-                        <!-- <img [src]="'http://localhost:3000/' + fundacion.urlImg"  width="10%" alt="">
+  <mat-card styles="margin-top: 10px;" class="image flex-me">
+    <div class="cuerpo">
+      <mat-toolbar
+        ><h2>Mi cuenta - {{ fundacion.nombreFund }}</h2></mat-toolbar
+      >
+    </div>
+
+    <form>
+      <mat-card class="color">
+        <div>
+          <!-- <img [src]="'http://localhost:3000/' + fundacion.urlImg"  width="10%" alt="">
                         <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" /> -->
-                </div>
-                <div class="centro">
-                    <!-- <input #fileInput type="file" (change)="onPhotoSelected($event)" style="display:none;" /> -->
-                    <img [src]=" photoSelected || 'http://localhost:3000/' + fundacion.urlImg" width="20%" matTooltip="Desplegar opciones de foto"
-                            [matMenuTriggerFor]="menu">
-                    <mat-menu #menu="matMenu">
-                        <button mat-menu-item (click)="verFoto()">
-                            <mat-icon>visibility</mat-icon>
-                            <span>Ver foto</span>
-                        </button>
-                        <button mat-menu-item (click)="fileInput.click()">
-                            <mat-icon>perm_media</mat-icon>
-                            <span>Cambiar foto</span>
-                            <input #fileInput (change)="onPhotoSelected($event)" type="file">
-                        </button>
-                    </mat-menu>
-                </div>
-                <form (submit)="updatePerfil(nombreFund, nombreEncar, apellidosEncar, tipo_doc, num_doc, mision, vision, fecha_creacion, direccion, correo, num_celular, password)">
-                    <mat-grid-list cols="2" rowHeight="60px">
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field class="ancho">
-                                <mat-label>Nombre de la fundación</mat-label>
-                                <input #nombreFund matInput [value]="fundacion.nombreFund" autocomplete="off">
-                            </mat-form-field>
-                        </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field class="ancho">
-                                <mat-label>Nombre de encargado(a)</mat-label>
-                                <input #nombreEncar matInput [value]="fundacion.nombreEncar" autocomplete="off" >
-                            </mat-form-field>
-                        </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field class="ancho">
-                                <mat-label>Apellidos de encargado(a)</mat-label>
-                                <input #apellidosEncar matInput [value]="fundacion.apellidosEncar" autocomplete="off" >
-                            </mat-form-field>
-                        </mat-grid-tile>
+        </div>
+        <div class="centro">
+          <!-- <input #fileInput type="file" (change)="onPhotoSelected($event)" style="display:none;" /> -->
+          <img
+            [src]="photoSelected || 'http://localhost:3000/' + fundacion.urlImg"
+            width="20%"
+            matTooltip="Desplegar opciones de foto"
+            [matMenuTriggerFor]="menu"
+          />
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="verFoto()">
+              <mat-icon>visibility</mat-icon>
+              <span>Ver foto</span>
+            </button>
+            <button mat-menu-item (click)="fileInput.click()">
+              <mat-icon>perm_media</mat-icon>
+              <span>Cambiar foto</span>
+              <input
+                #fileInput
+                (change)="onPhotoSelected($event)"
+                type="file"
+              />
+            </button>
+          </mat-menu>
+        </div>
+        <form
+          (submit)="
+            updatePerfil(
+              nombreFund,
+              nombreEncar,
+              apellidosEncar,
+              tipo_doc,
+              num_doc,
+              mision,
+              vision,
+              fecha_creacion,
+              direccion,
+              correo,
+              num_celular,
+              password
+            )
+          "
+        >
+          <mat-grid-list cols="2" rowHeight="60px">
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field class="ancho">
+                <mat-label>Nombre de la fundación</mat-label>
+                <input
+                  #nombreFund
+                  matInput
+                  [value]="fundacion.nombreFund"
+                  autocomplete="off"
+                />
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field class="ancho">
+                <mat-label>Nombre de encargado(a)</mat-label>
+                <input
+                  #nombreEncar
+                  matInput
+                  [value]="fundacion.nombreEncar"
+                  autocomplete="off"
+                />
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field class="ancho">
+                <mat-label>Apellidos de encargado(a)</mat-label>
+                <input
+                  #apellidosEncar
+                  matInput
+                  [value]="fundacion.apellidosEncar"
+                  autocomplete="off"
+                />
+              </mat-form-field>
+            </mat-grid-tile>
 
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field class="ancho">
-                                <mat-label>Tipo de documento</mat-label>
-                                <mat-select [(value)]="tipo_doc">
-                                    <mat-option required *ngFor="let item of documentos"[value]="item">{{item}}</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field class="ancho">
+                <mat-label>Tipo de documento</mat-label>
+                <mat-select [(value)]="tipo_doc">
+                  <mat-option
+                    required
+                    *ngFor="let item of documentos"
+                    [value]="item"
+                    >{{ item }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </mat-grid-tile>
 
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field class="ancho">
-                                <mat-label>Número de documento</mat-label>
-                                <input #num_doc [value]="fundacion.num_doc" matInput autocomplete="off" >
-                            </mat-form-field>
-                        </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field class="ancho">
+                <mat-label>Número de documento</mat-label>
+                <input
+                  #num_doc
+                  [value]="fundacion.num_doc"
+                  matInput
+                  autocomplete="off"
+                />
+              </mat-form-field>
+            </mat-grid-tile>
 
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field class="ancho">
-                                <mat-label>Misión</mat-label>
-                                <input #mision [value]="fundacion.mision"matInput autocomplete="off" >
-                            </mat-form-field>
-                        </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field class="ancho">
+                <mat-label>Misión</mat-label>
+                <input
+                  #mision
+                  [value]="fundacion.mision"
+                  matInput
+                  autocomplete="off"
+                />
+              </mat-form-field>
+            </mat-grid-tile>
 
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field class="ancho">
-                                <mat-label>Visión</mat-label>
-                                <input #vision [value]="fundacion.vision" matInput autocomplete="off" >
-                            </mat-form-field>
-                        </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field class="ancho" appearance="fill">
-                                <mat-label>Fecha de creación</mat-label>
-                                <input #fecha_creacion [matDatepicker]="picker" [value]="fundacion.fecha_creacion | date: 'dd/MM/yyyy'" matInput >
-                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-datepicker touchUi #picker></mat-datepicker>
-                            </mat-form-field>
-                        </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field class="ancho" appearance="fill">
-                                <mat-label>Dirección</mat-label>
-                                <input #direccion matInput [value]="fundacion.ubicacion.direccionFormateada"  #search autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
-                                >    
-                            </mat-form-field>
-                        </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field class="ancho">
-                                <mat-label>Correo electrónico</mat-label>
-                                <input #correo [value]="fundacion.correo" matInput autocomplete="off">
-                            </mat-form-field>
-                        </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field class="ancho">
-                                <mat-label>Número de celular</mat-label>
-                                <span matPrefix>+57 &nbsp;</span>
-                                <input #num_celular [value]="fundacion.num_celular" type="tel" matInput placeholder="555-555-1234" autocomplete="off" >
-                            </mat-form-field>
-                        </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field class="ancho">
-                                <mat-label>Contraseña</mat-label>
-                                <input #password required matInput type="password" autocomplete="off" >
-                            </mat-form-field>
-                        </mat-grid-tile>
-                    </mat-grid-list>
-                    <div class="centro">
-                        <button mat-raised-button type="submit" color="primary" style="margin: 16px;" class="tamano">Modificar</button>
-                        <button mat-raised-button color="accent" class="tamano"
-                            routerLink="/dashboard">Cancelar</button>
-                    </div>
-                </form>
-            </mat-card>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field class="ancho">
+                <mat-label>Visión</mat-label>
+                <input
+                  #vision
+                  [value]="fundacion.vision"
+                  matInput
+                  autocomplete="off"
+                />
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field class="ancho" appearance="fill">
+                <mat-label>Fecha de creación</mat-label>
+                <input
+                  #fecha_creacion
+                  [matDatepicker]="picker"
+                  [value]="fundacion.fecha_creacion | date: 'dd/MM/yyyy'"
+                  matInput
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker></mat-datepicker>
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field class="ancho" appearance="fill">
+                <mat-label>Dirección</mat-label>
+                <input
+                  #direccion
+                  matInput
+                  [value]="fundacion.ubicacion.direccionFormateada"
+                  #search
+                  autocorrect="off"
+                  autocapitalize="off"
+                  spellcheck="off"
+                  type="text"
+                  class="form-control"
+                />
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field class="ancho">
+                <mat-label>Correo electrónico</mat-label>
+                <input
+                  #correo
+                  [value]="fundacion.correo"
+                  matInput
+                  autocomplete="off"
+                />
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field class="ancho">
+                <mat-label>Número de celular</mat-label>
+                <span matPrefix>+57 &nbsp;</span>
+                <input
+                  #num_celular
+                  [value]="fundacion.num_celular"
+                  type="tel"
+                  matInput
+                  placeholder="555-555-1234"
+                  autocomplete="off"
+                />
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field class="ancho">
+                <mat-label>Contraseña</mat-label>
+                <input
+                  #password
+                  required
+                  matInput
+                  type="password"
+                  autocomplete="off"
+                />
+              </mat-form-field>
+            </mat-grid-tile>
+          </mat-grid-list>
+          <div class="centro">
+            <button
+              mat-raised-button
+              type="submit"
+              color="white"
+              style="margin: 16px"
+              class="tamano"
+            >
+              Modificar
+            </button>
+            <button
+              mat-raised-button
+              color="black"
+              class="tamano2"
+              routerLink="/dashboard"
+            >
+              Cancelar
+            </button>
+          </div>
         </form>
-
-    </mat-card>
-
-
+      </mat-card>
+    </form>
+  </mat-card>
 </div>
