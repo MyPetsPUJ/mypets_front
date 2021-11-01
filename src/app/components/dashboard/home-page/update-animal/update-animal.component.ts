@@ -114,10 +114,9 @@ export class UpdateAnimalComponent implements OnInit {
         this.desparasitadoAnimal = res.desparasitado;
         this.tamanoAnimal = res.tamano;
         this.tipoPeloAnimal = res.tipo_pelaje;
-        if(res.tipo_animal == this.tipo_animal){
-          this.aux = true
+        if (res.tipo_animal == this.tipo_animal) {
+          this.aux = true;
         }
-
       });
     });
   }
@@ -130,5 +129,38 @@ export class UpdateAnimalComponent implements OnInit {
       reader.onload = (e) => (this.photoSelected = reader.result as string);
       reader.readAsDataURL(this.file);
     }
+  }
+
+  editarAnimal(
+    nombre: HTMLInputElement,
+    edadAnimal: string,
+    raza: HTMLInputElement,
+    generoAnimal: string,
+    tamanoAnimal: string,
+    colorOjosAnimal: string,
+    tipoPeloAnimal: string,
+    situacionAnimal: string,
+    desparasitadoAnimal: string,
+    ultima_vac: HTMLInputElement,
+    descripcion: HTMLTextAreaElement
+  ) {
+    this.animalService.editarAnimal(
+      this.animalId,
+      nombre.value,
+      edadAnimal,
+      raza.value,
+      generoAnimal,
+      tamanoAnimal,
+      colorOjosAnimal,
+      tipoPeloAnimal,
+      situacionAnimal,
+      desparasitadoAnimal,
+      ultima_vac.value,
+      descripcion.value,
+      this.file
+    ).subscribe((res)=>{
+      console.log(res)
+      this._router.navigate(['dashboard']);
+    })
   }
 }
