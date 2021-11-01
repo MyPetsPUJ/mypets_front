@@ -38,8 +38,8 @@ export class AnimalPreviewComponent implements OnInit, OnDestroy {
     }
   }
 
-  onAnimalSelected(id: string) {
-    this._router.navigate(['/dashboard/editar-animal', id]);
-    this.dialogRef.close();
-  }
+  // onAnimalSelected(id: string) {
+  //   this._router.navigate(['/dashboard/editar-animal', id]);
+  //   this.dialogRef.close();
+  // }
 }

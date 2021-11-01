@@ -81,8 +81,7 @@ export class AnimalService {
         `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathFundacion}/${this.pathEditarAnimal}/${id}`,
         fd
       );
-    }
-    else{
+    } else {
       const fd = new FormData();
       fd.append('nombre', nombre);
       fd.append('edad', edad);
@@ -103,6 +102,12 @@ export class AnimalService {
         fd
       );
     }
+  }
+
+  deleteAnimal(id: string) {
+    return this.http.delete(
+      `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathFundacion}/${this.pathMisAnimales}/${id}`
+    );
   }
 
   // getNombre(index: number): string {

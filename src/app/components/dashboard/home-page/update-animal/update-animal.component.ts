@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EntidadAnimal } from 'src/app/components/interfaces/usuarios/entidadAnimal';
 import { AnimalService } from 'src/app/services/animal/animal.service';
@@ -92,7 +93,8 @@ export class UpdateAnimalComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private _router: Router,
-    private animalService: AnimalService
+    private animalService: AnimalService,
+    private _snackBar: MatSnackBar
   ) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 19, 0, 1);
@@ -144,23 +146,40 @@ export class UpdateAnimalComponent implements OnInit {
     ultima_vac: HTMLInputElement,
     descripcion: HTMLTextAreaElement
   ) {
-    this.animalService.editarAnimal(
-      this.animalId,
-      nombre.value,
-      edadAnimal,
-      raza.value,
-      generoAnimal,
-      tamanoAnimal,
-      colorOjosAnimal,
-      tipoPeloAnimal,
-      situacionAnimal,
-      desparasitadoAnimal,
-      ultima_vac.value,
-      descripcion.value,
-      this.file
-    ).subscribe((res)=>{
-      console.log(res)
-      this._router.navigate(['dashboard']);
+    this.animalService
+      .editarAnimal(
+        this.animalId,
+        nombre.value,
+        edadAnimal,
+        raza.value,
+        generoAnimal,
+        tamanoAnimal,
+        colorOjosAnimal,
+        tipoPeloAnimal,
+        situacionAnimal,
+        desparasitadoAnimal,
+        ultima_vac.value,
+        descripcion.value,
+        this.file
+      )
+      .subscribe((res) => {
+        console.log(res);
+        this._router.navigate(['dashboard/mis-animales']);
+      });
+  }
+
+  deleteAnimal(id: string){
+    this.animalService.deleteAnimal(id).subscribe((res)=>{
+      console.log(res);
+      this._snackBar.open('Animal correctamente eliminado ', '', {
+        duration: 5000,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+      });
+      setTimeout(() => {
+        this._router.navigate(['/dashboard/mis-animales'])
+      }, 1500);
+      
     })
   }
 }

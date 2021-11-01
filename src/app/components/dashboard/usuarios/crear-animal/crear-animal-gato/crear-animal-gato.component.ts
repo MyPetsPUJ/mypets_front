@@ -46,7 +46,6 @@ export class CrearAnimalGatoComponent implements OnInit {
   file!: File;
   photoSelected: string | ArrayBuffer = '';
   ngOnInit(): void {
-    
     this.previsualizacion = '../../../assets/Images/cat-form.png';
     this.getVacunasService.getVacunasGato().subscribe(
       (res) => {
@@ -191,9 +190,10 @@ export class CrearAnimalGatoComponent implements OnInit {
         (res) => console.log(res),
         (err) => console.log(err)
       );
-      this.mensaje('crear');
-    this._router.navigate(['/dashboard/mis-animales']);
-    
+    this.mensaje('crear');
+    setTimeout(() => {
+      this._router.navigate(['/dashboard/mis-animales']);
+    }, 2000);
   }
 
   onPhotoSelected(event: any): void {
@@ -235,15 +235,13 @@ export class CrearAnimalGatoComponent implements OnInit {
         return null;
       }
     });
-    mensaje(accion:string)
-    {
-      if(accion == 'crear')
-      {
-        this._snackbar.open('Animal creado de forma exitosa', '', {
-          duration: 5000,
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom',
-        });
-      }
+  mensaje(accion: string) {
+    if (accion == 'crear') {
+      this._snackbar.open('Animal creado de forma exitosa', '', {
+        duration: 5000,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+      });
     }
+  }
 }
