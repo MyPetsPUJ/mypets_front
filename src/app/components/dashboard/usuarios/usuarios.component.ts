@@ -23,7 +23,7 @@ export class UsuariosComponent implements OnInit {
   animales: EntidadAnimal[] = [];
   userId: string = '';
   userFundacion: UserFundacion | undefined;
-  displayedColumns: string[] = ['foto', 'edad', 'tipo', 'sexo', 'situacion', 'EsquemaVac', 'publicar'];
+  displayedColumns: string[] = ['foto', 'nombre', 'tipo', 'sexo', 'situacion',  'publicar'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
