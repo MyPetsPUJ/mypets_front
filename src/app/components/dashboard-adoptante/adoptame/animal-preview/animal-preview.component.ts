@@ -71,7 +71,7 @@ export class AnimalPreviewComponent implements OnInit, OnDestroy {
           this.enviado = true;
           //console.log(this.data.solicitudes[i])
           this.solicitudId = this.data.solicitudes[i]._id;
-          console.log(this.solicitudId);
+          console.log("Cambio estado",this.solicitudId);
         }
       }
     console.log(this.data); 
