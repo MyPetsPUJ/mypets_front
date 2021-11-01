@@ -9,6 +9,7 @@ import { SolicitudAdopcionComponent } from './adoptame/solicitud-adopcion/solici
 import { SolicitudesAdopcionAdoptanteComponent } from './solicitudes-adopcion-adoptante/solicitudes-adopcion-adoptante.component';
 import { FormularioAdopcionComponent } from './solicitudes-adopcion-adoptante/formulario-adopcion/formulario-adopcion.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { MiCuentaAdoptanteComponent } from './mi-cuenta-adoptante/mi-cuenta-adoptante.component';
 const routes: Routes = [
   {
     path: '',
@@ -31,6 +32,7 @@ const routes: Routes = [
         path: 'solicitudes-adopcion-adoptante/formulario-adopcion',
         component: FormularioAdopcionComponent,
       },
+      { path: 'mi_cuenta/:id', component: MiCuentaAdoptanteComponent },
     ],
   },
 ];

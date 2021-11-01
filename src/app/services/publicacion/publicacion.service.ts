@@ -46,18 +46,27 @@ export class PublicacionService {
     id: string,
     titulo: string,
     cuerpo: string,
-    imagen: File,
-    seccion: string
+    imagen: File
   ) {
-    const fd = new FormData();
-    fd.append('titulo', titulo);
-    fd.append('cuerpo', cuerpo);
-    fd.append('image', imagen);
-    fd.append('seccion', seccion);
-    return this.http.put(
-      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.editarPath}/${id}`,
-      fd
-    );
+    if(!imagen){
+      const fd = new FormData();
+      fd.append('titulo', titulo);
+      fd.append('cuerpo', cuerpo);
+      return this.http.put(
+        `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.editarPath}/${id}`,
+        fd
+      );
+    }
+    else{
+      const fd = new FormData();
+      fd.append('titulo', titulo);
+      fd.append('cuerpo', cuerpo);
+      fd.append('image', imagen);
+      return this.http.put(
+        `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.editarPath}/${id}`,
+        fd
+      );
+    }
   }
 
   deletePublicacion(id: string) {

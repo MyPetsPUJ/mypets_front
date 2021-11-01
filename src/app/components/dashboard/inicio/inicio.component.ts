@@ -65,7 +65,7 @@ export class InicioComponent implements OnInit, OnDestroy {
     nombreEncar: '',
     apellidosEncar: '',
     tipo_doc: '',
-    num_doc: '',
+    num_doc: 0,
     fecha_creacion: '',
     latitud: 0,
     longitud: 0,

@@ -34,5 +34,12 @@
   </mat-grid-list>
   <p></p>
   <p></p>
-  <button mat-raised-button (click)="accion('cerrar')">Cerrar</button>
+  <div class="boton">
+    <button mat-raised-button (click)="openCompromiso(data.animal)">
+      Quiero adoptar
+    </button>
+  </div>
+  <div class="boton">
+    <button mat-raised-button (click)="accion('cerrar')">Cerrar</button>
+  </div>
 </div>

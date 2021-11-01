@@ -1,21 +1,33 @@
-.alinear
-{
-    text-align: center;
+.alinear {
+  text-align: center;
 }
-.justificar 
-{
-    text-align: justify;
-    text-justify: inter-word;
+.ancho {
+  width: 70%;
 }
-
-.img-fluid{
-    margin: 2%;
+.justificar {
+  text-align: justify;
+  text-justify: inter-word;
 }
 
-.form-group{
-    margin: 2%;
+.img-fluid {
+  margin: 2%;
 }
 
-.btn{
-    margin: 2%;
+.form-group {
+  margin: 2%;
+}
+
+.btn {
+  margin: 2%;
+  background-color: black;
+}
+.card {
+  background-color: aliceblue;
+  width: auto;
+}
+.row {
+  padding-bottom: 15px;
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-left: 30px;
 }

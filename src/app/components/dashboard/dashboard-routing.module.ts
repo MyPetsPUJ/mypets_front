@@ -16,6 +16,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { AnimalesAdoptadosComponent } from './animales-adoptados/animales-adoptados.component';
 import { SolicitudesComponent } from './solicitudes/solicitudes.component';
 import { FundacionesComponent } from './fundaciones/fundaciones.component';
+import { UpdateAnimalComponent } from './home-page/update-animal/update-animal.component';
 const routes: Routes = [
   {
     path: '',
@@ -50,6 +51,7 @@ const routes: Routes = [
       },
       { path: 'mis-animales/:id', component: UsuariosComponent },
       { path: 'fundaciones', component: FundacionesComponent },
+      { path: 'editar-animal/:id', component: UpdateAnimalComponent },
     ],
   },
 ];

@@ -15,7 +15,7 @@ import { LocalidadesService } from 'src/app/services/datos-app/localidades.servi
 import { Localidad } from '../../interfaces/datos-app/entidadLocalidad';
 import { Router } from '@angular/router';
 import { TipoDocsService } from 'src/app/services/datos-app/tipo-docs.service';
-import {TipoDoc}  from '../../interfaces/datos-app/entidadTipoDoc';
+import { TipoDoc } from '../../interfaces/datos-app/entidadTipoDoc';
 
 interface HtmlInputEvent extends Event {
   target: (HTMLInputElement & EventTarget) | null;
@@ -49,7 +49,7 @@ export class CrearFundacionComponent implements OnInit {
     this.maxDate = new Date();
   }
   //public archivos: any = [];
-  
+
   @ViewChild('search')
   public searchElementRef: ElementRef | any;
   ngOnInit(): void {
@@ -75,11 +75,10 @@ export class CrearFundacionComponent implements OnInit {
     this.getTipoDocService.getTipoDocFundacion().subscribe(
       (res) => {
         this.tipo_docs = res;
+        console.log(this.tipo_docs[0].nombre);
       },
       (err) => console.log(err)
     );
-
-
   }
 
   // tipo_doc: any[] = ['Cédula de ciudadanía', 'Cédula de extranjería'];
@@ -97,7 +96,7 @@ export class CrearFundacionComponent implements OnInit {
         form.value.nombreFun,
         form.value.nombreEncar,
         form.value.apellidos,
-        form.value.tipo_doc,
+        form.value.tipo_doc.nombre,
         form.value.num_doc,
         form.value.fecha_creacion,
         form.value.direccion,

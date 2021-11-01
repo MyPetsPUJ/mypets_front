@@ -27,30 +27,7 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <div class="filtro">
-            <mat-form-field appearance="fill" class="no-padding">
-              <mat-label>Color ojos</mat-label>
-              <mat-select name="color_ojos" ngModel #color_ojosInput="ngModel">
-                <mat-option *ngFor="let item of color_ojos" [value]="item">
-                  {{ item }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-          <div class="filtro">
-            <mat-form-field appearance="fill" class="ancho">
-              <mat-label>Tipo de pelaje</mat-label>
-              <mat-select
-                name="tipo_pelaje"
-                ngModel
-                #tipo_pelajeInput="ngModel"
-              >
-                <mat-option *ngFor="let item of tipo_pelaje" [value]="item">
-                  {{ item }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
+
           <div class="filtro">
             <mat-checkbox name="organizar" ngModel #organizarInput="ngModel"
               >Organizar por mayor tiempo en espera</mat-checkbox

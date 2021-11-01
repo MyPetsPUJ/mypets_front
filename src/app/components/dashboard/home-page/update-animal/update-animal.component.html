@@ -1,0 +1,173 @@
+<!-- <div class="row" *ngIf="!publicacion; else main_content">
+    <h1>Cargando...</h1>
+  </div> -->
+  
+  
+    <div class="row">
+      <div class="col-md-5 foto">
+        <div class="card">
+          <!-- <img [src]="'http://localhost:3000/' + publicacion.urlImg" class="img-fluid"> -->
+          <input
+            #fileInput
+            type="file"
+            (change)="onPhotoSelected($event)"
+            style="display: none"
+          />
+          <img
+            [src]="photoSelected || 'http://localhost:3000/' + previsualizacion "
+            #imagen
+            class="img-fluid"
+            matTooltip="Desplegar opciones de foto"
+            [matMenuTriggerFor]="menu"
+          />
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="fileInput.click()">
+              <mat-icon>perm_media</mat-icon>
+              <span>Cambiar foto</span>
+              <input (change)="onPhotoSelected($event)" type="file" />
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="card cuerpo">
+          <form (submit)="editarAnimal(nombre, edadAnimal, raza, generoAnimal, tamanoAnimal, colorOjosAnimal, tipoPeloAnimal, situacionAnimal, desparasitadoAnimal, ultima_vac, descripcion)" class="card-body" >
+            <div class="form-group">
+              <!-- <mat-label>Título de publi</mat-label> -->
+              <mat-grid-list cols="2" rowHeight="50px">
+                <mat-grid-tile colspan="1" rowspan="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Nombre del animal</mat-label>
+                        <input #nombre [value]="animal.nombre" type="text"  required matInput />
+                      </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field appearance="fill" class="ancho">
+                  <mat-label>Edad aproximada</mat-label>
+                  <mat-select [(value)]="edadAnimal" required>
+                    <mat-option *ngFor="let item of edad" [value]="item">
+                      {{ item }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field class="ancho">
+                  <mat-label>Raza</mat-label>
+                  <input #raza type="text" [value]="animal.raza" required placeholder="Ej: Pitbull"
+                    matInput />
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field appearance="fill" class="ancho">
+                  <mat-label>Sexo</mat-label>
+                  <mat-select [(value)]="generoAnimal" required>
+                    <mat-option *ngFor="let item of genero" [value]="item">
+                      {{ item }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field appearance="fill" class="ancho">
+                  <mat-label>Tamaño</mat-label>
+                  <mat-select [(value)]="tamanoAnimal" required>
+                    <mat-option *ngFor="let item of tamano" [value]="item">
+                      {{ item }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field appearance="fill" class="ancho">
+                  <mat-label>Color de ojos</mat-label>
+                  <mat-select [(value)]="colorOjosAnimal" required>
+                    <mat-option *ngFor="let item of color_ojos" [value]="item">
+                      {{ item }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field appearance="fill" class="ancho">
+                  <mat-label>Tipo de pelaje</mat-label>
+                  <mat-select [(value)]="tipoPeloAnimal" required>
+                    <mat-option *ngFor="let item of tipo_pelaje" [value]="item">
+                      {{ item }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field appearance="fill" class="ancho">
+                  <mat-label>Situación</mat-label>
+                  <mat-select [(value)]="situacionAnimal" required>
+                    <mat-option *ngFor="let item of situacion" [value]="item">
+                      {{ item }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field appearance="fill" class="ancho">
+                  <mat-label>Está desparasitado</mat-label>
+                  <mat-select [(value)]="desparasitadoAnimal" required>
+                    <mat-option *ngFor="let item of desparasitado" [value]="item">
+                      {{ item }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field appearance="fill" class="ancho">
+                  <mat-label>Fecha de última vacuna</mat-label>
+                  <input #ultima_vac [value]="animal.ultima_vac" required matInput [matDatepicker]="picker"
+                    [min]="minDate" [max]="maxDate" />
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="3" >
+                <div *ngIf="!aux;else vacunasGato" class="izquierda">
+                  <span class ="seccionVacunas"><ul>
+                    <li *ngFor="let vacuna of lista_vacunas_perro">
+                      <mat-checkbox #vacunas> {{vacuna}} </mat-checkbox>
+                    </li>
+                  </ul>
+                </span>
+                </div>
+                <ng-template #vacunasGato>
+                    <div class="izquierda">
+                        <span class ="seccionVacunas"><ul>
+                          <li *ngFor="let vacuna of lista_vacunas_gato">
+                            <mat-checkbox #vacunas> {{vacuna}} </mat-checkbox>
+                          </li>
+                        </ul>
+                      </span>
+                      </div>
+                </ng-template>
+                
+              </mat-grid-tile>
+              </mat-grid-list>
+            </div>
+            <div class="form-group">
+              <textarea
+                rows="5"
+                #descripcion
+                class="form-control"
+                placeholder="Descripción sobre el animal"
+                [value]="animal.descripcion"
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              Modificar
+            </button>
+            <a href="/dashboard/mis-animales" class="btn btn-primary"
+              >Volver a Animales
+            </a>
+            <button (click)="deleteAnimal(animal._id!)" class="btn btn-primary btn-block">Eliminar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  

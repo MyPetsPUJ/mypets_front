@@ -26,7 +26,7 @@ export class AnimalPreviewComponent implements OnInit, OnDestroy {
   form: FormularioAdopcion | any;
   userAdoptante : UserAdoptante = {
     nombre: '',
-    foto: '',
+    urlImg: '',
     apellidos: '',
     fecha_nacimiento: '',
     tipo_doc: '',

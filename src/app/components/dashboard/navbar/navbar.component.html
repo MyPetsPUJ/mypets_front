@@ -14,24 +14,32 @@
   <span class="example-spacer"></span>
   <ul class="nav-links">
     <span class="example-spacer"></span>
-    <li><a routerLink="/dashboard">Home</a></li>
+    <li><a routerLink="/dashboard">Animales</a></li>
     <span class="example-spacer"></span>
     <li><a [routerLink]="['mapa', userId]">Mapa</a></li>
     <span class="example-spacer"></span>
-    <li ><a routerLink="mis-animales">Mis Animales</a></li>
+    <li><a routerLink="mis-animales">Fundación</a></li>
     <span class="example-spacer"></span>
-    <li >
+    <li>
       <a routerLink="animales-adoptados">Adopciones</a>
     </li>
     <span class="example-spacer"></span>
-    <li >
-      <a [routerLink]="['publicaciones', userId]">Mis Publicaciones</a>
+    <li>
+      <a [routerLink]="['publicaciones', userId]">Publicaciones</a>
     </li>
     <span class="example-spacer"></span>
-    <li ><a routerLink="fundaciones">Fundaciones</a></li>
+    <li><a routerLink="solicitudes">Solicitudes</a></li>
+    <span class="example-spacer"></span>
+    <li><a [routerLink]="['mi_cuenta', userId]">Cuenta</a></li>
+    <span class="example-spacer"></span>
+
+    <li class="logout" (click)="onLogout()">
+      <a><mat-icon>logout</mat-icon></a>
+    </li>
     <span class="example-spacer"></span>
   </ul>
   <span class="example-spacer"></span>
+  <!--
   <div>
     <mat-icon
       *ngIf="userIsAuth"
@@ -40,7 +48,7 @@
       [ngStyle]="{ color: 'white' }"
       >more_vert</mat-icon
     >
-
+    
     <mat-menu #menu="matMenu">
       <button mat-menu-item [routerLink]="['mi_cuenta', userId]">
         <mat-icon>account_circle</mat-icon>
@@ -55,7 +63,9 @@
         <span>Cerrar sesión</span>
       </button>
     </mat-menu>
+
   </div>
+  -->
 
   <div class="burger">
     <div class="line1"></div>

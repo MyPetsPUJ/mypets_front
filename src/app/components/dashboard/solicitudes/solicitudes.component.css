@@ -1,72 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap");
+h1 {
+  font-family: "Proza Libre", sans-serif;
+  text-align: center;
+  vertical-align: middle;
+  margin: auto;
+  font-size: 27px;
+}
+
 table {
-    width: 100%;
-  }
-  th {
-    width: 10%;
-  }
-  .pointer {
-    cursor: pointer;
-  }
-  .mat-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
-  .tam {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .example-spacer {
-    flex: 1 1 auto;
-  }
-  .tam1 {
-    margin-left: auto;
-  }
-  .circulo
-  {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-  }
-  .example-container {
-    display: flex;
-    flex-direction: column;
-    max-height: 500px;
-    min-width: 300px;
-  }
-  
-  .mat-table {
-    overflow: auto;
-    max-height: 500px;
-  }
-  
+  width: 100%;
+}
+th {
+  width: 10%;
+}
+.pointer {
+  cursor: pointer;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+.tam {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.tam1 {
+  margin-left: auto;
+}
+.noForm {
+  padding-bottom: 15px;
+}
+
+.circulo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.mobile-label {
+  display: none;
+}
+
+@media (max-width: 600px) {
   .mobile-label {
+    width: 80px;
+    display: inline-block;
+    font-weight: bold;
+  }
+
+  .mat-header-row {
     display: none;
   }
-  
-  @media(max-width: 600px) {
-    .mobile-label {
-      width: 80px;
-      display: inline-block;
-          font-weight: bold;
-    }
-  
-    .mat-header-row {
-      display: none;
-    }
-  
-    .mat-row { 
-      flex-direction: column;
-      align-items: start;
-      padding: 8px 24px;
-    }
+
+  .mat-row {
+    flex-direction: column;
+    align-items: start;
+    padding: 8px 24px;
   }
-  .verde 
-  {
-    background-color: green;
-  }
-  .rojo 
-  {
-    background-color: red;
-  }
-  
+}
+.verde {
+  background-color: green;
+}
+.rojo {
+  background-color: red;
+}

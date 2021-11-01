@@ -55,7 +55,6 @@ export class PublicacionPreviewComponent implements OnInit {
         .subscribe((res) => {
           this.previsualizacion = res.urlImg;
           this.publicacion = res;
-          
         });
     });
   }
@@ -76,11 +75,18 @@ export class PublicacionPreviewComponent implements OnInit {
     }
   }
 
-  editarPublicacion(form: NgForm) {
-    console.log(form.value);
-    if (form.invalid) {
-      return;
-    }
+  editarPublicacion(titulo: HTMLInputElement, cuerpo: HTMLTextAreaElement) {
+    this.publicacionService
+      .editarPublicacion(
+        this.publicacionId,
+        titulo.value,
+        cuerpo.value,
+        this.file
+      )
+      .subscribe((res) => {
+        console.log(res);
+        this._router.navigate(['dashboard/publicaciones', this.userId]);
+      });
   }
 
   deletePublicacion(id: string) {

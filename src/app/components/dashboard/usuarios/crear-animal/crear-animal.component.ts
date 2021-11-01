@@ -9,6 +9,7 @@ import { DatosAnimal } from 'src/app/components/interfaces/datos-app/entidadDato
 import { CrearAnimalService } from 'src/app/services/animal/crearAnimal.service';
 import { DatosAnimalService } from 'src/app/services/datos-app/datos-animal.service';
 import { VacunasService } from 'src/app/services/datos-app/vacunas.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface HtmlInputEvent extends Event {
   target: (HTMLInputElement & EventTarget) | null;
@@ -41,13 +42,14 @@ export class CrearAnimalComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private getVacunasService: VacunasService,
     private getDatosAnimalService: DatosAnimalService,
-    private _router: Router
+    private _router: Router,
+    private _snackBar: MatSnackBar
   ) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 19, 0, 1);
     this.maxDate = new Date();
   }
-  
+
   ngOnInit(): void {
     this.previsualizacion = '../../../assets/Images/dog-form.png';
     this.getVacunasService.getVacunasPerro().subscribe(
@@ -56,10 +58,6 @@ export class CrearAnimalComponent implements OnInit {
       },
       (err) => console.log(err)
     );
-
-    
-
-
   }
   tiles: any[] = [
     { text: 'One', cols: 3, rows: 1, color: 'lightblue' },
@@ -67,7 +65,6 @@ export class CrearAnimalComponent implements OnInit {
     { text: 'Three', cols: 1, rows: 1, color: 'lightpink' },
     { text: 'Four', cols: 2, rows: 1, color: '#DDBDF1' },
   ];
-
 
   edad: any[] = [
     'menos de 1 mes ',
@@ -123,7 +120,7 @@ export class CrearAnimalComponent implements OnInit {
     'Leptospirosis',
     'Rabia',
   ];
-
+  vacunasAnimal: string[] = [];
   desparasitado: any[] = ['Sí', 'No'];
   situacion: any[] = ['Sin esterilizar', 'Esterilizado'];
 
@@ -154,7 +151,11 @@ export class CrearAnimalComponent implements OnInit {
         (res) => console.log(res),
         (err) => console.log(err)
       );
-    this._router.navigate(['/dashboard/animales']);
+      this.mensaje('crear');
+      setTimeout(() => {
+        this._router.navigate(['/dashboard/mis-animales'])
+      }, 2000);
+    
   }
 
   onPhotoSelected(event: any): void {
@@ -196,4 +197,14 @@ export class CrearAnimalComponent implements OnInit {
         return null;
       }
     });
+
+  mensaje(accion: string) {
+    if (accion == 'crear') {
+      this._snackBar.open('Animal creado de forma exitosa', '', {
+        duration: 5000,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+      });
+    }
+  }
 }
