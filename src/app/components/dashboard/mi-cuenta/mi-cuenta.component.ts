@@ -24,6 +24,7 @@ import { VerFotoComponent } from './ver-foto/ver-foto.component';
 export class MiCuentaComponent implements OnInit {
   userId = '';
   inputValue = '';
+  fecha: string = '';
   file!: File;
   tipo_doc: string = '';
   photoSelected: string | ArrayBuffer = '';
@@ -50,7 +51,7 @@ export class MiCuentaComponent implements OnInit {
     ubicacion: [],
     _id: '',
   };
-  
+
   form: FormGroup | any;
   documentos: String[] = [
     'Cédula de ciudadanía',
@@ -77,6 +78,8 @@ export class MiCuentaComponent implements OnInit {
     this.userId = this.authService.getUserId();
     this.fundacionService.getFundacionById(this.userId).subscribe((res) => {
       this.fundacion = res;
+      this.fecha = this.fundacion.fecha_creacion;
+      this.tipo_doc = this.fundacion.tipo_doc;
     });
     // this.nombreFun = 'Perritos felices';
     // var fecha = new Date(2005, 2, 24);
@@ -156,21 +159,19 @@ export class MiCuentaComponent implements OnInit {
       }
     });
   verFoto() {
-    if(!this.photoSelected){
+    if (!this.photoSelected) {
       this.dialog.open(VerFotoComponent, {
         width: '500px',
         height: '500px',
         data: { foto: this.fundacion.urlImg },
       });
-    }
-    else{
+    } else {
       this.dialog.open(VerFotoComponent, {
         width: '500px',
         height: '500px',
         data: { foto: this.photoSelected },
       });
     }
-    
   }
 
   updatePerfil(

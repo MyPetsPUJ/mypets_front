@@ -13,10 +13,12 @@ import { threadId } from 'worker_threads';
 })
 export class LoginService {
   private token: string = '';
+  private tipo_usuario: boolean = false;
   private authStatusListener = new Subject<boolean>();
   private isAuth = false;
   private tokenTimer: NodeJS.Timer | undefined;
   private userId: any;
+  private userType: string = 'Adoptante';
 
   constructor(private http: HttpClient, private _router: Router) {}
 
@@ -28,8 +30,12 @@ export class LoginService {
     return this.isAuth;
   }
 
-  getUserId(){
+  getUserId() {
     return this.userId;
+  }
+
+  getTipoUser() {
+    return this.tipo_usuario;
   }
 
   getAuthStatusListener() {
@@ -42,21 +48,29 @@ export class LoginService {
 
   inicioSesion(inicioSesion: InicioSesion) {
     return this.http
-      .post<{ token: string; expiresIn: number; userId: string }>(
-        'http://localhost:3000/api/login',
-        inicioSesion,
-        { withCredentials: true }
-      )
+      .post<{
+        token: string;
+        tipo_usuario: string;
+        expiresIn: number;
+        userId: string;
+      }>('http://localhost:3000/api/login', inicioSesion, {
+        withCredentials: true,
+      })
       .pipe(
         map((res) => {
-          console.log(res);
+          console.log('Respuesta', res);
           const token = res.token;
           this.token = token;
+          console.log('Tipo_usuario', res.tipo_usuario);
           if (token) {
             const expiresInDuration = res.expiresIn;
             this.setAuthTimer(expiresInDuration);
             this.isAuth = true;
             this.userId = res.userId;
+            if (res.tipo_usuario == this.userType) {
+              this.tipo_usuario = true;
+              console.log('BOOL', this.tipo_usuario);
+            }
             this.authStatusListener.next(true);
             const now = new Date();
             const expirationDate = new Date(
@@ -125,7 +139,7 @@ export class LoginService {
     return {
       token: token,
       expirationDate: new Date(expirationDate),
-      userId: userId
+      userId: userId,
     };
   }
 }

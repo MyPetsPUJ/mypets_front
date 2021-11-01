@@ -1,4 +1,5 @@
 export interface EntidadAnimal {
+  _id?: string;
   nombre: string;
   edad: string;
   raza: string;

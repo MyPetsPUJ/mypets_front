@@ -73,11 +73,38 @@ export class CrearAdoptanteService {
     ]);
   }
 
-  crearUsuarioAdoptante(userAdoptante: UserAdoptante) {
+  crearUsuarioAdoptante(
+    nombres: string,
+    apellidos: string,
+    fecha_nacimiento: string,
+    tipo_doc: string,
+    num_doc: string,
+    genero: string,
+    localidad: string,
+    num_celular: string,
+    correo: string,
+    password: string,
+    imagen: File,
+    tipo_usuario: string
+  ) {
+    const fd = new FormData();
+    fd.append('nombre', nombres);
+    fd.append('apellidos', apellidos);
+    fd.append('fecha_nacimiento', fecha_nacimiento);
+    fd.append('tipo_doc', tipo_doc);
+    fd.append('num_doc', num_doc);
+    fd.append('genero', genero);
+    fd.append('localidad', localidad);
+    fd.append('correo', correo);
+    fd.append('num_celular', num_celular);
+    fd.append('password', password);
+    fd.append('image', imagen);
+    fd.append('tipo_usuario', tipo_usuario);
+
     this.http
       .post(
         `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}`,
-        userAdoptante
+        fd
       )
       .subscribe((respuesta) => {
         console.log(respuesta);

@@ -30,6 +30,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AnimalPreviewComponent } from './home-page/animal-preview/animal-preview.component';
 import { PreviewComponent } from './animales-adoptados/preview/preview.component';
 import { FundacionesComponent } from './fundaciones/fundaciones.component';
+import { UpdateAnimalComponent } from './home-page/update-animal/update-animal.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { FundacionesComponent } from './fundaciones/fundaciones.component';
     FooterComponent,
     AnimalPreviewComponent,
     PreviewComponent,
-    FundacionesComponent
+    FundacionesComponent,
+    UpdateAnimalComponent
   ],
   imports: [
     CommonModule,

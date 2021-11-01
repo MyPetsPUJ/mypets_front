@@ -8,6 +8,7 @@ import { Genero } from '../../interfaces/datos-app/entidadGenero';
 import { GenerosService } from 'src/app/services/datos-app/generos.service';
 import { TipoDocsService } from 'src/app/services/datos-app/tipo-docs.service';
 import { TipoDoc } from '../../interfaces/datos-app/entidadTipoDoc';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-adoptante',
@@ -19,13 +20,39 @@ export class CrearAdoptanteComponent implements OnInit {
   maxDate: Date | any;
   generos: Genero[] = [];
   tipo_docs: TipoDoc[] = [];
+  file!: File;
+  photoSelected: string | ArrayBuffer = '';
+
+  localidades: any[] = [
+    '1.Usaquén',
+    '2.Chapinero',
+    '3.Santa Fé',
+    '4.San Cristobal',
+    '5.Usme',
+    '6. Tunjuelito',
+    '7.Bosa',
+    '8.Kennedy',
+    '9.Fontibón',
+    '10.Engativá',
+    '11.Suba',
+    '12.Barrios Unidos',
+    '13.Teusaquillo',
+    '14.Los Mártires',
+    '15.Antonio Nariño',
+    '16.Puente Aranda',
+    '17.Candelaria',
+    '18.Rafael Uribe Uribe',
+    '19.Ciudad Bolivar',
+    '20.Sumapaz',
+  ];
 
   constructor(
     public crearAdoptanteService: CrearAdoptanteService,
     private sanitizer: DomSanitizer,
     private getLocalidadesService: LocalidadesService,
     private getGenerosService: GenerosService,
-    private getTipoDocService: TipoDocsService
+    private getTipoDocService: TipoDocsService,
+    private _router: Router
   ) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 110, 0, 1);
@@ -33,24 +60,22 @@ export class CrearAdoptanteComponent implements OnInit {
   }
   public archivos: any = [];
   public previsualizacion: string | any;
-  localidades: Localidad[] = [];
+  // localidades: Localidad[] = [];
   ngOnInit(): void {
     this.previsualizacion = '../../../assets/Images/adopt.png';
-    this.getLocalidadesService.getLocalidadesAdoptante().subscribe(
+    // this.getLocalidadesService.getLocalidadesAdoptante().subscribe(
+    //   (res) => {
+    //     console.log(res);
+    //   },
+    //   (err) => console.log(err)
+    // );
+
+    this.getTipoDocService.getTipoDocAdoptante().subscribe(
       (res) => {
         console.log(res);
       },
       (err) => console.log(err)
     );
-
-    this.getTipoDocService.getTipoDocAdoptante().subscribe(
-      (res) => {
-        console.log(res)
-      },
-      (err) => console.log(err)
-    );
-
-
   }
   tiles: any[] = [
     { text: 'One', cols: 3, rows: 1, color: 'lightblue' },
@@ -69,25 +94,36 @@ export class CrearAdoptanteComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    const datosAdoptante = {
-      nombre: form.value.nombre,
-      urlImg: this.previsualizacion,
-      apellidos: form.value.apellidos,
-      fecha_nacimiento: form.value.fecha_nac,
-      tipo_doc: form.value.tipo_doc,
-      num_doc: form.value.num_doc,
-      genero: form.value.genero,
-      localidad: form.value.localidad,
-      correo: form.value.correo,
-      num_celular: form.value.num_cel,
-      password: form.value.password,
-      tipo_usuario: 'Adoptante',
-      animales: [],
-      solicitudesAdoptante:[]
-    }; //TODO pasar objetos y no params
+
+    //TODO pasar objetos y no params
     //this.authservice.crearUsuarioAdoptante(datosAdoptante);
-    this.crearAdoptanteService.crearUsuarioAdoptante(datosAdoptante);
+    this.crearAdoptanteService.crearUsuarioAdoptante(
+      form.value.nombre,
+      form.value.apellidos,
+      form.value.fecha_nac,
+      form.value.tipo_doc,
+      form.value.num_doc,
+      form.value.genero,
+      form.value.localidad,
+      form.value.num_cel,
+      form.value.correo,
+      form.value.password,
+      this.file,
+      'Adoptante'
+    );
+    this._router.navigate(['/login']);
   }
+
+  onPhotoSelected(event: any): void {
+    if (event.target?.files && event.target.files[0]) {
+      this.file = <File>event.target.files[0];
+      //image preview
+      const reader = new FileReader();
+      reader.onload = (e) => (this.photoSelected = reader.result as string);
+      reader.readAsDataURL(this.file);
+    }
+  }
+
   onFileInput(event): any {
     const archivo = event.target.files[0];
     this.archivos.push(archivo);

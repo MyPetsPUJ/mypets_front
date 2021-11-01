@@ -9,7 +9,7 @@
                 </div>
                 <div class="centro">
                     <!-- <input #fileInput type="file" (change)="onPhotoSelected($event)" style="display:none;" /> -->
-                    <img [src]=" photoSelected " width="20%" matTooltip="Desplegar opciones de foto"
+                    <img [src]=" photoSelected || 'http://localhost:3000/' + adoptante.urlImg " width="20%" matTooltip="Desplegar opciones de foto"
                             [matMenuTriggerFor]="menu">
                     <mat-menu #menu="matMenu">
                         <button mat-menu-item >
@@ -23,18 +23,18 @@
                         </button>
                     </mat-menu>
                 </div>
-                <form >
+                <form (submit)="updateAdoptante(nombre, apellidos, tipo_doc, num_doc, fecha_nac, genero, localidad, correo, num_celular, password)">
                     <mat-grid-list cols="2" rowHeight="60px">
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field class="ancho">
                                 <mat-label>Nombre del adoptante</mat-label>
-                                <input #nombreFund matInput [value]="adoptante.nombre" autocomplete="off">
+                                <input #nombre matInput [value]="adoptante.nombre" autocomplete="off">
                             </mat-form-field>
                         </mat-grid-tile>
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field class="ancho">
                                 <mat-label>Apellidos del adoptante</mat-label>
-                                <input #apellidosEncar matInput [value]="adoptante.apellidos" autocomplete="off" >
+                                <input #apellidos matInput [value]="adoptante.apellidos" autocomplete="off" >
                             </mat-form-field>
                         </mat-grid-tile>
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -55,7 +55,7 @@
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field class="ancho" appearance="fill">
                                 <mat-label>Fecha de nacimiento</mat-label>
-                                <input #fecha_creacion [matDatepicker]="picker" [value] matInput >
+                                <input #fecha_nac [matDatepicker]="picker" [value] matInput >
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                 <mat-datepicker touchUi #picker></mat-datepicker>
                             </mat-form-field>
@@ -63,16 +63,16 @@
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field class="ancho">
                                 <mat-label>Género</mat-label>
-                                <mat-select [(value)]="tipo_doc">
-                                    <mat-option required *ngFor="let item of documentos"[value]="item">{{item}}</mat-option>
+                                <mat-select [(value)]="genero">
+                                    <mat-option required *ngFor="let item of generos"[value]="item">{{item}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </mat-grid-tile>
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field class="ancho">
                                 <mat-label>Localidad</mat-label>
-                                <mat-select [(value)]="tipo_doc">
-                                    <mat-option required *ngFor="let item of documentos"[value]="item">{{item}}</mat-option>
+                                <mat-select [(value)]="localidad">
+                                    <mat-option required *ngFor="let localidad of localidades"[value]="localidad">{{localidad}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </mat-grid-tile>
@@ -99,7 +99,7 @@
                     <div class="centro">
                         <button mat-raised-button type="submit" color="primary" style="margin: 16px;" class="tamano">Modificar</button>
                         <button mat-raised-button color="accent" class="tamano"
-                            routerLink="/dashboard">Cancelar</button>
+                            routerLink="/dashboard-adoptante">Cancelar</button>
                     </div>
                 </form>
             </mat-card>

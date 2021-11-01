@@ -123,7 +123,7 @@ export class CrearAnimalComponent implements OnInit {
     'Leptospirosis',
     'Rabia',
   ];
-
+  vacunasAnimal: string[] = [];
   desparasitado: any[] = ['Sí', 'No'];
   situacion: any[] = ['Sin esterilizar', 'Esterilizado'];
 

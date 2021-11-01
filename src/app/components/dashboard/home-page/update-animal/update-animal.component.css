@@ -1,0 +1,37 @@
+.alinear {
+  text-align: center;
+}
+.ancho {
+  width: 70%;
+}
+.justificar {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.img-fluid {
+  margin: 2%;
+}
+.izquierda {
+  align-items: left;
+  
+}
+.form-group {
+  margin: 2%;
+  grid-row-start: auto;
+}
+
+.btn {
+  margin: 2%;
+  background-color: black;
+}
+.card {
+  background-color: aliceblue;
+  width: auto;
+}
+.row {
+  padding-bottom: 15px;
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-left: 30px;
+}
