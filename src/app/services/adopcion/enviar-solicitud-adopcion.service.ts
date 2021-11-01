@@ -14,10 +14,13 @@ export class EnviarSolicitudAdopcionService {
   puerto: number = 3000;
   pathIntermedio: string = "api";
   entidad: string = "dashboard-adoptante";
+  entidadII: string = "dashboard";
   subTipoEntidad: string = "adoptame";
   subTipoEntidadII: string = "solicitud-adopcion";
   subTipoEntidadIII: string = "solicitud-adoptante";
   subTipoEntidadIV: string = "solicitud-fundacion";
+  subTipoEntidadV: string = "eliminar-solicitud-adoptante";
+  subTipoEntidadVI: string = "solicitudes";
   solicitudes: EntidadSolicitudAdopcion[] =[];
 
   constructor(private http: HttpClient) { }
@@ -54,7 +57,16 @@ export class EnviarSolicitudAdopcionService {
   {
     return this.solicitudes;
   }
-  deleteSolicitud(usuario: UserAdoptante, animal: EntidadAnimal)
+  
+  deleteSolicitud(id: string)
+  {
+    this.http.delete(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.subTipoEntidadII}/${this.subTipoEntidadV}/${id}`)
+    .subscribe(respuesta => {
+      console.log(respuesta);
+    })
+  }
+
+  deleteSolicitu(usuario: UserAdoptante, animal: EntidadAnimal)
   {
     for(var i = 0; i < this.solicitudes.length; i++)
     {
@@ -64,4 +76,12 @@ export class EnviarSolicitudAdopcionService {
       }
     }
   }
+
+  actualizarEstadoSolicitud(id: string,estado: string)
+  {
+    return this.http.put(
+      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidadII}/${this.subTipoEntidadVI}/${id}`,estado
+    );
+  }
+
 }

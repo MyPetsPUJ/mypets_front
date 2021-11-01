@@ -20,7 +20,8 @@ export class AnimalPreviewComponent implements OnInit, OnDestroy {
   userId: string = '';
   private authListenerSubs: Subscription | undefined;
   enviado: boolean | undefined = false;
-  solicitudAdop: EntidadSolicitudAdopcion | undefined;
+  solicitudId: string ='';
+  solicitudAdop: EntidadSolicitudAdopcion | any;
   solicitudesAdop: EntidadSolicitudAdopcion[] =[];
   form: FormularioAdopcion | any;
   userAdoptante : UserAdoptante = {
@@ -57,7 +58,10 @@ export class AnimalPreviewComponent implements OnInit, OnDestroy {
         console.log(error);
       }
     });
+    this.revisarSolicitudes();
+  }
 
+  revisarSolicitudes(){
     console.log("solicitudes",this.data.solicitudes);
 
     for(var i = 0; i < this.data.solicitudes.length; i++)
@@ -65,8 +69,12 @@ export class AnimalPreviewComponent implements OnInit, OnDestroy {
         if(this.data.solicitudes[i].idAnimal == this.data.animal._id )
         {
           this.enviado = true;
+          //console.log(this.data.solicitudes[i])
+          this.solicitudId = this.data.solicitudes[i]._id;
+          console.log(this.solicitudId);
         }
-      } 
+      }
+    console.log(this.data); 
   }
 
   ngOnDestroy(){
@@ -88,11 +96,15 @@ export class AnimalPreviewComponent implements OnInit, OnDestroy {
       }
       console.log(this.solicitudAdop);
       this.solicitudService.postSolicitudAdopcion(this.solicitudAdop);
+      this.solicitudId = this.solicitudAdop._id;
+      console.log("id",this.solicitudId);
       this.enviado = true;
     }
     if(accion == 'cancelar')
     {
-      this.solicitudService.deleteSolicitud(this.data.adoptante, animal);
+      this.revisarSolicitudes();
+      console.log(this.solicitudId);
+      this.solicitudService.deleteSolicitud(this.solicitudId);
       this.enviado = false;
     }
   }
