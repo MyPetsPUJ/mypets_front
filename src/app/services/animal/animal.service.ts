@@ -15,6 +15,7 @@ export class AnimalService {
   pathAdoptame: string = 'adoptame';
   pathFundacion: string = 'dashboard';
   pathMisAnimales: string = 'mis-animales';
+  pathEditarAnimal: string = 'editar-animal';
 
   // animales: Animal[] = [
   //   {nombreAnimal: 'Paca', edad: 11, tipo: 'Gato', raza: 'Carey', tamano: 'Pequeño'},
@@ -36,6 +37,12 @@ export class AnimalService {
       animales: EntidadAnimal[];
     }>(
       `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathFundacion}/${this.pathMisAnimales}/${id}`
+    );
+  }
+
+  getAnimalById(id: string) {
+    return this.http.get<EntidadAnimal>(
+      `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathFundacion}/${this.pathEditarAnimal}/${id}`
     );
   }
 
