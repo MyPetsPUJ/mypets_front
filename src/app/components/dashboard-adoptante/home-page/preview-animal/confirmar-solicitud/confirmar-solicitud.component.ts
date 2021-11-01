@@ -98,7 +98,7 @@ export class ConfirmarSolicitudComponent implements OnInit {
     }
     if(accion == 'cancelar')
     {
-      this.solicitudService.deleteSolicitud(this.data.adoptante, animal);
+      this.solicitudService.deleteSolicitud(this.data.adoptante);
       this.enviado = false;
     }
   }
