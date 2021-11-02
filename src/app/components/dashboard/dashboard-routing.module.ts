@@ -53,7 +53,7 @@ const routes: Routes = [
       { path: 'mis-animales/:id', component: UsuariosComponent },
       { path: 'fundaciones', component: FundacionesComponent },
       { path: 'editar-animal/:id', component: UpdateAnimalComponent },
-      { path: 'editar-punto/:id', component: UpdatePuntoComponent },
+      { path: 'mapa/editar-punto/:id', component: UpdatePuntoComponent },
     ],
   },
 ];

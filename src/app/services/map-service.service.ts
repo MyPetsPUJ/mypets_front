@@ -13,6 +13,7 @@ export class MapServiceService {
   dashboardPath: string = 'dashboard';
   adoptantePath: string = 'dashboard-adoptante';
   mapaPath: string = 'mapa';
+  editarPath: string = 'editar-punto';
 
   constructor(private http: HttpClient) {}
 
@@ -34,8 +35,17 @@ export class MapServiceService {
   }
 
   mostrarPuntosDeInteres() {
-    return this.http.get<{ fundaciones: UserFundacion[]; puntos: PuntoInteres[] }>(
+    return this.http.get<{
+      fundaciones: UserFundacion[];
+      puntos: PuntoInteres[];
+    }>(
       `http://${this.dominio}:${this.puerto}/${this.apiPath}/${this.adoptantePath}/${this.mapaPath}`
+    );
+  }
+
+  getPuntoById(id: string) {
+    return this.http.get<PuntoInteres>(
+      `http://${this.dominio}:${this.puerto}/${this.apiPath}/${this.dashboardPath}/${this.mapaPath}/${this.editarPath}/${id}`
     );
   }
 }

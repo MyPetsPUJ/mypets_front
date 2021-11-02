@@ -355,7 +355,7 @@ export class InicioComponent implements OnInit, OnDestroy {
   }
 
   onPuntoSelected(id: string) {
-    this._router.navigate(['/dashboard/editar-punto', id]);
+    this._router.navigate(['/dashboard/mapa/editar-punto', id]);
   }
 
   onFundacionSelected(id: string) {
