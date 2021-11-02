@@ -58,11 +58,19 @@ export class AdoptameComponent implements OnInit {
   //   }
    openPreview(animal: EntidadAnimal | any, solicitudes: EntidadSolicitudAdopcion[]) 
    {
-     
+
+    this.solicitudService.getSolicitudesAdoptante(this.userId).subscribe({
+      next:(res) => {
+        this.solicitudesAdop = res;
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
     const dialogRef = this.dialog.open(AnimalPreviewComponent, {
       width: '600px',
       height: '500px',
-      data: { animal: animal, solicitudes: solicitudes}
+      data: { animal: animal, solicitudes: this.solicitudesAdop}
     });
    }
 }

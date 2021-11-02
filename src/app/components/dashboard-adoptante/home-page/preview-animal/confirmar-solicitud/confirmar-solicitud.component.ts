@@ -19,7 +19,8 @@ export class ConfirmarSolicitudComponent implements OnInit {
   userId: string = '';
   private authListenerSubs: Subscription | undefined;
   enviado: boolean | undefined = false;
-  solicitudAdop: EntidadSolicitudAdopcion | undefined;
+  solicitudId: string ='';
+  solicitudAdop: EntidadSolicitudAdopcion | any;
   solicitudesAdop: EntidadSolicitudAdopcion[] =[];
   form: FormularioAdopcion | any;
   userAdoptante : UserAdoptante = {
@@ -65,6 +66,8 @@ export class ConfirmarSolicitudComponent implements OnInit {
         if(this.data.solicitudes[i].idAnimal == this.data.animal._id )
         {
           this.enviado = true;
+          this.solicitudId = this.data.solicitudes[i]._id;
+          console.log(this.solicitudId);
         }
       } 
   }
@@ -94,11 +97,13 @@ export class ConfirmarSolicitudComponent implements OnInit {
       }
       console.log(this.solicitudAdop);
       this.solicitudService.postSolicitudAdopcion(this.solicitudAdop);
+      this.solicitudId = this.solicitudAdop._id;
       this.enviado = true;
     }
     if(accion == 'cancelar')
     {
-      this.solicitudService.deleteSolicitud(this.data.adoptante, animal);
+      console.log(this.solicitudId);
+      this.solicitudService.deleteSolicitud(this.solicitudId);
       this.enviado = false;
     }
   }
