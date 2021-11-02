@@ -1,5 +1,6 @@
 import { Component,  Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { FormularioAdopcion } from 'src/app/components/interfaces/formularios/formularioAdopcion';
 import { EntidadSolicitudAdopcion } from 'src/app/components/interfaces/solicitud-adopcion/entidadSolicitudAdopcion';
@@ -9,6 +10,7 @@ import { EnviarSolicitudAdopcionService } from 'src/app/services/adopcion/enviar
 import { CrearAdoptanteService } from 'src/app/services/adoptante/crearAdoptante.service';
 import { LoginService } from 'src/app/services/auth/login.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { PreviewAnimalComponent } from '../preview-animal.component';
 @Component({
   selector: 'app-confirmar-solicitud',
   templateUrl: './confirmar-solicitud.component.html',
@@ -40,7 +42,7 @@ export class ConfirmarSolicitudComponent implements OnInit {
     solicitudesAdoptante:[]
   };
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private authService: LoginService, 
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private authService: LoginService, public dialog: MatDialog, 
   private solicitudService: EnviarSolicitudAdopcionService, private adoptanteService: CrearAdoptanteService, public dialogRef: MatDialogRef<ConfirmarSolicitudComponent>) {  
   }
 
@@ -106,6 +108,14 @@ export class ConfirmarSolicitudComponent implements OnInit {
       this.solicitudService.deleteSolicitud(this.solicitudId);
       this.enviado = false;
     }
+
+    /*const dialogRef = this.dialog.open(PreviewAnimalComponent, {
+      width: '600px',
+      height: '500px',
+      data: { animal: animal },
+    });*/
+    this.dialogRef.close();
   }
+
 
 }
