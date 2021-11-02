@@ -38,6 +38,7 @@ export class HomePageComponent implements OnInit {
     mision: '',
     vision: '',
     publicaciones: [],
+    puntos: [],
     ubicacion: '',
     _id: 'No importa',
   };

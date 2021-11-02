@@ -48,6 +48,7 @@ export class MiCuentaComponent implements OnInit {
     mision: '',
     vision: '',
     publicaciones: [],
+    puntos: [],
     ubicacion: [],
     _id: '',
   };
