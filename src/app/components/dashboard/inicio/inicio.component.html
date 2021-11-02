@@ -35,7 +35,7 @@
                 <mat-cell *matCellDef="let row">
                     <span class="mobile-label">Acción: </span> 
                     <mat-icon class="pointer" matTooltip="Ver punto" (click)="verPunto(row.latitude,row.longitude)">visibility</mat-icon>   
-                    <mat-icon class="pointer" matTooltip="Editar punto" (click)="editarPunto(row.latitude,row.longitude)">edit</mat-icon>   
+                    <mat-icon class="pointer" matTooltip="Editar punto" (click)="onPuntoSelected(row._id!)">edit</mat-icon>   
                     <mat-icon class="pointer" matTooltip="Eliminar punto" (click)="eliminarPunto(row.latitude,row.longitude)">delete</mat-icon>   
                 </mat-cell>
               </ng-container>
@@ -95,8 +95,8 @@
                             Dirección: {{punto.direccion}}
                         </p>
                     <div class="alinearDer">
-                        <mat-icon matTooltip="editar punto" class="pointer" (click)="editarPunto(coord.latitude,coord.longitude)">edit</mat-icon>
-                        <mat-icon matTooltip="eliminar punto" class="pointer" (click)="eliminarPunto(coord.latitude,coord.longitude)">delete</mat-icon>
+                        <mat-icon matTooltip="Editar punto" class="pointer" (click)="onPuntoSelected(punto._id!)">edit</mat-icon>
+                        <mat-icon matTooltip="eliminar punto" class="pointer">delete</mat-icon>
                     </div>
                     </div>
                 </agm-info-window>
@@ -112,8 +112,8 @@
                           Dirección: {{fundacion.direccion}}
                       </p>
                   <div class="alinearDer">
-                      <mat-icon matTooltip="editar punto" class="pointer" (click)="editarPunto(coord.latitude,coord.longitude)">edit</mat-icon>
-                      <mat-icon matTooltip="eliminar punto" class="pointer" (click)="eliminarPunto(coord.latitude,coord.longitude)">delete</mat-icon>
+                      <!-- <mat-icon matTooltip="editar punto" class="pointer" (click)="onPuntoSelected()">edit</mat-icon>
+                      <mat-icon matTooltip="eliminar punto" class="pointer" (click)="eliminarPunto(coord.latitude,coord.longitude)">delete</mat-icon> -->
                   </div>
                   </div>
               </agm-info-window>
@@ -156,7 +156,7 @@
                 <mat-cell *matCellDef="let row">
                     <span class="mobile-label">Acción: </span> 
                     <mat-icon class="pointer" matTooltip="Ver punto" (click)="verPunto(row.latitude,row.longitude)">visibility</mat-icon>   
-                    <mat-icon class="pointer" matTooltip="Editar punto" (click)="editarPunto(row.latitude,row.longitude)">edit</mat-icon>   
+                    <mat-icon class="pointer" matTooltip="Editar punto" (click)="onPuntoSelected(row._id!)">edit</mat-icon>   
                     <mat-icon class="pointer" matTooltip="Eliminar punto" (click)="eliminarPunto(row.latitude,row.longitude)">delete</mat-icon>   
                 </mat-cell>
               </ng-container>
@@ -217,8 +217,8 @@
                             Dirección: {{punto.direccion}}
                         </p>
                     <div class="alinearDer">
-                        <mat-icon matTooltip="editar punto" class="pointer" (click)="editarPunto(coord.latitude,coord.longitude)">edit</mat-icon>
-                        <mat-icon matTooltip="eliminar punto" class="pointer" (click)="eliminarPunto(coord.latitude,coord.longitude)">delete</mat-icon>
+                        <mat-icon matTooltip="Editar punto" class="pointer" (click)="onPuntoSelected(punto._id!)">edit</mat-icon>
+                        <mat-icon matTooltip="Eliminar punto" class="pointer" (click)="eliminarPunto(coord.latitude,coord.longitude)">delete</mat-icon>
                     </div>
                     </div>
                 </agm-info-window>
@@ -234,8 +234,8 @@
                           Dirección: {{fundacion.direccion}}
                       </p>
                   <div class="alinearDer">
-                      <mat-icon matTooltip="editar punto" class="pointer" (click)="editarPunto(coord.latitude,coord.longitude)">edit</mat-icon>
-                      <mat-icon matTooltip="eliminar punto" class="pointer" (click)="eliminarPunto(coord.latitude,coord.longitude)">delete</mat-icon>
+                      <mat-icon matTooltip="Editar mi cuenta" class="pointer" (click)="onFundacionSelected(fundacion._id!)">edit</mat-icon>
+                      <!-- <mat-icon matTooltip="eliminar punto" class="pointer" (click)="eliminarPunto(coord.latitude,coord.longitude)">delete</mat-icon> -->
                   </div>
                   </div>
               </agm-info-window>

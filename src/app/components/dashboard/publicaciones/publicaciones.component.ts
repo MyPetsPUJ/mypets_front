@@ -45,6 +45,7 @@ export class PublicacionesComponent implements OnInit {
     mision: '',
     vision: '',
     publicaciones: [],
+    puntos: [],
     ubicacion: null,
     _id: '',
   };
