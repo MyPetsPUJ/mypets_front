@@ -5,11 +5,14 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { SSL_OP_ALL } from 'constants';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { EnviarSolicitudAdopcionService } from 'src/app/services/adopcion/enviar-solicitud-adopcion.service';
 import { CrearAdoptanteService } from 'src/app/services/adoptante/crearAdoptante.service';
 import { AnimalService } from 'src/app/services/animal/animal.service';
 import { CrearAnimalService } from 'src/app/services/animal/crearAnimal.service';
 import { LoginService } from 'src/app/services/auth/login.service';
+import { EnviarFormularioAdopcionService } from 'src/app/services/formulario/enviar-formulario-adopcion.service';
 import { FormularioAdopcion } from '../../interfaces/formularios/formularioAdopcion';
 import { EntidadSolicitudAdopcion } from '../../interfaces/solicitud-adopcion/entidadSolicitudAdopcion';
 import { EntidadAnimal } from '../../interfaces/usuarios/entidadAnimal';
@@ -69,10 +72,12 @@ export class SolicitudesComponent implements OnInit {
   animales: EntidadAnimal[] = [];
   fundacion: UserFundacion | undefined;
   datosTabla: any[] = [];
+  datosTablaForm: any[] = [];
   solis: any[] = [];
 
   constructor(private authService: LoginService, private adoptanteService: CrearAdoptanteService, private animalService: AnimalService,
-    private dialog: MatDialog, fb: FormBuilder, private solicitudService: EnviarSolicitudAdopcionService) {
+    private dialog: MatDialog, fb: FormBuilder, private solicitudService: EnviarSolicitudAdopcionService,
+    private formularioService: EnviarFormularioAdopcionService) {
     this.estados = fb.group
       ({
         solicitudesAdop: false,
@@ -98,8 +103,9 @@ export class SolicitudesComponent implements OnInit {
 
   }
   cargarDatosSolicitudes() {
+    this.datosTabla = [];
     this.fundacionId = this.authService.getUserId();
-    this.solicitudService.populateSolicitudesFundaciones(this.fundacionId).subscribe((res) => {
+    this.solicitudService.populateSolicitudesFundaciones(this.fundacionId).subscribe(async (res) => {
       console.log(res);
       console.log("Fundacion:", res.fundacion);
       console.log("solicitudes:", res.solicitudes);
@@ -114,13 +120,15 @@ export class SolicitudesComponent implements OnInit {
       console.log('AKJKLSAJKASLDJ ', this.solis);
       var filaTabla;
       var encontrado = false;
-      this.animalService.getAnimales().subscribe((resAnimales) => {
+      let formulario: any;
+      var subject = new Subject<any>()
+      this.animalService.getAnimales().subscribe(async (resAnimales) => {
         for (var i = 0; i < this.solis.length; i++) {
           for (var j = 0; j < this.adoptantesAnimales.length; j++) {
             for (var k = 0; k < resAnimales.length; k++) {
               if (this.solis[i].idAnimal._id == resAnimales[k]._id &&
                 this.adoptantesAnimales[j]._id == this.solis[i].idAdoptante) {
-                if (!encontrado) {
+                if (!encontrado && this.solis[i].estado == 'En espera') {
                   filaTabla =
                   {
                     animal: resAnimales[k],
@@ -130,6 +138,25 @@ export class SolicitudesComponent implements OnInit {
                   this.datosTabla.push(filaTabla);
                   encontrado = true
                 }
+
+                if (!encontrado && this.solis[i].estado == 'Aceptado, formulario en espera de respuesta.') {
+                  this.formularioService.getFormularioSolicitud(this.solis[i]._id).subscribe(data => {
+                    formulario = data
+                    subject.next(formulario);
+                  });
+                  var form = await subject.asObservable().pipe(take(1)).toPromise();
+                  filaTabla =
+                  {
+                    animal: resAnimales[k],
+                    adoptante: this.adoptantesAnimales[j],
+                    solicitud: this.solis[i],
+                    formulario: form
+                  }
+                  console.log(filaTabla.formulario);
+                  this.datosTablaForm.push(filaTabla);
+                  encontrado = true;
+                }
+
               }
             }
           }
@@ -137,18 +164,9 @@ export class SolicitudesComponent implements OnInit {
         }
         //console.log('Estos son los datos a mostrar ', this.datosTabla);
         this.dataSource1 = new MatTableDataSource(this.datosTabla);
+        this.dataSource = new MatTableDataSource(this.datosTablaForm);
       });
 
-    });
-
-    this.animalService.getAnimales().subscribe({
-      next: (res) => {
-        //console.log(res);
-        this.animales = res;
-      },
-      error: (error) => {
-        console.log(error);
-      }
     });
   }
 
@@ -168,29 +186,18 @@ export class SolicitudesComponent implements OnInit {
     setTimeout(() => this.dataSource1.paginator = this.paginator1);
   }
   accion(nombre: string, index: number) {
-    if (nombre == 'Aceptado' || nombre == 'Rechazado') {
-      if(nombre == 'Aceptado')
-        this.solicitudService.actualizarEstadoSolicitud(this.datosTabla[index].solicitud._id,'Aceptado, formulario no enviado.');
-      if(nombre == 'Rechazado')
-        this.solicitudService.actualizarEstadoSolicitud(this.datosTabla[index].solicitud._id,'Rechazado, sin posibilidad de enviar formulario.');
-      for (var i = 0; i < this.solicitudService.getSolicitudesQuemadas().length; i++) {
-        if (this.solicitudesAdopcion[index] == this.solicitudService.getSolicitudesQuemadas()[i]) {
-          this.solicitudService.getSolicitudesQuemadas()[i].estado = nombre;
-          if (nombre == 'Aceptado') {
-            this.solicitudService.getSolicitudesQuemadas()[i].estado = nombre + ', formulario no enviado.';
-          }
-          if (nombre == 'Rechazado') {
-            this.solicitudService.getSolicitudesQuemadas()[i].estado = nombre + ', sin posibilidad de enviar formulario.';
-          }
-        }
-      }
-      this.cargarDatosSolicitudes();
+    if (nombre == 'Aceptado') {
+      console.log('ID SOLICITUD: ', this.datosTabla[index].solicitud._id);
+      this.solicitudService.actualizarEstadoSolicitud(this.datosTabla[index].solicitud._id, 'Aceptado, formulario no enviado.');
     }
+    if (nombre == 'Rechazado')
+      this.solicitudService.actualizarEstadoSolicitud(this.datosTabla[index].solicitud._id, 'Rechazado, sin posibilidad de enviar formulario.');
+    this.cargarDatosSolicitudes();
     if (nombre == 'adoptante') {
       const dialogRef = this.dialog.open(FormulariosViewComponent, {
         width: '830px',
         height: '600px',
-        data: { adoptante: this.datosTabla[index].adoptante, accion:'adoptante' },
+        data: { adoptante: this.datosTabla[index].adoptante, accion: 'adoptante' },
       });
     }
   }

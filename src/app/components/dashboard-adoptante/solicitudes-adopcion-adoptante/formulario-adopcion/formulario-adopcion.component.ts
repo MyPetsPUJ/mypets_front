@@ -36,7 +36,7 @@ export class FormularioAdopcionComponent implements OnInit {
   @Output() salida: EventEmitter<any> = new EventEmitter();
   formAdopcion: FormularioAdopcion | undefined;
   ngOnInit(): void {
-    console.log(this.data);
+    console.log('la data es: ',this.data);
   }
   tiempoConocimiento: any[] = [
     'Entre 0 y 2 años',
@@ -231,7 +231,9 @@ export class FormularioAdopcionComponent implements OnInit {
       referenciaPersonal,
     };
     //this.authservice.crearUsuarioAdoptante(datosAdoptante);
-    this.enviarFormularioAdopcionService.formularioAdopcion(formularioAdopcion);
+    this.solicitudService.actualizarEstadoSolicitud(this.data._id,'Aceptado, formulario en espera de respuesta.')
+    this.enviarFormularioAdopcionService.formularioAdopcion(formularioAdopcion,this.data._id);
+    this.salir();
   }
   salir()
   {
