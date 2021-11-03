@@ -14,12 +14,17 @@ export class EnviarFormularioAdopcionService {
   subTipoEntidadII: string = "solicitud-adopcion";
   SubTipoEntidadIII: string ="solicitudes-adopcion-adoptante";
   SubTipoEntidadIV: string = "formulario-solicitud"
+  subTipoEntidadV: string = "formulario-adopcion";
 
   constructor(private http: HttpClient) { }
 
-  formularioAdopcion( formularioAdopcion: FormularioAdopcion)
+  formularioAdopcion( formularioAdopcion: FormularioAdopcion, id : string )
   {
-    this.http.post(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.subTipoEntidadII}`, formularioAdopcion)
+    const body = { idSolicitud :id , adoptante: formularioAdopcion.adoptante ,informacionFamiliar: formularioAdopcion.informacionFamiliar , informacionRelacionada:formularioAdopcion.informacionRelacionada , referenciaFamiliar: formularioAdopcion.referenciaFamiliar , referenciaPersonal: formularioAdopcion.referenciaPersonal};
+
+    console.log("Llego")
+    console.log("body",body);
+    this.http.post(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.SubTipoEntidadIII}/${this.subTipoEntidadV}`, body)
     .subscribe(respuesta => {
       console.log(respuesta);
     })
@@ -27,7 +32,7 @@ export class EnviarFormularioAdopcionService {
 
   getFormularioSolicitud(id : string)
   {
-    this.http.get(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.SubTipoEntidadIII}/${this.SubTipoEntidadIV}/${id}`
+    this.http.get<any>(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.SubTipoEntidadIII}/${this.SubTipoEntidadIV}/${id}`
     );
   }
 
