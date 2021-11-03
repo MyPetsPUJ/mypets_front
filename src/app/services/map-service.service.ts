@@ -48,4 +48,10 @@ export class MapServiceService {
       `http://${this.dominio}:${this.puerto}/${this.apiPath}/${this.dashboardPath}/${this.mapaPath}/${this.editarPath}/${id}`
     );
   }
+
+  deletePunto(id: string) {
+    return this.http.delete(
+      `http://${this.dominio}:${this.puerto}/${this.apiPath}/${this.dashboardPath}/${this.mapaPath}/${id}`
+    );
+  }
 }

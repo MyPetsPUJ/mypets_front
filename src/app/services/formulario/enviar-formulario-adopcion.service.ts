@@ -12,6 +12,8 @@ export class EnviarFormularioAdopcionService {
   entidad: string = "dashboard-adoptante";
   subTipoEntidad: string = "adoptame";
   subTipoEntidadII: string = "solicitud-adopcion";
+  SubTipoEntidadIII: string ="solicitudes-adopcion-adoptante";
+  SubTipoEntidadIV: string = "formulario-solicitud"
 
   constructor(private http: HttpClient) { }
 
@@ -22,4 +24,11 @@ export class EnviarFormularioAdopcionService {
       console.log(respuesta);
     })
   }
+
+  getFormularioSolicitud(id : string)
+  {
+    this.http.get(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.SubTipoEntidadIII}/${this.SubTipoEntidadIV}/${id}`
+    );
+  }
+
 }
