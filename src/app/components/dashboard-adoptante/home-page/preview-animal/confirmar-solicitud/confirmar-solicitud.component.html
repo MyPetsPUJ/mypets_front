@@ -27,18 +27,30 @@
         *ngIf="usuarioAutenticado"
         (click)="accion('cerrar')"
       >
-        Cancelar
+        Volver
       </button>
     </div>
   </div>
-  <div *ngIf="enviado" class="boton">
-    <button
-      mat-raised-button
-      color="warn"
-      *ngIf="usuarioAutenticado"
-      (click)="solicitud(data.animal, userAdoptante, 'cancelar')"
-    >
-      Cancelar
-    </button>
+  <div *ngIf="enviado" >
+    <div class="boton">
+      <button
+        mat-raised-button
+        color="warn"
+        *ngIf="usuarioAutenticado"
+        (click)="solicitud(data.animal, userAdoptante, 'cancelar')"
+      >
+      Cancelar Solicitud
+      </button>
+    </div>
+    <div class="boton">
+      <button
+        mat-raised-button
+        color="warn"
+        *ngIf="usuarioAutenticado"
+        (click)="accion('cerrar')"
+      >
+        Cancelar
+      </button>
+    </div>
   </div>
 </div>
