@@ -305,6 +305,14 @@ export class InicioComponent implements OnInit, OnDestroy {
       }
     }
   }
+
+  onEliminarPunto(id: string) {
+    console.log('Id punto', id);
+    this.mapService.deletePunto(id).subscribe((res) => {
+      console.log(id);
+      this._router.navigate(['/dashboard']);
+    });
+  }
   eliminarPuntos() {
     this.coordenadas = [];
   }

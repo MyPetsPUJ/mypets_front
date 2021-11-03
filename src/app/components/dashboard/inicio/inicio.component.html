@@ -39,7 +39,7 @@
                     <span class="mobile-label">Acción: </span> 
                     <mat-icon class="pointer" matTooltip="Ver punto" (click)="verPunto(row.latitude,row.longitude)">visibility</mat-icon>   
                     <mat-icon class="pointer" matTooltip="Editar punto" (click)="onPuntoSelected(row._id!)">edit</mat-icon>   
-                    <mat-icon class="pointer" matTooltip="Eliminar punto" (click)="eliminarPunto(row.latitude,row.longitude)">delete</mat-icon>   
+                    <mat-icon class="pointer" matTooltip="Eliminar punto" (click)="onEliminarPunto(row._id!)">delete</mat-icon>   
                 </mat-cell>
               </ng-container>
           
@@ -100,7 +100,7 @@
                         </p>
                     <div class="alinearDer">
                         <mat-icon matTooltip="Editar punto" class="pointer" (click)="onPuntoSelected(punto._id!)">edit</mat-icon>
-                        <mat-icon matTooltip="Eliminar punto" class="pointer" (click)="eliminarPunto(coord.latitude,coord.longitude)">delete</mat-icon>
+                        <mat-icon matTooltip="Eliminar punto" class="pointer" (click)="onEliminarPunto(punto._id!)">delete</mat-icon>
                     </div>
                     </div>
                 </agm-info-window>

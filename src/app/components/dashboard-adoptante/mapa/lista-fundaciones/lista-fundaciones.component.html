@@ -1,10 +1,10 @@
 <div class="alinear">
   <h1><b> <i> {{data.fundacion.nombreFund}} </i> </b></h1>
-  <img [src]="data.fundacion.urlImg" mat-card-image width="70%" class="container crop">
+  <img [src]="'http://localhost:3000/' + data.fundacion.urlImg" mat-card-image width="70%" class="container crop">
   <h3>
     <div>
       <b>Fecha de creación: </b>
-      <i>{{data.fundacion.fecha_creacion}}</i>
+      <i>{{data.fundacion.fecha_creacion | date: "dd/MM/yyyy"   }}</i>
     </div>
     </h3>
   <mat-grid-list cols="1" rowHeight="50px">
