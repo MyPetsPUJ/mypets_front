@@ -79,9 +79,17 @@ export class EnviarSolicitudAdopcionService {
 
   actualizarEstadoSolicitud(id: string,estado: string)
   {
-    return this.http.put(
-      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidadII}/${this.subTipoEntidadVI}/${id}`,estado
+    
+    const body = { estado: estado };
+    
+    return this.http.put<any>(
+      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidadII}/${this.subTipoEntidadVI}/${id}`,body
     );
+  }
+  getSolicitudes(id: string)
+  {
+    return this.http.get<any>(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.subTipoEntidadII}/${id}`
+    )
   }
 
 }
