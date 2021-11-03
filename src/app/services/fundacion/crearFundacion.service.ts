@@ -34,6 +34,7 @@ export class CrearFundacionService {
       mision: 'misión 1',
       vision: 'visión 1',
       publicaciones: [],
+      puntos: [],
       ubicacion: '',
       _id: '123',
     },

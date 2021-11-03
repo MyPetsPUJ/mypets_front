@@ -1,4 +1,5 @@
 import { EntidadPublicacion } from '../entidadPublicacion';
+import { PuntoInteres } from '../entidadPuntoInteres';
 
 export interface UserFundacion {
   nombreFund: string;
@@ -20,6 +21,7 @@ export interface UserFundacion {
   mision: string;
   vision: string;
   publicaciones: Array<EntidadPublicacion>;
+  puntos: Array<PuntoInteres>
   ubicacion: any;
   _id: string;
 }

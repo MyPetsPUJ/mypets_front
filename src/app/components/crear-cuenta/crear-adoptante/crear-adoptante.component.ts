@@ -2,11 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CrearAdoptanteService } from 'src/app/services/adoptante/crearAdoptante.service';
-import { LocalidadesService } from 'src/app/services/datos-app/localidades.service';
 import { Localidad } from '../../interfaces/datos-app/entidadLocalidad';
 import { Genero } from '../../interfaces/datos-app/entidadGenero';
-import { GenerosService } from 'src/app/services/datos-app/generos.service';
-import { TipoDocsService } from 'src/app/services/datos-app/tipo-docs.service';
+import { DatosCrearAdoptanteService } from 'src/app/services/datos-app/datos-crear-adoptante.service';
 import { TipoDoc } from '../../interfaces/datos-app/entidadTipoDoc';
 import { Router } from '@angular/router';
 
@@ -19,39 +17,15 @@ export class CrearAdoptanteComponent implements OnInit {
   minDate: Date | any;
   maxDate: Date | any;
   generos: Genero[] = [];
+  localidadesBack: Localidad[] = [];
   tipo_docs: TipoDoc[] = [];
   file!: File;
   photoSelected: string | ArrayBuffer = '';
 
-  localidades: any[] = [
-    '1.Usaquén',
-    '2.Chapinero',
-    '3.Santa Fé',
-    '4.San Cristobal',
-    '5.Usme',
-    '6. Tunjuelito',
-    '7.Bosa',
-    '8.Kennedy',
-    '9.Fontibón',
-    '10.Engativá',
-    '11.Suba',
-    '12.Barrios Unidos',
-    '13.Teusaquillo',
-    '14.Los Mártires',
-    '15.Antonio Nariño',
-    '16.Puente Aranda',
-    '17.Candelaria',
-    '18.Rafael Uribe Uribe',
-    '19.Ciudad Bolivar',
-    '20.Sumapaz',
-  ];
-
   constructor(
     public crearAdoptanteService: CrearAdoptanteService,
     private sanitizer: DomSanitizer,
-    private getLocalidadesService: LocalidadesService,
-    private getGenerosService: GenerosService,
-    private getTipoDocService: TipoDocsService,
+    private getDatosService: DatosCrearAdoptanteService,
     private _router: Router
   ) {
     const currentYear = new Date().getFullYear();
@@ -63,19 +37,7 @@ export class CrearAdoptanteComponent implements OnInit {
   // localidades: Localidad[] = [];
   ngOnInit(): void {
     this.previsualizacion = '../../../assets/Images/adopt.png';
-    // this.getLocalidadesService.getLocalidadesAdoptante().subscribe(
-    //   (res) => {
-    //     console.log(res);
-    //   },
-    //   (err) => console.log(err)
-    // );
-
-    this.getTipoDocService.getTipoDocAdoptante().subscribe(
-      (res) => {
-        console.log(res);
-      },
-      (err) => console.log(err)
-    );
+    this.cargarDatos();
   }
   tiles: any[] = [
     { text: 'One', cols: 3, rows: 1, color: 'lightblue' },
@@ -86,8 +48,13 @@ export class CrearAdoptanteComponent implements OnInit {
   selectedValue: string | undefined;
   selectedCar: string | undefined;
 
-  genero: any[] = ['Masculino', 'Femenino'];
-  tipo_doc: any[] = ['Cédula de ciudadanía', 'Cédula de extranjería'];
+  cargarDatos() {
+    this.getDatosService.getDatos().subscribe((res) => {
+      this.generos = res.generos;
+      this.tipo_docs = res.tipo_docs;
+      this.localidadesBack = res.localidades;
+    });
+  }
 
   onSignUp(form: NgForm) {
     console.log(form.value);
@@ -123,34 +90,4 @@ export class CrearAdoptanteComponent implements OnInit {
       reader.readAsDataURL(this.file);
     }
   }
-
-  onFileInput(event): any {
-    const archivo = event.target.files[0];
-    this.archivos.push(archivo);
-    this.extraerBase64(archivo).then((imagen: any) => {
-      this.previsualizacion = imagen.base;
-    });
-  }
-  extraerBase64 = async ($event: any) =>
-    new Promise((resolve) => {
-      try {
-        const unsafeImg = window.URL.createObjectURL($event);
-        const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
-        const reader = new FileReader();
-        reader.readAsDataURL($event);
-        reader.onload = () => {
-          resolve({
-            base: reader.result,
-          });
-        };
-        reader.onerror = (error) => {
-          resolve({
-            base: null,
-          });
-        };
-        return resolve;
-      } catch (e) {
-        return null;
-      }
-    });
 }
