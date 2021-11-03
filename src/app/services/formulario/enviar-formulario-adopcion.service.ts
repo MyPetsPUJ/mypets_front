@@ -20,9 +20,13 @@ export class EnviarFormularioAdopcionService {
 
   formularioAdopcion( formularioAdopcion: FormularioAdopcion, id : string )
   {
-    const body = { idSolicitud :id , adoptante: formularioAdopcion.adoptante ,informacionFamiliar: formularioAdopcion.informacionFamiliar , informacionRelacionada:formularioAdopcion.informacionRelacionada , referenciaFamiliar: formularioAdopcion.referenciaFamiliar , referenciaPersonal: formularioAdopcion.referenciaPersonal};
+    const body = { idSolicitud :id , adoptante: formularioAdopcion.adoptante,
+      informacionFamiliar: formularioAdopcion.informacionFamiliar , 
+      informacionRelacionada:formularioAdopcion.informacionRelacionada , 
+      referenciaFamiliar: formularioAdopcion.referenciaFamiliar , 
+      referenciaPersonal: formularioAdopcion.referenciaPersonal
+    };
 
-    console.log("Llego")
     console.log("body",body);
     this.http.post(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.SubTipoEntidadIII}/${this.subTipoEntidadV}`, body)
     .subscribe(respuesta => {
@@ -32,7 +36,7 @@ export class EnviarFormularioAdopcionService {
 
   getFormularioSolicitud(id : string)
   {
-    this.http.get<any>(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.SubTipoEntidadIII}/${this.SubTipoEntidadIV}/${id}`
+    return this.http.get<any>(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.SubTipoEntidadIII}/${this.SubTipoEntidadIV}/${id}`
     );
   }
 
