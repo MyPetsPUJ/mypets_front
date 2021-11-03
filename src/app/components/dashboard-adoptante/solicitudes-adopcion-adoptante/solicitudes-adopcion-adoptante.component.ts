@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { EntidadEstadoSolicitudAdopcion } from '../../interfaces/solicitud-adopcion/entidadEstadoSolicitudAdopcion';
 import { EstadoSolicitudAdopcionService } from 'src/app/services/adopcion/estado-solicitud-adopcion.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -11,6 +11,8 @@ import { CrearAdoptanteService } from 'src/app/services/adoptante/crearAdoptante
 import { FormularioAdopcionComponent } from './formulario-adopcion/formulario-adopcion.component';
 import { EnviarFormularioAdopcionService } from 'src/app/services/formulario/enviar-formulario-adopcion.service';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/auth/login.service';
+import { AnimalService } from 'src/app/services/animal/animal.service';
 
 
 @Component({
@@ -22,34 +24,52 @@ import { Router } from '@angular/router';
 export class SolicitudesAdopcionAdoptanteComponent implements OnInit {
   solicitudes: EntidadSolicitudAdopcion[] = [];
   solicitud: EntidadSolicitudAdopcion | undefined;
-  displayedColumns: String[] = ['foto','estado', 'fecha', 'formulario'];
+  displayedColumns: String[] = ['foto', 'estado', 'fecha', 'formulario'];
   dataSource!: MatTableDataSource<any>;
-  formulario: boolean  = false;
+  formulario: boolean = false;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-   servicio: EnviarFormularioAdopcionService | any;
+  datosTabla: any[] = [];
+  servicio: EnviarFormularioAdopcionService | any;
   constructor(private solicitudesService: EnviarSolicitudAdopcionService, private snackbar: MatSnackBar,
-    private adoptantesService: CrearAdoptanteService, private router: Router) { }
-  
+    private adoptantesService: CrearAdoptanteService, private router: Router, private authService: LoginService,
+    private animalService: AnimalService) { }
+
   ngOnInit(): void {
     this.cargarSolicitudes();
   }
-  cargarSolicitudes()
-  {
+  cargarSolicitudes() {
+    var userId = this.authService.getUserId();
+    var filaDatos;
+    var encontrado = false;
+    this.solicitudesService.getSolicitudesAdoptante(userId).subscribe((res) => {
+      this.solicitudes = res;
+      this.animalService.getAnimales().subscribe((resAnimal) => {
+        for (var i = 0; i < this.solicitudes.length; i++) {
+          for (var j = 0; j < resAnimal.length && !encontrado; j++) {
+            if (this.solicitudes[i].idAnimal == resAnimal[j]._id) {
+              
+              encontrado = true;
+              filaDatos =
+              {
+                solicitud: this.solicitudes[i],
+                animal: resAnimal[j]
+              }
+              this.datosTabla.push(filaDatos);
+            }
+          }
+          encontrado = false;
+        }
+        console.log(this.datosTabla);
+        this.dataSource = new MatTableDataSource(this.datosTabla);
+      });
+    });
+    //console.log( this.solicitudesService.getSolicitudesAdoptante(userId));
     //Encontrar el adoptante, codigo para encontrarlo
     var index = 1; // Eso se debe quitar, es solo por ser datos quemados
     //index = this.adoptantesService.getIndex(adoptante)  //Esto se debe dejar cuando se tenga el id del adoptante logueado
     //se obtienen las solicitudes realizadas por el usuario en específico
-    for(var i = 0; i < this.solicitudesService.getSolicitudesQuemadas().length; i++)
-    {
-      if(this.solicitudesService.getSolicitudesQuemadas()[i].adoptante == this.adoptantesService.getAdoptantes()[index])
-      {
-        //solo imprimirá las solicitudes de un adoptante en específico (el que se encuentra logueado)
-        this.solicitud = this.solicitudesService.getSolicitudesQuemadas()[i];
-        this.solicitudes.push(this.solicitud);
-      }
-    }
-    this.dataSource = new MatTableDataSource(this.solicitudes);
+
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -60,20 +80,16 @@ export class SolicitudesAdopcionAdoptanteComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  accion(nombre: string,solicitud: EntidadSolicitudAdopcion)
-  {
-    if(nombre == 'eliminar')
-    {
+  accion(nombre: string, solicitud: EntidadSolicitudAdopcion) {
+    if (nombre == 'eliminar') {
 
     }
-    if(nombre == 'formulario')
-    {
+    if (nombre == 'formulario') {
       this.solicitud = solicitud;
       this.formulario = true;
     }
   }
-  salir(data)
-  {
+  salir(data) {
     this.formulario = data;
   }
 }

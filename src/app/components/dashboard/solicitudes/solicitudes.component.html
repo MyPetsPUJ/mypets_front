@@ -105,7 +105,7 @@
 <div class="noForm">
   <div
     *ngIf="
-      solicitudesAdopcion.length == 0 && estados.controls.solicitudesAdop.value
+      solicitudesAdopcion2.length == 0 && estados.controls.solicitudesAdop.value
     "
     class="tam"
   >
@@ -114,7 +114,7 @@
     </mat-toolbar>
   </div>
 </div>
-<div *ngIf="solicitudesAdopcion.length > 0" [formGroup]="estados">
+<div *ngIf="solicitudesAdopcion2.length > 0" [formGroup]="estados">
   <div
     class="mat-elevation-z8"
     class="tam example-container"

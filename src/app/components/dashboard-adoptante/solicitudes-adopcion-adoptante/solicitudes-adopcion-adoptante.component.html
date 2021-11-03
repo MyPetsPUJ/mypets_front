@@ -19,7 +19,7 @@
         <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</mat-header-cell>
         <mat-cell *matCellDef="let element">
           <span class="mobile-label">Fecha: </span>
-          {{ element.fecha | date: "dd/MM/yyyy" }}
+          {{ element.solicitud.fecha_solicitud | date: "dd/MM/yyyy" }}
         </mat-cell>
       </ng-container>
 
@@ -29,7 +29,7 @@
         </mat-header-cell>
         <mat-cell *matCellDef="let element">
           <span class="mobile-label">Solicitud: </span>
-          {{ element.estado }}
+          {{ element.solicitud.estado }}
         </mat-cell>
       </ng-container>
       <ng-container matColumnDef="formulario">
@@ -37,30 +37,30 @@
         <mat-cell *matCellDef="let element">
           <span class="mobile-label">Formulario: </span>
           <!--Si está en espera la solicitud-->
-          <div *ngIf="element.estado == 'En espera'" class="agrandar">
+          <div *ngIf="element.solicitud.estado == 'En espera'" class="agrandar">
             <mat-icon [ngStyle]="{'color':'grey'}">feed</mat-icon>
             <i style="color: white">....</i>
             <mat-icon [ngStyle]="{'color':'red'}" class="pointer" 
-            (click)="accion('eliminar',element)" matTooltip="Eliminar solicitud">delete</mat-icon>
+            (click)="accion('eliminar',element.solicitud)" matTooltip="Eliminar solicitud">delete</mat-icon>
           </div>
           <!--Si el formulario está por enviarse-->
-          <div *ngIf="element.estado == 'Aceptado, formulario no enviado.'" class="agrandar">
+          <div *ngIf="element.solicitud.estado == 'Aceptado, formulario no enviado.'" class="agrandar">
             <mat-icon [ngStyle]="{'color':'green'}" class="pointer" matTooltip="Llenar formulario"
-             (click)="accion('formulario',element)">feed</mat-icon>
+             (click)="accion('formulario',element.solicitud)">feed</mat-icon>
             <i style="color: white">....</i>
             <mat-icon [ngStyle]="{'color':'red'}" class="pointer" 
-            (click)="accion('eliminar',element)" matTooltip="Eliminar solicitud">delete</mat-icon>
+            (click)="accion('eliminar',element.solicitud)" matTooltip="Eliminar solicitud">delete</mat-icon>
           </div>
           <!--Si la solicitud fue rechazada-->
-          <div *ngIf="element.estado == 'Rechazado, sin posibilidad de enviar formulario.'" class="agrandar">
+          <div *ngIf="element.solicitud.estado == 'Rechazado, sin posibilidad de enviar formulario.'" class="agrandar">
             <mat-icon [ngStyle]="{'color':'grey'}">feed</mat-icon>
             <i style="color: white">....</i>
             <mat-icon [ngStyle]="{'color':'red'}" class="pointer" 
-            (click)="accion('eliminar',element)" matTooltip="Eliminar solicitud">delete</mat-icon>
+            (click)="accion('eliminar',element.solicitud)" matTooltip="Eliminar solicitud">delete</mat-icon>
           </div>
 
           <!--Si la solicitud fue rechazada-->
-          <div *ngIf="element.estado == 'Aceptado, formulario en espera de respuesta.'" class="agrandar">
+          <div *ngIf="element.solicitud.estado == 'Aceptado, formulario en espera de respuesta.'" class="agrandar">
             <mat-icon [ngStyle]="{'color':'yellow'}">feed</mat-icon>
             <i style="color: white">....</i>
             <mat-icon [ngStyle]="{'color':'red'}" class="pointer" 

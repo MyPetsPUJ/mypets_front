@@ -66,16 +66,7 @@ export class EnviarSolicitudAdopcionService {
     })
   }
 
-  deleteSolicitu(usuario: UserAdoptante, animal: EntidadAnimal)
-  {
-    for(var i = 0; i < this.solicitudes.length; i++)
-    {
-      if( usuario == this.solicitudes[i].adoptante && animal == this.solicitudes[i].animal)
-      {
-        this.solicitudes.splice(i,1);
-      }
-    }
-  }
+  
 
   actualizarEstadoSolicitud(id: string,estado: string)
   {
