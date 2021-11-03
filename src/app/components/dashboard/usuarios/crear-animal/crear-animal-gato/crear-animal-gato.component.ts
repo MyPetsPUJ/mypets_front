@@ -8,6 +8,15 @@ import { VacunasService } from 'src/app/services/datos-app/vacunas.service';
 import { Vacuna } from 'src/app/components/interfaces/datos-app/entidadVacuna';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DatosAnimalService } from 'src/app/services/datos-app/datos-animal.service';
+import { Edad } from 'src/app/components/interfaces/datos-app/datos-animal/entidadEdadAnimal';
+import { ColorOjos } from 'src/app/components/interfaces/datos-app/datos-animal/entidadColorOjos';
+import { Desparasitado } from 'src/app/components/interfaces/datos-app/datos-animal/entidadDesparasitado';
+import { GeneroAnimal } from 'src/app/components/interfaces/datos-app/datos-animal/entidadGeneroAnimal';
+import { Situacion } from 'src/app/components/interfaces/datos-app/datos-animal/entidadSituacion';
+import { Tamano } from 'src/app/components/interfaces/datos-app/datos-animal/entidadTamano';
+import { TipoAnimal } from 'src/app/components/interfaces/datos-app/datos-animal/entidadTipoAnimal';
+import { TipoPelaje } from 'src/app/components/interfaces/datos-app/datos-animal/entidadTipoPelaje';
 
 export interface Vacuna_box {
   nombre: String;
@@ -26,6 +35,14 @@ interface HtmlInputEvent extends Event {
   styleUrls: ['./crear-animal-gato.component.css'],
 })
 export class CrearAnimalGatoComponent implements OnInit {
+  colorOjos: ColorOjos[] = [];
+  desparasitados: Desparasitado[] = [];
+  edades: Edad[] = [];
+  generosAnimal: GeneroAnimal[] = [];
+  situaciones: Situacion[] = [];
+  tamanos: Tamano[] = [];
+  tiposAnimal: TipoAnimal[] = [];
+  tiposPelaje: TipoPelaje[] = [];
   minDate: Date | any;
   maxDate: Date | any;
   constructor(
@@ -33,7 +50,8 @@ export class CrearAnimalGatoComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private getVacunasService: VacunasService,
     private _router: Router,
-    private _snackbar: MatSnackBar
+    private _snackbar: MatSnackBar,
+    private getDatosAnimal: DatosAnimalService
   ) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 19, 0, 1);
@@ -47,6 +65,7 @@ export class CrearAnimalGatoComponent implements OnInit {
   photoSelected: string | ArrayBuffer = '';
   ngOnInit(): void {
     this.previsualizacion = '../../../assets/Images/cat-form.png';
+    this.cargarDatos();
     this.getVacunasService.getVacunasGato().subscribe(
       (res) => {
         this.vacunas = res;
@@ -54,61 +73,6 @@ export class CrearAnimalGatoComponent implements OnInit {
       (err) => console.log(err)
     );
   }
-
-  edad: any[] = [
-    'menos de 1 mes ',
-    '1 mes',
-    '2 meses',
-    '3 meses',
-    '4 meses',
-    '5 meses',
-    '6 meses',
-    '7 meses',
-    '8 meses',
-    '9 meses',
-    '10 meses',
-    '11 meses',
-    '1 año',
-    '2 años',
-    '3 años',
-    '4 años',
-    '5 años',
-    '6 años',
-    '7 años',
-    '8 años',
-    '9 años',
-    '10 años',
-    '11 años',
-    '12 años',
-    '13 años',
-    '14 años',
-    '15 años',
-    'más de 15 años',
-  ];
-
-  tipo: any[] = ['Perro', 'Gato'];
-
-  genero: any[] = ['Macho', 'Hembra'];
-
-  tamano: any[] = ['Pequeño', 'Mediano', 'Grande'];
-
-  color_ojos: any[] = [
-    'Azul',
-    'Verde',
-    'Marrón',
-    'Dorado',
-    'Negro',
-    'Heterocromía',
-  ];
-
-  tipo_pelaje: any[] = [
-    'Pelaje largo',
-    'Pelaje semilargo',
-    'Pelaje corto',
-    'Sin pelaje',
-  ];
-
-  desparasitado: any[] = ['Sí', 'No'];
 
   lista_vacunas: any[] = [
     'Leucemia viral felina',
@@ -159,6 +123,19 @@ export class CrearAnimalGatoComponent implements OnInit {
   //   this.vacunas.esquema.forEach((t) => (t.completado = completado));
   // }
 
+  cargarDatos() {
+    this.getDatosAnimal.getDatosGato().subscribe((respuesta) => {
+      this.colorOjos = respuesta.colorOjos;
+      this.desparasitados = respuesta.desparasitados;
+      this.edades = respuesta.edades;
+      this.generosAnimal = respuesta.generosAnimal;
+      this.tamanos = respuesta.tamanos;
+      this.tiposAnimal = respuesta.tiposAnimal;
+      this.tiposPelaje = respuesta.tiposPelaje;
+      this.situaciones = respuesta.situaciones;
+    });
+  }
+
   onCrearGato(form: NgForm) {
     console.log(form.value);
     if (form.invalid) {
@@ -206,35 +183,6 @@ export class CrearAnimalGatoComponent implements OnInit {
     }
   }
 
-  onFileInput(event): any {
-    const archivo = event.target.files[0];
-    this.archivos.push(archivo);
-    this.extraerBase64(archivo).then((imagen: any) => {
-      this.previsualizacion = imagen.base;
-    });
-  }
-  extraerBase64 = async ($event: any) =>
-    new Promise((resolve) => {
-      try {
-        const unsafeImg = window.URL.createObjectURL($event);
-        const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
-        const reader = new FileReader();
-        reader.readAsDataURL($event);
-        reader.onload = () => {
-          resolve({
-            base: reader.result,
-          });
-        };
-        reader.onerror = (error) => {
-          resolve({
-            base: null,
-          });
-        };
-        return resolve;
-      } catch (e) {
-        return null;
-      }
-    });
   mensaje(accion: string) {
     if (accion == 'crear') {
       this._snackbar.open('Animal creado de forma exitosa', '', {

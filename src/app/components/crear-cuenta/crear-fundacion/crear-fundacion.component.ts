@@ -16,6 +16,7 @@ import { Localidad } from '../../interfaces/datos-app/entidadLocalidad';
 import { Router } from '@angular/router';
 import { TipoDocsService } from 'src/app/services/datos-app/tipo-docs.service';
 import { TipoDoc } from '../../interfaces/datos-app/entidadTipoDoc';
+import { DatosCrearFundacionService } from 'src/app/services/datos-app/datos-crear-fundacion.service';
 
 interface HtmlInputEvent extends Event {
   target: (HTMLInputElement & EventTarget) | null;
@@ -39,7 +40,7 @@ export class CrearFundacionComponent implements OnInit {
   constructor(
     public crearFundacionService: CrearFundacionService,
     private sanitizer: DomSanitizer,
-    private getLocalidadesService: LocalidadesService,
+    private getDatosService: DatosCrearFundacionService,
     private getTipoDocService: TipoDocsService,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
@@ -72,16 +73,13 @@ export class CrearFundacionComponent implements OnInit {
         });
       });
     });
-    this.getTipoDocService.getTipoDocFundacion().subscribe(
+    this.getDatosService.getDatos().subscribe(
       (res) => {
-        this.tipo_docs = res;
-        console.log(this.tipo_docs[0].nombre);
+        this.tipo_docs = res.tipo_docs;
       },
       (err) => console.log(err)
     );
   }
-
-  // tipo_doc: any[] = ['Cédula de ciudadanía', 'Cédula de extranjería'];
 
   onSignUp(form: NgForm) {
     console.log(this.latitud);
@@ -126,34 +124,4 @@ export class CrearFundacionComponent implements OnInit {
       reader.readAsDataURL(this.file);
     }
   }
-
-  // onFileInput(event): any {
-  //   const archivo = event.target.files[0];
-  //   this.archivos.push(archivo);
-  //   this.extraerBase64(archivo).then((imagen: any) => {
-  //     this.previsualizacion = imagen.base;
-  //   });
-  // }
-  // extraerBase64 = async ($event: any) =>
-  //   new Promise((resolve) => {
-  //     try {
-  //       const unsafeImg = window.URL.createObjectURL($event);
-  //       const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
-  //       const reader = new FileReader();
-  //       reader.readAsDataURL($event);
-  //       reader.onload = () => {
-  //         resolve({
-  //           base: reader.result,
-  //         });
-  //       };
-  //       reader.onerror = (error) => {
-  //         resolve({
-  //           base: null,
-  //         });
-  //       };
-  //       return resolve;
-  //     } catch (e) {
-  //       return null;
-  //     }
-  //   });
 }
