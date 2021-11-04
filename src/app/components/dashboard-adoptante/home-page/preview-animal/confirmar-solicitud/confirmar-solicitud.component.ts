@@ -60,7 +60,7 @@ export class ConfirmarSolicitudComponent implements OnInit {
         console.log(error);
       }
     });
-
+    
     console.log("solicitudes",this.data.solicitudes);
 
     for(var i = 0; i < this.data.solicitudes.length; i++)
