@@ -92,36 +92,29 @@
           >
           <mat-cell *matCellDef="let element; let i = index">
             <span class="mobile-label">Acción: </span>
-            <div
-              *ngIf="element.idPapa == ''; then botones; else desactivados"
-            ></div>
-            <ng-template #botones>
-              <div *ngIf="!element.enAdopcion">
-                <button
-                  mat-raised-button
-                  color="primary"
-                  (click)="publicarAnimal(i, 'publicar')"
-                >
-                  publicar
-                </button>
-              </div>
-              <div *ngIf="element.enAdopcion">
-                <button
+            <div *ngIf="element.adoptado">
+              <button mat-raised-button color="primary" [disabled]="true">
+                Adoptado
+              </button>
+            </div>
+            <div *ngIf="!element.adoptado && element.enAdopcion">
+              <button
                   mat-raised-button
                   color="warn"
-                  (click)="publicarAnimal(i, 'cancelar')"
+                  (click)="publicarAnimal(element, 'cancelar')"
                 >
                   Cancelar
                 </button>
-              </div>
-            </ng-template>
-            <ng-template #desactivados>
-              <div>
-                <button mat-raised-button color="primary" [disabled]="true">
-                  Adoptado
+            </div>
+            <div *ngIf="!element.adoptado && !element.enAdopcion">
+              <button
+                  mat-raised-button
+                  color="primary"
+                  (click)="publicarAnimal(element, 'publicar')"
+                >
+                  publicar
                 </button>
-              </div>
-            </ng-template>
+            </div>
           </mat-cell>
         </ng-container>
         <!--

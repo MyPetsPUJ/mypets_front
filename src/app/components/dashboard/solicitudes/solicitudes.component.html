@@ -16,7 +16,7 @@
 <div class="noForm">
   <div
     *ngIf="
-      solicitudesAdopcion.length == 0 && estados.controls.formulariosAdop.value
+      datosTablaForm.length == 0 && estados.controls.formulariosAdop.value
     "
     class="tam"
   >
@@ -25,7 +25,7 @@
     </mat-toolbar>
   </div>
 </div>
-<div *ngIf="formulariosAdopcion.length > 0" [formGroup]="estados">
+<div *ngIf="datosTablaForm.length > 0" [formGroup]="estados">
   <div
     class="mat-elevation-z8"
     class="tam example-container"
@@ -37,11 +37,12 @@
     <mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="idSolicitud">
         <mat-header-cell *matHeaderCellDef mat-sort-header
-          >id solicitud</mat-header-cell
+          >Foto</mat-header-cell
         >
         <mat-cell *matCellDef="let element">
-          <span class="mobile-label">Solicitud: </span>
-          {{ idSolicitud }}
+          <span class="mobile-label">Foto: </span>
+          <img [src]="'http://localhost:3000/' + element.animal.urlImg"
+          class="circulo pointer" >
         </mat-cell>
       </ng-container>
       <ng-container matColumnDef="animalSolicitud">
@@ -50,7 +51,7 @@
         >
         <mat-cell *matCellDef="let element">
           <span class="mobile-label">Mascota: </span>
-          {{ element.animalAdopcion.nombre }}
+          {{ element.animal.nombre }}
         </mat-cell>
       </ng-container>
       <ng-container matColumnDef="nombreSolicitante">
@@ -78,9 +79,29 @@
         <mat-cell *matCellDef="let element">
           <!-- {{element.adoptante.num_celular}}-->
           <span class="mobile-label">Celular: </span>
-          <button mat-raised-button (click)="openDialog(element)">
-            Action
-          </button>
+          {{ element.adoptante.num_celular }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="accion">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Acción
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <!-- {{element.adoptante.num_celular}}-->
+          <span class="mobile-label">Acción: </span>
+
+          <mat-icon class="pointer" matTooltip="Visualizar formulario"
+          (click)="openDialog(element,'ver')">visibility</mat-icon>
+          <i style="color: white">....</i>
+          <mat-icon class="pointer" matTooltip="Aceptar formulario"
+          (click)="openDialog(element,'aceptar')" [ngStyle]="{ color: 'green' }">check_circle</mat-icon>
+          <i style="color: white">....</i>
+          <mat-icon class="pointer" matTooltip="Rechazar formulario"
+          (click)="openDialog(element,'rechazar')" [ngStyle]="{ color: 'red' }">cancel</mat-icon>
+          <i style="color: white">....</i>
+          
+
         </mat-cell>
       </ng-container>
 
@@ -105,7 +126,7 @@
 <div class="noForm">
   <div
     *ngIf="
-      solicitudesAdopcion.length == 0 && estados.controls.solicitudesAdop.value
+      datosTabla.length == 0 && estados.controls.solicitudesAdop.value
     "
     class="tam"
   >
@@ -114,7 +135,7 @@
     </mat-toolbar>
   </div>
 </div>
-<div *ngIf="solicitudesAdopcion.length > 0" [formGroup]="estados">
+<div *ngIf="datosTabla.length > 0" [formGroup]="estados">
   <div
     class="mat-elevation-z8"
     class="tam example-container"

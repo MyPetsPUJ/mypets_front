@@ -106,13 +106,14 @@
             <agm-marker *ngFor="let punto of puntosDeInteres" [latitude]="punto.latitud" [longitude]="punto.longitud" [iconUrl]="verde">
                 <agm-info-window>
                     <div>
-                        <h2>{{punto.titulo}}</h2>
+                        <!-- <h2>{{punto.titulo}}</h2>
                         <p>
                             {{punto.descripcion}}
+                            
                         </p>
                         <p>
-                            Dirección: {{punto.direccion}}
-                        </p>
+                            Dirección: {{punto.descripcion}}
+                        </p> -->
                     <!-- <div class="alinearDer">
                         <mat-icon matTooltip="editar punto" class="pointer" (click)="editarPunto(coord.latitude,coord.longitude)">edit</mat-icon>
                         <mat-icon matTooltip="eliminar punto" class="pointer" (click)="eliminarPunto(coord.latitude,coord.longitude)">delete</mat-icon>

@@ -26,6 +26,7 @@ var activarPuntos: boolean = false;
 })
 export class InicioComponent implements OnInit, OnDestroy {
   puntoInteres: PuntoInteres = {
+    _id: '',
     titulo: '',
     descripcion: '',
     direccion: '',
@@ -80,6 +81,7 @@ export class InicioComponent implements OnInit, OnDestroy {
     mision: '',
     vision: '',
     publicaciones: [],
+    puntos: [],
     ubicacion: {
       type: 'Point',
       coordinates: Array<number>(),
@@ -92,7 +94,7 @@ export class InicioComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   ancho: number | any;
-  largo: number | any
+  largo: number | any;
   constructor(
     public dialog: MatDialog,
     private _snackBar: MatSnackBar,
@@ -102,11 +104,11 @@ export class InicioComponent implements OnInit, OnDestroy {
   ) {}
   ngOnInit(): void {
     this.ancho = document.documentElement.clientWidth;
-    
+
     this.largo = document.documentElement.clientHeight;
     console.log(this.largo);
     console.log(this.ancho);
-    window.addEventListener("resize",this.displayWindowSize);
+    window.addEventListener('resize', this.displayWindowSize);
 
     this.userId = this.authService.getUserId();
     console.log('Este es el user id--', this.userId);
@@ -122,8 +124,7 @@ export class InicioComponent implements OnInit, OnDestroy {
         this.userIsAuth = isAuth;
       });
   }
-  displayWindowSize()
-  {
+  displayWindowSize() {
     var w = document.documentElement.clientWidth;
     var h = document.documentElement.clientHeight;
     this.ancho = w;
@@ -133,8 +134,8 @@ export class InicioComponent implements OnInit, OnDestroy {
   cargarDatos() {
     //Aquí hace falta una línea que cargue puntos de interés desde la BD
     this.mapService.getPuntosDeInteres(this.userId).subscribe((res) => {
-      console.log('Respuesta', res);
-      console.log('Fundacion', res.fundacion.ubicacion);
+      console.log('Respuesta', res.puntos);
+      console.log('Fundacion', res.fundacion);
       this.fundacion = res.fundacion;
       this.fundacion.longitud = res.fundacion.ubicacion.coordinates[0];
       this.fundacion.latitud = res.fundacion.ubicacion.coordinates[1];
@@ -156,7 +157,6 @@ export class InicioComponent implements OnInit, OnDestroy {
       }
       this.dataSource = new MatTableDataSource<PuntoInteres>(
         this.puntosDeInteres
-      
       );
       this.dataSource.paginator = this.paginator;
       // console.log('Punto 1 long', this.puntosDeInteres[0].longitud);
@@ -186,6 +186,7 @@ export class InicioComponent implements OnInit, OnDestroy {
   mapClicked($event: AGMMouseEvent) {
     geocoder: google.maps.Geocoder;
     if (activarPuntos) {
+      console.log('Entrando a mapclicked');
       const geocoder = new google.maps.Geocoder();
       // Coordinates equivale a 1 solo punto de interes y coordenadas equivale al arreglo de puntos de interes
       var coordinates: Coordenada = {
@@ -198,7 +199,7 @@ export class InicioComponent implements OnInit, OnDestroy {
         ubicacion: null,
       };
       console.log('coordenadaSize ' + this.coordenadas.length);
-      console.log("Puntoooo", this.puntoInteres);
+      console.log('Puntoooo', this.puntoInteres);
       const dialogRef = this.dialog.open(TextoInteresComponent, {
         disableClose: true,
         width: '600px',
@@ -209,19 +210,19 @@ export class InicioComponent implements OnInit, OnDestroy {
       dialogRef.afterClosed().subscribe((result) => {
         if (result.accion == 'aceptar') {
           console.log('The dialog was closed');
-          console.log("Dir", result.direccion)
+          console.log('Dir', result.direccion);
           this.puntoInteres.direccion = result.direccion;
           this.puntoInteres.titulo = result.titulo;
           this.puntoInteres.descripcion = result.texto;
           this.puntoInteres.autorPuntoDeInteres = this.userId;
+          this.puntoInteres._id = result._id
           // console.log('Ubi', result.ubicacion);
           // this.puntoInteres.ubicacion = result.ubicacion;
           this.puntoInteres.latitud = $event.coords.lat;
           this.puntoInteres.longitud = $event.coords.lng;
           this.puntoInteres.ubicacion.coordinates[0] = $event.coords.lng;
           this.puntoInteres.ubicacion.coordinates[1] = $event.coords.lat;
-          console.log("Una coord",this.puntoInteres.ubicacion.coordinates[1])
-          
+          console.log('Una coord', this.puntoInteres.ubicacion.coordinates[1]);
 
           // coordinates = {
           //   latitude: $event.coords.lat,
@@ -306,6 +307,14 @@ export class InicioComponent implements OnInit, OnDestroy {
       }
     }
   }
+
+  onEliminarPunto(id: string) {
+    console.log('Id punto', id);
+    this.mapService.deletePunto(id).subscribe((res) => {
+      console.log(id);
+      this._router.navigate(['/dashboard']);
+    });
+  }
   eliminarPuntos() {
     this.coordenadas = [];
   }
@@ -354,6 +363,15 @@ export class InicioComponent implements OnInit, OnDestroy {
       }
     }
   }
+
+  onPuntoSelected(id: string) {
+    this._router.navigate(['/dashboard/mapa/editar-punto', id]);
+  }
+
+  onFundacionSelected(id: string) {
+    this._router.navigate(['/dashboard/mi_cuenta', id]);
+  }
+
   mapReady(event: any) {
     this.map = event;
     //const input = document.getElementById('Map-Search');

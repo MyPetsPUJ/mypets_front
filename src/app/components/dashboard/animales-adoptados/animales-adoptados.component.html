@@ -13,7 +13,7 @@
           >
           <mat-cell *matCellDef="let row">
             <span class="mobile-label">Foto: </span>
-            <img [src]="row.animal.urlImg" width="100%" class="circulo" />
+            <img [src]="'http://localhost:3000/'+ row.animal.urlImg" width="100%" class="circulo" />
           </mat-cell>
         </ng-container>
         <!-- ID Column -->
@@ -49,16 +49,6 @@
           </mat-cell>
         </ng-container>
 
-        <!-- Fruit Column -->
-        <ng-container matColumnDef="fecha">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>
-            Fecha
-          </mat-header-cell>
-          <mat-cell *matCellDef="let row">
-            <span class="mobile-label">Fecha:</span>
-            {{ row.fecha | date: "dd/MM/yyyy" }}
-          </mat-cell>
-        </ng-container>
 
         <ng-container matColumnDef="accion">
           <mat-header-cell *matHeaderCellDef mat-sort-header>

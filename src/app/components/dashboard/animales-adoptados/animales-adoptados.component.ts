@@ -4,8 +4,13 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { AnyKeys } from 'mongoose';
+import { Subject } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { AdoptanteService } from 'src/app/services/adoptante/adoptante.service';
 import { CrearAdoptanteService } from 'src/app/services/adoptante/crearAdoptante.service';
+import { AnimalService } from 'src/app/services/animal/animal.service';
 import { CrearAnimalService } from 'src/app/services/animal/crearAnimal.service';
+import { LoginService } from 'src/app/services/auth/login.service';
 import { EntidadAnimal } from '../../interfaces/usuarios/entidadAnimal';
 import { UserAdoptante } from '../../interfaces/usuarios/userAdoptante';
 import { PreviewComponent } from './preview/preview.component';
@@ -26,7 +31,7 @@ export interface UserData {
   styleUrls: ['./animales-adoptados.component.css']
 })
 export class AnimalesAdoptadosComponent implements OnInit {
-  displayedColumns: string[] = ['foto_animal', 'nombre_animal', 'nombre_dueño', 'cedula', 'fecha', 'accion'];
+  displayedColumns: string[] = ['foto_animal', 'nombre_animal', 'nombre_dueño', 'cedula', 'accion'];
   dataSource: MatTableDataSource<UserData> | any;
   adoptantes: UserAdoptante[] = [];
   animales: EntidadAnimal[] = [];
@@ -36,33 +41,46 @@ export class AnimalesAdoptadosComponent implements OnInit {
 
   listaInfo: UserData[] = [];
   infoMostrar: UserData | any;
-  constructor(private adoptanteService: CrearAdoptanteService, private animalService: CrearAnimalService,
-    private dialog: MatDialog) {
+  datosTabla: any[] = []; 
+  constructor(private adoptanteService: AdoptanteService, private animalService: AnimalService,
+    private dialog: MatDialog, private authService: LoginService) {
   }
 
   ngOnInit(): void {
-    
-    this.adoptantes = this.adoptanteService.getAdoptantes();
-    this.animales = this.animalService.getAnimales();
-    var i = 0;
-    var j = 0;
-    for (i = 0; i < this.adoptantes.length; i++) {
-      if (this.adoptantes[i].animales.length >= 1) {
-        for (j = 0; j < this.adoptantes[i].animales.length; j++) {
-          var ano = Math.random() * (2021 - 2020) + 2020;
-          var mes = Math.random() * (2021 - 2020) + 2020;
-          this.infoMostrar =
+    this.cargarDatos();
+   
+  }
+  cargarDatos()
+  {
+    var animales;
+    var subject = new Subject <any>();
+    var datosFila;
+    this.animalService.populateAnimales(this.authService.getUserId()).subscribe(async res=>
+      {
+        animales = res.animales;
+        for(var i =0; i < animales.length; i++)
+        {
+          if(animales[i].adoptado)
           {
-            dueno:this.adoptantes[i],
-            animal: this.adoptantes[i].animales[j],
-            fecha: new Date(Math.random() * (2021 - 2019) + 2019)
+            console.log('ID ADOPTANTE', animales[i].ownerAdoptante)
+            this.adoptanteService.getAdoptanteById(animales[i].ownerAdoptante).subscribe(adoptante=>
+              {
+                console.log('Adoptante: ', adoptante)
+                subject.next(adoptante);
+              })
+              var adopt = await subject.asObservable().pipe(take(1)).toPromise();
+              console.log(adopt);
+              datosFila= 
+              {
+                animal : animales[i],
+                dueno: adopt
+              }
+              this.datosTabla.push(datosFila);
           }
-          //console.log(this.adoptantes[i].animales[j]);
-          this.listaInfo.push(this.infoMostrar);
         }
-      }
-    }
-    this.dataSource = new MatTableDataSource(this.listaInfo);
+        this.dataSource = new MatTableDataSource(this.datosTabla);
+        this.dataSource.paginator = this.paginator;
+      });
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

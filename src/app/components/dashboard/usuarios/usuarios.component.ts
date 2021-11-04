@@ -40,6 +40,7 @@ export class UsuariosComponent implements OnInit {
     // this.animales = this.crearAnimalService.getAnimales();
     // this.dataSource = new MatTableDataSource(this.animales);
     this.animalService.populateAnimales(this.userId).subscribe((res) => {
+      this.animales = [];
       console.log("Animales:", res.animales);
       console.log("User:", res.resultado);
       this.userFundacion = res.resultado;
@@ -70,10 +71,12 @@ export class UsuariosComponent implements OnInit {
       data: { animal: animal }
     });
   }
-  publicarAnimal(i: number, accion: string) {
-    this.crearAnimalService.ponerEnAdopcion(i, accion);
-    this.cargarAnimales();
+  publicarAnimal(animal: any, accion: string) {
+    
+    console.log('ANIMAL: ', animal);
     if (accion == 'publicar') {
+      this.animalService.editarAnimalEnAdopcion(animal._id);
+      this.cargarAnimales();
       this.snackbar.open('Animal publicado en adopción', '',
         {
           duration: 1500,

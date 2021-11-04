@@ -5,10 +5,10 @@ import { UserFundacion } from "../usuarios/userFundacion";
 
 export interface EntidadSolicitudAdopcion{
        
-    adoptante:UserAdoptante;
+    idAdoptante:string;
     idFundacion:string;
-    animal:EntidadAnimal;
+    idAnimal:string;
     formulario:FormularioAdopcion;
-    fecha:string;
+    fecha_solicitud:string;
     estado:string;
 }

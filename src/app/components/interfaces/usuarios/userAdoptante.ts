@@ -2,6 +2,7 @@ import { EntidadSolicitudAdopcion } from "../solicitud-adopcion/entidadSolicitud
 import { EntidadAnimal } from "./entidadAnimal";
 
 export interface UserAdoptante {
+    _id?: string;
     nombre: string;
     urlImg: string; 
     apellidos: string; 

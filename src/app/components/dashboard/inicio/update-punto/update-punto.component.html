@@ -1,0 +1,38 @@
+<div style="background-color: beige;">
+    <div class="box">
+        <mat-card>
+            <h1>Editar un punto de interés</h1>
+            <form [formGroup]="form">
+                <h3>Ingrese la dirección del punto de interés</h3>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Dirección</mat-label>
+                    <input matInput #search autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
+                        class="form-control" id="direccionPunto" formControlName="direccionLugar">
+                </mat-form-field>
+                <h3>Ingrese el título del punto de interés</h3>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label></mat-label>
+                    <input matInput placeholder="Ej. jornada de vacunación" id="tituloPunto"
+                        formControlName="tituloLugar" required matInput autocomplete="off">
+                </mat-form-field>
+                <h3>Ingrese una breve descripción del lugar y demás</h3>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label></mat-label>
+                    <textarea matInput placeholder="Ej. horarios, gente permitida, tipos de animales, etc." class="tam"
+                        id="txtInput" formControlName="descripcionLugar"> </textarea>
+                </mat-form-field>
+                <div class="centrar">
+                    <button mat-raised-button color="primary">Modificar</button>
+                    <i style="color: beige;">.....</i>
+                    <button mat-raised-button color="warn">Cancelar</button>
+                    <p> </p>
+                    <p> </p>
+                </div>
+
+            </form>
+
+        </mat-card>
+
+    </div>
+
+</div>

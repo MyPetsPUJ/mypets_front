@@ -66,22 +66,24 @@ export class EnviarSolicitudAdopcionService {
     })
   }
 
-  deleteSolicitu(usuario: UserAdoptante, animal: EntidadAnimal)
-  {
-    for(var i = 0; i < this.solicitudes.length; i++)
-    {
-      if( usuario == this.solicitudes[i].adoptante && animal == this.solicitudes[i].animal)
-      {
-        this.solicitudes.splice(i,1);
-      }
-    }
-  }
+  
 
   actualizarEstadoSolicitud(id: string,estado: string)
   {
-    return this.http.put(
-      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidadII}/${this.subTipoEntidadVI}/${id}`,estado
-    );
+    
+    const body = { estado: estado };
+    
+    return this.http.put<any>(
+      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidadII}/${this.subTipoEntidadVI}/${id}`,body
+    ).subscribe((res)=>
+    {
+      console.log('respuesta: ', res);
+    });
+  }
+  getSolicitudes(id: string)
+  {
+    return this.http.get<any>(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidad}/${this.subTipoEntidadII}/${id}`
+    )
   }
 
 }

@@ -29,8 +29,8 @@
                             <mat-form-field appearance="fill" class="ancho">
                                 <mat-label>Edad aproximada</mat-label>
                                 <mat-select name="edad" ngModel #edadInput="ngModel" required>
-                                    <mat-option *ngFor="let item of edad" [value]="item">
-                                        {{item}}
+                                    <mat-option *ngFor="let item of edades" [value]="item">
+                                        {{item.edad}}
                                     </mat-option>
                                 </mat-select>
                             </mat-form-field>
@@ -45,8 +45,8 @@
                             <mat-form-field appearance="fill" class="ancho">
                                 <mat-label>Sexo</mat-label>
                                 <mat-select name="sexo" ngModel #sexoInput="ngModel" required>
-                                    <mat-option *ngFor="let item of genero" [value]="item">
-                                        {{item}}
+                                    <mat-option *ngFor="let item of generosAnimal" [value]="item">
+                                        {{item.genero}}
                                     </mat-option>
                                 </mat-select>
                             </mat-form-field>
@@ -60,8 +60,8 @@
                                 #tamanoInput="ngModel"
                                 required
                               >
-                                <mat-option *ngFor="let item of tamano" [value]="item">
-                                  {{ item }}
+                                <mat-option *ngFor="let item of tamanos" [value]="item">
+                                  {{ item.tamano }}
                                 </mat-option>
                               </mat-select>
                             </mat-form-field>
@@ -70,8 +70,8 @@
                             <mat-form-field appearance="fill" class="ancho">
                                 <mat-label>Color de ojos</mat-label>
                                 <mat-select name="color_ojos" ngModel #color_ojosInput="ngModel" required>
-                                    <mat-option *ngFor="let item of color_ojos" [value]="item">
-                                        {{item}}
+                                    <mat-option *ngFor="let item of colorOjos" [value]="item">
+                                        {{item.color}}
                                     </mat-option>
                                 </mat-select>
                             </mat-form-field>
@@ -80,8 +80,8 @@
                             <mat-form-field appearance="fill" class="ancho">
                                 <mat-label>Tipo de pelaje</mat-label>
                                 <mat-select name="tipo_pelaje" ngModel #tipo_pelajeInput="ngModel" required>
-                                    <mat-option *ngFor="let item of tipo_pelaje" [value]="item">
-                                        {{item}}
+                                    <mat-option *ngFor="let item of tiposPelaje" [value]="item">
+                                        {{item.tipoPelaje}}
                                     </mat-option>
                                 </mat-select>
                             </mat-form-field>
@@ -90,8 +90,8 @@
                             <mat-form-field appearance="fill" class="ancho">
                                 <mat-label>Situación</mat-label>
                                 <mat-select name="situacion" ngModel #situacionInput="ngModel" required>
-                                    <mat-option *ngFor="let item of situacion" [value]="item">
-                                        {{item}}
+                                    <mat-option *ngFor="let item of situaciones" [value]="item">
+                                        {{item.situacion}}
                                     </mat-option>
                                 </mat-select>
                             </mat-form-field>
@@ -109,8 +109,8 @@
                             <mat-form-field appearance="fill" class="ancho">
                                 <mat-label>Está desparasitado</mat-label>
                                 <mat-select name="desparasitado" ngModel #desparasitadoInput="ngModel" required>
-                                    <mat-option *ngFor="let item of desparasitado" [value]="item">
-                                        {{item}}
+                                    <mat-option *ngFor="let item of desparasitados" [value]="item">
+                                        {{item.estado}}
                                     </mat-option>
                                 </mat-select>
                             </mat-form-field>
