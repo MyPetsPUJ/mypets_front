@@ -1,7 +1,7 @@
 <div *ngIf="data.accion == 'adoptante'" class="alinear">
   <h1><b> Datos del adoptante </b></h1>
   <img
-    [src]="data.adoptante.foto"
+    [src]="'http://localhost:3000/'+ data.adoptante.foto"
     mat-card-image
     width="70%"
     class="container crop"
@@ -66,7 +66,7 @@
 <div *ngIf="data.accion == 'mascota'" class="alinear">
   <h1>{{ data.animal.nombre }}</h1>
   <img
-    [src]="data.animal.urlImg"
+    [src]="'http://localhost:3000/' + data.animal.urlImg"
     mat-card-image
     width="70%"
     class="container crop"
