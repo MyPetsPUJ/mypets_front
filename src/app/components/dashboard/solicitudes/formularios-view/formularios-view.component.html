@@ -342,58 +342,21 @@
         <button mat-raised-button (click)="accion('cerrar')" class="rojo">Cerrar</button>
     </div>
 </div>
-<div *ngIf="data.accion=='adoptante'" class="alinear">
-    <h1><b> Datos del interesado </b></h1>
-        <img [src]="data.adoptante.foto" mat-card-image width="70%" class="container crop">
-        <!--Toca colocar un atributo de foto al adoptante-->
-        <h3><b> {{data.adoptante.nombre}}  {{data.adoptante.apellidos}} </b></h3>
-        <p> </p>
-        <p> </p>
-        <mat-grid-list cols="2" rowHeight="50px">
-            <mat-grid-tile colspan="1" rowspan="1">
-                <div>
-                    <b>Correo:</b><br>
-                    <i>{{data.adoptante.correo}}</i>
-                </div>
-                 </mat-grid-tile>
-            <mat-grid-tile colspan="1" rowspan="1">
-                <div>
-                    <b>Fecha de nacimiento:</b><br>
-                    <i>{{data.adoptante.fecha_nacimiento}}</i>
-                </div>
-                 </mat-grid-tile>
-            <mat-grid-tile colspan="1" rowspan="1">
-                <div>
-                    <b>Localidad:</b><br>
-                    <i>{{data.adoptante.localidad}}</i>
-                </div>
-                 </mat-grid-tile>
-            <mat-grid-tile colspan="1" rowspan="1">
-                <div>
-                    <b>Sexo:</b><br>
-                    <i>{{data.adoptante.genero}}</i>
-                </div>
-                 </mat-grid-tile>
-            <mat-grid-tile colspan="1" rowspan="1">
-                <div>
-                    <b>Núm. de contacto:</b><br>
-                    <i>{{data.adoptante.num_celular}}</i>
-                </div>
-                 </mat-grid-tile>
-            <mat-grid-tile colspan="1" rowspan="1">
-                <div>
-                    <b>Documento:</b><br>
-                    <i>{{data.adoptante.tipo_doc}}</i>
-                </div>
-                 </mat-grid-tile>
-            <mat-grid-tile colspan="1" rowspan="1">
-                <div>
-                    <b>Núm. documento:</b><br>
-                    <i>{{data.adoptante.num_doc}}</i>
-                </div>
-                 </mat-grid-tile>
-        </mat-grid-list>
-        <p> </p>
-        <p> </p>
-        <button mat-raised-button (click)="accion('cerrar')" class="rojo">Cerrar</button>
+<div *ngIf="data.accion=='aceptar'" class="alinear">
+    <h1> <b>!Mensaje de confirmación! </b></h1>
+    <p><i>¿Está seguro que desea dar el animal en adopción? recuerde 
+        que al dar en el botón de 'confirmar' el animal no podrá volver a ser
+        publicado en adopción y automáticamente pasará a la lista de adoptados.
+    </i></p>
+    <button mat-raised-button (click)="accion('confirmar')" color="primary">Confirmar</button>
+    <button mat-raised-button (click)="accion('cerrar')" >Cancelar</button>
+</div>
+<div *ngIf="data.accion=='rechazar'" class="alinear">
+    <h1> <b>!Mensaje de confirmación! </b></h1>
+    <p><i>¿Está seguro que desea rechazar el formulario? El animal no será dado en adopción y si se quiere
+        volver a empezar con el proceso tendrá que recibir nuevamente una solicitud por parde del adoptante 
+        interesado
+    </i></p>
+    <button mat-raised-button (click)="accion('confirmar')" color="primary">Confirmar</button>
+    <button mat-raised-button (click)="accion('cerrar')" >Cancelar</button>
 </div>

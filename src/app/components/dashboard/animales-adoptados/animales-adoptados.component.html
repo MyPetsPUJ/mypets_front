@@ -49,16 +49,6 @@
           </mat-cell>
         </ng-container>
 
-        <!-- Fruit Column -->
-        <ng-container matColumnDef="fecha">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>
-            Fecha
-          </mat-header-cell>
-          <mat-cell *matCellDef="let row">
-            <span class="mobile-label">Fecha:</span>
-            {{ row.fecha | date: "dd/MM/yyyy" }}
-          </mat-cell>
-        </ng-container>
 
         <ng-container matColumnDef="accion">
           <mat-header-cell *matHeaderCellDef mat-sort-header>

@@ -39,7 +39,8 @@ export class SolicitudesComponent implements OnInit {
     'animalSolicitud',
     'nombreSolicitante',
     'localidadSolicitante',
-    'numeroSolicitante'
+    'numeroSolicitante',
+    'accion'
   ];
   displayedColumns1: String[] =
     [
@@ -85,13 +86,44 @@ export class SolicitudesComponent implements OnInit {
       });
     console.log(this.estados.controls.formulariosAdop.value);
   }
-  openDialog(solicitud: FormularioAdopcion) {
+  openDialog(solicitud: any, accion: string) {
+    var confirmacion;
+    if(accion == 'ver')
+    {
+      const dialogRef = this.dialog.open(FormulariosViewComponent, {
+        width: '830px',
+        height: '600px',
+        data: { formulario: solicitud, accion: 'formulario' },
+      });
+    }
     console.log(solicitud);
-    const dialogRef = this.dialog.open(FormulariosViewComponent, {
-      width: '830px',
-      height: '600px',
-      data: { formulario: solicitud, accion: 'formulario' },
-    });
+    if(accion=='aceptar')
+    {
+      const dialogRef = this.dialog.open(FormulariosViewComponent, {
+        width: '350px',
+        height: '250px',
+        data: { formulario: solicitud, accion: 'aceptar' },
+      });
+      dialogRef.afterClosed().subscribe(result=> 
+        {
+          confirmacion = result.confirmacion;
+          this.animalService.editarEstadoAdopcionAnimal(solicitud.animal._id,solicitud.adoptante._id);
+          this.solicitudService.actualizarEstadoSolicitud(solicitud.solicitud._id, 'Aceptado, formulario aceptado.');
+        })
+    }
+    if ( accion == 'rechazar')
+    {
+      const dialogRef = this.dialog.open(FormulariosViewComponent, {
+        width: '350px',
+        height: '250px',
+        data: { formulario: solicitud, accion: 'rechazar' },
+      });
+      dialogRef.afterClosed().subscribe(result=> 
+        {
+          confirmacion = result.confirmacion;
+        })
+        console.log('Esta es la confirmacion', confirmacion);
+    }
   }
   ngOnInit(): void {
 
@@ -105,7 +137,8 @@ export class SolicitudesComponent implements OnInit {
   cargarDatosSolicitudes() {
     this.datosTabla = [];
     this.fundacionId = this.authService.getUserId();
-    this.solicitudService.populateSolicitudesFundaciones(this.fundacionId).subscribe(async (res) => {
+    console.log('ID:' , this.fundacionId);
+    this.solicitudService.populateSolicitudesFundaciones(this.fundacionId).subscribe( (res) => {
       console.log(res);
       console.log("Fundacion:", res.fundacion);
       console.log("solicitudes:", res.solicitudes);
@@ -189,10 +222,15 @@ export class SolicitudesComponent implements OnInit {
     if (nombre == 'Aceptado') {
       console.log('ID SOLICITUD: ', this.datosTabla[index].solicitud._id);
       this.solicitudService.actualizarEstadoSolicitud(this.datosTabla[index].solicitud._id, 'Aceptado, formulario no enviado.');
+      this.cargarDatosSolicitudes();
     }
     if (nombre == 'Rechazado')
+    {
       this.solicitudService.actualizarEstadoSolicitud(this.datosTabla[index].solicitud._id, 'Rechazado, sin posibilidad de enviar formulario.');
-    this.cargarDatosSolicitudes();
+      this.cargarDatosSolicitudes();
+    }
+      
+    
     if (nombre == 'adoptante') {
       const dialogRef = this.dialog.open(FormulariosViewComponent, {
         width: '830px',

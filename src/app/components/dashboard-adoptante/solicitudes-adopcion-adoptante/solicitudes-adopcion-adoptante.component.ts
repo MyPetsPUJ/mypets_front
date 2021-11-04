@@ -42,8 +42,10 @@ export class SolicitudesAdopcionAdoptanteComponent implements OnInit {
     var userId = this.authService.getUserId();
     var filaDatos;
     var encontrado = false;
+    //console.log('Estas son las solicitudes: ',this.solicitudes);
     this.solicitudesService.getSolicitudesAdoptante(userId).subscribe((res) => {
       this.solicitudes = res;
+      this.datosTabla =[];
       this.animalService.getAnimales().subscribe((resAnimal) => {
         for (var i = 0; i < this.solicitudes.length; i++) {
           for (var j = 0; j < resAnimal.length && !encontrado; j++) {
@@ -71,18 +73,20 @@ export class SolicitudesAdopcionAdoptanteComponent implements OnInit {
     //se obtienen las solicitudes realizadas por el usuario en específico
 
   }
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  accion(nombre: string, solicitud: EntidadSolicitudAdopcion) {
+  accion(nombre: string, solicitud: any) {
     if (nombre == 'eliminar') {
-
+      for(var i = 0; i < 2; i++)
+      {
+        this.solicitudesService.deleteSolicitud(solicitud._id);
+        this.cargarSolicitudes();
+      }
+      
     }
     if (nombre == 'formulario') {
       this.solicitud = solicitud;

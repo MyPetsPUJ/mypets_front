@@ -23,6 +23,14 @@ export class FormulariosViewComponent implements OnInit {
     {
       this.pag--;
     }
+    if(nombre == 'confirmar')
+    {
+      this.dialogRef.close(
+        {
+          confirmacion: true
+        }
+      )
+    }
     if(nombre == 'cerrar')
     {
       this.dialogRef.close();

@@ -47,12 +47,15 @@ export class AnimalService {
     );
   }
 
-  editarEstadoAdopcionAnimal(idAnimal :string, idDueño:string){
-    const body = { idDueño: idDueño}
+  editarEstadoAdopcionAnimal(idAnimal :string, idDueno:string){
+    const body = { idDueno: idDueno}
     
     return this.http.put<any>(
       `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathFundacion}/${this.pathEditarEstadoAnimal}/${idAnimal}`,body
-    );
+    ).subscribe(res=>
+      {
+        console.log('Respuesta: ',res)
+      })
   }
 
   editarAnimal(
