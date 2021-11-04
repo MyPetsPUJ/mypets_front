@@ -17,6 +17,7 @@ export class AnimalService {
   pathMisAnimales: string = 'mis-animales';
   pathEditarAnimal: string = 'editar-animal';
   pathEditarEstadoAnimal: string ="editar-estado-animal";
+  pathEditarEstadoAnimalII: string ="editar-enAdopcion-animal";
 
   // animales: Animal[] = [
   //   {nombreAnimal: 'Paca', edad: 11, tipo: 'Gato', raza: 'Carey', tamano: 'Pequeño'},
@@ -50,6 +51,16 @@ export class AnimalService {
   editarEstadoAdopcionAnimal(idAnimal :string, idDueno:string){
     const body = { idDueno: idDueno}
     
+    return this.http.put<any>(
+      `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathFundacion}/${this.pathEditarEstadoAnimal}/${idAnimal}`,body
+    ).subscribe(res=>
+      {
+        console.log('Respuesta: ',res)
+      })
+  }
+
+  editarAnimalEnAdopcion(idAnimal :string){
+    const body = { id: idAnimal}
     return this.http.put<any>(
       `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathFundacion}/${this.pathEditarEstadoAnimal}/${idAnimal}`,body
     ).subscribe(res=>
