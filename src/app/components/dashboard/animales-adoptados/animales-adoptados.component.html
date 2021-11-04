@@ -13,7 +13,7 @@
           >
           <mat-cell *matCellDef="let row">
             <span class="mobile-label">Foto: </span>
-            <img [src]="row.animal.urlImg" width="100%" class="circulo" />
+            <img [src]="'http://localhost:3000/'+ row.animal.urlImg" width="100%" class="circulo" />
           </mat-cell>
         </ng-container>
         <!-- ID Column -->

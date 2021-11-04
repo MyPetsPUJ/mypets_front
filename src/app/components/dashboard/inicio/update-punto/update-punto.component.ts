@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PuntoInteres } from 'src/app/components/interfaces/entidadPuntoInteres';
 import { MapServiceService } from 'src/app/services/map-service.service';
@@ -11,11 +12,21 @@ import { MapServiceService } from 'src/app/services/map-service.service';
 export class UpdatePuntoComponent implements OnInit {
   puntoId: string = '';
   puntoDeInteres!: PuntoInteres;
+  form: FormGroup
   constructor(
     private activatedRoute: ActivatedRoute,
     private _router: Router,
-    private mapService: MapServiceService
-  ) {}
+    private mapService: MapServiceService,
+    private fb: FormBuilder
+  ) {
+    this.form = this.fb.group(
+      {
+        direccionLugar: ['Dirección cualquiera',Validators.required],
+        tituloLugar: ['Título cualquiera', Validators.required],
+        descripcionLugar: ['Descripción cualquiera',Validators.required]
+      }
+    )
+  }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
