@@ -16,4 +16,6 @@ export interface EntidadAnimal {
   tipo_animal: string;
   ownerFundacion: string;
   enAdopcion: boolean;
+  adoptado?: boolean;
+  ownerAdoptante?: string;
 }
