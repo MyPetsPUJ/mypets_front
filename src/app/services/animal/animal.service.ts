@@ -59,10 +59,10 @@ export class AnimalService {
       })
   }
 
-  editarAnimalEnAdopcion(idAnimal :string){
-    const body = { id: idAnimal}
+  editarAnimalEnAdopcion(idAnimal :string, estado : boolean){
+    const body = { nuevoEstado: estado}
     return this.http.put<any>(
-      `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathFundacion}/${this.pathEditarEstadoAnimal}/${idAnimal}`,body
+      `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathFundacion}/${this.pathEditarEstadoAnimalII}/${idAnimal}`,body
     ).subscribe(res=>
       {
         console.log('Respuesta: ',res)
