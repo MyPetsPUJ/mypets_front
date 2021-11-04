@@ -1,5 +1,5 @@
 export interface PuntoInteres {
-  _id?: string;
+  _id: string;
   titulo: string;
   descripcion: string;
   direccion: string;

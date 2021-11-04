@@ -186,6 +186,7 @@ export class InicioComponent implements OnInit, OnDestroy {
   mapClicked($event: AGMMouseEvent) {
     geocoder: google.maps.Geocoder;
     if (activarPuntos) {
+      console.log('Entrando a mapclicked');
       const geocoder = new google.maps.Geocoder();
       // Coordinates equivale a 1 solo punto de interes y coordenadas equivale al arreglo de puntos de interes
       var coordinates: Coordenada = {
@@ -214,6 +215,7 @@ export class InicioComponent implements OnInit, OnDestroy {
           this.puntoInteres.titulo = result.titulo;
           this.puntoInteres.descripcion = result.texto;
           this.puntoInteres.autorPuntoDeInteres = this.userId;
+          this.puntoInteres._id = result._id
           // console.log('Ubi', result.ubicacion);
           // this.puntoInteres.ubicacion = result.ubicacion;
           this.puntoInteres.latitud = $event.coords.lat;
