@@ -130,7 +130,7 @@ export class SolicitudesComponent implements OnInit {
     //this.formulariosAdopcion.push(this.formAdopcion);
 
 
-    this.cargarSolicitudes();
+    //this.cargarSolicitudes();
     this.cargarDatosSolicitudes();
 
   }
@@ -196,11 +196,15 @@ export class SolicitudesComponent implements OnInit {
           encontrado = false;
         }
         //console.log('Estos son los datos a mostrar ', this.datosTabla);
-        this.dataSource1 = new MatTableDataSource(this.datosTabla);
+        
+        
         this.dataSource = new MatTableDataSource(this.datosTablaForm);
+        this.dataSource.paginator = this.paginator;
       });
-
+      
     });
+    this.dataSource1 = new MatTableDataSource<any>(this.datosTabla);
+    this.dataSource1.paginator = this.paginator1;
   }
 
   cargarSolicitudes() {
@@ -232,6 +236,7 @@ export class SolicitudesComponent implements OnInit {
       
     
     if (nombre == 'adoptante') {
+      console.log('Adoptante: ',this.datosTabla[index].adoptante)
       const dialogRef = this.dialog.open(FormulariosViewComponent, {
         width: '830px',
         height: '600px',

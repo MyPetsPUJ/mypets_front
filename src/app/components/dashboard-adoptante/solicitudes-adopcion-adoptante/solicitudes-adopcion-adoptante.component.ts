@@ -64,6 +64,7 @@ export class SolicitudesAdopcionAdoptanteComponent implements OnInit {
         }
         console.log(this.datosTabla);
         this.dataSource = new MatTableDataSource(this.datosTabla);
+        this.dataSource.paginator = this.paginator;
       });
     });
     //console.log( this.solicitudesService.getSolicitudesAdoptante(userId));

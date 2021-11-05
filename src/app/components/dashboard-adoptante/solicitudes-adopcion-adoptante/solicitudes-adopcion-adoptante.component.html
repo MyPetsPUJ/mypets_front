@@ -63,8 +63,6 @@
           <div *ngIf="element.solicitud.estado == 'Aceptado, formulario en espera de respuesta.'" class="agrandar">
             <mat-icon [ngStyle]="{'color':'yellow'}">feed</mat-icon>
             <i style="color: white">....</i>
-            <mat-icon [ngStyle]="{'color':'red'}" class="pointer" 
-            (click)="accion('eliminar',element)" matTooltip="Eliminar solicitud">delete</mat-icon>
           </div>
         </mat-cell>
       </ng-container>
