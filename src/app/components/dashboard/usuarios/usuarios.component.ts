@@ -75,7 +75,7 @@ export class UsuariosComponent implements OnInit {
     
     console.log('ANIMAL: ', animal);
     if (accion == 'publicar') {
-      this.animalService.editarAnimalEnAdopcion(animal._id);
+      this.animalService.editarAnimalEnAdopcion(animal._id,true);
       this.cargarAnimales();
       this.snackbar.open('Animal publicado en adopción', '',
         {
@@ -86,6 +86,8 @@ export class UsuariosComponent implements OnInit {
     }
     if (accion == 'cancelar')
     {
+      this.animalService.editarAnimalEnAdopcion(animal._id,false);
+      this.cargarAnimales();
       this.snackbar.open('Publicación cancelada','',
       {
         duration: 1500,

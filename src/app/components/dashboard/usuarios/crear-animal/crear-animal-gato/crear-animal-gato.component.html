@@ -28,7 +28,7 @@
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field appearance="fill" class="ancho">
                                 <mat-label>Edad aproximada</mat-label>
-                                <mat-select name="edad" ngModel #edadInput="ngModel" required>
+                                <mat-select name="edad" ngModel #edadInput="ngModel" required (valueChange)="valorSelect($event,'edad')">
                                     <mat-option *ngFor="let item of edades" [value]="item">
                                         {{item.edad}}
                                     </mat-option>
@@ -44,7 +44,7 @@
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field appearance="fill" class="ancho">
                                 <mat-label>Sexo</mat-label>
-                                <mat-select name="sexo" ngModel #sexoInput="ngModel" required>
+                                <mat-select name="sexo" ngModel #sexoInput="ngModel" required (valueChange)="valorSelect($event,'sexo')">
                                     <mat-option *ngFor="let item of generosAnimal" [value]="item">
                                         {{item.genero}}
                                     </mat-option>
@@ -59,6 +59,7 @@
                                 ngModel
                                 #tamanoInput="ngModel"
                                 required
+                                (valueChange)="valorSelect($event,'tamano')"
                               >
                                 <mat-option *ngFor="let item of tamanos" [value]="item">
                                   {{ item.tamano }}
@@ -69,7 +70,7 @@
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field appearance="fill" class="ancho">
                                 <mat-label>Color de ojos</mat-label>
-                                <mat-select name="color_ojos" ngModel #color_ojosInput="ngModel" required>
+                                <mat-select name="color_ojos" ngModel #color_ojosInput="ngModel" required (valueChange)="valorSelect($event,'color')">
                                     <mat-option *ngFor="let item of colorOjos" [value]="item">
                                         {{item.color}}
                                     </mat-option>
@@ -79,7 +80,7 @@
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field appearance="fill" class="ancho">
                                 <mat-label>Tipo de pelaje</mat-label>
-                                <mat-select name="tipo_pelaje" ngModel #tipo_pelajeInput="ngModel" required>
+                                <mat-select name="tipo_pelaje" ngModel #tipo_pelajeInput="ngModel" required (valueChange)="valorSelect($event,'pelaje')">
                                     <mat-option *ngFor="let item of tiposPelaje" [value]="item">
                                         {{item.tipoPelaje}}
                                     </mat-option>
@@ -89,7 +90,7 @@
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field appearance="fill" class="ancho">
                                 <mat-label>Situación</mat-label>
-                                <mat-select name="situacion" ngModel #situacionInput="ngModel" required>
+                                <mat-select name="situacion" ngModel #situacionInput="ngModel" required (valueChange)="valorSelect($event,'situacion')">
                                     <mat-option *ngFor="let item of situaciones" [value]="item">
                                         {{item.situacion}}
                                     </mat-option>
@@ -108,7 +109,7 @@
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field appearance="fill" class="ancho">
                                 <mat-label>Está desparasitado</mat-label>
-                                <mat-select name="desparasitado" ngModel #desparasitadoInput="ngModel" required>
+                                <mat-select name="desparasitado" ngModel #desparasitadoInput="ngModel" required (valueChange)="valorSelect($event,'edad')">
                                     <mat-option *ngFor="let item of desparasitados" [value]="item">
                                         {{item.estado}}
                                     </mat-option>
@@ -121,10 +122,12 @@
                                 <textarea name="descripcion" ngModel #descripcionInput="ngModel" required class="descrip" placeholder="Ej: Es un gato muy consentido..." matInput></textarea>
                             </mat-form-field>
                         </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="2">
-                            <span class ="seccionVacunas"><ul>
+                        <mat-grid-tile [colspan]="1" [rowspan]="3">
+                            <span class ="seccionVacunas">Seleccione el esquema de vacunación del animal<ul>
                                 <li *ngFor="let vacuna of lista_vacunas" class="items">
-                                  <mat-checkbox name="esquema_vac" ngModel #esquema_vacInput="ngModel" > {{vacuna}} </mat-checkbox>
+                                  <mat-checkbox name="esquema_vac" ngModel #esquema_vacInput="ngModel" 
+                                  [checked]="vacuna.value"
+                          (change)="verVacunas($event,vacuna)" > {{vacuna}} </mat-checkbox>
                                 </li>
                               </ul>
                             </span>
