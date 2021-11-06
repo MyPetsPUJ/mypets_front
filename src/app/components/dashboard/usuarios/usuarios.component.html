@@ -99,21 +99,21 @@
             </div>
             <div *ngIf="!element.adoptado && element.enAdopcion">
               <button
-                  mat-raised-button
-                  color="warn"
-                  (click)="publicarAnimal(element, 'cancelar')"
-                >
-                  Cancelar
-                </button>
+                mat-raised-button
+                color="warn"
+                (click)="publicarAnimal(element, 'cancelar')"
+              >
+                Remover
+              </button>
             </div>
             <div *ngIf="!element.adoptado && !element.enAdopcion">
               <button
-                  mat-raised-button
-                  color="primary"
-                  (click)="publicarAnimal(element, 'publicar')"
-                >
-                  publicar
-                </button>
+                mat-raised-button
+                color="primary"
+                (click)="publicarAnimal(element, 'publicar')"
+              >
+                Publicar
+              </button>
             </div>
           </mat-cell>
         </ng-container>
