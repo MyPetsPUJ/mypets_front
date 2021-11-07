@@ -54,4 +54,11 @@ export class MapServiceService {
       `http://${this.dominio}:${this.puerto}/${this.apiPath}/${this.dashboardPath}/${this.mapaPath}/${id}`
     );
   }
+
+  editarPunto(id: string, punto: PuntoInteres) {
+    return this.http.put(
+      `http://${this.dominio}:${this.puerto}/${this.apiPath}/${this.dashboardPath}/${this.mapaPath}/${this.editarPath}/${id}`,
+      punto
+    );
+  }
 }

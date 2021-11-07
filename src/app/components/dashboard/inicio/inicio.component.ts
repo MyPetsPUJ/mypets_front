@@ -186,7 +186,7 @@ export class InicioComponent implements OnInit, OnDestroy {
   mapClicked($event: AGMMouseEvent) {
     geocoder: google.maps.Geocoder;
     if (activarPuntos) {
-      console.log('Entrando a mapclicked');
+      
       const geocoder = new google.maps.Geocoder();
       // Coordinates equivale a 1 solo punto de interes y coordenadas equivale al arreglo de puntos de interes
       var coordinates: Coordenada = {
