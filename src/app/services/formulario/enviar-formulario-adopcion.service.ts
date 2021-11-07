@@ -10,11 +10,10 @@ export class EnviarFormularioAdopcionService {
   puerto: number = 3000;
   pathIntermedio: string = "api";
   entidad: string = "dashboard-adoptante";
-  subTipoEntidad: string = "adoptame";
-  subTipoEntidadII: string = "solicitud-adopcion";
+  //subTipoEntidadII: string = "solicitud-adopcion";
   SubTipoEntidadIII: string ="solicitudes-adopcion-adoptante";
   SubTipoEntidadIV: string = "formulario-solicitud"
-  subTipoEntidadV: string = "formulario-adopcion";
+  SubTipoEntidadV: string = "formulario-adopcion";
 
   constructor(private http: HttpClient) { }
 
@@ -28,16 +27,28 @@ export class EnviarFormularioAdopcionService {
     };
 
     console.log("body",body);
-    this.http.post(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.SubTipoEntidadIII}/${this.subTipoEntidadV}`, body)
+    this.http.post(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.SubTipoEntidadIII}/${this.SubTipoEntidadV}`, body)
     .subscribe(respuesta => {
       console.log(respuesta);
     })
   }
+
+  getFormulario(id : string)
+  {
+    return this.http.get<FormularioAdopcion>(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.SubTipoEntidadIII}/${this.SubTipoEntidadV}/${id}`
+    );
+  }
+
+  getFormularios()
+  {
+    return this.http.get<FormularioAdopcion>(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.SubTipoEntidadIII}/${this.SubTipoEntidadV}`
+    );
+  }
+
 
   getFormularioSolicitud(id : string)
   {
     return this.http.get<any>(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.SubTipoEntidadIII}/${this.SubTipoEntidadIV}/${id}`
     );
   }
-
 }

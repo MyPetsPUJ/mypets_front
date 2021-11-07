@@ -29,7 +29,7 @@ export class AnimalService {
   constructor(private http: HttpClient) {}
   getAnimales() {
     return this.http.get<EntidadAnimal[]>(
-      `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathAdoptante}/${this.pathAdoptame}`
+      `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathFundacion}/${this.pathAdoptame}`
     );
   }
 
