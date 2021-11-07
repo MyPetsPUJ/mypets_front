@@ -4,169 +4,13 @@
     <form>
       <mat-card class="color">
         <form>
-          <div class="centro">
-            <img src="../../../assets/Images/siluetahombre.png" width="7%" />
-          </div>
-          <h2 class="titulo">Información Personal</h2>
+          
           <form
             action="formulario-adopcion.component.ts"
             (ngSubmit)="onEnviarSolicitud(solicitudAdopcionForm)"
             #solicitudAdopcionForm="ngForm"
             method="POST"
           >
-            <mat-grid-list cols="2" rowHeight="60px">
-              <div class="centro">
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
-                  <mat-form-field class="ancho">
-                    <mat-label>Nombres</mat-label>
-                    <input
-                      name="nombresAdoptante"
-                      ngModel
-                      type="text"
-                      #nombresAdoptanteInput="ngModel"
-                      required
-                      matInput
-                    />
-                  </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
-                  <mat-form-field class="ancho">
-                    <mat-label>Apellidos</mat-label>
-                    <input
-                      name="apellidosAdoptante"
-                      ngModel
-                      type="text"
-                      #apellidosAdoptanteInput="ngModel"
-                      required
-                      matInput
-                    />
-                  </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
-                  <mat-form-field class="ancho">
-                    <mat-label>Número de documento</mat-label>
-                    <input
-                      name="num_doc"
-                      ngModel
-                      type="number"
-                      #edadAdoptanteInput="ngModel"
-                      required
-                      matInput
-                    />
-                  </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
-                  <mat-form-field appearance="fill" class="ancho">
-                    <mat-label>Tipo de documento</mat-label>
-                    <mat-select
-                      name="tipo_doc"
-                      ngModel
-                      #tipoDocAdoptanteInput="ngModel"
-                      required
-                    >
-                      <mat-option *ngFor="let item of tipo_doc" [value]="item">
-                        {{ item }}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
-                  <mat-form-field class="ancho">
-                    <mat-label>Fecha de nacimiento</mat-label>
-                    <input
-                      name="fecha_nacimiento"
-                      ngModel
-                      type="text"
-                      #edadAdoptanteInput="ngModel"
-                      required
-                      matInput
-                    />
-                  </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
-                  <mat-form-field appearance="fill" class="ancho">
-                    <mat-label>Localidad</mat-label>
-                    <mat-select
-                      name="localidad"
-                      ngModel
-                      #localidadInput="ngModel"
-                    >
-                      <mat-option
-                        *ngFor="let localidad of localidad"
-                        [value]="localidad"
-                      >
-                        {{ localidad }}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
-                  <mat-form-field class="ancho">
-                    <mat-label>Genero</mat-label>
-                    <input
-                      name="genero"
-                      ngModel
-                      type="text"
-                      #edadAdoptanteInput="ngModel"
-                      required
-                      matInput
-                    />
-                  </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
-                  <mat-form-field class="ancho">
-                    <mat-label>Número de celular</mat-label>
-                    <input
-                      name="num_celular"
-                      ngModel
-                      type="text"
-                      #edadAdoptanteInput="ngModel"
-                      required
-                      matInput
-                    />
-                  </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
-                  <mat-form-field class="ancho">
-                    <mat-label>Correo</mat-label>
-                    <input
-                      name="correo"
-                      ngModel
-                      type="email"
-                      #edadAdoptanteInput="ngModel"
-                      required
-                      matInput
-                    />
-                  </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
-                  <mat-form-field class="ancho">
-                    <mat-label>Contraseña</mat-label>
-                    <input
-                      name="password"
-                      ngModel
-                      type="password"
-                      #edadAdoptanteInput="ngModel"
-                      required
-                      matInput
-                    />
-                  </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
-                  <mat-form-field class="ancho">
-                    <mat-label>Tipo de usuario</mat-label>
-                    <input
-                      name="tipo_usuario"
-                      ngModel
-                      type="text"
-                      #edadAdoptanteInput="ngModel"
-                      required
-                      matInput
-                    />
-                  </mat-form-field>
-                </mat-grid-tile>
-              </div>
-            </mat-grid-list>
             <div class="centro">
               <img
                 src="../../../assets/Images/siluetafamilia.png"
@@ -263,8 +107,7 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field appearance="fill" class="ancho">
                     <mat-label
-                      >Seleccione el temperamento del animal mas agresivo de la
-                      casa</mat-label
+                      >Seleccione el temperamento general de sus mascotas</mat-label
                     >
                     <mat-select
                       name="temperamentoMascotas"
@@ -284,7 +127,7 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field class="ancho">
                     <mat-label
-                      >Tiempo en años que lleva con esa mascota (digite 0 en
+                      >Cuanto lleva (en años) con su mascota más antigua (digite 0 en
                       caso de no tener)</mat-label
                     >
                     <input
@@ -329,8 +172,7 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field appearance="fill" class="ancho">
                     <mat-label
-                      >¿Están todas las personas de la casa de acuerdo con tener
-                      una mascota más en el hogar?</mat-label
+                      >¿Todos en su hogar están de acuerdo con la tenencia de una mascota?</mat-label
                     >
                     <mat-select
                       name="familiaresDeAcuerdo"
@@ -471,6 +313,8 @@
                           name="patioInteriorJugar"
                           ngModel
                           #esquema_vacInput="ngModel"
+                          [checked]="item.value"
+                          (change)="verDatos($event,'juego',item)" 
                         >
                           {{ item }}
                         </mat-checkbox>
@@ -490,6 +334,8 @@
                           name="vaterinarioGastos"
                           ngModel
                           #veterinarioGastosInput="ngModel"
+                          [checked]="gastos.value"
+                          (change)="verDatos($event,'gastos',gastos)"
                         >
                           {{ gastos }}
                         </mat-checkbox>
@@ -547,8 +393,8 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field appearance="fill" class="ancho">
                     <mat-label
-                      >¿Es consciente de que una mascota representa una
-                      responsabilidad por aproximadamente 15 años?</mat-label
+                      >¿Es consciente que la tenencia de una mascota es una responsabilidad
+                      de al menos 15 años?</mat-label
                     >
                     <mat-select
                       name="conscienteResponsabilidad15años"
@@ -574,6 +420,8 @@
                           name="actividadesConMascota"
                           ngModel
                           #actividadesConMascotaInput="ngModel"
+                          [checked]="actividades.value"
+                          (change)="verDatos($event,'actividades',actividades)"
                         >
                           {{ actividades }}
                         </mat-checkbox>
@@ -608,6 +456,8 @@
                           name="espacioViviendaMascota"
                           ngModel
                           #espacioViviendaMascotaInput="ngModel"
+                          [checked]="casa.value"
+                          (change)="verDatos($event,'dormir',casa)"
                         >
                           {{ casa }}
                         </mat-checkbox>
@@ -618,8 +468,8 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field appearance="fill" class="ancho">
                     <mat-label
-                      >¿Estaría dispuesto a llevar el animal con usted en caso
-                      de mudarse de la ciudad o país?</mat-label
+                      >¿Tendría la posibilidad de llevarse a su mascota en caso
+                      de mudanza de la ciudad o el país?</mat-label
                     >
                     <mat-select
                       name="disposicionMudarseConElAnimal"
@@ -654,8 +504,8 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field appearance="fill" class="ancho">
                     <mat-label
-                      >¿Cuánto tiempo dará para que el animal tenga un periodo
-                      de adaptación a la familia y al nuevo hábitat?</mat-label
+                      >¿Cuánto tiempo está dispuesto a dar para que el 
+                      animal se adapte al nuevo entorno?</mat-label
                     >
                     <mat-select
                       name="disposicionAdaptacionAnimal"
@@ -812,7 +662,7 @@
               <div class="centro">
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field class="ancho">
-                    <mat-label>Nombres del familiar</mat-label>
+                    <mat-label>Nombres</mat-label>
                     <input
                       name="nombresAmigo"
                       ngModel
@@ -825,7 +675,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                   <mat-form-field class="ancho">
-                    <mat-label>Apellidos del familiar</mat-label>
+                    <mat-label>Apellidos</mat-label>
                     <input
                       name="apellidosAmigo"
                       ngModel
@@ -923,7 +773,6 @@
               >
                 Cancelar
               </button>
-              <button mat-raised-button (click)="enviarFormQuemado()">Datos quemados</button>
             </div>
           </form>
         </form>

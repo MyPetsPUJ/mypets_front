@@ -21,6 +21,7 @@ import { PreviewAnimalComponent } from './home-page/preview-animal/preview-anima
 import { FooterComponent } from './footer/footer.component';
 import { MiCuentaAdoptanteComponent } from './mi-cuenta-adoptante/mi-cuenta-adoptante.component';
 import { ConfirmarSolicitudComponent } from './home-page/preview-animal/confirmar-solicitud/confirmar-solicitud.component';
+import { TiendaComponent } from './tienda/tienda.component';
 
 
 
@@ -42,7 +43,8 @@ import { ConfirmarSolicitudComponent } from './home-page/preview-animal/confirma
     PreviewAnimalComponent,
     FooterComponent,
     MiCuentaAdoptanteComponent,
-    ConfirmarSolicitudComponent
+    ConfirmarSolicitudComponent,
+    TiendaComponent
   ],
   imports: [
     CommonModule,

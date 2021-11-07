@@ -45,6 +45,8 @@ export class CrearAnimalGatoComponent implements OnInit {
   tiposPelaje: TipoPelaje[] = [];
   minDate: Date | any;
   maxDate: Date | any;
+  vacunasPublicar: string[] = [];
+  valoresSelect: string[] = ['0', '1', '2', '3', '4', '5', '6', '7'];
   constructor(
     public crearGatoService: CrearAnimalService,
     private sanitizer: DomSanitizer,
@@ -149,18 +151,18 @@ export class CrearAnimalGatoComponent implements OnInit {
     this.crearGatoService
       .crearAnimalGato(
         form.value.nombre,
-        form.value.edad.edad,
+        this.valoresSelect[0],
         form.value.raza,
-        form.value.sexo.genero,
-        form.value.tamano.tamano,
-        form.value.color_ojos.color,
-        form.value.tipo_pelaje.tipoPelaje,
-        form.value.situacion.situacion,
-        form.value.desparasitado.estado,
+        this.valoresSelect[1],
+        this.valoresSelect[2],
+        this.valoresSelect[3],
+        this.valoresSelect[4],
+        this.valoresSelect[5],
+        this.valoresSelect[6],
         form.value.ultima_vac,
         form.value.descripcion,
         this.file,
-        form.value.esquema_vac.nombre,
+        this.getEsquema(this.vacunasPublicar),
         'Gato'
       )
       .subscribe(
@@ -190,6 +192,62 @@ export class CrearAnimalGatoComponent implements OnInit {
         horizontalPosition: 'center',
         verticalPosition: 'bottom',
       });
+    }
+  }
+  verVacunas(evento: any, palabraCasilla: string) {
+    var encontrado = false;
+    var pos;
+    for (var i = 0; i < this.vacunasPublicar.length; i++) {
+      if (this.vacunasPublicar[i] == palabraCasilla) {
+        pos = i;
+        encontrado = true;
+      }
+    }
+    if (evento.checked) {
+      if (!encontrado) this.vacunasPublicar.push(palabraCasilla);
+    } else {
+      this.vacunasPublicar.splice(pos, 1);
+    }
+  }
+  getEsquema(arreglo: string[]): string {
+    var palabra = 'Sin información';
+    for (var i = 0; i < arreglo.length; i++) {
+      if (i == 0) palabra = arreglo[i];
+      else {
+        palabra += ', ' + arreglo[i];
+      }
+    }
+    return palabra;
+  }
+  valorSelect(evento: any, nombreSelect: string) {
+    if (nombreSelect == 'edad') {
+      this.valoresSelect[0] = evento.edad;
+      console.log(this.valoresSelect[0]);
+    }
+    if (nombreSelect == 'sexo') {
+      this.valoresSelect[1] = evento.genero;
+      console.log(this.valoresSelect[1]);
+    }
+
+    if (nombreSelect == 'tamano') {
+      this.valoresSelect[2] = evento.tamano;
+      console.log(this.valoresSelect[2]);
+    }
+    if (nombreSelect == 'color') {
+      this.valoresSelect[3] = evento.color;
+      console.log(this.valoresSelect[3]);
+    }
+    if (nombreSelect == 'pelaje') {
+      this.valoresSelect[4] = evento.tipoPelaje;
+      console.log(this.valoresSelect[4]);
+    }
+    if (nombreSelect == 'situacion') {
+      this.valoresSelect[5] = evento.situacion;
+      console.log(this.valoresSelect[5]);
+    }
+    if (nombreSelect == 'desparasitado') {
+      this.valoresSelect[6] = evento.estado;
+      console.log(this.valoresSelect[6]);
     }
   }
 }

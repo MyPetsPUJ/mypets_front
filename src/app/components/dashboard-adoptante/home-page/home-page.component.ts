@@ -72,6 +72,7 @@ export class HomePageComponent implements OnInit {
   indicesBorrar: number[] = [];
   estaAlReves: boolean = false;
   borrarAnimal: string[] = [];
+  borrarAnimales: string[] = [];
 
   constructor(
     private animalService: AnimalService,
@@ -85,6 +86,7 @@ export class HomePageComponent implements OnInit {
     this.animalService.getAnimales().subscribe({
       next: (res) => {
         this.animales = res;
+        this.separarAnimalesAdoptados();
         this.animales2 = Array.from(this.animales);
         this.columnas = this.animales.length;
 
@@ -188,5 +190,20 @@ export class HomePageComponent implements OnInit {
         console.log(error);
       },
     });
+  }
+  separarAnimalesAdoptados(){
+    for(var i=0;i<this.animales.length;i++)
+    {
+      if(this.animales[i].enAdopcion==false)
+      {
+        this.borrarAnimales[i]= "borrar";
+      }
+    }
+    let tamanoArreglo= this.animales.length;
+    while (tamanoArreglo--) {
+      if (this.borrarAnimales[tamanoArreglo] === 'borrar') {
+        this.animales.splice(tamanoArreglo, 1);
+      }
+    }
   }
 }

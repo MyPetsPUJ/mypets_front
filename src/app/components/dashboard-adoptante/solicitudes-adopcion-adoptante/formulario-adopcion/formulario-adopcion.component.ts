@@ -35,6 +35,10 @@ export class FormularioAdopcionComponent implements OnInit {
   @Input() data: any;
   @Output() salida: EventEmitter<any> = new EventEmitter();
   formAdopcion: FormularioAdopcion | undefined;
+  lugaresJuego: string[] = [];
+  gastosAnimal: string[] =[];
+  actividades: string[] =[];
+  lugaresDormir: string [] =[];
   ngOnInit(): void {
     console.log('la data es: ',this.data);
   }
@@ -171,15 +175,15 @@ export class FormularioAdopcionComponent implements OnInit {
       tiempoEnCasaHoras: form.value.tiempoEnCasaHoras,
       horaRegresoCasa: form.value.horaRegresoCasa,
       lugarViviendaDeMascota: form.value.lugarViviendaDeMascota,
-      patioInteriorJugar: form.value.patioInteriorJugar,
-      veterinarioGastos: form.value.veterinarioGastos,
+      patioInteriorJugar: this.getLista(this.lugaresJuego),
+      veterinarioGastos: this.getLista(this.gastosAnimal),
       mascotaAnterior: form.value.mascotaAnterior,
       conoceCuidadosMascota: form.value.conoceCuidadosMascota,
       veterinarioDeConfianza: form.value.veterinarioDeConfianza,
       conscienteResponsabilidad15anos:form.value.conscienteResponsabilidad15años,
-      actividadesConMascota: form.value.actividadesConMascota,
+      actividadesConMascota: this.getLista(this.actividades),
       alternativaPaseador: form.value.alternativaPaseador,
-      espacioViviendaMascota: form.value.espacioViviendaMascota,
+      espacioViviendaMascota: this.getLista(this.lugaresDormir),
       razonesAdopcion: form.value.razonesAdopcion,
       disposicionMudarseConElAnimal: form.value.disposicionMudarseConElAnimal,
       disposicionPasearAlAnimalPerro: form.value.disposicionPasearAlAnimalPerro,
@@ -312,5 +316,104 @@ export class FormularioAdopcionComponent implements OnInit {
       }
     }
     this.salir()
+  }
+  verDatos(evento: any,accion: string, nombreCasilla: string)
+  {
+    var encontrado = false;
+    var pos;
+    if(accion == 'juego')
+    {
+      for(var i = 0; i < this.lugaresJuego.length; i++)
+        {
+          if(this.lugaresJuego[i] == nombreCasilla)
+          {
+            pos = i;
+            encontrado = true;
+          }
+        }
+      if(evento.checked)
+      {
+        if(!encontrado)
+          this.lugaresJuego.push(nombreCasilla);       
+      }
+      else 
+      {
+        this.lugaresJuego.splice(pos,1);
+      }
+    }
+    if(accion == 'gastos')
+    {
+      for(var i = 0; i < this.gastosAnimal.length; i++)
+        {
+          if(this.gastosAnimal[i] == nombreCasilla)
+          {
+            pos = i;
+            encontrado = true;
+          }
+        }
+      if(evento.checked)
+      {
+        if(!encontrado)
+          this.gastosAnimal.push(nombreCasilla);       
+      }
+      else 
+      {
+        this.gastosAnimal.splice(pos,1);
+      }
+    }
+    if(accion == 'actividades')
+    {
+      for(var i = 0; i < this.actividades.length; i++)
+        {
+          if(this.actividades[i] == nombreCasilla)
+          {
+            pos = i;
+            encontrado = true;
+          }
+        }
+      if(evento.checked)
+      {
+        if(!encontrado)
+          this.actividades.push(nombreCasilla);       
+      }
+      else 
+      {
+        this.actividades.splice(pos,1);
+      }
+    }
+    if(accion == 'dormir')
+    {
+      for(var i = 0; i < this.lugaresDormir.length; i++)
+        {
+          if(this.lugaresDormir[i] == nombreCasilla)
+          {
+            pos = i;
+            encontrado = true;
+          }
+        }
+      if(evento.checked)
+      {
+        if(!encontrado)
+          this.lugaresDormir.push(nombreCasilla);       
+      }
+      else 
+      {
+        this.lugaresDormir.splice(pos,1);
+      }
+    }
+  }
+  getLista(arreglo: string[]): string
+  {
+    var palabra ='Sin información';
+    for(var i = 0; i < arreglo.length; i++)
+    {
+      if(i == 0)
+        palabra = arreglo[i];
+      else 
+      {
+        palabra +=', ' + arreglo[i]; 
+      }
+    }
+    return palabra;
   }
 }
