@@ -10,12 +10,18 @@ h2 {
 .cuerpo {
   padding-bottom: 15px;
 }
+mat-card {
+  background-color: rgb(245 245 220);
+}
 .centro {
   text-align: center;
   padding-bottom: 30px;
 }
 .ancho {
   width: 90%;
+}
+.todo {
+  padding-top: 80px;
 }
 .margen {
   height: 100px;
@@ -44,7 +50,7 @@ h2 {
 }
 .color {
   padding-top: 15px;
-  background-color: beige;
+  background-color: rgba(245, 245, 220, 0.9);
 }
 .flex-me {
   flex-flow: row wrap;

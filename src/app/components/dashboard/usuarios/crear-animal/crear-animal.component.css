@@ -1,53 +1,49 @@
-.ancho
-{
-    width: 90%;
-}.ancho
-{
-    width: 90%;
+.ancho {
+  width: 90%;
 }
-.centro
-{
-    text-align: center;
+.ancho {
+  width: 90%;
 }
-.margen 
-{
-   height: 1120px;
-   width: 1120px;
-   margin: auto;
+.centro {
+  text-align: center;
 }
-.tamano 
-{
-    text-align: center;
-    width: 120px;
-    height: 35px;
+.margen {
+  height: 1120px;
+  width: 1120px;
+  margin: auto;
+}
+.tamano {
+  text-align: center;
+  width: 120px;
+  height: 35px;
 }
 .mat-radio-button ~ .mat-radio-button {
-    margin-left: 16px;
-  }
-  .titulo 
-  {
-      font-size: 30px;
-      text-align: center;
-      font-family:Georgia, 'Times New Roman', Times, serif;
-  }
-.image 
-{
-    background-image: url(src\assets\Images\dogs-background.png);
-    height: 90%;
+  margin-left: 16px;
 }
-.color 
-{
-    background-color: rgba(245,245,220,0.7);
+.titulo {
+  font-size: 30px;
+  text-align: center;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background-color: rgb(245 245 220);
 }
-.izquierda 
-{
-    align-items: left;
+.image {
+  background-image: url(src\assets\Images\dogs-background.png);
+  height: 90%;
+}
+.color {
+  background-color: rgba(245, 245, 220, 0.7);
+}
+.todo {
+  padding-top: 70px;
 }
 
-.inputImg{
-    visibility: hidden;
+.izquierda {
+  align-items: left;
 }
-.pointer 
-{
-    cursor: pointer;
+
+.inputImg {
+  visibility: hidden;
+}
+.pointer {
+  cursor: pointer;
 }

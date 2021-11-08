@@ -1,103 +1,92 @@
-.full 
-{
-    width: 59%;
-    margin-left: auto;
-    position: absolute;
-    right: 1%;
-    top: 9%;
-    border-color: black;
-    border-width: 4px;
-    border-style: solid;
-    
+.full {
+  width: 59%;
+  margin-left: auto;
+  position: absolute;
+  right: 1%;
+  top: 9%;
+  border-color: black;
+  border-width: 4px;
+  border-style: solid;
 }
-.mapa
-{
-    
-    height: 83vh;
-
+.mapa {
+  height: 77vh;
 }
-.example-spacer 
-{
-    flex: 1 1 auto;
+.example-spacer {
+  flex: 1 1 auto;
 }
-.pointer
-{
-    cursor: pointer;
+.pointer {
+  cursor: pointer;
 }
-.alinearDer 
-{
-    margin-right: 10px;
+.alinearDer {
+  margin-right: 10px;
 }
 table {
-    width: 100%;
-  }
-  
-  .mat-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
-  
-  td, th {
-    width: 25%;
-  }
-  .tablaTamano 
-  {
-    width: 38%;
-    display: inline-block;
-    position: absolute;
-    left: 1%;
-    background-color: white;
-      
-  }
-  .pointer{
-      cursor: pointer;
-  }
-  .aumentoTam 
-  {
-      transform: scale(1.5);
-  }
-  .color 
-  {
-    background-color: beige;
-    width: 100%;
-    height: 92%;
-  }
-  .centrar{
-    position:relative;
-    text-align: center;
-    right: 32%;
-  }
-  .example-container {
-    display: flex;
-    flex-direction: column;
-    max-height: 500px;
-    min-width: 300px;
-  }
-  
-  .mat-table {
-    overflow: auto;
-    max-height: 500px;
-  }
-  
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 25%;
+}
+.tablaTamano {
+  width: 38%;
+  display: inline-block;
+  position: absolute;
+  left: 1%;
+  background-color: white;
+}
+.pointer {
+  cursor: pointer;
+}
+.aumentoTam {
+  transform: scale(1.5);
+}
+.color {
+  background-color: beige;
+  width: 100%;
+  height: 92%;
+  padding-top: 100px;
+}
+.centrar {
+  position: relative;
+  text-align: center;
+  right: 32%;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.mobile-label {
+  display: none;
+}
+
+@media (max-width: 600px) {
   .mobile-label {
+    width: 80px;
+    display: inline-block;
+    font-weight: bold;
+  }
+
+  .mat-header-row {
     display: none;
   }
-  
-  @media(max-width: 600px) {
-    .mobile-label {
-      width: 80px;
-      display: inline-block;
-          font-weight: bold;
-    }
-  
-    .mat-header-row {
-      display: none;
-    }
-  
-    .mat-row { 
-      flex-direction: column;
-      align-items: start;
-      padding: 8px 24px;
-    }
+
+  .mat-row {
+    flex-direction: column;
+    align-items: start;
+    padding: 8px 24px;
   }
-  
+}

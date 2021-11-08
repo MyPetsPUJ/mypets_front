@@ -1,23 +1,23 @@
 <div [formGroup]="estados" class="tam">
-  <mat-toolbar>
-    <h1>Seleccione que desea ver</h1>
-  </mat-toolbar>
-  <p>
-    <mat-checkbox formControlName="solicitudesAdop"
-      >Solicitudes de adopcion</mat-checkbox
-    >
-  </p>
-  <p>
-    <mat-checkbox formControlName="formulariosAdop"
-      >Formularios adopción</mat-checkbox
-    >
-  </p>
+  <div class="tam2">
+    <mat-toolbar>
+      <h1>Seleccione que desea ver</h1>
+    </mat-toolbar>
+    <p>
+      <mat-checkbox formControlName="solicitudesAdop"
+        >Solicitudes de adopcion</mat-checkbox
+      >
+    </p>
+    <p>
+      <mat-checkbox formControlName="formulariosAdop"
+        >Formularios adopción</mat-checkbox
+      >
+    </p>
+  </div>
 </div>
 <div class="noForm">
   <div
-    *ngIf="
-      datosTablaForm.length == 0 && estados.controls.formulariosAdop.value
-    "
+    *ngIf="datosTablaForm.length == 0 && estados.controls.formulariosAdop.value"
     class="tam"
   >
     <mat-toolbar>
@@ -41,8 +41,10 @@
         >
         <mat-cell *matCellDef="let element">
           <span class="mobile-label">Foto: </span>
-          <img [src]="'http://localhost:3000/' + element.animal.urlImg"
-          class="circulo pointer" >
+          <img
+            [src]="'http://localhost:3000/' + element.animal.urlImg"
+            class="circulo pointer"
+          />
         </mat-cell>
       </ng-container>
       <ng-container matColumnDef="animalSolicitud">
@@ -91,17 +93,29 @@
           <!-- {{element.adoptante.num_celular}}-->
           <span class="mobile-label">Acción: </span>
 
-          <mat-icon class="pointer" matTooltip="Visualizar formulario"
-          (click)="openDialog(element,'ver')">visibility</mat-icon>
+          <mat-icon
+            class="pointer"
+            matTooltip="Visualizar formulario"
+            (click)="openDialog(element, 'ver')"
+            >visibility</mat-icon
+          >
           <i style="color: white">....</i>
-          <mat-icon class="pointer" matTooltip="Aceptar formulario"
-          (click)="openDialog(element,'aceptar')" [ngStyle]="{ color: 'green' }">check_circle</mat-icon>
+          <mat-icon
+            class="pointer"
+            matTooltip="Aceptar formulario"
+            (click)="openDialog(element, 'aceptar')"
+            [ngStyle]="{ color: 'green' }"
+            >check_circle</mat-icon
+          >
           <i style="color: white">....</i>
-          <mat-icon class="pointer" matTooltip="Rechazar formulario"
-          (click)="openDialog(element,'rechazar')" [ngStyle]="{ color: 'red' }">cancel</mat-icon>
+          <mat-icon
+            class="pointer"
+            matTooltip="Rechazar formulario"
+            (click)="openDialog(element, 'rechazar')"
+            [ngStyle]="{ color: 'red' }"
+            >cancel</mat-icon
+          >
           <i style="color: white">....</i>
-          
-
         </mat-cell>
       </ng-container>
 
@@ -125,9 +139,7 @@
 
 <div class="noForm">
   <div
-    *ngIf="
-      datosTabla.length == 0 && estados.controls.solicitudesAdop.value
-    "
+    *ngIf="datosTabla.length == 0 && estados.controls.solicitudesAdop.value"
     class="tam"
   >
     <mat-toolbar>
@@ -235,7 +247,4 @@
     </mat-table>
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </div>
-  <button mat-raised-button routerLink="/dashboard-adoptante">
-    dashboard-adoptante
-  </button>
 </div>

@@ -6,7 +6,6 @@
 }
 .centro {
   text-align: center;
-  
 }
 .margen {
   height: 1120px;
@@ -29,21 +28,19 @@
 .image {
   background-image: url(src\assets\Images\dogs-background.png);
   height: 90%;
+  padding-top: 100px;
 }
 .color {
   background-color: beige;
 }
 
-
-
-.inputImg{
+.inputImg {
   visibility: hidden;
 }
-.pointer
-{
+.pointer {
   cursor: pointer;
 }
-.tam{
+.tam {
   width: 800px;
   margin: auto;
 }

@@ -1,29 +1,50 @@
-<div>
+<div class="todo">
   <mat-card styles="margin-top: 10px;" class="image">
     <h2 class="titulo">Crear un perro</h2>
     <form>
       <mat-card class="color">
-        <form action="crear-animal.component.ts" (ngSubmit)="onCrearPerro(crearPerroForm)" #crearPerroForm="ngForm"
-          method="POST">
+        <form
+          action="crear-animal.component.ts"
+          (ngSubmit)="onCrearPerro(crearPerroForm)"
+          #crearPerroForm="ngForm"
+          method="POST"
+        >
           <div class="centro">
             <h2>Agrega una imagen de tu animal</h2>
 
-            <input #fileInput type="file" (change)="onPhotoSelected($event)" style="display:none;" />
-            <img [src]="photoSelected || previsualizacion" width="15%" class="pointer" matTooltip="Desplegar opciones de foto"
-                    [matMenuTriggerFor]="menu">
-                <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="fileInput.click()">
-                        <mat-icon>perm_media</mat-icon>
-                        <span>Cambiar foto</span>
-                        <input (change)="onPhotoSelected($event)" type="file">
-                    </button>
-                </mat-menu>
+            <input
+              #fileInput
+              type="file"
+              (change)="onPhotoSelected($event)"
+              style="display: none"
+            />
+            <img
+              [src]="photoSelected || previsualizacion"
+              width="15%"
+              class="pointer"
+              matTooltip="Desplegar opciones de foto"
+              [matMenuTriggerFor]="menu"
+            />
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="fileInput.click()">
+                <mat-icon>perm_media</mat-icon>
+                <span>Cambiar foto</span>
+                <input (change)="onPhotoSelected($event)" type="file" />
+              </button>
+            </mat-menu>
           </div>
           <mat-grid-list cols="2" rowHeight="60px">
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <mat-form-field class="ancho">
                 <mat-label>Nombre del animal</mat-label>
-                <input name="nombre" ngModel type="text" #nombreInput="ngModel" required matInput />
+                <input
+                  name="nombre"
+                  ngModel
+                  type="text"
+                  #nombreInput="ngModel"
+                  required
+                  matInput
+                />
               </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -39,8 +60,15 @@
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <mat-form-field class="ancho">
                 <mat-label>Raza</mat-label>
-                <input name="raza" ngModel type="text" #razaInput="ngModel" required placeholder="Ej: Pitbull"
-                  matInput />
+                <input
+                  name="raza"
+                  ngModel
+                  type="text"
+                  #razaInput="ngModel"
+                  required
+                  placeholder="Ej: Pitbull"
+                  matInput
+                />
               </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -56,7 +84,12 @@
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <mat-form-field appearance="fill" class="ancho">
                 <mat-label>Tamaño</mat-label>
-                <mat-select name="tamano" ngModel #tamanoInput="ngModel" required>
+                <mat-select
+                  name="tamano"
+                  ngModel
+                  #tamanoInput="ngModel"
+                  required
+                >
                   <mat-option *ngFor="let item of tamanos" [value]="item">
                     {{ item.tamano }}
                   </mat-option>
@@ -66,7 +99,12 @@
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <mat-form-field appearance="fill" class="ancho">
                 <mat-label>Color de ojos</mat-label>
-                <mat-select name="color_ojos" ngModel #color_ojosInput="ngModel" required>
+                <mat-select
+                  name="color_ojos"
+                  ngModel
+                  #color_ojosInput="ngModel"
+                  required
+                >
                   <mat-option *ngFor="let item of colorOjos" [value]="item">
                     {{ item.color }}
                   </mat-option>
@@ -76,7 +114,12 @@
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <mat-form-field appearance="fill" class="ancho">
                 <mat-label>Tipo de pelaje</mat-label>
-                <mat-select name="tipo_pelaje" ngModel #tipo_pelajeInput="ngModel" required>
+                <mat-select
+                  name="tipo_pelaje"
+                  ngModel
+                  #tipo_pelajeInput="ngModel"
+                  required
+                >
                   <mat-option *ngFor="let item of tiposPelaje" [value]="item">
                     {{ item.tipoPelaje }}
                   </mat-option>
@@ -86,7 +129,12 @@
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <mat-form-field appearance="fill" class="ancho">
                 <mat-label>Situación</mat-label>
-                <mat-select name="situacion" ngModel #situacionInput="ngModel" required>
+                <mat-select
+                  name="situacion"
+                  ngModel
+                  #situacionInput="ngModel"
+                  required
+                >
                   <mat-option *ngFor="let item of situaciones" [value]="item">
                     {{ item.situacion }}
                   </mat-option>
@@ -96,8 +144,16 @@
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <mat-form-field appearance="fill" class="ancho">
                 <mat-label>Está desparasitado</mat-label>
-                <mat-select name="desparasitado" ngModel #desparasitadoInput="ngModel" required>
-                  <mat-option *ngFor="let item of desparasitados" [value]="item">
+                <mat-select
+                  name="desparasitado"
+                  ngModel
+                  #desparasitadoInput="ngModel"
+                  required
+                >
+                  <mat-option
+                    *ngFor="let item of desparasitados"
+                    [value]="item"
+                  >
                     {{ item.estado }}
                   </mat-option>
                 </mat-select>
@@ -106,32 +162,50 @@
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <mat-form-field appearance="fill" class="ancho">
                 <mat-label>Fecha de última vacuna</mat-label>
-                <input name="ultima_vac" ngModel #ultima_vacInput="ngModel" required matInput [matDatepicker]="picker"
-                  [min]="minDate" [max]="maxDate" />
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <input
+                  name="ultima_vac"
+                  ngModel
+                  #ultima_vacInput="ngModel"
+                  required
+                  matInput
+                  [matDatepicker]="picker"
+                  [min]="minDate"
+                  [max]="maxDate"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <mat-form-field class="ancho">
                 <mat-label>Descripción sobre el animal</mat-label>
-                <textarea name="descripcion" ngModel #descripcionInput="ngModel" required class="descrip"
-                  placeholder="Ej: Es un perrito muy cariñoso y noble..." matInput></textarea>
+                <textarea
+                  name="descripcion"
+                  ngModel
+                  #descripcionInput="ngModel"
+                  required
+                  class="descrip"
+                  placeholder="Ej: Es un perrito muy cariñoso y noble..."
+                  matInput
+                ></textarea>
               </mat-form-field>
             </mat-grid-tile>
-            <mat-grid-tile [colspan]="1" [rowspan]="2" >
+            <mat-grid-tile [colspan]="1" [rowspan]="2">
               <div class="izquierda">
-                <span class ="seccionVacunas"><ul>
-                  <li *ngFor="let vacuna of lista_vacunas">
-                    <mat-checkbox > {{vacuna}} </mat-checkbox>
-                  </li>
-                </ul>
-              </span>
+                <span class="seccionVacunas"
+                  ><ul>
+                    <li *ngFor="let vacuna of lista_vacunas">
+                      <mat-checkbox> {{ vacuna }} </mat-checkbox>
+                    </li>
+                  </ul>
+                </span>
               </div>
-              
             </mat-grid-tile>
           </mat-grid-list>
-              <!-- <span>
+          <!-- <span>
                 <h1>Seleccione el esquema de vacunas del perro</h1>
               </span>
               <span>
@@ -143,12 +217,23 @@
                   </li>
                 </ul>
               </span> -->
-            
+
           <div class="centro">
-            <button mat-raised-button color="primary" style="margin: 16px" class="tamano" type="submit">
+            <button
+              mat-raised-button
+              color="primary"
+              style="margin: 16px"
+              class="tamano"
+              type="submit"
+            >
               Crear animal
             </button>
-            <button mat-raised-button color="accent" class="tamano" routerLink="/dashboard/mis-animales">
+            <button
+              mat-raised-button
+              color="accent"
+              class="tamano"
+              routerLink="/dashboard/mis-animales"
+            >
               Cancelar
             </button>
           </div>

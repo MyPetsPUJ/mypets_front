@@ -1,60 +1,56 @@
-.ancho
-{
-    width: 90%;
-}.ancho
-{
-    width: 90%;
+.ancho {
+  width: 90%;
 }
-.centro
-{
-    text-align: center;
+.ancho {
+  width: 90%;
 }
-.margen 
-{
-   height: 1120px;
-   width: 1120px;
-   margin: auto;
+.centro {
+  text-align: center;
 }
-.tamano 
-{
-    text-align: center;
-    width: 120px;
-    height: 35px;
+.margen {
+  height: 1120px;
+  width: 1120px;
+  margin: auto;
+}
+.tamano {
+  text-align: center;
+  width: 120px;
+  height: 35px;
 }
 .mat-radio-button ~ .mat-radio-button {
-    margin-left: 16px;
-  }
-  .titulo 
-  {
-      font-size: 30px;
-      text-align: center;
-      font-family:Georgia, 'Times New Roman', Times, serif;
-  }
-  .color 
-{
-    background-color: rgba(245,245,220,0.9);
+  margin-left: 16px;
 }
-.vacunas{
-    margin-left: 30px;
+.titulo {
+  font-size: 30px;
+  text-align: center;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background-color: rgb(245 245 220);
 }
-.items{
-    font-size: 12pt;
+.color {
+  background-color: rgba(245, 245, 220, 0.9);
 }
-.image 
-{
-    background-image: url(src\assets\Images\cats-background.png);
-    height: 90%;
+.todo {
+  padding-top: 70px;
 }
 
-.inputImg{
-    visibility: hidden;
+.vacunas {
+  margin-left: 30px;
 }
-.pointer 
-{
-    cursor: pointer;
+.items {
+  font-size: 12pt;
+}
+.image {
+  background-image: url(src\assets\Images\cats-background.png);
+  height: 90%;
 }
 
-.seccionVacunas{
-    margin: 50px;
+.inputImg {
+  visibility: hidden;
+}
+.pointer {
+  cursor: pointer;
+}
 
+.seccionVacunas {
+  margin: 50px;
 }

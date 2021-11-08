@@ -1,140 +1,232 @@
-<div>
-    <mat-card styles="margin-top: 10px;" class = "image">
-        <h2 class= "titulo">Crear un gato</h2>
-        <form>
-            <mat-card class = "color">
-                <form action="crear-animal-gato.component.ts" (ngSubmit)="onCrearGato(crearGatoForm)" #crearGatoForm="ngForm" method="POST">
-                    <div class="centro">
-                        <h2>Agrega una imagen de tu animal</h2>
-            
-                        <input #fileInput type="file" (change)="onPhotoSelected($event)" style="display:none;" />
-                        <img [src]="photoSelected || previsualizacion" width="15%" class="pointer" matTooltip="Desplegar opciones de foto"
-                                [matMenuTriggerFor]="menu">
-                            <mat-menu #menu="matMenu">
-                                <button mat-menu-item (click)="fileInput.click()">
-                                    <mat-icon>perm_media</mat-icon>
-                                    <span>Cambiar foto</span>
-                                    <input (change)="onPhotoSelected($event)" type="file">
-                                </button>
-                            </mat-menu>
-                      </div>
-                    <mat-grid-list cols="2" rowHeight="60px">
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field class="ancho">
-                                <mat-label>Nombre del animal</mat-label>
-                                <input name="nombre" ngModel #nombreInput="ngModel" required matInput>
-                            </mat-form-field>
-                        </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field appearance="fill" class="ancho">
-                                <mat-label>Edad aproximada</mat-label>
-                                <mat-select name="edad" ngModel #edadInput="ngModel" required (valueChange)="valorSelect($event,'edad')">
-                                    <mat-option *ngFor="let item of edades" [value]="item">
-                                        {{item.edad}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field class="ancho">
-                                <mat-label>Raza</mat-label>
-                                <input name="raza" ngModel #razaInput="ngModel" required matInput>
-                            </mat-form-field>
-                        </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field appearance="fill" class="ancho">
-                                <mat-label>Sexo</mat-label>
-                                <mat-select name="sexo" ngModel #sexoInput="ngModel" required (valueChange)="valorSelect($event,'sexo')">
-                                    <mat-option *ngFor="let item of generosAnimal" [value]="item">
-                                        {{item.genero}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field appearance="fill" class="ancho">
-                              <mat-label>Tamaño</mat-label>
-                              <mat-select
-                                name="tamano"
-                                ngModel
-                                #tamanoInput="ngModel"
-                                required
-                                (valueChange)="valorSelect($event,'tamano')"
-                              >
-                                <mat-option *ngFor="let item of tamanos" [value]="item">
-                                  {{ item.tamano }}
-                                </mat-option>
-                              </mat-select>
-                            </mat-form-field>
-                          </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field appearance="fill" class="ancho">
-                                <mat-label>Color de ojos</mat-label>
-                                <mat-select name="color_ojos" ngModel #color_ojosInput="ngModel" required (valueChange)="valorSelect($event,'color')">
-                                    <mat-option *ngFor="let item of colorOjos" [value]="item">
-                                        {{item.color}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field appearance="fill" class="ancho">
-                                <mat-label>Tipo de pelaje</mat-label>
-                                <mat-select name="tipo_pelaje" ngModel #tipo_pelajeInput="ngModel" required (valueChange)="valorSelect($event,'pelaje')">
-                                    <mat-option *ngFor="let item of tiposPelaje" [value]="item">
-                                        {{item.tipoPelaje}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field appearance="fill" class="ancho">
-                                <mat-label>Situación</mat-label>
-                                <mat-select name="situacion" ngModel #situacionInput="ngModel" required (valueChange)="valorSelect($event,'situacion')">
-                                    <mat-option *ngFor="let item of situaciones" [value]="item">
-                                        {{item.situacion}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                            <mat-form-field appearance="fill" class = "ancho">
-                                <mat-label>Fecha de última vacuna</mat-label>
-                                <input name="ultima_vac" ngModel #ultima_vacInput="ngModel" required matInput [matDatepicker]="picker"
-                                [min]="minDate"[max]="maxDate">
-                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-datepicker #picker></mat-datepicker>
-                              </mat-form-field>
-                        </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field appearance="fill" class="ancho">
-                                <mat-label>Está desparasitado</mat-label>
-                                <mat-select name="desparasitado" ngModel #desparasitadoInput="ngModel" required (valueChange)="valorSelect($event,'edad')">
-                                    <mat-option *ngFor="let item of desparasitados" [value]="item">
-                                        {{item.estado}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="1">
-                            <mat-form-field class="ancho">
-                                <mat-label>Descripción sobre el animal</mat-label>
-                                <textarea name="descripcion" ngModel #descripcionInput="ngModel" required class="descrip" placeholder="Ej: Es un gato muy consentido..." matInput></textarea>
-                            </mat-form-field>
-                        </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="3">
-                            <span class ="seccionVacunas">Seleccione el esquema de vacunación del animal<ul>
-                                <li *ngFor="let vacuna of lista_vacunas" class="items">
-                                  <mat-checkbox name="esquema_vac" ngModel #esquema_vacInput="ngModel" 
-                                  [checked]="vacuna.value"
-                          (change)="verVacunas($event,vacuna)" > {{vacuna}} </mat-checkbox>
-                                </li>
-                              </ul>
-                            </span>
-                          </mat-grid-tile>
-                        
-                    </mat-grid-list>
-                    <!-- <span>
+<div class="todo">
+  <mat-card styles="margin-top: 10px;" class="image">
+    <h2 class="titulo">Crear un gato</h2>
+    <form>
+      <mat-card class="color">
+        <form
+          action="crear-animal-gato.component.ts"
+          (ngSubmit)="onCrearGato(crearGatoForm)"
+          #crearGatoForm="ngForm"
+          method="POST"
+        >
+          <div class="centro">
+            <h2>Agrega una imagen de tu animal</h2>
+
+            <input
+              #fileInput
+              type="file"
+              (change)="onPhotoSelected($event)"
+              style="display: none"
+            />
+            <img
+              [src]="photoSelected || previsualizacion"
+              width="15%"
+              class="pointer"
+              matTooltip="Desplegar opciones de foto"
+              [matMenuTriggerFor]="menu"
+            />
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="fileInput.click()">
+                <mat-icon>perm_media</mat-icon>
+                <span>Cambiar foto</span>
+                <input (change)="onPhotoSelected($event)" type="file" />
+              </button>
+            </mat-menu>
+          </div>
+          <mat-grid-list cols="2" rowHeight="60px">
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field class="ancho">
+                <mat-label>Nombre del animal</mat-label>
+                <input
+                  name="nombre"
+                  ngModel
+                  #nombreInput="ngModel"
+                  required
+                  matInput
+                />
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field appearance="fill" class="ancho">
+                <mat-label>Edad aproximada</mat-label>
+                <mat-select
+                  name="edad"
+                  ngModel
+                  #edadInput="ngModel"
+                  required
+                  (valueChange)="valorSelect($event, 'edad')"
+                >
+                  <mat-option *ngFor="let item of edades" [value]="item">
+                    {{ item.edad }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field class="ancho">
+                <mat-label>Raza</mat-label>
+                <input
+                  name="raza"
+                  ngModel
+                  #razaInput="ngModel"
+                  required
+                  matInput
+                />
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field appearance="fill" class="ancho">
+                <mat-label>Sexo</mat-label>
+                <mat-select
+                  name="sexo"
+                  ngModel
+                  #sexoInput="ngModel"
+                  required
+                  (valueChange)="valorSelect($event, 'sexo')"
+                >
+                  <mat-option *ngFor="let item of generosAnimal" [value]="item">
+                    {{ item.genero }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field appearance="fill" class="ancho">
+                <mat-label>Tamaño</mat-label>
+                <mat-select
+                  name="tamano"
+                  ngModel
+                  #tamanoInput="ngModel"
+                  required
+                  (valueChange)="valorSelect($event, 'tamano')"
+                >
+                  <mat-option *ngFor="let item of tamanos" [value]="item">
+                    {{ item.tamano }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field appearance="fill" class="ancho">
+                <mat-label>Color de ojos</mat-label>
+                <mat-select
+                  name="color_ojos"
+                  ngModel
+                  #color_ojosInput="ngModel"
+                  required
+                  (valueChange)="valorSelect($event, 'color')"
+                >
+                  <mat-option *ngFor="let item of colorOjos" [value]="item">
+                    {{ item.color }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field appearance="fill" class="ancho">
+                <mat-label>Tipo de pelaje</mat-label>
+                <mat-select
+                  name="tipo_pelaje"
+                  ngModel
+                  #tipo_pelajeInput="ngModel"
+                  required
+                  (valueChange)="valorSelect($event, 'pelaje')"
+                >
+                  <mat-option *ngFor="let item of tiposPelaje" [value]="item">
+                    {{ item.tipoPelaje }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field appearance="fill" class="ancho">
+                <mat-label>Situación</mat-label>
+                <mat-select
+                  name="situacion"
+                  ngModel
+                  #situacionInput="ngModel"
+                  required
+                  (valueChange)="valorSelect($event, 'situacion')"
+                >
+                  <mat-option *ngFor="let item of situaciones" [value]="item">
+                    {{ item.situacion }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field appearance="fill" class="ancho">
+                <mat-label>Fecha de última vacuna</mat-label>
+                <input
+                  name="ultima_vac"
+                  ngModel
+                  #ultima_vacInput="ngModel"
+                  required
+                  matInput
+                  [matDatepicker]="picker"
+                  [min]="minDate"
+                  [max]="maxDate"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field appearance="fill" class="ancho">
+                <mat-label>Está desparasitado</mat-label>
+                <mat-select
+                  name="desparasitado"
+                  ngModel
+                  #desparasitadoInput="ngModel"
+                  required
+                  (valueChange)="valorSelect($event, 'edad')"
+                >
+                  <mat-option
+                    *ngFor="let item of desparasitados"
+                    [value]="item"
+                  >
+                    {{ item.estado }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-form-field class="ancho">
+                <mat-label>Descripción sobre el animal</mat-label>
+                <textarea
+                  name="descripcion"
+                  ngModel
+                  #descripcionInput="ngModel"
+                  required
+                  class="descrip"
+                  placeholder="Ej: Es un gato muy consentido..."
+                  matInput
+                ></textarea>
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="3">
+              <span class="seccionVacunas"
+                >Seleccione el esquema de vacunación del animal
+                <ul>
+                  <li *ngFor="let vacuna of lista_vacunas" class="items">
+                    <mat-checkbox
+                      name="esquema_vac"
+                      ngModel
+                      #esquema_vacInput="ngModel"
+                      [checked]="vacuna.value"
+                      (change)="verVacunas($event, vacuna)"
+                    >
+                      {{ vacuna }}
+                    </mat-checkbox>
+                  </li>
+                </ul>
+              </span>
+            </mat-grid-tile>
+          </mat-grid-list>
+          <!-- <span>
                 <h1>Seleccione el esquema de vacunas del perro</h1>
               </span>
               <span>
@@ -146,12 +238,27 @@
                   </li>
                 </ul>
               </span> -->
-                    <div class = "centro">
-                        <button mat-raised-button color="primary" style="margin: 16px;" class = "tamano" type="submit">Crear animal</button>
-                        <button mat-raised-button color="accent" class = "tamano" routerLink = "/dashboard/mis-animales">Cancelar</button>
-                    </div>
-                </form>
-            </mat-card>
+          <div class="centro">
+            <button
+              mat-raised-button
+              color="primary"
+              style="margin: 16px"
+              class="tamano"
+              type="submit"
+            >
+              Crear animal
+            </button>
+            <button
+              mat-raised-button
+              color="accent"
+              class="tamano"
+              routerLink="/dashboard/mis-animales"
+            >
+              Cancelar
+            </button>
+          </div>
         </form>
-    </mat-card>
+      </mat-card>
+    </form>
+  </mat-card>
 </div>
