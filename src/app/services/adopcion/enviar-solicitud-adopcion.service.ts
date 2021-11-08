@@ -19,11 +19,12 @@ export class EnviarSolicitudAdopcionService {
   subTipoEntidadII: string = "solicitud-adopcion";
   subTipoEntidadIII: string = "solicitud-adoptante";
   subTipoEntidadIV: string = "solicitud-fundacion";
-  //subTipoEntidadV: string = "eliminar-solicitud-adoptante";
-  subTipoEntidadV: string = "lista-solicitudes"
+  
+  subTipoEntidadV: string = "lista-solicitudes";
 
   subTipoEntidadVI: string = "solicitudes";
-  subTipoEntidadVII: string = "lista-solicitudes"
+  subTipoEntidadVII: string = "lista-solicitudes";
+  subTipoEntidadIX: string = "eliminar-solicitud";
   solicitudes: EntidadSolicitudAdopcion[] =[];
 
   constructor(private http: HttpClient) { }
@@ -73,7 +74,7 @@ export class EnviarSolicitudAdopcionService {
 
   deleteSolicitud(id: string)
   {
-    this.http.delete(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidadII}/${id}`)
+    this.http.delete(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidadII}/${this.subTipoEntidadIX}/${id}`)
     .subscribe(respuesta => {
       console.log(respuesta);
     })

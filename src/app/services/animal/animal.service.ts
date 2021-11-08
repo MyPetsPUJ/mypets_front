@@ -18,6 +18,7 @@ export class AnimalService {
   pathEditarAnimal: string = 'editar-animal';
   pathEditarEstadoAnimal: string ="editar-estado-animal";
   pathEditarEstadoAnimalII: string ="editar-enAdopcion-animal";
+  pathSolicitud: string = "solicitud";
 
   // animales: Animal[] = [
   //   {nombreAnimal: 'Paca', edad: 11, tipo: 'Gato', raza: 'Carey', tamano: 'Pequeño'},
@@ -52,7 +53,7 @@ export class AnimalService {
     const body = { idDueno: idDueno}
     
     return this.http.put<any>(
-      `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathFundacion}/${this.pathEditarEstadoAnimal}/${idAnimal}`,body
+      `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathFundacion}/${this.pathSolicitud}/${this.pathEditarEstadoAnimal}/${idAnimal}`,body
     ).subscribe(res=>
       {
         console.log('Respuesta: ',res)
@@ -62,7 +63,7 @@ export class AnimalService {
   editarAnimalEnAdopcion(idAnimal :string, estado : boolean){
     const body = { nuevoEstado: estado}
     return this.http.put<any>(
-      `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathFundacion}/${this.pathEditarEstadoAnimalII}/${idAnimal}`,body
+      `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathFundacion}/${this.pathSolicitud}/${this.pathEditarEstadoAnimalII}/${idAnimal}`,body
     ).subscribe(res=>
       {
         console.log('Respuesta: ',res)
