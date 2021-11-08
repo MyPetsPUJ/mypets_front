@@ -1,41 +1,41 @@
-<div class="content">
-    <h2 class="titulo">Consejos</h2>
-    <div fxLayout="row wrap" fxLayoutGap="16px grid" >
-      <div
-        fxFlex="25%"
-        fxFlex.xs="100%"
-        fxFlex.sm="75%"
-        *ngFor="let consejo of consejos"
-      >
-        <mat-card class="mat-elevation-z8 example-card">
-          <mat-card-header>
-            <div mat-card-avatar>
-              <img [src]="logoFundacion" class="circulo" />
-            </div>
-            <mat-card-title>{{consejo.titulo }}</mat-card-title>
-            <mat-card-subtitle>{{ nombreFundacion }}</mat-card-subtitle>
-          </mat-card-header>
-          <div class="parent">
-            <img
-              class="container crop card"
-              mat-card-image
-              [src]="'http://localhost:3000/' + consejo.urlImg"
-              alt="Photo of a Shiba Inu"
-            />
-          </div>
-          <div class="centro">
-            <button
-              mat-raised-button
-              color="warn"
-              routerLink="solicitud-adopcion"
-              (click)="openDialog(consejo)"
-            >
-              Visualizar consejo
-            </button>
-          </div>
-        </mat-card>
+<div class="todo">
+  <mat-toolbar>
+    <h1>Consejos</h1>
+    
+    <!-- <div class="items">
+      <div class="filtro">
+        <mat-form-field appearance="fill" class="no-padding">
+          <mat-label>Filtrar por sección</mat-label>
+          <mat-select name="seccion" ngModel #seccionInput="ngModel" (selectionChange)="filtrarPublicaciones($event.value)">
+            <mat-option *ngFor="let item of seccion" [value]="item">
+              {{ item }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
       
+    </div> -->
+   
+    
+  </mat-toolbar>
+
+  <div class="row">
+    <div class="col-md-4 p-4" *ngFor="let consejo of consejos">
+      <div
+        class="card card-publi"
+        (click)="onConsejoSelected(consejo._id!)"
+      >
+        <div class="card-header">
+          {{ consejo.titulo }}
+        </div>
+        <img
+          [src]="'http://localhost:3000/' + consejo.urlImg"
+          class="img-card-top w-80"
+        />
+        
+        <div class="class-footer">
+          Fecha de publicación: {{ consejo.fecha | date: "dd/MM/yyyy" }}
+        </div>
+      </div>
     </div>
-    <button mat-button routerLink="/dashboard">dashboard</button>
   </div>

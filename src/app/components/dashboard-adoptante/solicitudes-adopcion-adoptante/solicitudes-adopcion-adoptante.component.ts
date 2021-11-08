@@ -14,13 +14,11 @@ import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/auth/login.service';
 import { AnimalService } from 'src/app/services/animal/animal.service';
 
-
 @Component({
   selector: 'app-solicitudes-adopcion-adoptante',
   templateUrl: './solicitudes-adopcion-adoptante.component.html',
-  styleUrls: ['./solicitudes-adopcion-adoptante.component.css']
+  styleUrls: ['./solicitudes-adopcion-adoptante.component.css'],
 })
-
 export class SolicitudesAdopcionAdoptanteComponent implements OnInit {
   solicitudes: EntidadSolicitudAdopcion[] = [];
   solicitud: EntidadSolicitudAdopcion | undefined;
@@ -31,9 +29,14 @@ export class SolicitudesAdopcionAdoptanteComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   datosTabla: any[] = [];
   servicio: EnviarFormularioAdopcionService | any;
-  constructor(private solicitudesService: EnviarSolicitudAdopcionService, private snackbar: MatSnackBar,
-    private adoptantesService: CrearAdoptanteService, private router: Router, private authService: LoginService,
-    private animalService: AnimalService) { }
+  constructor(
+    private solicitudesService: EnviarSolicitudAdopcionService,
+    private snackbar: MatSnackBar,
+    private adoptantesService: CrearAdoptanteService,
+    private router: Router,
+    private authService: LoginService,
+    private animalService: AnimalService
+  ) {}
 
   ngOnInit(): void {
     this.cargarSolicitudes();
@@ -45,18 +48,16 @@ export class SolicitudesAdopcionAdoptanteComponent implements OnInit {
     //console.log('Estas son las solicitudes: ',this.solicitudes);
     this.solicitudesService.getSolicitudesAdoptante(userId).subscribe((res) => {
       this.solicitudes = res;
-      this.datosTabla =[];
+      this.datosTabla = [];
       this.animalService.getAnimales().subscribe((resAnimal) => {
         for (var i = 0; i < this.solicitudes.length; i++) {
           for (var j = 0; j < resAnimal.length && !encontrado; j++) {
             if (this.solicitudes[i].idAnimal == resAnimal[j]._id) {
-              
               encontrado = true;
-              filaDatos =
-              {
+              filaDatos = {
                 solicitud: this.solicitudes[i],
-                animal: resAnimal[j]
-              }
+                animal: resAnimal[j],
+              };
               this.datosTabla.push(filaDatos);
             }
           }
@@ -72,9 +73,7 @@ export class SolicitudesAdopcionAdoptanteComponent implements OnInit {
     var index = 1; // Eso se debe quitar, es solo por ser datos quemados
     //index = this.adoptantesService.getIndex(adoptante)  //Esto se debe dejar cuando se tenga el id del adoptante logueado
     //se obtienen las solicitudes realizadas por el usuario en específico
-
   }
-
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -82,16 +81,17 @@ export class SolicitudesAdopcionAdoptanteComponent implements OnInit {
   }
   accion(nombre: string, solicitud: any) {
     if (nombre == 'eliminar') {
-      for(var i = 0; i < 2; i++)
-      {
+      for (var i = 0; i < 2; i++) {
         this.solicitudesService.deleteSolicitud(solicitud._id);
         this.cargarSolicitudes();
       }
-      
     }
     if (nombre == 'formulario') {
       this.solicitud = solicitud;
       this.formulario = true;
+      this.router.navigate([
+        '/dashboard-adoptante/solicitudes-adopcion-adoptante/formulario-adopcion',
+      ]);
     }
   }
   salir(data) {

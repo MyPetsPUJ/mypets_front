@@ -1,72 +1,132 @@
-.example-card {
-    width: 280px;
-    height: 315px;
+@import url("https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Zen+Antique+Soft&display=swap");
+h1 {
+  font-family: "Proza Libre", sans-serif;
+  text-align: center;
+  vertical-align: middle;
+  margin: auto;
+  font-size: 27px;
+}
+.todo {
+  padding-top: 30px;
+}
+.mat-form-field-infix {
+  display: block;
+  position: relative;
+  flex: auto;
+  min-width: 0;
+  width: 90px;
+}
+.filtro {
+  box-sizing: border-box;
+  margin-top: 20px;
+  padding-right: 15px;
+}
+.mat-toolbar {
+  align-items: center;
+  justify-content: center;
+}
+
+table {
+  width: 100%;
+}
+.mat-form-field {
+  font-size: 14px;
+}
+th {
+  width: 10%;
+}
+.pointer {
+  cursor: pointer;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+.tam {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.tam1 {
+  margin-left: auto;
+}
+.circulo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.mobile-label {
+  display: none;
+}
+
+.items {
+  position: relative;
+  display: flex;
+}
+.agregarPublicacion button {
+  background-color: green;
+  border-radius: 0%;
+  width: 220px;
+  height: 50px;
+  color: white;
+  align-items: center;
+  box-sizing: border-box;
+}
+.agregarPublicacion {
+  padding-left: 15px;
+}
+.example-element-symbol {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+.card-header {
+  font-family: "Zen Antique Soft", serif;
+  text-align: center;
+}
+.class-footer {
+  text-align: center;
+  padding: 20px;
+}
+input {
+  width: 300px;
+}
+.agregarAnimal {
+  padding-left: 15px;
+}
+table {
+  width: 100%;
+}
+@media (max-width: 600px) {
+  .mobile-label {
+    width: 80px;
+    display: inline-block;
+    font-weight: bold;
   }
-  
-  .example-header-image {
-    background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
-    background-size: cover;
+
+  .mat-header-row {
+    display: none;
   }
-  .centro {
-      text-align: center;
+
+  .mat-row {
+    flex-direction: column;
+    align-items: start;
+    padding: 8px 24px;
   }
-  .content 
-  {
-      padding: 16px;
-      background-color: beige;
-      height: 85%;
-  }
-  .content > mat-card 
-  {
-      width: 50px;
-  }
-  .body 
-  {
-      display: flex;
-      justify-content: center;
-      height: 80%;
-      align-items: center;
-  }
-  .crear
-  {
-      width: 100%;
-      max-width: 350px;
-      text-align: center;
-  }
-  .circulo
-  {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-  }
-  .titulo 
-  {
-      font-size: 30px;
-      text-align: center;
-      font-family:Georgia, 'Times New Roman', Times, serif
-  }
-  .container {
-      display: flex;
-      width: 340px;
-      height: 200px;
-      overflow: hidden;
-      position: relative;
-  }
-  .container > .crop {
-      position:absolute;
-      left: -100%;
-      right: -100%;
-      top: -100%;
-      bottom: -100%;
-      margin: auto;
-      min-height: 100%;
-      min-width: 100%;
-  }
-  .parent {
-      overflow: hidden;
-    }
-    
-    .card img {
-      width: 100%;
-      height: auto;
-    }
+}

@@ -10,6 +10,7 @@ import { SolicitudesAdopcionAdoptanteComponent } from './solicitudes-adopcion-ad
 import { FormularioAdopcionComponent } from './solicitudes-adopcion-adoptante/formulario-adopcion/formulario-adopcion.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MiCuentaAdoptanteComponent } from './mi-cuenta-adoptante/mi-cuenta-adoptante.component';
+import { ConsejoPreviewComponent } from './consejos/consejo-preview/consejo-preview.component';
 const routes: Routes = [
   {
     path: '',
@@ -33,6 +34,7 @@ const routes: Routes = [
         component: FormularioAdopcionComponent,
       },
       { path: 'mi_cuenta/:id', component: MiCuentaAdoptanteComponent },
+      { path: 'consejos/:id', component: ConsejoPreviewComponent },
     ],
   },
 ];

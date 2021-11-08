@@ -42,6 +42,10 @@ export class PublicacionService {
     );
   }
 
+  getConsejo(id: string){
+    return this.http.get<EntidadPublicacion>(`http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.dashAdoptante}/${this.entidadConsejos}/${id}`)
+  }
+
   editarPublicacion(
     id: string,
     titulo: string,
