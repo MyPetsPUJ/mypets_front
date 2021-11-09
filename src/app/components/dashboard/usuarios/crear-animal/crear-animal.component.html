@@ -193,16 +193,23 @@
                 ></textarea>
               </mat-form-field>
             </mat-grid-tile>
-            <mat-grid-tile [colspan]="1" [rowspan]="2">
-              <div class="izquierda">
-                <span class="seccionVacunas"
-                  ><ul>
-                    <li *ngFor="let vacuna of lista_vacunas">
-                      <mat-checkbox> {{ vacuna }} </mat-checkbox>
-                    </li>
-                  </ul>
-                </span>
-              </div>
+            <mat-grid-tile [colspan]="1" [rowspan]="3">
+              <span class="seccionVacunas"
+                >Seleccione el esquema de vacunación del animal
+                <ul>
+                  <li *ngFor="let vacuna of lista_vacunas" class="items">
+                    <mat-checkbox
+                      name="esquema_vac"
+                      ngModel
+                      #esquema_vacInput="ngModel"
+                      [checked]="vacuna.value"
+                      (change)="verVacunas($event, vacuna)"
+                    >
+                      {{ vacuna }}
+                    </mat-checkbox>
+                  </li>
+                </ul>
+              </span>
             </mat-grid-tile>
           </mat-grid-list>
           <!-- <span>
