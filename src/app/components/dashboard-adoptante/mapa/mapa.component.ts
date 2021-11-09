@@ -74,7 +74,7 @@ export class MapaComponent implements OnInit {
         console.log('Entrando a longitud');
         this.puntosDeInteres[index].longitud =
           res.puntos[index].ubicacion.coordinates[0];
-        console.log('Entrando a latitud');
+        console.log('Entrando a latitud1');
         this.puntosDeInteres[index].latitud =
           res.puntos[index].ubicacion.coordinates[1];
         this.puntosDeInteres[index].direccion =
