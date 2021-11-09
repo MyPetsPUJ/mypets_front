@@ -47,4 +47,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       burger?.classList.toggle('toggle');
     });
   }
+  onLogout() {
+    this.authService.logout();
+  }
 }

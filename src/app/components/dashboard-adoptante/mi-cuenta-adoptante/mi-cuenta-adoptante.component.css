@@ -1,38 +1,38 @@
-.centro
-{
-    text-align: center;
+.centro {
+  text-align: center;
 }
-.ancho
-{
-    width: 90%;
+.ancho {
+  width: 90%;
+  padding-top: 50px;
 }
-.margen 
-{
-    height: 100px;
-   width: 1120px;
-   margin: auto;
-   background-image: url(src\assets\Images\fundacion_background.jpg);
+.margen {
+  height: 100px;
+  width: 1120px;
+  margin: auto;
+  background-image: url(src\assets\Images\fundacion_background.jpg);
 }
-.tamano 
-{
-    text-align: center;
-    width: 120px;
-    height: 35px;
+.tamano {
+  text-align: center;
+  width: 120px;
+  height: 35px;
 }
-.pointer 
-{
-    cursor: pointer;
+.pointer {
+  cursor: pointer;
 }
-.image 
-{
-    /* background-image: url(src\assets\Images\fundacion_background.jpg); */
-    height: 90%;
+.image {
+  /* background-image: url(src\assets\Images\fundacion_background.jpg); */
+  height: 90%;
 }
-.color 
-{
-    background-color: beige;
+.color {
+  background-color: beige;
 }
 .flex-me {
-    
-    flex-flow: row wrap;
-  }
+  flex-flow: row wrap;
+}
+.todo {
+  padding-top: 80px;
+}
+.h2 {
+  text-align: center;
+  align-items: center;
+}

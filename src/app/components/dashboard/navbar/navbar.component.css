@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
 * {
   margin: 0px;
   padding: 0px;
@@ -19,11 +20,17 @@ nav {
 mat-icon {
   color: black;
 }
-.logo {
-  color: rgb(256, 256, 256);
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  font-size: 20px;
+.logo2 {
+  padding-left: 50px;
+}
+.logo2 h4 {
+  font-family: "Bangers", cursive;
+  letter-spacing: 0.5px;
+}
+.logo-image {
+  width: 70px;
+  height: 70px;
+  padding-top: 5px;
 }
 .logout {
   cursor: pointer;
