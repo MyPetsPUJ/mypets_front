@@ -54,7 +54,7 @@
                   ngModel
                   #edadInput="ngModel"
                   required
-                  (valueChange)="valorSelect($event, 'edad')"
+          
                 >
                   <mat-option *ngFor="let item of edades" [value]="item">
                     {{ item.edad }}
@@ -82,7 +82,7 @@
                   ngModel
                   #sexoInput="ngModel"
                   required
-                  (valueChange)="valorSelect($event, 'sexo')"
+                  
                 >
                   <mat-option *ngFor="let item of generosAnimal" [value]="item">
                     {{ item.genero }}
@@ -98,7 +98,7 @@
                   ngModel
                   #tamanoInput="ngModel"
                   required
-                  (valueChange)="valorSelect($event, 'tamano')"
+                  
                 >
                   <mat-option *ngFor="let item of tamanos" [value]="item">
                     {{ item.tamano }}
@@ -114,7 +114,7 @@
                   ngModel
                   #color_ojosInput="ngModel"
                   required
-                  (valueChange)="valorSelect($event, 'color')"
+                 
                 >
                   <mat-option *ngFor="let item of colorOjos" [value]="item">
                     {{ item.color }}
@@ -130,7 +130,7 @@
                   ngModel
                   #tipo_pelajeInput="ngModel"
                   required
-                  (valueChange)="valorSelect($event, 'pelaje')"
+                  
                 >
                   <mat-option *ngFor="let item of tiposPelaje" [value]="item">
                     {{ item.tipoPelaje }}
@@ -146,7 +146,7 @@
                   ngModel
                   #situacionInput="ngModel"
                   required
-                  (valueChange)="valorSelect($event, 'situacion')"
+                  
                 >
                   <mat-option *ngFor="let item of situaciones" [value]="item">
                     {{ item.situacion }}
@@ -182,7 +182,7 @@
                   ngModel
                   #desparasitadoInput="ngModel"
                   required
-                  (valueChange)="valorSelect($event, 'edad')"
+                  
                 >
                   <mat-option
                     *ngFor="let item of desparasitados"

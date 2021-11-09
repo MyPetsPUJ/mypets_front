@@ -40,6 +40,7 @@ export class CrearAnimalComponent implements OnInit {
   minDate: Date | any;
   maxDate: Date | any;
   vacunas: Vacuna[] = [];
+  vacunasPublicar: string[] = [];
   public archivos: any = [];
   public previsualizacion: string | undefined;
   file!: File;
@@ -83,7 +84,7 @@ export class CrearAnimalComponent implements OnInit {
     'Rabia',
   ];
   vacunasAnimal: string[] = [];
-  
+
   onCrearPerro(form: NgForm) {
     console.log(form.value);
     if (form.invalid) {
@@ -93,29 +94,28 @@ export class CrearAnimalComponent implements OnInit {
     this.crearPerroService
       .crearAnimalPerro(
         form.value.nombre,
-        form.value.edad,
+        form.value.edad.edad,
         form.value.raza,
-        form.value.sexo,
-        form.value.tamano,
-        form.value.color_ojos,
-        form.value.tipo_pelaje,
-        form.value.situacion,
-        form.value.desparasitado,
+        form.value.sexo.genero,
+        form.value.tamano.tamano,
+        form.value.color_ojos.color,
+        form.value.tipo_pelaje.tipoPelaje,
+        form.value.situacion.situacion,
+        form.value.desparasitado.estado,
         form.value.ultima_vac,
         form.value.descripcion,
         this.file,
-        form.value.esquema_vac,
+        this.getEsquema(this.vacunasPublicar),
         'Perro'
       )
       .subscribe(
         (res) => console.log(res),
         (err) => console.log(err)
       );
-      this.mensaje('crear');
-      setTimeout(() => {
-        this._router.navigate(['/dashboard/mis-animales'])
-      }, 2000);
-    
+    this.mensaje('crear');
+    setTimeout(() => {
+      this._router.navigate(['/dashboard/mis-animales']);
+    }, 2000);
   }
 
   cargarDatos() {
@@ -149,5 +149,32 @@ export class CrearAnimalComponent implements OnInit {
         verticalPosition: 'bottom',
       });
     }
+  }
+
+  verVacunas(evento: any, palabraCasilla: string) {
+    var encontrado = false;
+    var pos;
+    for (var i = 0; i < this.vacunasPublicar.length; i++) {
+      if (this.vacunasPublicar[i] == palabraCasilla) {
+        pos = i;
+        encontrado = true;
+      }
+    }
+    if (evento.checked) {
+      if (!encontrado) this.vacunasPublicar.push(palabraCasilla);
+    } else {
+      this.vacunasPublicar.splice(pos, 1);
+    }
+  }
+
+  getEsquema(arreglo: string[]): string {
+    var palabra = 'Sin información';
+    for (var i = 0; i < arreglo.length; i++) {
+      if (i == 0) palabra = arreglo[i];
+      else {
+        palabra += ', ' + arreglo[i];
+      }
+    }
+    return palabra;
   }
 }

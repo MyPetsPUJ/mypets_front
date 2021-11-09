@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdoptanteService } from 'src/app/services/adoptante/adoptante.service';
 import { LoginService } from 'src/app/services/auth/login.service';
+import { DatosCrearAdoptanteService } from 'src/app/services/datos-app/datos-crear-adoptante.service';
+import { Genero } from '../../interfaces/datos-app/entidadGenero';
+import { Localidad } from '../../interfaces/datos-app/entidadLocalidad';
+import { TipoDoc } from '../../interfaces/datos-app/entidadTipoDoc';
 import { UserAdoptante } from '../../interfaces/usuarios/userAdoptante';
 
 @Component({
@@ -12,6 +16,10 @@ import { UserAdoptante } from '../../interfaces/usuarios/userAdoptante';
 export class MiCuentaAdoptanteComponent implements OnInit {
   userId: string = '';
   genero: string = '';
+  // generos: Genero[] = [];
+  // tipoDocs: TipoDoc[] = [];
+  // localidades: Localidad[] = [];
+
   adoptante: UserAdoptante = {
     nombre: '',
     urlImg: '',
@@ -33,50 +41,62 @@ export class MiCuentaAdoptanteComponent implements OnInit {
   file!: File;
   photoSelected: string | ArrayBuffer = '';
   localidades: any[] = [
-    '1.Usaquén',
-    '2.Chapinero',
-    '3.Santa Fé',
-    '4.San Cristobal',
-    '5.Usme',
-    '6. Tunjuelito',
-    '7.Bosa',
-    '8.Kennedy',
-    '9.Fontibón',
-    '10.Engativá',
-    '11.Suba',
-    '12.Barrios Unidos',
-    '13.Teusaquillo',
-    '14.Los Mártires',
-    '15.Antonio Nariño',
-    '16.Puente Aranda',
-    '17.Candelaria',
-    '18.Rafael Uribe Uribe',
-    '19.Ciudad Bolivar',
-    '20.Sumapaz',
+    'Usaquén',
+    'Chapinero',
+    'Santa Fé',
+    'San Cristobal',
+    'Usme',
+    'Tunjuelito',
+    'Bosa',
+    'Kennedy',
+    'Fontibón',
+    'Engativá',
+    'Suba',
+    'Barrios Unidos',
+    'Teusaquillo',
+    'Los Mártires',
+    'Antonio Nariño',
+    'Puente Aranda',
+    'Candelaria',
+    'Rafael Uribe Uribe',
+    'Ciudad Bolivar',
+    'Sumapaz',
   ];
 
+  generos: any[] = ['Masculino', 'Femenino'];
   documentos: String[] = [
     'Cédula de ciudadanía',
     'Cédula de extranjería',
     'Pasaporte',
   ];
-  generos: String[] = ['Masculino', 'Femenino'];
+  // generos: String[] = ['Masculino', 'Femenino'];
 
   constructor(
     private authService: LoginService,
     private adoptanteService: AdoptanteService,
-    private _router: Router
+    private _router: Router,
+    private getDatosAdoptanteService: DatosCrearAdoptanteService
   ) {}
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
+
     this.adoptanteService.getAdoptanteById(this.userId).subscribe((res) => {
       this.adoptante = res;
-      this.genero = res.genero;
-      this.localidad = res.localidad;
-      this.tipo_doc = res.tipo_doc;
+      this.genero = this.adoptante.genero;
+      this.localidad = this.adoptante.localidad;
+      this.tipo_doc = this.adoptante.tipo_doc;
     });
+    // this.cargarDatos();
   }
+
+  // cargarDatos() {
+  //   this.getDatosAdoptanteService.getDatos().subscribe((res) => {
+  //     this.generos = res.generos;
+  //     this.tipoDocs = res.tipo_docs;
+  //     // this.localidades = res.localidades;
+  //   });
+  // }
 
   onPhotoSelected(event: any): void {
     if (event.target?.files && event.target.files[0]) {

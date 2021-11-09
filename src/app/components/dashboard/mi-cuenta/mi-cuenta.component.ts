@@ -12,7 +12,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { UnaryFunction } from 'rxjs';
 import { LoginService } from 'src/app/services/auth/login.service';
+import { DatosCrearFundacionService } from 'src/app/services/datos-app/datos-crear-fundacion.service';
 import { FundacionService } from 'src/app/services/fundacion/fundacion.service';
+import { TipoDoc } from '../../interfaces/datos-app/entidadTipoDoc';
 import { UserFundacion } from '../../interfaces/usuarios/userFundacion';
 import { VerFotoComponent } from './ver-foto/ver-foto.component';
 
@@ -27,6 +29,7 @@ export class MiCuentaComponent implements OnInit {
   fecha: string = '';
   file!: File;
   tipo_doc: string = '';
+  tipoDocs: TipoDoc[] = [];
   photoSelected: string | ArrayBuffer = '';
   fundacion: UserFundacion = {
     nombreFund: '',
@@ -70,7 +73,8 @@ export class MiCuentaComponent implements OnInit {
     private ngZone: NgZone,
     private _router: Router,
     private fundacionService: FundacionService,
-    private authService: LoginService
+    private authService: LoginService,
+    private getDatosFundacionService: DatosCrearFundacionService
   ) {}
   public archivos: any = [];
   public previsualizacion: string | undefined;
@@ -82,6 +86,8 @@ export class MiCuentaComponent implements OnInit {
       this.fecha = this.fundacion.fecha_creacion;
       this.tipo_doc = this.fundacion.tipo_doc;
     });
+    // this.cargarDatos();
+    
     // this.nombreFun = 'Perritos felices';
     // var fecha = new Date(2005, 2, 24);
 
@@ -118,6 +124,12 @@ export class MiCuentaComponent implements OnInit {
       });
     });
     this.previsualizacion = '../../../assets/Images/pet-hotel.png';
+  }
+
+  cargarDatos() {
+    this.getDatosFundacionService.getDatos().subscribe((res) => {
+      this.tipoDocs = res.tipo_docs;
+    });
   }
 
   onPhotoSelected(event: any): void {

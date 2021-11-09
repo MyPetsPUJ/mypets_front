@@ -151,14 +151,14 @@ export class CrearAnimalGatoComponent implements OnInit {
     this.crearGatoService
       .crearAnimalGato(
         form.value.nombre,
-        this.valoresSelect[0],
+        form.value.edad.edad,
         form.value.raza,
-        this.valoresSelect[1],
-        this.valoresSelect[2],
-        this.valoresSelect[3],
-        this.valoresSelect[4],
-        this.valoresSelect[5],
-        this.valoresSelect[6],
+        form.value.sexo.genero,
+        form.value.tamano.tamano,
+        form.value.color_ojos.color,
+        form.value.tipo_pelaje.tipoPelaje,
+        form.value.situacion.situacion,
+        form.value.desparasitado.estado,
         form.value.ultima_vac,
         form.value.descripcion,
         this.file,
@@ -219,35 +219,35 @@ export class CrearAnimalGatoComponent implements OnInit {
     }
     return palabra;
   }
-  valorSelect(evento: any, nombreSelect: string) {
-    if (nombreSelect == 'edad') {
-      this.valoresSelect[0] = evento.edad;
-      console.log(this.valoresSelect[0]);
-    }
-    if (nombreSelect == 'sexo') {
-      this.valoresSelect[1] = evento.genero;
-      console.log(this.valoresSelect[1]);
-    }
+  // valorSelect(evento: any, nombreSelect: string) {
+  //   if (nombreSelect == 'edad') {
+  //     this.valoresSelect[0] = evento.edad;
+  //     console.log(this.valoresSelect[0]);
+  //   }
+  //   if (nombreSelect == 'sexo') {
+  //     this.valoresSelect[1] = evento.genero;
+  //     console.log(this.valoresSelect[1]);
+  //   }
 
-    if (nombreSelect == 'tamano') {
-      this.valoresSelect[2] = evento.tamano;
-      console.log(this.valoresSelect[2]);
-    }
-    if (nombreSelect == 'color') {
-      this.valoresSelect[3] = evento.color;
-      console.log(this.valoresSelect[3]);
-    }
-    if (nombreSelect == 'pelaje') {
-      this.valoresSelect[4] = evento.tipoPelaje;
-      console.log(this.valoresSelect[4]);
-    }
-    if (nombreSelect == 'situacion') {
-      this.valoresSelect[5] = evento.situacion;
-      console.log(this.valoresSelect[5]);
-    }
-    if (nombreSelect == 'desparasitado') {
-      this.valoresSelect[6] = evento.estado;
-      console.log(this.valoresSelect[6]);
-    }
-  }
+  //   if (nombreSelect == 'tamano') {
+  //     this.valoresSelect[2] = evento.tamano;
+  //     console.log(this.valoresSelect[2]);
+  //   }
+  //   if (nombreSelect == 'color') {
+  //     this.valoresSelect[3] = evento.color;
+  //     console.log(this.valoresSelect[3]);
+  //   }
+  //   if (nombreSelect == 'pelaje') {
+  //     this.valoresSelect[4] = evento.tipoPelaje;
+  //     console.log(this.valoresSelect[4]);
+  //   }
+  //   if (nombreSelect == 'situacion') {
+  //     this.valoresSelect[5] = evento.situacion;
+  //     console.log(this.valoresSelect[5]);
+  //   }
+  //   if (nombreSelect == 'desparasitado') {
+  //     this.valoresSelect[6] = evento.estado;
+  //     console.log(this.valoresSelect[6]);
+  //   }
+  // }
 }
