@@ -11,6 +11,7 @@ import { FormularioAdopcionComponent } from './solicitudes-adopcion-adoptante/fo
 import { HomePageComponent } from './home-page/home-page.component';
 import { MiCuentaAdoptanteComponent } from './mi-cuenta-adoptante/mi-cuenta-adoptante.component';
 import { ConsejoPreviewComponent } from './consejos/consejo-preview/consejo-preview.component';
+import { TiendaComponent } from './tienda/tienda.component';
 const routes: Routes = [
   {
     path: '',
@@ -35,6 +36,7 @@ const routes: Routes = [
       },
       { path: 'mi_cuenta/:id', component: MiCuentaAdoptanteComponent },
       { path: 'consejos/:id', component: ConsejoPreviewComponent },
+      { path: 'tienda', component: TiendaComponent}
     ],
   },
 ];

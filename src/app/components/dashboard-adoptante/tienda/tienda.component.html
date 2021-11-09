@@ -1,0 +1,136 @@
+<div class="todo">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <form
+      action="home-page.component.ts"
+      (ngSubmit)="filtrarAnimales(filtros)"
+      #filtros="ngForm"
+    >
+      <div class="contenedorFiltro2">
+        <div class="heading">
+          <div class="listaDeFiltros">
+            <h3><span>Apóyanos</span></h3>
+            <div class="filtro">
+              <mat-form-field appearance="fill" class="ancho">
+                <mat-label>Perro o Gato</mat-label>
+                <mat-select
+                  name="especieAnimal"
+                  ngModel
+                  #especieAnimalInput="ngModel"
+                >
+                  <mat-option *ngFor="let item of especie" [value]="item">
+                    {{ item }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="filtro">
+              <mat-form-field appearance="fill" class="ancho">
+                <mat-label>Categoria</mat-label>
+                <mat-select name="fundacion" ngModel #fundacionInput="ngModel">
+                  <mat-option *ngFor="let item of categorias" [value]="item">
+                    {{ item }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="filtro">
+              <div class="buscarAnimal">
+                <button type="submit">Busca tus productos</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="container">
+      <div class="heading">
+        <h3><span>Nuestros productos</span></h3>
+      </div>
+      <div class="box">
+        <div class="dream">
+          <div *ngFor="let animal of animales; index as i">
+            <div *ngIf="valoresColumna1.includes(i)">
+              <div class="verAnimal">
+                <img
+                  class="container crop card"
+                  mat-card-image
+                  [src]="'http://localhost:3000/' + animal.urlImg"
+                  alt="Foto de un animal"
+                />
+              </div>
+              <div class="descripcion">
+                <mat-card-content>
+                  <div class="nombreAnimal">
+                    {{ animal.nombre }}
+                  </div>
+                  <div class="razaAnimal">
+                    {{ animal.raza }}
+                  </div>
+                </mat-card-content>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dream">
+          <div *ngFor="let animal of animales; index as i">
+            <div *ngIf="valoresColumna2.includes(i)">
+              <div class="verAnimal">
+                <img
+                  class="container crop card"
+                  mat-card-image
+                  [src]="'http://localhost:3000/' + animal.urlImg"
+                  alt="Foto de un animal"
+                />
+              </div>
+              <div class="descripcion">
+                <mat-card-content>
+                  <div class="nombreAnimal">
+                    {{ animal.nombre }}
+                  </div>
+                  <div class="razaAnimal">
+                    {{ animal.raza }}
+                  </div>
+                </mat-card-content>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dream">
+          <div *ngFor="let animal of animales; index as i">
+            <div *ngIf="valoresColumna3.includes(i)">
+              <div class="verAnimal">
+                <img
+                  class="container crop card"
+                  mat-card-image
+                  [src]="'http://localhost:3000/' + animal.urlImg"
+                  alt="Foto de un animal"
+                />
+              </div>
+              <div class="descripcion">
+                <mat-card-content>
+                  <div class="nombreAnimal">
+                    {{ animal.nombre }}
+                  </div>
+                  <div class="razaAnimal">
+                    {{ animal.raza }}
+                  </div>
+                </mat-card-content>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</div>
