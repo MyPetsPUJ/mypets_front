@@ -318,10 +318,12 @@ export class InicioComponent implements OnInit, OnDestroy {
   eliminarPuntos() {
     this.coordenadas = [];
   }
+  
   verPunto(latitud: number, longitud: number) {
     this.latitude = latitud;
     this.longitude = longitud;
   }
+
   editarPunto(latitud: number, longitud: number) {
     var i = 0;
     for (i = 0; i < this.coordenadas.length; i++) {

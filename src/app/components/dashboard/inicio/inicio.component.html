@@ -37,7 +37,7 @@
                 <mat-header-cell *matHeaderCellDef >Acción </mat-header-cell>
                 <mat-cell *matCellDef="let row">
                     <span class="mobile-label">Acción: </span> 
-                    <mat-icon class="pointer" matTooltip="Ver punto" (click)="verPunto(row.latitude,row.longitude)">visibility</mat-icon>   
+                    <mat-icon class="pointer" matTooltip="Ver punto" (click)="verPunto(row.latitud,row.longitud)">visibility</mat-icon>   
                     <mat-icon class="pointer" matTooltip="Editar punto" (click)="onPuntoSelected(row._id!)">edit</mat-icon>   
                     <mat-icon class="pointer" matTooltip="Eliminar punto" (click)="onEliminarPunto(row._id!)">delete</mat-icon>   
                 </mat-cell>

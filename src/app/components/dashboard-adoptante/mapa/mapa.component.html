@@ -22,14 +22,14 @@
                         <div *ngIf="column=='accion'">
                             Acción
                         </div>
-                        <!-- <div *ngIf="cargar"> 
+                        <div *ngIf="cargar"> 
                             <div *ngIf="column=='distancia'">
                                 Distancia
                             </div>
                             <div *ngIf="column=='duracion'">
                                 Tiempo de viaje
                             </div>
-                        </div> -->
+                        </div>
                     </th>
                     <td mat-cell *matCellDef="let element">
                         <div *ngIf="column=='nombreFund'">
@@ -204,11 +204,11 @@
             
     
     
-            <button id="Settings" class="toggle-button controls button" mat-icon-button 
+            <!-- <button id="Settings" class="toggle-button controls button" mat-icon-button 
                 aria-label="Example icon-button with a menu" matTooltip="Cargar tiempos y distancias de viaje"
                 (click)="calcularRuta()">
                 <mat-icon aria-hidden="true">directions_car</mat-icon>
-            </button>
+            </button> -->
             <agm-marker [latitude]="latitudeMarker" [longitude]="longitudeMarker">
                 <agm-info-window>
                     <div>
