@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AdoptanteService } from 'src/app/services/adoptante/adoptante.service';
 import { LoginService } from 'src/app/services/auth/login.service';
@@ -75,6 +76,7 @@ export class MiCuentaAdoptanteComponent implements OnInit {
     private authService: LoginService,
     private adoptanteService: AdoptanteService,
     private _router: Router,
+    private _snackBar: MatSnackBar,
     private getDatosAdoptanteService: DatosCrearAdoptanteService
   ) {}
 
@@ -120,6 +122,15 @@ export class MiCuentaAdoptanteComponent implements OnInit {
     num_celular: HTMLInputElement,
     password: HTMLInputElement
   ) {
+    if (password.value === '') {
+      this._snackBar.open('Porfavor ingrese su contraseña para guardar sus cambios', '', {
+        duration: 5000,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+      });
+
+      return;
+    }
     this.adoptanteService
       .editarAdoptante(
         this.userId,

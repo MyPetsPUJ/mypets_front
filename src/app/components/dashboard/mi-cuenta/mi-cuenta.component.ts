@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { UnaryFunction } from 'rxjs';
@@ -72,6 +73,7 @@ export class MiCuentaComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private _router: Router,
+    private _snackBar: MatSnackBar,
     private fundacionService: FundacionService,
     private authService: LoginService,
     private getDatosFundacionService: DatosCrearFundacionService
@@ -87,7 +89,7 @@ export class MiCuentaComponent implements OnInit {
       this.tipo_doc = this.fundacion.tipo_doc;
     });
     // this.cargarDatos();
-    
+
     // this.nombreFun = 'Perritos felices';
     // var fecha = new Date(2005, 2, 24);
 
@@ -201,6 +203,15 @@ export class MiCuentaComponent implements OnInit {
     num_celular: HTMLInputElement,
     password: HTMLInputElement
   ) {
+    if (password.value === '') {
+      this._snackBar.open('Porfavor ingrese su contraseña para guardar sus cambios', '', {
+        duration: 5000,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+      });
+
+      return;
+    }
     this.fundacionService
       .editarFundacion(
         this.userId,
