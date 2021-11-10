@@ -83,9 +83,12 @@ export class EnviarSolicitudAdopcionService {
   actualizarEstadoSolicitud(id: string,estado: string)
   {
     const body = { estado: estado };
-    return this.http.put<any>(
+    return this.http.put(
       `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidad}/${this.subTipoEntidadII}/${id}`,body
-    );
+    ).subscribe(res=>
+      {
+        console.log('Respuesta: ',res)
+      })
   }
 
   addSolicitud(solicitud: EntidadSolicitudAdopcion)
