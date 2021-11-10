@@ -90,3 +90,13 @@ th {
     padding: 8px 24px;
   }
 }
+.separador 
+{
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.centro 
+{
+  text-align: center;
+}

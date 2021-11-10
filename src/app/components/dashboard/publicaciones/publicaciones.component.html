@@ -26,8 +26,9 @@
   <div class="row">
     <div class="col-md-4 p-4" *ngFor="let publicacion of publicaciones">
       <div
-        class="card card-publi"
+        class="card card-publi pointer"
         (click)="onPublicacionSelected(publicacion._id!)"
+        matTooltip="Ver publicación"
       >
         <div class="card-header">
           {{ publicacion.titulo }}

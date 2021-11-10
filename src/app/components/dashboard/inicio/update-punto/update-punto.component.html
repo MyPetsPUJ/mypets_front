@@ -2,12 +2,12 @@
     <div class="box">
         <mat-card>
             <h1>Editar un punto de interés</h1>
-            <form (submit)="editarPunto(direccionAct, tituloAct, descripcionAct)">
+            <form (submit)="editarPunto(search, tituloAct, descripcionAct)">
                 <h3>Ingrese la dirección del punto de interés</h3>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Dirección</mat-label>
-                    <input matInput #direccionAct autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
-                        class="form-control" [value]="puntoDeInteres.direccion" >
+                    <input matInput #search autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
+            id="direccionPunto" [value]="puntoDeInteres.direccion">  
                 </mat-form-field>
                 <h3>Ingrese el título del punto de interés</h3>
                 <mat-form-field class="example-full-width" appearance="fill">

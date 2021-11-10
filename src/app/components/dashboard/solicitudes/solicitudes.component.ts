@@ -111,6 +111,7 @@ export class SolicitudesComponent implements OnInit {
           this.solicitudService.actualizarEstadoSolicitud(solicitud.solicitud._id, 'Aceptado, formulario aceptado.');
         })
     }
+    this.cargarDatosSolicitudes();
     if ( accion == 'rechazar')
     {
       const dialogRef = this.dialog.open(FormulariosViewComponent, {
@@ -136,6 +137,7 @@ export class SolicitudesComponent implements OnInit {
   }
   cargarDatosSolicitudes() {
     this.datosTabla = [];
+    this.datosTablaForm = [];
     this.fundacionId = this.authService.getUserId();
     console.log('ID:' , this.fundacionId);
     this.solicitudService.populateSolicitudesFundaciones(this.fundacionId).subscribe( (res) => {

@@ -243,6 +243,12 @@ export class FormularioAdopcionComponent implements OnInit {
   {
     this.salida.emit(false);
   }
+  cancelar()
+  {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload'
+    this.router.navigate(['/same-route']);
+  }
   enviarFormQuemado()
   {
     this.formAdopcion = 

@@ -89,12 +89,13 @@ export class SolicitudesAdopcionAdoptanteComponent implements OnInit {
     if (nombre == 'formulario') {
       this.solicitud = solicitud;
       this.formulario = true;
-      this.router.navigate([
-        '/dashboard-adoptante/solicitudes-adopcion-adoptante/formulario-adopcion',
-      ]);
     }
   }
   salir(data) {
     this.formulario = data;
+    console.log('Se salió');
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload'
+    this.router.navigate(['dashboard-adoptante/solicitudes-adopcion-adoptante']);
   }
 }

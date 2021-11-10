@@ -194,7 +194,7 @@ export class HomePageComponent implements OnInit {
   separarAnimalesAdoptados(){
     for(var i=0;i<this.animales.length;i++)
     {
-      if(this.animales[i].enAdopcion==false)
+      if(this.animales[i].enAdopcion==false || this.animales[i].adoptado)
       {
         this.borrarAnimales[i]= "borrar";
       }

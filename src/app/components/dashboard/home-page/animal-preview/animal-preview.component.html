@@ -25,13 +25,30 @@
     <mat-grid-tile colspan="1" rowspan="1"
       >Situación: {{ data.animal.situacion }}</mat-grid-tile
     >
-    <mat-grid-tile colspan="1" rowspan="1"
-      >Esquema de vacunación: {{ data.animal.esquema_vac }}</mat-grid-tile
-    >
-    <mat-grid-tile colspan="1" rowspan="1"
+    <div *ngIf="data.animal.ultima_vac != ''">
+      <mat-grid-tile colspan="1" rowspan="1"
       >Fecha de vacuna:
       {{ data.animal.ultima_vac | date: "dd/MM/yyyy" }}</mat-grid-tile
     >
+    </div>
+    <div *ngIf="data.animal.ultima_vac == ''">
+      <mat-grid-tile colspan="1" rowspan="1"
+      >Fecha de vacuna:
+      No aplica</mat-grid-tile
+    >
+    </div>
+    <div *ngIf="data.animal.esquema_vac != null">
+      <mat-grid-tile colspan="1" rowspan="2"
+      >Esquema de vacunación:
+      {{ data.animal.esquema_vac}}
+    </mat-grid-tile>
+    </div>
+    <div *ngIf="data.animal.esquema_vac == null">
+      <mat-grid-tile colspan="1" rowspan="1"
+      >Esquema de vacunación:
+      No aplica
+    </mat-grid-tile>
+    </div>
   </mat-grid-list>
   <p></p>
   <p></p>

@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { noop } from 'rxjs';
 import { AnimalService } from 'src/app/services/animal/animal.service';
 import { CrearAnimalService } from 'src/app/services/animal/crearAnimal.service';
@@ -23,12 +24,13 @@ export class UsuariosComponent implements OnInit {
   animales: EntidadAnimal[] = [];
   userId: string = '';
   userFundacion: UserFundacion | undefined;
-  displayedColumns: string[] = ['foto', 'nombre', 'tipo', 'sexo', 'situacion',  'publicar'];
+  displayedColumns: string[] = ['foto', 'nombre', 'tipo', 'sexo', 'situacion',  'publicar','accion'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(private crearAnimalService: CrearAnimalService, private snackbar: MatSnackBar,
-    public dialog: MatDialog, private authService: LoginService, private animalService: AnimalService) { }
+    public dialog: MatDialog, private authService: LoginService, private animalService: AnimalService,
+    private _router: Router) { }
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
@@ -39,6 +41,7 @@ export class UsuariosComponent implements OnInit {
   cargarAnimales() {
     // this.animales = this.crearAnimalService.getAnimales();
     // this.dataSource = new MatTableDataSource(this.animales);
+    this.animales = [];
     this.animalService.populateAnimales(this.userId).subscribe((res) => {
       this.animales = [];
       console.log("Animales:", res.animales);
@@ -96,5 +99,30 @@ export class UsuariosComponent implements OnInit {
       });
     }
 
+  }
+  do(accion: string, animal: any)
+  {
+    if(accion == 'editar')
+    {
+      this._router.navigate(['/dashboard/editar-animal', animal._id]);
+    }
+    if(accion == 'eliminar')
+    {
+      this.animalService.deleteAnimal(animal._id).subscribe((res) => {
+        console.log(res);
+        this.snackbar.open('Animal correctamente eliminado ', '', {
+          duration: 5000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
+        setTimeout(() => {
+        }, 1000);
+      });
+      this.cargarAnimales();
+    }
+    if(accion == 'ver')
+    {
+      this.visualizarAnimal(animal) 
+    }
   }
 }

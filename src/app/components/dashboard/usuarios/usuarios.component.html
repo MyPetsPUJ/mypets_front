@@ -117,6 +117,24 @@
             </div>
           </mat-cell>
         </ng-container>
+
+        <ng-container matColumnDef="accion">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Acción</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element">
+            <span class="mobile-label">Acción: </span>
+            <mat-icon class="pointer" matTooltip="Ver información adicional de la mascota" style="color: gray;"
+            (click)="do('ver',element)">visibility</mat-icon>
+            <i style="color: white;">....</i>
+            <mat-icon class="pointer" matTooltip="Editar información de la mascota"
+            (click)="do('editar',element)">edit</mat-icon>
+            <i style="color: white;">....</i>
+            <mat-icon class="pointer" matTooltip="Eliminar a la mascota" style="color: red;"
+            (click)="do('eliminar',element)">delete</mat-icon>
+            </mat-cell
+          >
+        </ng-container>
         <!--
       <ng-container matColumnDef="accion">
         <th mat-header-cell *matHeaderCellDef></th>
