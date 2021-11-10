@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EntidadAnimal } from 'src/app/components/interfaces/usuarios/entidadAnimal';
 import { AnimalService } from 'src/app/services/animal/animal.service';
+import { EliminarAnimalComponent } from '../eliminar-animal/eliminar-animal.component';
 
 @Component({
   selector: 'app-update-animal',
@@ -91,6 +93,7 @@ export class UpdateAnimalComponent implements OnInit {
   desparasitado: any[] = ['Sí', 'No'];
   situacion: any[] = ['Sin esterilizar', 'Esterilizado'];
   constructor(
+    public dialogRef: MatDialog,
     private activatedRoute: ActivatedRoute,
     private _router: Router,
     private animalService: AnimalService,
@@ -133,6 +136,13 @@ export class UpdateAnimalComponent implements OnInit {
     }
   }
 
+  confirmacionEliminar() {
+    const dialogRef = this.dialogRef.open(EliminarAnimalComponent, {
+      width: '600px',
+      height: '500px',
+    });
+  }
+
   editarAnimal(
     nombre: HTMLInputElement,
     edadAnimal: string,
@@ -168,8 +178,8 @@ export class UpdateAnimalComponent implements OnInit {
       });
   }
 
-  deleteAnimal(id: string){
-    this.animalService.deleteAnimal(id).subscribe((res)=>{
+  deleteAnimal(id: string) {
+    this.animalService.deleteAnimal(id).subscribe((res) => {
       console.log(res);
       this._snackBar.open('Animal correctamente eliminado ', '', {
         duration: 5000,
@@ -177,9 +187,8 @@ export class UpdateAnimalComponent implements OnInit {
         verticalPosition: 'bottom',
       });
       setTimeout(() => {
-        this._router.navigate(['/dashboard/mis-animales'])
+        this._router.navigate(['/dashboard/mis-animales']);
       }, 1500);
-      
-    })
+    });
   }
 }

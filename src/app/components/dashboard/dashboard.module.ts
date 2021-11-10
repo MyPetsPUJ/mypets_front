@@ -32,6 +32,7 @@ import { PreviewComponent } from './animales-adoptados/preview/preview.component
 import { FundacionesComponent } from './fundaciones/fundaciones.component';
 import { UpdateAnimalComponent } from './home-page/update-animal/update-animal.component';
 import { UpdatePuntoComponent } from './inicio/update-punto/update-punto.component';
+import { EliminarAnimalComponent } from './home-page/eliminar-animal/eliminar-animal.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { UpdatePuntoComponent } from './inicio/update-punto/update-punto.compone
     PreviewComponent,
     FundacionesComponent,
     UpdateAnimalComponent,
-    UpdatePuntoComponent
+    UpdatePuntoComponent,
+    EliminarAnimalComponent
   ],
   imports: [
     CommonModule,
