@@ -4,62 +4,45 @@
       <h1>Seleccione que desea ver</h1>
     </mat-toolbar>
     <p>
-      <mat-checkbox formControlName="solicitudesAdop"
-        >Solicitudes de adopcion</mat-checkbox
-      >
+      <mat-checkbox formControlName="solicitudesAdop">Solicitudes de adopcion</mat-checkbox>
     </p>
     <p>
-      <mat-checkbox formControlName="formulariosAdop"
-        >Formularios adopción</mat-checkbox
-      >
+      <mat-checkbox formControlName="formulariosAdop">Formularios adopción</mat-checkbox>
+    </p>
+    <p>
+      <mat-checkbox formControlName="historialAdop">Solicitudes ya respondidas</mat-checkbox>
     </p>
   </div>
 </div>
 <div class="noForm">
-  <div
-    *ngIf="datosTablaForm.length == 0 && estados.controls.formulariosAdop.value"
-    class="tam"
-  >
+  <div *ngIf="datosTablaForm.length == 0 && estados.controls.formulariosAdop.value" class="tam">
     <mat-toolbar>
       <span>No hay formularios de adopción pendientes</span>
     </mat-toolbar>
   </div>
 </div>
 <div *ngIf="datosTablaForm.length > 0" [formGroup]="estados">
-  <div
-    class="mat-elevation-z8"
-    class="tam example-container"
-    *ngIf="estados.controls.formulariosAdop.value"
-  >
+  <div class="mat-elevation-z8" class="tam example-container" *ngIf="estados.controls.formulariosAdop.value">
     <mat-toolbar>
       <span>Formularios de adopción</span>
     </mat-toolbar>
     <mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="idSolicitud">
-        <mat-header-cell *matHeaderCellDef mat-sort-header
-          >Foto</mat-header-cell
-        >
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Foto</mat-header-cell>
         <mat-cell *matCellDef="let element">
           <span class="mobile-label">Foto: </span>
-          <img
-            [src]="'http://localhost:3000/' + element.animal.urlImg"
-            class="circulo pointer"
-          />
+          <img [src]="'http://localhost:3000/' + element.animal.urlImg" class="circulo pointer" />
         </mat-cell>
       </ng-container>
       <ng-container matColumnDef="animalSolicitud">
-        <mat-header-cell *matHeaderCellDef mat-sort-header
-          >nombre mascota</mat-header-cell
-        >
+        <mat-header-cell *matHeaderCellDef mat-sort-header>nombre mascota</mat-header-cell>
         <mat-cell *matCellDef="let element">
           <span class="mobile-label">Mascota: </span>
           {{ element.animal.nombre }}
         </mat-cell>
       </ng-container>
       <ng-container matColumnDef="nombreSolicitante">
-        <mat-header-cell *matHeaderCellDef mat-sort-header
-          >nombre interesado</mat-header-cell
-        >
+        <mat-header-cell *matHeaderCellDef mat-sort-header>nombre interesado</mat-header-cell>
         <mat-cell *matCellDef="let element">
           <span class="mobile-label">Interesado: </span>
           {{ element.adoptante.nombre + element.adoptante.apellidos }}
@@ -93,28 +76,14 @@
           <!-- {{element.adoptante.num_celular}}-->
           <span class="mobile-label">Acción: </span>
 
-          <mat-icon
-            class="pointer"
-            matTooltip="Visualizar formulario"
-            (click)="openDialog(element, 'ver')"
-            >visibility</mat-icon
-          >
+          <mat-icon class="pointer" matTooltip="Visualizar formulario" (click)="openDialog(element, 'ver')">visibility
+          </mat-icon>
           <i style="color: white">....</i>
-          <mat-icon
-            class="pointer"
-            matTooltip="Aceptar formulario"
-            (click)="openDialog(element, 'aceptar')"
-            [ngStyle]="{ color: 'green' }"
-            >check_circle</mat-icon
-          >
+          <mat-icon class="pointer" matTooltip="Aceptar formulario" (click)="openDialog(element, 'aceptar')"
+            [ngStyle]="{ color: 'green' }">check_circle</mat-icon>
           <i style="color: white">....</i>
-          <mat-icon
-            class="pointer"
-            matTooltip="Rechazar formulario"
-            (click)="openDialog(element, 'rechazar')"
-            [ngStyle]="{ color: 'red' }"
-            >cancel</mat-icon
-          >
+          <mat-icon class="pointer" matTooltip="Rechazar formulario" (click)="openDialog(element, 'rechazar')"
+            [ngStyle]="{ color: 'red' }">cancel</mat-icon>
           <i style="color: white">....</i>
         </mat-cell>
       </ng-container>
@@ -138,51 +107,34 @@
 </div>
 
 <div class="noForm">
-  <div
-    *ngIf="datosTabla.length == 0 && estados.controls.solicitudesAdop.value"
-    class="tam"
-  >
+  <div *ngIf="datosTabla.length == 0 && estados.controls.solicitudesAdop.value" class="tam">
     <mat-toolbar>
       <span>No hay solicitudes de adopción pendientes</span>
     </mat-toolbar>
   </div>
 </div>
 <div *ngIf="datosTabla.length > 0" [formGroup]="estados">
-  <div
-    class="mat-elevation-z8"
-    class="tam example-container"
-    *ngIf="estados.controls.solicitudesAdop.value"
-  >
+  <div class="mat-elevation-z8" class="tam example-container" *ngIf="estados.controls.solicitudesAdop.value">
     <mat-toolbar>
       <span>Solicitudes de adopción</span>
     </mat-toolbar>
     <mat-table [dataSource]="dataSource1" matSort>
       <ng-container matColumnDef="foto">
-        <mat-header-cell *matHeaderCellDef mat-sort-header
-          >Foto</mat-header-cell
-        >
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Foto</mat-header-cell>
         <mat-cell *matCellDef="let element">
           <span class="mobile-label">Foto: </span>
-          <img
-            [src]="'http://localhost:3000/' + element.animal.urlImg"
-            width="100%"
-            class="circulo"
-          />
+          <img [src]="'http://localhost:3000/' + element.animal.urlImg" width="100%" class="circulo" />
         </mat-cell>
       </ng-container>
       <ng-container matColumnDef="interesado">
-        <mat-header-cell *matHeaderCellDef mat-sort-header
-          >Interesado</mat-header-cell
-        >
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Interesado</mat-header-cell>
         <mat-cell *matCellDef="let element">
           <span class="mobile-label">Interesado: </span>
           {{ element.adoptante.nombre }} {{ element.adoptante.apellidos }}
         </mat-cell>
       </ng-container>
       <ng-container matColumnDef="localidad">
-        <mat-header-cell *matHeaderCellDef mat-sort-header
-          >Localidad</mat-header-cell
-        >
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Localidad</mat-header-cell>
         <mat-cell *matCellDef="let element">
           <span class="mobile-label">Localidad: </span>
           {{ element.adoptante.localidad }}
@@ -204,30 +156,16 @@
         <mat-cell *matCellDef="let element; let i = index">
           <!-- {{element.adoptante.num_celular}}-->
           <span class="mobile-label">Acción: </span>
-          <mat-icon
-            class="pointer"
-            matTooltip="Ver información adicional de interesado"
-            (click)="accion('adoptante', i)"
-            >person</mat-icon
-          >
+          <mat-icon class="pointer" matTooltip="Ver información adicional de interesado"
+            (click)="accion('adoptante', i)">person</mat-icon>
           <i style="color: white">....</i>
-          <mat-icon
-            class="pointer"
-            matTooltip="Aceptar solicitud 
-                (Permitir que el interesado envíe un formulario de adopción)"
-            [ngStyle]="{ color: 'green' }"
-            (click)="accion('Aceptado', i)"
-            >thumb_up</mat-icon
-          >
+          <mat-icon class="pointer" matTooltip="Aceptar solicitud 
+                (Permitir que el interesado envíe un formulario de adopción)" [ngStyle]="{ color: 'green' }"
+            (click)="accion('Aceptado', i)">thumb_up</mat-icon>
           <i style="color: white">....</i>
-          <mat-icon
-            class="pointer"
-            matTooltip="Rechazar solicitud 
-                (El interesado no podrá enviar ningún formulario de adopción)"
-            [ngStyle]="{ color: 'red' }"
-            (click)="accion('Rechazado', i)"
-            >thumb_down</mat-icon
-          >
+          <mat-icon class="pointer" matTooltip="Rechazar solicitud 
+                (El interesado no podrá enviar ningún formulario de adopción)" [ngStyle]="{ color: 'red' }"
+            (click)="accion('Rechazado', i)">thumb_down</mat-icon>
         </mat-cell>
       </ng-container>
 
@@ -244,6 +182,115 @@
 
       <mat-header-row *matHeaderRowDef="displayedColumns1"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns1"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+</div>
+
+
+<div class="noForm">
+  <div *ngIf="datosTablaHistorial.length == 0 && estados.controls.historialAdop.value" class="tam">
+    <mat-toolbar>
+      <span>No hay formularios de adopción respondidos</span>
+    </mat-toolbar>
+  </div>
+</div>
+<div *ngIf="datosTablaHistorial.length > 0" [formGroup]="estados">
+  <div class="mat-elevation-z8" class="tam example-container" *ngIf="estados.controls.historialAdop.value">
+    <mat-toolbar>
+      <span>Historial de formularios de adopción</span>
+    </mat-toolbar>
+    <mat-table [dataSource]="dataSource2" matSort>
+      <ng-container matColumnDef="idSolicitud">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Foto</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Foto: </span>
+          <img [src]="'http://localhost:3000/' + element.animal.urlImg" class="circulo pointer" />
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="animalSolicitud">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre mascota</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Mascota: </span>
+          {{ element.animal.nombre }}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="nombreSolicitante">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre interesado</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="mobile-label">Interesado: </span>
+          {{ element.adoptante.nombre + element.adoptante.apellidos }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="numeroSolicitante">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Celular
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <!-- {{element.adoptante.num_celular}}-->
+          <span class="mobile-label">Celular: </span>
+          {{ element.adoptante.num_celular }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="fecha">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Fecha
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <!-- {{element.adoptante.num_celular}}-->
+          <span class="mobile-label">Fecha: </span>
+          {{ element.solicitud.fecha_solicitud | date: "dd/MM/yyyy"}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="estado">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Respuesta
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <div *ngIf="element.solicitud.estado != 'Aceptado, formulario aceptado.'">
+            <span class="mobile-label">Respuesta: </span>
+            <mat-icon [ngStyle]="{ color: 'red' }">cancel</mat-icon>
+           Denegado
+          </div>
+          <div *ngIf="element.solicitud.estado == 'Aceptado, formulario aceptado.'">
+            <span class="mobile-label">Respuesta: </span>
+            <mat-icon [ngStyle]="{ color: 'green' }">check_circle</mat-icon>
+            Aceptado
+          </div>
+          <!-- {{element.adoptante.num_celular}}-->
+
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="accion">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Acción
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <!-- {{element.adoptante.num_celular}}-->
+          <span class="mobile-label">Acción: </span>
+
+          <mat-icon class="pointer" matTooltip="Visualizar formulario" (click)="openDialog(element, 'ver')">visibility
+          </mat-icon>
+        </mat-cell>
+      </ng-container>
+
+      <!--
+              <ng-container matColumnDef="fechaSolicitud">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Fecha de solicitud
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.fecha}}
+                </td>
+              </ng-container>
+              -->
+
+      <mat-header-row *matHeaderRowDef="displayedColumns2"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns2"></mat-row>
     </mat-table>
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </div>

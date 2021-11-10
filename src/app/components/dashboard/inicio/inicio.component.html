@@ -5,7 +5,7 @@
 
 <div class="color" *ngIf="ancho >= 830">
     <div class="centrar">
-        <h1><b> <i>Lista de eventos </i></b></h1>
+        <h1><b> <i>Lista de eventos</i></b></h1>
     </div>
     <div class="tablaTamano example-container">
         <mat-form-field appearance="standard">
@@ -52,12 +52,11 @@
               </tr>
             </mat-table>
           
-            <mat-paginator #paginator [pageSizeOptions]="[7]" aria-label="Select page of users"></mat-paginator>
+            <mat-paginator #paginator [pageSizeOptions]="[3]" aria-label="Select page of users"></mat-paginator>
           </div>
           
     </div>
     <div class="full" id="map">
-    
         <agm-map class="mapa" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" (mapClick)="mapClicked($event)"
             [mapTypeControl]="false" (mapReady)="mapReady($event)">
           <mat-menu #menu="matMenu" >
@@ -76,7 +75,10 @@
             [matMenuTriggerFor]="menu"
             aria-label="Example icon-button with a menu"
             matTooltip="Desplegar opciones de mapa">
-                <mat-icon aria-hidden="true" class="aumentoTam">event</mat-icon>
+            <button mat-raised-button class="verde">
+                <mat-icon aria-hidden="true">settings</mat-icon>
+                Opciones</button>
+                
             </button>
             
             <agm-marker [latitude]="latitudeMarker" [longitude]="longitudeMarker" >
@@ -178,7 +180,7 @@
               </tr>
             </mat-table>
           
-            <mat-paginator #paginator [pageSizeOptions]="[7]" aria-label="Select page of users"></mat-paginator>
+            <mat-paginator #paginator [pageSizeOptions]="[3]" aria-label="Select page of users"></mat-paginator>
           </div>
           
     </div>
@@ -202,7 +204,10 @@
             [matMenuTriggerFor]="menu"
             aria-label="Example icon-button with a menu"
             matTooltip="Desplegar opciones de mapa">
-                <mat-icon aria-hidden="true" class="aumentoTam">event</mat-icon>
+            <button mat-raised-button class="verde">
+                <mat-icon aria-hidden="true">settings</mat-icon>
+                Opciones</button>
+                
             </button>
             
             <agm-marker [latitude]="latitudeMarker" [longitude]="longitudeMarker" >

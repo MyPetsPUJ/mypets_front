@@ -49,11 +49,22 @@ export class SolicitudesComponent implements OnInit {
       'localidad',
       'celular',
       'accion'
-    ]
+    ];
+  displayedColumns2: String[] = [
+    'idSolicitud',
+    'animalSolicitud',
+    'nombreSolicitante',
+    'numeroSolicitante',
+    'fecha',
+    'estado',
+    'accion'
+  ]
   dataSource!: MatTableDataSource<any>;
   dataSource1!: MatTableDataSource<any>;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatPaginator) paginator1!: MatPaginator;
+  dataSource2!: MatTableDataSource<any>;
+  @ViewChild(MatPaginator) paginator: MatPaginator | any;
+  @ViewChild(MatPaginator) paginator1 : MatPaginator | any;
+  @ViewChild(MatPaginator) paginator2 : MatPaginator | any;
   @ViewChild(MatSort) sort!: MatSort;
 
 
@@ -74,6 +85,7 @@ export class SolicitudesComponent implements OnInit {
   fundacion: UserFundacion | undefined;
   datosTabla: any[] = [];
   datosTablaForm: any[] = [];
+  datosTablaHistorial: any[] =[];
   solis: any[] = [];
 
   constructor(private authService: LoginService, private adoptanteService: CrearAdoptanteService, private animalService: AnimalService,
@@ -81,8 +93,9 @@ export class SolicitudesComponent implements OnInit {
     private formularioService: EnviarFormularioAdopcionService) {
     this.estados = fb.group
       ({
-        solicitudesAdop: false,
-        formulariosAdop: true,
+        solicitudesAdop: true,
+        formulariosAdop: false,
+        historialAdop: false
       });
     console.log(this.estados.controls.formulariosAdop.value);
   }
@@ -110,6 +123,7 @@ export class SolicitudesComponent implements OnInit {
           this.animalService.editarEstadoAdopcionAnimal(solicitud.animal._id,solicitud.adoptante._id);
           this.solicitudService.actualizarEstadoSolicitud(solicitud.solicitud._id, 'Aceptado, formulario aceptado.');
         })
+        this.cargarDatosSolicitudes();
     }
     this.cargarDatosSolicitudes();
     if ( accion == 'rechazar')
@@ -122,8 +136,10 @@ export class SolicitudesComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result=> 
         {
           confirmacion = result.confirmacion;
+          this.solicitudService.actualizarEstadoSolicitud(solicitud.solicitud._id, 'Rechazado, formulario no aceptado.');
         })
         console.log('Esta es la confirmacion', confirmacion);
+        this.cargarDatosSolicitudes();
     }
   }
   ngOnInit(): void {
@@ -138,6 +154,7 @@ export class SolicitudesComponent implements OnInit {
   cargarDatosSolicitudes() {
     this.datosTabla = [];
     this.datosTablaForm = [];
+    this.datosTablaHistorial = [];
     this.fundacionId = this.authService.getUserId();
     console.log('ID:' , this.fundacionId);
     this.solicitudService.populateSolicitudesFundaciones(this.fundacionId).subscribe( (res) => {
@@ -192,6 +209,24 @@ export class SolicitudesComponent implements OnInit {
                   encontrado = true;
                 }
 
+                if (!encontrado && this.solis[i].estado == 'Aceptado, formulario aceptado.' 
+                || !encontrado && this.solis[i].estado == 'Rechazado, formulario no aceptado.') {
+                  this.formularioService.getFormularioSolicitud(this.solis[i]._id).subscribe(data => {
+                    formulario = data
+                    subject.next(formulario);
+                  });
+                  var form = await subject.asObservable().pipe(take(1)).toPromise();
+                  filaTabla =
+                  {
+                    animal: resAnimales[k],
+                    adoptante: this.adoptantesAnimales[j],
+                    solicitud: this.solis[i],
+                    formulario: form
+                  }
+                  this.datosTablaHistorial.push(filaTabla);
+                  encontrado = true;
+                }
+
               }
             }
           }
@@ -202,6 +237,8 @@ export class SolicitudesComponent implements OnInit {
         
         this.dataSource = new MatTableDataSource(this.datosTablaForm);
         this.dataSource.paginator = this.paginator;
+        this.dataSource2 = new MatTableDataSource(this.datosTablaHistorial);
+        this.dataSource2.paginator = this.paginator2;
       });
       
     });

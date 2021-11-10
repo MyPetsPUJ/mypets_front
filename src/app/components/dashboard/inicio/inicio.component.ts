@@ -409,6 +409,11 @@ export class InicioComponent implements OnInit, OnDestroy {
 
   activarPuntos() {
     activarPuntos = true;
+    this._snackBar.open('Selecciona un punto cualquiera en el mapa', '', {
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+    });
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

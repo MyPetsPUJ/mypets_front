@@ -21,6 +21,7 @@ export class ConfirmarSolicitudComponent implements OnInit {
   userId: string = '';
   private authListenerSubs: Subscription | undefined;
   enviado: boolean | undefined = false;
+  enviadoForm: boolean = false;
   solicitudId: string ='';
   solicitudAdop: EntidadSolicitudAdopcion | any;
   solicitudesAdop: EntidadSolicitudAdopcion[] =[];
@@ -62,14 +63,21 @@ export class ConfirmarSolicitudComponent implements OnInit {
     });
     
     console.log("solicitudes",this.data.solicitudes);
-
     for(var i = 0; i < this.data.solicitudes.length; i++)
       {
-        if(this.data.solicitudes[i].idAnimal == this.data.animal._id )
+        if(this.data.solicitudes[i].idAnimal == this.data.animal._id && this.data.solicitudes[i].estado == 'Aceptado, formulario no enviado.'
+          || this.data.solicitudes[i].idAnimal == this.data.animal._id && this.data.solicitudes[i].estado == 'En espera' 
+          || this.data.solicitudes[i].idAnimal == this.data.animal._id && this.data.solicitudes[i].estado == 'Rechazado, sin posibilidad de enviar formulario.')
         {
           this.enviado = true;
           this.solicitudId = this.data.solicitudes[i]._id;
           console.log(this.solicitudId);
+        }
+        if(this.data.solicitudes[i].idAnimal == this.data.animal._id && this.data.solicitudes[i].estado == 'Aceptado, formulario en espera de respuesta.'
+        || this.data.solicitudes[i].idAnimal == this.data.animal._id && this.data.solicitudes[i].estado == 'Aceptado, formulario aceptado.'
+        || this.data.solicitudes[i].idAnimal == this.data.animal._id && this.data.solicitudes[i].estado == 'Rechazado, formulario no aceptado.')
+        {
+          this.enviadoForm = true;
         }
       } 
   }

@@ -9,7 +9,7 @@
   </div>
   <p></p>
   <p></p>
-  <div *ngIf="!enviado">
+  <div *ngIf="!enviado && !enviadoForm">
     <div class="boton">
       <button
         mat-raised-button
@@ -53,4 +53,23 @@
       </button>
     </div>
   </div>
+  <div *ngIf="enviadoForm" >
+    <div class="boton">
+      <button
+        mat-raised-button
+        [disabled]="true"
+      >
+      Enviado
+      </button>
+    </div>
+    <div class="boton">
+      <button
+        mat-raised-button
+        color="warn"
+        *ngIf="usuarioAutenticado"
+        (click)="accion('cerrar')"
+      >
+        Cancelar
+      </button>
+    </div>
 </div>
