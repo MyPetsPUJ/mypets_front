@@ -10,7 +10,7 @@ export class AdoptanteService {
   puerto: number = 3000;
   pathIntermedio: string = 'api';
   pathDashboard: string = 'dashboard-adoptante';
-  pathPerfil: string = 'mi_cuenta';
+  pathPerfil: string = 'mi-cuenta';
 
   constructor(private http: HttpClient) {}
 
