@@ -34,7 +34,7 @@ const routes: Routes = [
         path: 'solicitudes-adopcion-adoptante/formulario-adopcion',
         component: FormularioAdopcionComponent,
       },
-      { path: 'mi_cuenta/:id', component: MiCuentaAdoptanteComponent },
+      { path: 'mi-cuenta/:id', component: MiCuentaAdoptanteComponent },
       { path: 'consejos/:id', component: ConsejoPreviewComponent },
       { path: 'tienda', component: TiendaComponent}
     ],

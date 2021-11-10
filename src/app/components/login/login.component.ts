@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
 
     const usuarioAdoptante: String = 'Adoptante'; //TODO separar en constantes
     const usuarioFundacion: String = 'Fundacion';
+    const usuarioAdmin: String = 'Administrador';
 
     //Hace falta hacer una verificación de que usuario y contraseña sean los correctos en el front-end
 
@@ -75,6 +76,18 @@ export class LoginComponent implements OnInit {
           next: (respuesta) => {
             console.log(respuesta)
             this.exitoFundacion(datosLogin.correo);
+          },
+          error: (e) => {
+            this.error();
+          }
+        });
+    }else if (datosLogin.tipo_usuario == usuarioAdmin) {
+      this.loginService
+        .inicioSesion(datosLogin)
+        .subscribe({
+          next: (respuesta) => {
+            console.log(respuesta)
+            this.exitoAdmin(datosLogin.correo);
           },
           error: (e) => {
             this.error();
@@ -105,6 +118,18 @@ export class LoginComponent implements OnInit {
   }
 
   exitoFundacion(usuario: string) {
+    this._snackBar.open('Bienvenido ' + usuario, '', {
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+    });
+    this.loading = true;
+    setTimeout(() => {
+      this.router.navigate(['dashboard']);
+    }, 1500);
+  }
+
+  exitoAdmin(usuario: string){
     this._snackBar.open('Bienvenido ' + usuario, '', {
       duration: 5000,
       horizontalPosition: 'center',
