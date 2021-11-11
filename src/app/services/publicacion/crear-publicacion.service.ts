@@ -13,8 +13,8 @@ export class CrearPublicacionService {
   subTipoEntidad: string = 'publicaciones';
   subTipoEntidadII: string = 'crear-publicacion';
 
-  constructor(private http: HttpClient) { }
-  publicacion: EntidadPublicacion |any;
+  constructor(private http: HttpClient) {}
+  publicacion: EntidadPublicacion | any;
   // crearPublicacion(entidadPublicacion: EntidadPublicacion) {
   //   this.http
   //     .post(
@@ -50,20 +50,20 @@ export class CrearPublicacionService {
   // getPublicaciones() {
   //   return this.publicaciones;
   // }
-//   crearPublicacionQuemada(titulo: string,
-//     cuerpo: string,
-//     fecha: string,
-//     imagen: string,
-//     seccion: string)
-//     {
-//       this.publicacion = 
-//       {
-//         cuerpo: cuerpo,
-//         titulo: titulo,
-//         fecha: fecha,
-//         imagenPath: imagen,
-//         seccion: seccion
-//       }
-//       this.publicaciones.unshift(this.publicacion);
-//     }
+  //   crearPublicacionQuemada(titulo: string,
+  //     cuerpo: string,
+  //     fecha: string,
+  //     imagen: string,
+  //     seccion: string)
+  //     {
+  //       this.publicacion =
+  //       {
+  //         cuerpo: cuerpo,
+  //         titulo: titulo,
+  //         fecha: fecha,
+  //         imagenPath: imagen,
+  //         seccion: seccion
+  //       }
+  //       this.publicaciones.unshift(this.publicacion);
+  //     }
 }
