@@ -3,13 +3,13 @@
   margin-left: auto;
   position: absolute;
   right: 1%;
-  top: 9%;
+  top: 13%;
   border-color: black;
   border-width: 4px;
   border-style: solid;
 }
 .mapa {
-  height: 83vh;
+  height: 77vh;
 }
 .example-spacer {
   flex: 1 1 auto;
@@ -19,6 +19,16 @@
 }
 table {
   width: 100%;
+}
+.separador
+{
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.centro 
+{
+  text-align: center;
 }
 
 .mat-form-field {

@@ -1,10 +1,16 @@
 <div *ngIf="ancho < 830">
-    <div >
+    <div class="separador">
+        <div class="centro">
+            <p style="color:white;">. </p>
+            <p style="color:white;">. </p>
+
+            <h1><b> <i>Lista de fundaciones </i></b></h1>
+        </div>
         <mat-form-field appearance="standard">
             <mat-label>Búsqueda</mat-label>
             <input matInput (keyup)="applyFilter($event)" placeholder="ej. 'Vacunación'" #input>
         </mat-form-field>
-    
+
         <div class="mat-elevation-z8">
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
                 <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns; let i = index">
@@ -16,13 +22,13 @@
                             Dirección
                         </div>
                         <div *ngIf="column=='num_celular'">
-                            
+
                             Celular
                         </div>
                         <div *ngIf="column=='accion'">
                             Acción
                         </div>
-                        <div *ngIf="cargar"> 
+                        <div *ngIf="cargar">
                             <div *ngIf="column=='distancia'">
                                 Distancia
                             </div>
@@ -39,11 +45,12 @@
                             {{element[column]}}
                         </div>
                         <div *ngIf="column=='num_celular'">
-                            
+
                             {{element[column]}}
                         </div>
                         <div *ngIf="column=='accion'">
-                            <mat-icon class="pointer" matTooltip="Ver fundación" (click)="cambiarVista(element['latitud'],element['longitud'])">visibility</mat-icon>
+                            <mat-icon class="pointer" matTooltip="Ver fundación"
+                                (click)="cambiarVista(element['latitud'],element['longitud'])">visibility</mat-icon>
                         </div>
                         <div *ngIf="cargar">
                             <div *ngIf="column=='duracion'">
@@ -53,23 +60,23 @@
                                 {{element[column]}}
                             </div>
                         </div>
-                        
+
                     </td>
                 </ng-container>
-    
+
                 <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
                 <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
             </table>
-            <mat-paginator #paginator [pageSizeOptions]="[5]" aria-label="Select page of users"> </mat-paginator>
+            <mat-paginator #paginator [pageSizeOptions]="[4]" aria-label="Select page of users"> </mat-paginator>
         </div>
-    
+
     </div>
 
     <div id="map">
         <agm-map class="mapa" [latitude]="latitude" [longitude]="longitude" [zoom]="12" (mapReady)="mapReady($event)">
-            
-    
-    
+
+
+
             <!-- <button id="Settings" class="toggle-button controls button" mat-icon-button 
                 aria-label="Example icon-button with a menu" matTooltip="Cargar tiempos y distancias de viaje"
                 (click)="calcularRuta()">
@@ -84,26 +91,29 @@
                     </div>
                 </agm-info-window>
             </agm-marker>
-    
-            
+
+
             <agm-marker *ngFor="let fund of fundacionesBack" [latitude]="fund.latitud" [longitude]="fund.longitud"
                 [iconUrl]="amarillo">
                 <agm-info-window>
                     <div class="texto">
                         <h2>{{fund.nombreFund}}</h2>
                         <img [src]="'http://localhost:3000/' + fund.urlImg" class="container crop">
-                        
+
                     </div>
                     <div class="texto">
                         <button mat-raised-button color="warn" (click)="verFundacion(fund)">Ver más</button>
+                        <!--
                         <button mat-raised-button >
                             <mat-icon >pets</mat-icon>
                             Ver animales
                           </button>
-                    </div>    
+                          -->
+                    </div>
                 </agm-info-window>
             </agm-marker>
-            <agm-marker *ngFor="let punto of puntosDeInteres" [latitude]="punto.latitud" [longitude]="punto.longitud" [iconUrl]="verde">
+            <agm-marker *ngFor="let punto of puntosDeInteres" [latitude]="punto.latitud" [longitude]="punto.longitud"
+                [iconUrl]="verde">
                 <agm-info-window>
                     <div>
                         <!-- <h2>{{punto.titulo}}</h2>
@@ -114,15 +124,15 @@
                         <p>
                             Dirección: {{punto.descripcion}}
                         </p> -->
-                    <!-- <div class="alinearDer">
+                        <!-- <div class="alinearDer">
                         <mat-icon matTooltip="editar punto" class="pointer" (click)="editarPunto(coord.latitude,coord.longitude)">edit</mat-icon>
                         <mat-icon matTooltip="eliminar punto" class="pointer" (click)="eliminarPunto(coord.latitude,coord.longitude)">delete</mat-icon>
                     </div> -->
                     </div>
                 </agm-info-window>
             </agm-marker>
-            
-    
+
+
         </agm-map>
     </div>
 </div>
@@ -131,30 +141,30 @@
     <div class="centrar">
         <h2>Lista de Fundaciones</h2>
     </div>
-    <div class="tablaTamano">
+    <div class="tablaTamano example-container">
         <mat-form-field appearance="standard">
             <mat-label>Búsqueda</mat-label>
             <input matInput (keyup)="applyFilter($event)" placeholder="ej. 'Vacunación'" #input>
         </mat-form-field>
-    
+
         <div class="mat-elevation-z8">
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
                 <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns; let i = index">
                     <th mat-header-cell *matHeaderCellDef>
                         <div *ngIf="column=='nombreFund'">
-                            
+
                             Nombre
                         </div>
                         <div *ngIf="column=='direccion'">
-                            
+
                             Dirección
                         </div>
                         <div *ngIf="column=='num_celular'">
-                            
+
                             Celular
                         </div>
                         <div *ngIf="column=='accion'">
-                            
+
                             Acción
                         </div>
                         <div *ngIf="cargar">
@@ -177,7 +187,8 @@
                             {{element[column]}}
                         </div>
                         <div *ngIf="column=='accion'">
-                            <mat-icon class="pointer" matTooltip="Ver fundación" (click)="cambiarVista(element['latitud'],element['longitud'])">visibility</mat-icon>
+                            <mat-icon class="pointer" matTooltip="Ver fundación"
+                                (click)="cambiarVista(element['latitud'],element['longitud'])">visibility</mat-icon>
                         </div>
                         <div *ngIf="cargar">
                             <div *ngIf="column=='duracion'">
@@ -187,23 +198,23 @@
                                 {{element[column]}}
                             </div>
                         </div>
-                        
+
                     </td>
                 </ng-container>
-    
+
                 <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
                 <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
             </table>
             <mat-paginator #paginator [pageSizeOptions]="[5]" aria-label="Select page of users"> </mat-paginator>
         </div>
-    
+
     </div>
-    
+
     <div class="full" id="map">
         <agm-map class="mapa" [latitude]="latitude" [longitude]="longitude" [zoom]="12" (mapReady)="mapReady($event)">
-            
-    
-    
+
+
+
             <!-- <button id="Settings" class="toggle-button controls button" mat-icon-button 
                 aria-label="Example icon-button with a menu" matTooltip="Cargar tiempos y distancias de viaje"
                 (click)="calcularRuta()">
@@ -218,26 +229,29 @@
                     </div>
                 </agm-info-window>
             </agm-marker>
-    
-            
+
+
             <agm-marker *ngFor="let fund of fundacionesBack" [latitude]="fund.latitud" [longitude]="fund.longitud"
                 [iconUrl]="amarillo">
                 <agm-info-window>
                     <div class="texto">
                         <h2>{{fund.nombreFund}}</h2>
                         <img [src]="'http://localhost:3000/' + fund.urlImg" class="container crop">
-                        
+
                     </div>
                     <div class="texto">
                         <button mat-raised-button color="warn" (click)="verFundacion(fund)">Ver más</button>
+                        <!--
                         <button mat-raised-button >
                             <mat-icon >pets</mat-icon>
                             Ver animales
                           </button>
-                    </div>    
+                        -->
+                    </div>
                 </agm-info-window>
             </agm-marker>
-            <agm-marker *ngFor="let punto of puntosDeInteres" [latitude]="punto.latitud" [longitude]="punto.longitud" [iconUrl]="verde">
+            <agm-marker *ngFor="let punto of puntosDeInteres" [latitude]="punto.latitud" [longitude]="punto.longitud"
+                [iconUrl]="verde">
                 <agm-info-window>
                     <div>
                         <h2>{{punto.titulo}}</h2>
@@ -247,16 +261,15 @@
                         <p>
                             Dirección: {{punto.ubicacion.direccionFormateada}}
                         </p>
-                    <!-- <div class="alinearDer">
+                        <!-- <div class="alinearDer">
                         <mat-icon matTooltip="editar punto" class="pointer" (click)="editarPunto(coord.latitude,coord.longitude)">edit</mat-icon>
                         <mat-icon matTooltip="eliminar punto" class="pointer" (click)="eliminarPunto(coord.latitude,coord.longitude)">delete</mat-icon>
                     </div> -->
                     </div>
                 </agm-info-window>
             </agm-marker>
-            
-    
+
+
         </agm-map>
     </div>
 </div>
-
