@@ -24,6 +24,7 @@ import { HomeComponent } from './components/home/home.component';
 import { TokenInterceptorService } from './services/auth/token-interceptor.service';
 import { CrearAdoptanteReactivoComponent } from './components/crear-cuenta/crear-adoptante-reactivo/crear-adoptante-reactivo.component';
 import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
+import { CrearProductoComponent } from './components/dashboard-admin/crear-producto/crear-producto.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-
     HomeComponent,
     CrearAdoptanteReactivoComponent,
     DashboardAdminComponent,
+    CrearProductoComponent,
     
     //CrearAnimalGatoComponent
     //CrearAnimalComponent,

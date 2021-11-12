@@ -35,7 +35,7 @@
             <div class="filtro">
               <mat-form-field appearance="fill" class="ancho">
                 <mat-label>Categoria</mat-label>
-                <mat-select name="fundacion" ngModel #fundacionInput="ngModel">
+                <mat-select name="categoria" ngModel #categoriaInput="ngModel">
                   <mat-option *ngFor="let item of categorias" [value]="item">
                     {{ item }}
                   </mat-option>
@@ -75,7 +75,7 @@
                     {{ animal.nombre }}
                   </div>
                   <div class="razaAnimal">
-                    {{ animal.raza }}
+                    {{ animal.precio }}
                   </div>
                 </mat-card-content>
               </div>
@@ -99,7 +99,7 @@
                     {{ animal.nombre }}
                   </div>
                   <div class="razaAnimal">
-                    {{ animal.raza }}
+                    {{ animal.precio }}
                   </div>
                 </mat-card-content>
               </div>
@@ -123,7 +123,7 @@
                     {{ animal.nombre }}
                   </div>
                   <div class="razaAnimal">
-                    {{ animal.raza }}
+                    {{ animal.precio }}
                   </div>
                 </mat-card-content>
               </div>

@@ -1,0 +1,130 @@
+<div class="image">
+  <h2 class="titulo">Crear un producto</h2>
+  <form>
+    <mat-card class="color tam">
+      <form>
+        <form
+          action="crear-publicacion.component.ts"
+          (ngSubmit)="onCrearPublicacion(crearPublicacionForm)"
+          #crearPublicacionForm="ngForm"
+          method="POST"
+        >
+          <div class="centro">
+            <h2>Agrega una imagen a tu producto</h2>
+
+            <input
+              #fileInput
+              type="file"
+              (change)="onPhotoSelected($event)"
+              style="display: none"
+            />
+            <img
+              [src]="photoSelected || previsualizacion"
+              width="30%"
+              class="pointer"
+              matTooltip="Desplegar opciones de foto"
+              [matMenuTriggerFor]="menu"
+            />
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="fileInput.click()">
+                <mat-icon>perm_media</mat-icon>
+                <span>Cambiar foto</span>
+                <input (change)="onPhotoSelected($event)" type="file" />
+              </button>
+            </mat-menu>
+          </div>
+          <mat-grid-list cols="2" rowHeight="60px">
+            <div class="centro">
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field class="ancho">
+                  <mat-label>Ingrese el nombre para su producto</mat-label>
+                  <input
+                    name="nombreProducto"
+                    ngModel
+                    type="text"
+                    #nombreInput="ngModel"
+                    required
+                    matInput
+                  />
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field class="ancho">
+                  <mat-label
+                    >Seleccione la sección a la que pertenecerá el
+                    producto</mat-label
+                  >
+                  <mat-select
+                    name="seccionPublicacion"
+                    ngModel
+                    #seccionPublicacionInput="ngModel"
+                  >
+                    <mat-option
+                      *ngFor="let categorias of categorias"
+                      [value]="categorias"
+                      required
+                    >
+                      {{ categorias }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field class="ancho">
+                  <mat-label
+                    >Seleccione el tipo de animal del producto</mat-label
+                  >
+                  <mat-select
+                    name="tipoAnimal"
+                    ngModel
+                    #tipoAnimalInput="ngModel"
+                  >
+                    <mat-option
+                      *ngFor="let tipo of tipo"
+                      [value]="tipo"
+                      required
+                    >
+                      {{ tipo }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-form-field class="ancho">
+                  <mat-label>Ingrese el precio</mat-label>
+                  <input
+                    name="precioProducto"
+                    ngModel
+                    type="text"
+                    #precioInput="ngModel"
+                    required
+                    matInput
+                  />
+                </mat-form-field>
+              </mat-grid-tile>
+            </div>
+          </mat-grid-list>
+          <div class="centro">
+            <button
+              mat-raised-button
+              color="primary"
+              style="margin: 18px"
+              class="tamano"
+              type="submit"
+            >
+              Crear Producto
+            </button>
+            <button
+              mat-raised-button
+              color="accent"
+              class="tamano"
+              routerLink="/dashboard/publicaciones"
+            >
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </form>
+    </mat-card>
+  </form>
+</div>

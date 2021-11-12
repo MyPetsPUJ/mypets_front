@@ -7,6 +7,8 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { FundacionService } from 'src/app/services/fundacion/fundacion.service';
 import { UserFundacion } from '../../interfaces/usuarios/userFundacion';
 import { LoginService } from 'src/app/services/auth/login.service';
+import { Producto } from '../../interfaces/tienda/entidadProducto';
+import { ProductoService } from 'src/app/services/tienda/producto.service';
 
 @Component({
   selector: 'app-tienda',
@@ -15,8 +17,8 @@ import { LoginService } from 'src/app/services/auth/login.service';
 })
 export class TiendaComponent implements OnInit {
   tipo_usuario: boolean = false;
-  animales: EntidadAnimal[] = [];
-  animales2: EntidadAnimal[] = [];
+  animales: Producto[] = [];
+  animales2: Producto[] = [];
   fundaciones: UserFundacion[] = [];
   fundacionNoImporta: UserFundacion = {
     nombreFund: 'No importa',
@@ -62,13 +64,13 @@ export class TiendaComponent implements OnInit {
   borrarAnimal: string[] = [];
   borrarAnimales: string[] = [];
 
-  constructor( private animalService: AnimalService,
+  constructor( private animalService: ProductoService,
     private router: Router,
     public dialog: MatDialog,
     private fundacionService: FundacionService,) { }
 
   ngOnInit(): void {
-    this.animalService.getAnimales().subscribe({
+    this.animalService.mostrarProductosAdoptante().subscribe({
       next: (res) => {
         this.animales = res;
         this.animales2 = Array.from(this.animales);
@@ -105,8 +107,7 @@ export class TiendaComponent implements OnInit {
   filtrarAnimales(form: NgForm) {
     const datosFiltro = {
       especie: form.value.especieAnimal,
-      organizar: form.value.organizar,
-      fundacion: form.value.fundacion,
+      categoria: form.value.categoria
     };
 
     console.log(datosFiltro);
@@ -117,32 +118,14 @@ export class TiendaComponent implements OnInit {
     this.animales = Array.from(this.animales2);
     let tamanoArreglo = this.animales.length;
     let codigoFundacion;
-    console.log(datosFiltro.organizar);
-    if (datosFiltro.especie != '' && datosFiltro.especie != 'No importa') {
-      console.log(this.animales.length);
-
-      for (var i = 0; i < this.animales.length; i++) {
-        if (this.animales[i].tipo_animal != datosFiltro.especie) {
-          this.borrarAnimal[i] = 'borrar';
-        }
-      }
-
-      while (tamanoArreglo--) {
-        if (this.borrarAnimal[tamanoArreglo] === 'borrar') {
-          this.animales.splice(tamanoArreglo, 1);
-        }
-      }
-      tamanoArreglo = this.animales.length;
-      this.borrarAnimal = [];
-    }
     tamanoArreglo = this.animales.length;
     this.borrarAnimal = [];
     if (
-      datosFiltro.fundacion != '' &&
-      datosFiltro.fundacion.nombreFund != 'No importa'
+      datosFiltro.especie != '' &&
+      datosFiltro.especie != 'No importa'
     ) {
       for (var i = 0; i < this.animales.length; i++) {
-        if (this.animales[i].ownerFundacion != datosFiltro.fundacion._id) {
+        if (this.animales[i].tipoAnimal != datosFiltro.especie) {
           this.borrarAnimal[i] = 'borrar';
         }
       }
@@ -153,10 +136,23 @@ export class TiendaComponent implements OnInit {
         }
       }
     }
-    if (datosFiltro.organizar == true) {
-      this.animales.reverse();
-      this.estaAlReves = true;
+    if (
+      datosFiltro.categoria != '' &&
+      datosFiltro.categoria != 'No importa'
+    ) {
+      for (var i = 0; i < this.animales.length; i++) {
+        if (this.animales[i].seccion != datosFiltro.categoria) {
+          this.borrarAnimal[i] = 'borrar';
+        }
+      }
+
+      while (tamanoArreglo--) {
+        if (this.borrarAnimal[tamanoArreglo] === 'borrar') {
+          this.animales.splice(tamanoArreglo, 1);
+        }
+      }
     }
+    
     console.log(this.animales);
     this.columnas = this.animales.length;
     this.dividirColumnas();
@@ -172,21 +168,6 @@ export class TiendaComponent implements OnInit {
         console.log(error);
       },
     });
-  }
-  separarAnimalesAdoptados(){
-    for(var i=0;i<this.animales.length;i++)
-    {
-      if(this.animales[i].enAdopcion==false)
-      {
-        this.borrarAnimales[i]= "borrar";
-      }
-    }
-    let tamanoArreglo= this.animales.length;
-    while (tamanoArreglo--) {
-      if (this.borrarAnimales[tamanoArreglo] === 'borrar') {
-        this.animales.splice(tamanoArreglo, 1);
-      }
-    }
   }
   
 
