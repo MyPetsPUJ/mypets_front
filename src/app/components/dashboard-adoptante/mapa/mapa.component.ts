@@ -33,8 +33,8 @@ export class MapaComponent implements OnInit {
   columnsToDisplay: string[] = this.displayedColumns.slice();
   amarillo: string = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
   dataSource!: MatTableDataSource<any>;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator | any;
+  @ViewChild(MatSort) sort: MatSort | any;
   fundaciones: UserFundacion[] = [];
   ancho: number | any;
   largo: number | any;
@@ -70,6 +70,7 @@ export class MapaComponent implements OnInit {
           res.fundaciones[indexF].ubicacion.direccionFormateada;
       }
       this.dataSource = new MatTableDataSource(this.fundacionesBack);
+      this.dataSource.paginator = this.paginator;
       for (let index = 0; index < this.puntosDeInteres.length; index++) {
         console.log('Entrando a longitud');
         this.puntosDeInteres[index].longitud =
