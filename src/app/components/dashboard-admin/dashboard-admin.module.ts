@@ -8,10 +8,13 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { ProductosListComponent } from './productos-list/productos-list.component';
 import { ProductoPreviewComponent } from './productos-list/producto-preview/producto-preview.component';
 import { SharedModule } from '../shared/shared.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { DashboardAdminComponent } from './dashboard-admin.component';
 
 @NgModule({
   declarations: [
+    DashboardAdminComponent,
     NavbarComponent,
     CrearProductoComponent,
     HomePageComponent,
@@ -23,6 +26,8 @@ import { FormsModule } from '@angular/forms';
     DashboardAdminRoutingModule,
     SharedModule,
     FormsModule,
+    ReactiveFormsModule,
+    RouterModule
   ],
 })
 export class DashboardAdminModule {}

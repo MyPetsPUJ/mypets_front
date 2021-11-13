@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HttpClientModule } from '@angular/common/http';
 
 //Angular material
@@ -23,8 +23,7 @@ import { AuthInterceptor } from './components/interfaces/authInterceptor';
 import { HomeComponent } from './components/home/home.component';
 import { TokenInterceptorService } from './services/auth/token-interceptor.service';
 import { CrearAdoptanteReactivoComponent } from './components/crear-cuenta/crear-adoptante-reactivo/crear-adoptante-reactivo.component';
-import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
-
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -35,13 +34,10 @@ import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-
     CrearFundacionComponent,
     HomeComponent,
     CrearAdoptanteReactivoComponent,
-    DashboardAdminComponent,
-    
-    
+
     //CrearAnimalGatoComponent
     //CrearAnimalComponent,
     //CrearPublicacionComponent
-    
   ],
   imports: [
     BrowserModule,
@@ -52,23 +48,16 @@ import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-
     ReactiveFormsModule,
     MatCheckboxModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true}],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export class AppModule {}

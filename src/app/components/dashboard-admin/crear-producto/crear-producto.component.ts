@@ -8,16 +8,15 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-crear-producto',
   templateUrl: './crear-producto.component.html',
-  styleUrls: ['./crear-producto.component.css']
+  styleUrls: ['./crear-producto.component.css'],
 })
 export class CrearProductoComponent implements OnInit {
-
   constructor(
     public crearPublicacionService: CrearProductoService,
     private sanitizer: DomSanitizer,
     private _snackBar: MatSnackBar,
     private router: Router
-  ) { }
+  ) {}
 
   public archivos: any = [];
   public previsualizacion: string | undefined;
@@ -30,12 +29,15 @@ export class CrearProductoComponent implements OnInit {
   fechaPublicacion: string = Date().toLocaleString();
   imagenPublicacion: string = 'srcassetsImagesdog.png';
   categorias: any[] = [
-    "Alimento","Snacks","Farmapet","Cuidado e Higiene","Juguetes","Accesorios"
+    'Alimento',
+    'Snacks',
+    'Farmapet',
+    'Cuidado e Higiene',
+    'Juguetes',
+    'Accesorios',
   ];
-  tipo: any[] = [
-    "Perro","Gato"
-  ];
-  onCrearPublicacion(form: NgForm) {
+  tipo: any[] = ['Perro', 'Gato'];
+  onCrearProducto(form: NgForm) {
     if (this.photoSelected == '../../../assets/Images/no-image.png') {
       this._snackBar.open(
         'Por favor seleccione una imágen para la publicación',
@@ -68,17 +70,17 @@ export class CrearProductoComponent implements OnInit {
       //   this.photoSelected,
       //   form.value.seccionPublicacion
       // );
-      this.crearPublicacionService.crearProducto(
+      this.crearPublicacionService
+        .crearProducto(
           form.value.nombreProducto,
           form.value.tipoAnimal,
           this.file,
-          form.value.seccionPublicacion,
-          form.value.precio
+          form.value.seccionProducto,
+          form.value.precioProducto
         )
-        .subscribe(
-          (res) => console.log(res),
-          (err) => console.log(err)
-        );
+        .subscribe((res) => {
+          console.log(res);
+        });
       this._snackBar.open('Producto agregado', '', {
         duration: 3000,
         horizontalPosition: 'center',

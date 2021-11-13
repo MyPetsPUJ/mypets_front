@@ -12,14 +12,17 @@ const routes: Routes = [
     component: DashboardAdminComponent,
     children: [
       { path: '', component: HomePageComponent },
-      { path: '/tienda/agregar-nuevo-item', component: CrearProductoComponent },
       {
-        path: '/tienda/traer-todos-mis-items',
+        path: 'tienda/agregar-nuevo-item',
+        component: CrearProductoComponent,
+      },
+      {
+        path: 'tienda/traer-todos-mis-items',
         component: ProductosListComponent,
       },
-      { path: '/tienda/item/:id', component: ProductoPreviewComponent },
+      { path: 'tienda/item/:id', component: ProductoPreviewComponent },
       {
-        path: '/tienda/item/editar-item/:id',
+        path: 'tienda/item/editar-item/:id',
         component: ProductoPreviewComponent,
       },
     ],

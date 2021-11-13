@@ -34,7 +34,6 @@ import { UpdateAnimalComponent } from './home-page/update-animal/update-animal.c
 import { UpdatePuntoComponent } from './inicio/update-punto/update-punto.component';
 import { EliminarAnimalComponent } from './home-page/eliminar-animal/eliminar-animal.component';
 
-
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -64,7 +63,7 @@ import { EliminarAnimalComponent } from './home-page/eliminar-animal/eliminar-an
     FundacionesComponent,
     UpdateAnimalComponent,
     UpdatePuntoComponent,
-    EliminarAnimalComponent
+    EliminarAnimalComponent,
   ],
   imports: [
     CommonModule,
@@ -72,7 +71,7 @@ import { EliminarAnimalComponent } from './home-page/eliminar-animal/eliminar-an
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    MatCheckboxModule
-  ]
+    MatCheckboxModule,
+  ],
 })
-export class DashboardModule { }
+export class DashboardModule {}

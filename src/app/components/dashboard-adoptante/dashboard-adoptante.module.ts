@@ -23,8 +23,6 @@ import { MiCuentaAdoptanteComponent } from './mi-cuenta-adoptante/mi-cuenta-adop
 import { ConfirmarSolicitudComponent } from './home-page/preview-animal/confirmar-solicitud/confirmar-solicitud.component';
 import { TiendaComponent } from './tienda/tienda.component';
 
-
-
 @NgModule({
   declarations: [
     DashboardAdoptanteComponent,
@@ -44,14 +42,14 @@ import { TiendaComponent } from './tienda/tienda.component';
     FooterComponent,
     MiCuentaAdoptanteComponent,
     ConfirmarSolicitudComponent,
-    TiendaComponent
+    TiendaComponent,
   ],
   imports: [
     CommonModule,
     DashboardAdoptanteRoutingModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+  ],
 })
-export class DashboardAdoptanteModule { }
+export class DashboardAdoptanteModule {}

@@ -4,9 +4,9 @@
     <mat-card class="color tam">
       <form>
         <form
-          action="crear-publicacion.component.ts"
-          (ngSubmit)="onCrearPublicacion(crearPublicacionForm)"
-          #crearPublicacionForm="ngForm"
+          action="crear-producto.component.ts"
+          (ngSubmit)="onCrearProducto(crearProductoForm)"
+          #crearProductoForm="ngForm"
           method="POST"
         >
           <div class="centro">
@@ -55,7 +55,7 @@
                     producto</mat-label
                   >
                   <mat-select
-                    name="seccionPublicacion"
+                    name="seccionProducto"
                     ngModel
                     #seccionPublicacionInput="ngModel"
                   >

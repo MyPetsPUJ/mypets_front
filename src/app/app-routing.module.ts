@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { zip } from 'rxjs';
 import { CrearAdoptanteReactivoComponent } from './components/crear-cuenta/crear-adoptante-reactivo/crear-adoptante-reactivo.component';
 import { CrearAdoptanteComponent } from './components/crear-cuenta/crear-adoptante/crear-adoptante.component';
 import { CrearCuentaComponent } from './components/crear-cuenta/crear-cuenta.component';
@@ -16,9 +17,8 @@ const routes: Routes = [
   { path: 'crear-cuenta', component: CrearCuentaComponent },
   { path: 'crear-cuenta/crear-adoptante', component: CrearAdoptanteComponent },
   { path: 'crear-cuenta/crear-fundacion', component: CrearFundacionComponent },
-  { path: 'dashboard-admin/crear-producto', component: CrearProductoComponent },
-  { path: 'dashboard-admin', component: DashboardAdminComponent },
-
+  // { path: 'dashboard-admin/crear-producto', component: CrearProductoComponent },
+  // { path: 'dashboard-admin', component: DashboardAdminComponent },
   {
     path: 'crear-cuenta/crear-adoptante-reactivo',
     component: CrearAdoptanteReactivoComponent,

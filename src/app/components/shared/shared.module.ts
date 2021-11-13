@@ -32,10 +32,6 @@ import { VentanaReporteComponent } from '../dashboard/reportes/ventana-reporte/v
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
-
-
-
-
 @NgModule({
   declarations: [],
   entryComponents: [VentanaReporteComponent],
