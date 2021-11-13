@@ -7,7 +7,8 @@ import { CrearProductoComponent } from './crear-producto/crear-producto.componen
 import { HomePageComponent } from './home-page/home-page.component';
 import { ProductosListComponent } from './productos-list/productos-list.component';
 import { ProductoPreviewComponent } from './productos-list/producto-preview/producto-preview.component';
-
+import { SharedModule } from '../shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,11 +16,13 @@ import { ProductoPreviewComponent } from './productos-list/producto-preview/prod
     CrearProductoComponent,
     HomePageComponent,
     ProductosListComponent,
-    ProductoPreviewComponent
+    ProductoPreviewComponent,
   ],
   imports: [
     CommonModule,
     DashboardAdminRoutingModule,
-  ]
+    SharedModule,
+    FormsModule,
+  ],
 })
-export class DashboardAdminModule { }
+export class DashboardAdminModule {}
