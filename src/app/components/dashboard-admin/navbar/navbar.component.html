@@ -1,1 +1,74 @@
-<p>navbar works!</p>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  
+  <nav>
+    <div class="logo2">
+      <h4>AdoptaBog</h4>
+    </div>
+    <div class="logo">
+      <a class="navbar-brand" href="/">
+        <div class="logo-image">
+          <img src="../../../assets/Images/perro.png" width="100%" />
+        </div>
+      </a>
+    </div>
+    <span class="example-spacer"></span>
+    <ul class="nav-links">
+      <span class="example-spacer"></span>
+      <li><a routerLink="/dashboard-admin">Home</a></li>
+      <span class="example-spacer"></span>
+      <li><a routerLink="">Fundaciones</a></li>
+      <span class="example-spacer"></span>
+      <li><a routerLink="/dashboard-admin/tienda/agregar-nuevo-item">Tienda</a></li>
+      <span class="example-spacer"></span>
+      <li><a [routerLink]="['mi_cuenta', userId]">Cuenta</a></li>
+      <span class="example-spacer"></span>
+  
+      <li class="logout" (click)="onLogout()">
+        <a><mat-icon>logout</mat-icon></a>
+      </li>
+      <span class="example-spacer"></span>
+    </ul>
+    <span class="example-spacer"></span>
+    <!--
+    <div>
+      <mat-icon
+        *ngIf="userIsAuth"
+        [matMenuTriggerFor]="menu"
+        class="pointer"
+        [ngStyle]="{ color: 'white' }"
+        >more_vert</mat-icon
+      >
+      
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="['mi_cuenta', userId]">
+          <mat-icon>account_circle</mat-icon>
+          <span>Mi cuenta</span>
+        </button>
+        <button mat-menu-item routerLink="solicitudes">
+          <mat-icon>description</mat-icon>
+          <span>Solicitudes de adopción</span>
+        </button>
+        <button mat-menu-item (click)="onLogout()">
+          <mat-icon>logout</mat-icon>
+          <span>Cerrar sesión</span>
+        </button>
+      </mat-menu>
+  
+    </div>
+    -->
+  
+    <div class="burger">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+  </nav>
+  <script src="navbar.component.ts"></script>
+  

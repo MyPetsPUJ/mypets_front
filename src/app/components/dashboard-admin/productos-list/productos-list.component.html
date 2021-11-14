@@ -1,1 +1,46 @@
-<p>productos-list works!</p>
+<div class="todo">
+    <mat-toolbar>
+      <h1>Mis Productos</h1>
+      
+      <!-- <div class="items">
+        <div class="filtro">
+          <mat-form-field appearance="fill" class="no-padding">
+            <mat-label>Filtrar por sección</mat-label>
+            <mat-select name="seccion" ngModel #seccionInput="ngModel" (selectionChange)="filtrarPublicaciones($event.value)">
+              <mat-option *ngFor="let item of seccion" [value]="item">
+                {{ item }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        
+      </div> -->
+     
+      <div class="agregarPublicacion">
+        <button mat-fab routerLink="/dashboard-admin/tienda/agregar-nuevo-item">
+          <p>Agregar un nuevo producto</p>
+        </button>
+      </div>
+    </mat-toolbar>
+  
+    <div class="row">
+      <div class="col-md-4 p-4" *ngFor="let producto of productos">
+        <div
+          class="card card-publi pointer"
+          (click)="onProductoSelected(producto._id!)"
+          matTooltip="Ver producto"
+        >
+          <div class="card-header">
+            {{ producto.nombre }}
+          </div>
+          <img
+            [src]="'http://localhost:3000/' + producto.urlImg"
+            class="img-card-top w-80"
+          />
+          
+          <div class="class-footer">
+            Precio : {{producto.precio}}
+          </div>
+        </div>
+      </div>
+    </div>

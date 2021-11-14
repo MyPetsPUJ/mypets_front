@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Zen+Antique+Soft&display=swap");
+h1 {
+  font-family: "Proza Libre", sans-serif;
+  text-align: center;
+  vertical-align: middle;
+  margin: auto;
+  font-size: 27px;
+}
+.todo {
+  padding-top: 80px;
+}
+.mat-form-field-infix {
+  display: block;
+  position: relative;
+  flex: auto;
+  min-width: 0;
+  width: 90px;
+}
+.filtro {
+  box-sizing: border-box;
+  margin-top: 20px;
+  padding-right: 15px;
+}
+.mat-toolbar {
+  align-items: center;
+  justify-content: center;
+}
+
+table {
+  width: 100%;
+}
+.mat-form-field {
+  font-size: 14px;
+}
+th {
+  width: 10%;
+}
+.pointer {
+  cursor: pointer;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+.tam {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.tam1 {
+  margin-left: auto;
+}
+.circulo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.mobile-label {
+  display: none;
+}
+
+.items {
+  position: relative;
+  display: flex;
+}
+.agregarPublicacion button {
+  background-color: green;
+  border-radius: 0%;
+  width: 220px;
+  height: 50px;
+  color: white;
+  align-items: center;
+  box-sizing: border-box;
+}
+.agregarPublicacion {
+  padding-left: 15px;
+}
+.example-element-symbol {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+.card-header {
+  font-family: "Zen Antique Soft", serif;
+  text-align: center;
+}
+.class-footer {
+  text-align: center;
+  padding: 20px;
+}
+input {
+  width: 300px;
+}
+.agregarAnimal {
+  padding-left: 15px;
+}
+table {
+  width: 100%;
+}
+@media (max-width: 600px) {
+  .mobile-label {
+    width: 80px;
+    display: inline-block;
+    font-weight: bold;
+  }
+
+  .mat-header-row {
+    display: none;
+  }
+
+  .mat-row {
+    flex-direction: column;
+    align-items: start;
+    padding: 8px 24px;
+  }
+}
