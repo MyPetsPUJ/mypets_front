@@ -15,6 +15,10 @@ export class FundacionService {
   pathDashFund: string = 'dashboard';
   pathPerfil: string = 'mi_cuenta';
   pathFundaciones: string = 'get-fundaciones';
+  pathAdmin: string = 'dashboard-admin';
+  pathFundacion: string = 'fundacion';
+  pathMostrar: string = 'mostrar-todas-las-fundaciones';
+  pathFunds: string = 'fundaciones';
 
   constructor(private http: HttpClient) {}
 
@@ -99,5 +103,17 @@ export class FundacionService {
         fd
       );
     }
+  }
+
+  deleteFundacion(id: string) {
+    return this.http.delete(
+      `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathAdmin}/${this.pathFundacion}/${id}`
+    );
+  }
+
+  mostrarFundacionesAdmin() {
+    return this.http.get<UserFundacion[]>(
+      `http://${this.dominio}:${this.puerto}/${this.pathAdmin}/${this.pathFunds}/${this.pathMostrar}`
+    );
   }
 }

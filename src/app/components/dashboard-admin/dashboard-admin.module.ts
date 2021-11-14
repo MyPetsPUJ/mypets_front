@@ -11,6 +11,8 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DashboardAdminComponent } from './dashboard-admin.component';
+import { FundacionesComponent } from './fundaciones/fundaciones.component';
+import { FundacionPreviewComponent } from './fundaciones/fundacion-preview/fundacion-preview.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { DashboardAdminComponent } from './dashboard-admin.component';
     HomePageComponent,
     ProductosListComponent,
     ProductoPreviewComponent,
+    FundacionesComponent,
+    FundacionPreviewComponent,
   ],
   imports: [
     CommonModule,
