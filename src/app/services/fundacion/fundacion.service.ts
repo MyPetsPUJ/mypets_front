@@ -113,7 +113,7 @@ export class FundacionService {
 
   mostrarFundacionesAdmin() {
     return this.http.get<UserFundacion[]>(
-      `http://${this.dominio}:${this.puerto}/${this.pathAdmin}/${this.pathFunds}/${this.pathMostrar}`
+      `http://${this.dominio}:${this.puerto}/${this.pathApi}/${this.pathAdmin}/${this.pathFunds}/${this.pathMostrar}`
     );
   }
 }
