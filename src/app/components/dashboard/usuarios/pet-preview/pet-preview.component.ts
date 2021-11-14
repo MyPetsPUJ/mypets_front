@@ -21,6 +21,12 @@ export class PetPreviewComponent implements OnInit {
   ngOnInit(): void {}
 
   accion(nombre: string) {
+    if(nombre == 'aceptar')
+    {
+      this.dialogRef.close({
+        confirmacion: true
+      })
+    }
     if (nombre == 'cerrar') {
       this.dialogRef.close();
     }

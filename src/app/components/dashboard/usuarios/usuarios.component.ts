@@ -24,7 +24,7 @@ export class UsuariosComponent implements OnInit {
   animales: EntidadAnimal[] = [];
   userId: string = '';
   userFundacion: UserFundacion | undefined;
-  displayedColumns: string[] = ['foto', 'nombre', 'tipo', 'sexo', 'situacion',  'publicar','accion'];
+  displayedColumns: string[] = ['foto', 'nombre', 'tipo', 'sexo', 'situacion', 'publicar', 'accion'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -51,7 +51,7 @@ export class UsuariosComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.animales);
       setTimeout(() => this.dataSource.paginator = this.paginator);
     });
-    
+
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -75,10 +75,10 @@ export class UsuariosComponent implements OnInit {
     });
   }
   publicarAnimal(animal: any, accion: string) {
-    
+
     console.log('ANIMAL: ', animal);
     if (accion == 'publicar') {
-      this.animalService.editarAnimalEnAdopcion(animal._id,true);
+      this.animalService.editarAnimalEnAdopcion(animal._id, true);
       this.cargarAnimales();
       this.snackbar.open('Animal publicado en adopción', '',
         {
@@ -87,42 +87,50 @@ export class UsuariosComponent implements OnInit {
           verticalPosition: 'bottom'
         });
     }
-    if (accion == 'cancelar')
-    {
-      this.animalService.editarAnimalEnAdopcion(animal._id,false);
+    if (accion == 'cancelar') {
+      this.animalService.editarAnimalEnAdopcion(animal._id, false);
       this.cargarAnimales();
-      this.snackbar.open('Publicación cancelada','',
-      {
-        duration: 1500,
-        horizontalPosition: 'center',
-       verticalPosition : 'bottom'
-      });
+      this.snackbar.open('Publicación cancelada', '',
+        {
+          duration: 1500,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom'
+        });
     }
 
   }
-  do(accion: string, animal: any)
-  {
-    if(accion == 'editar')
-    {
+  do(accion: string, animal: any) {
+    if (accion == 'editar') {
       this._router.navigate(['/dashboard/editar-animal', animal._id]);
     }
-    if(accion == 'eliminar')
-    {
-      this.animalService.deleteAnimal(animal._id).subscribe((res) => {
-        console.log(res);
-        this.snackbar.open('Animal correctamente eliminado ', '', {
-          duration: 5000,
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom',
-        });
-        setTimeout(() => {
-        }, 1000);
+    if (accion == 'eliminar') {
+      var confirmacion = false;
+      const dialogRef = this.dialog.open(PetPreviewComponent, {
+        width: '370px',
+        height: '200px',
+        data: {
+          accion: 'eliminar'
+        },
       });
-      this.cargarAnimales();
+      dialogRef.afterClosed().subscribe(result => {
+        confirmacion = result.confirmacion;
+        if (confirmacion) {
+          this.animalService.deleteAnimal(animal._id).subscribe((res) => {
+            console.log(res);
+            this.snackbar.open('Animal correctamente eliminado ', '', {
+              duration: 5000,
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom',
+            });
+            setTimeout(() => {
+            }, 1000);
+          });
+          this.cargarAnimales();
+        }
+      })
     }
-    if(accion == 'ver')
-    {
-      this.visualizarAnimal(animal) 
+    if (accion == 'ver') {
+      this.visualizarAnimal(animal)
     }
   }
 }

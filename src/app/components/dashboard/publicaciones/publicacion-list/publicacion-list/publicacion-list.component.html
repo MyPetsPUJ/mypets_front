@@ -1,1 +1,9 @@
-<p>publicacion-list works!</p>
+<div>
+    <h1><b> Mensaje de confirmación </b></h1>
+    <p>¿Está seguro que desea eliminar la publicación seleccionada?</p>
+    <div style="text-align: center;">
+        <button mat-raised-button (click)="accion('confirmar')"
+            style="background-color: green; color: white;">Confirmar</button>
+        <i style="color: white;">...</i>
+        <button mat-raised-button (click)="accion('cerrar')" color="warn">Cancelar</button>
+    </div>

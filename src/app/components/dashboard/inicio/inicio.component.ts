@@ -101,7 +101,7 @@ export class InicioComponent implements OnInit, OnDestroy {
     private authService: LoginService,
     private mapService: MapServiceService,
     private _router: Router
-  ) {}
+  ) { }
   ngOnInit(): void {
     this.ancho = document.documentElement.clientWidth;
 
@@ -133,6 +133,7 @@ export class InicioComponent implements OnInit, OnDestroy {
   }
   cargarDatos() {
     //Aquí hace falta una línea que cargue puntos de interés desde la BD
+    this.puntosDeInteres = [];
     this.mapService.getPuntosDeInteres(this.userId).subscribe((res) => {
       console.log('Respuesta', res.puntos);
       console.log('Fundacion', res.fundacion);
@@ -186,7 +187,7 @@ export class InicioComponent implements OnInit, OnDestroy {
   mapClicked($event: AGMMouseEvent) {
     geocoder: google.maps.Geocoder;
     if (activarPuntos) {
-      
+
       const geocoder = new google.maps.Geocoder();
       // Coordinates equivale a 1 solo punto de interes y coordenadas equivale al arreglo de puntos de interes
       var coordinates: Coordenada = {
@@ -309,16 +310,34 @@ export class InicioComponent implements OnInit, OnDestroy {
   }
 
   onEliminarPunto(id: string) {
-    console.log('Id punto', id);
-    this.mapService.deletePunto(id).subscribe((res) => {
-      console.log(id);
-      this._router.navigate(['/dashboard']);
+    var confirmacion = false;
+    const dialogRef = this.dialog.open(TextoInteresComponent, {
+      width: '350px',
+      height: '188px',
+      data: {
+        accion: 'eliminar'
+      },
     });
+    dialogRef.afterClosed().subscribe(result => {
+      confirmacion = result.confirmacion
+      if (confirmacion) {
+        console.log('Id punto', id);
+        this.mapService.deletePunto(id).subscribe((res) => {
+          console.log(id);
+        });
+        this._snackBar.open('Punto de interés eliminado', '', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
+        this.cargarDatos();
+      }
+    })
   }
   eliminarPuntos() {
     this.coordenadas = [];
   }
-  
+
   verPunto(latitud: number, longitud: number) {
     this.latitude = latitud;
     this.longitude = longitud;

@@ -1,4 +1,4 @@
-<div class="alinear">
+<div class="alinear" *ngIf="data.accion != 'eliminar'">
   <h1>{{ data.animal.nombre }}</h1>
   <img [src]="'http://localhost:3000/' + data.animal.urlImg" mat-card-image class="container crop" />
   <p></p>
@@ -49,4 +49,13 @@
   <p></p>
   <p></p>
   <button mat-raised-button (click)="accion('cerrar')">Cerrar</button>
+</div>
+<div *ngIf="data.accion == 'eliminar'">
+  <h1><b> Mensaje de confirmación </b></h1>
+  <p>¿Está seguro que desea eliminar el animal seleccionado?</p>
+  <div style="text-align: center;">
+      <button mat-raised-button (click)="accion('confirmar')" style="background-color: green; color: white;">Confirmar</button>
+      <i style="color: white;">...</i>
+      <button mat-raised-button (click)="accion('cerrar')" color="warn">Cancelar</button>
+  </div>
 </div>
