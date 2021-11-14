@@ -9,6 +9,7 @@ import { UserFundacion } from '../../interfaces/usuarios/userFundacion';
 import { LoginService } from 'src/app/services/auth/login.service';
 import { Producto } from '../../interfaces/tienda/entidadProducto';
 import { ProductoService } from 'src/app/services/tienda/producto.service';
+import { CarritoComponent } from './carrito/carrito.component';
 
 @Component({
   selector: 'app-tienda',
@@ -47,7 +48,7 @@ export class TiendaComponent implements OnInit {
   columnas: number = 0;
   especie: string[] = ['Perro', 'Gato', 'No importa'];
   categorias: any[] = [
-    "Alimento","Snacks","Farmapet","Cuidado e Higiene","Juguetes","Accesorios"
+    "Alimento","Snacks","Farmapet","Cuidado e Higiene","Juguetes","Accesorios","No importa"
   ];
   
   fundacionesPrueba: any[] = ['Perritos Felices', 'Fundacion CR7'];
@@ -97,13 +98,13 @@ export class TiendaComponent implements OnInit {
       }
     }
   }
-  /*openPreview(animal: EntidadAnimal | any) {
-    const dialogRef = this.dialog.open(PreviewAnimalComponent, {
+  openPreview(animales: Producto[] | any) {
+    const dialogRef = this.dialog.open(CarritoComponent, {
       width: '600px',
       height: '500px',
-      data: { animal: animal },
+      data: { animales: animales },
     });
-  }*/
+  }
   filtrarAnimales(form: NgForm) {
     const datosFiltro = {
       especie: form.value.especieAnimal,
@@ -136,6 +137,8 @@ export class TiendaComponent implements OnInit {
         }
       }
     }
+    tamanoArreglo = this.animales.length;
+    this.borrarAnimal = [];
     if (
       datosFiltro.categoria != '' &&
       datosFiltro.categoria != 'No importa'

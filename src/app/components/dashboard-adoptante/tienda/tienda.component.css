@@ -12,8 +12,8 @@
   padding-top: 50px;
 }
 .body {
-  padding-bottom: 15px;
-  align-items: center;
+  padding-bottom: 0px;
+  align-items: right;
 }
 
 .container {
@@ -28,6 +28,7 @@
 .container .heading {
   width: 50%;
   padding-bottom: 10px;
+  display: flex;
 }
 
 .container .heading h3 {
@@ -159,14 +160,14 @@ h4 {
   border-bottom-left-radius: 20px;
 }
 .descripcion .nombreAnimal {
-  color: #6ebf4b;
+  color: #4404d8;
   font-size: 20px;
   padding-top: 5px;
   padding-bottom: 5px;
   border-radius: 5px;
 }
 .descripcion .razaAnimal {
-  color: #848484;
+  color: rgb(0, 0, 0);
 }
 
 .container .btn {
@@ -194,6 +195,9 @@ figcaption {
 .verAnimal {
   cursor: pointer;
   padding-top: 20px;
+}
+.carrito {
+  position: absolute;
 }
 @media only screen and (max-width: 1193px) {
   .listaDeFiltros {

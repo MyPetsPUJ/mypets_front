@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Producto } from 'src/app/components/interfaces/tienda/entidadProducto';
@@ -51,7 +52,19 @@ export class ProductoPreviewComponent implements OnInit {
     }
   }
 
-  editarProducto(nombre: HTMLInputElement, precio: HTMLInputElement) {}
+  editarProducto(nombre: HTMLInputElement, precio: HTMLInputElement) {
+  }
 
-  deleteProducto(id: string) {}
+  deleteProducto(id: string) {
+    this.crudProductoService.deleteProducto(id).subscribe(
+
+      (res)=>{
+        console.log(res);
+        this._router.navigate(['/dashboard-admin/tienda/agregar-nuevo-item']);
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
 }

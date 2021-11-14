@@ -42,12 +42,13 @@
                 </mat-select>
               </mat-form-field>
             </div>
-
+            
             <div class="filtro">
               <div class="buscarAnimal">
                 <button type="submit">Busca tus productos</button>
               </div>
             </div>
+           
           </div>
         </div>
       </div>
@@ -56,7 +57,13 @@
     <div class="container">
       <div class="heading">
         <h3><span>Nuestros productos</span></h3>
+        <div class="carrito">
+          <div class="irACarro" (click)="openPreview(animales)">
+              <img src="../../../assets/Images/carrito.png" width="6%" />
+          </div>
+        </div>
       </div>
+      
       <div class="box">
         <div class="dream">
           <div *ngFor="let animal of animales; index as i">
@@ -74,9 +81,7 @@
                   <div class="nombreAnimal">
                     {{ animal.nombre }}
                   </div>
-                  <div class="razaAnimal">
-                    {{ animal.precio }}
-                  </div>
+                  <div class="razaAnimal">{{ "$" + animal.precio }}</div>
                 </mat-card-content>
               </div>
             </div>
@@ -99,7 +104,7 @@
                     {{ animal.nombre }}
                   </div>
                   <div class="razaAnimal">
-                    {{ animal.precio }}
+                    {{ "$" + animal.precio }}
                   </div>
                 </mat-card-content>
               </div>
@@ -123,14 +128,16 @@
                     {{ animal.nombre }}
                   </div>
                   <div class="razaAnimal">
-                    {{ animal.precio }}
+                    {{ "$" + animal.precio }}
                   </div>
                 </mat-card-content>
               </div>
             </div>
           </div>
         </div>
+        
       </div>
+      
     </div>
   </body>
 </div>

@@ -1,0 +1,14 @@
+.todo {
+  display: flex;
+  padding-bottom: 15px;
+}
+.imagen {
+  width: 40%;
+  padding-right: 15px;
+}
+.precio {
+  text-align: right;
+}
+.nombre {
+  padding-right: 150px;
+}

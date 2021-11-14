@@ -26,7 +26,7 @@ export class CrearProductoService {
   ) {
     const fd = new FormData();
     fd.append('nombre', nombre);
-    fd.append('tipo_animal', tipo_animal);
+    fd.append('tipoAnimal', tipo_animal);
     fd.append('image', imagen);
     fd.append('seccion', seccion);
     fd.append('precio', precio);

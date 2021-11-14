@@ -1,0 +1,18 @@
+<div *ngFor="let producto of productos; index as i" class="todo">
+    <div class="imagen">
+        <img
+                  class="container crop card"
+                  mat-card-image
+                  [src]="'http://localhost:3000/' + producto.urlImg"
+                  alt="Foto de un producto"
+                  width="10%"
+                />
+    </div>
+<div class="nombre">
+    {{ producto.nombre }}
+</div>
+<div class="precio">
+    {{ producto.precio }}
+</div>
+  
+</div>
