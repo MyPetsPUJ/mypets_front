@@ -90,6 +90,11 @@ export class PublicacionPreviewComponent implements OnInit {
       )
       .subscribe((res) => {
         console.log(res);
+        this._snackBar.open('Información nueva guardada ', '', {
+          duration: 5000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
         //this._router.navigate(['dashboard/publicaciones', this.userId]);
       });
   }
