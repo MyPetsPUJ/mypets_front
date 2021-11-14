@@ -53,7 +53,7 @@ export class PublicacionPreviewComponent implements OnInit {
       this.publicacionService
         .getPublicacion(this.publicacionId)
         .subscribe((res) => {
-          console.log(res)
+          console.log(res);
           this.previsualizacion = res.urlImg;
           this.publicacion = res;
         });

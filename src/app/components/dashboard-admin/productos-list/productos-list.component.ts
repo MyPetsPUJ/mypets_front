@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductoService } from 'src/app/services/tienda/producto.service';
 import { Producto } from '../../interfaces/tienda/entidadProducto';
 
@@ -10,7 +11,10 @@ import { Producto } from '../../interfaces/tienda/entidadProducto';
 export class ProductosListComponent implements OnInit {
   productos: Producto[] = [];
 
-  constructor(private productosService: ProductoService) {}
+  constructor(
+    private productosService: ProductoService,
+    private _router: Router
+  ) {}
 
   ngOnInit(): void {
     this.cargarProductos();
@@ -22,5 +26,7 @@ export class ProductosListComponent implements OnInit {
     });
   }
 
-  onProductoSelected(id: string) {}
+  onProductoSelected(id: string) {
+    this._router.navigate(['/dashboard-admin/tienda/item/editar-item', id]);
+  }
 }

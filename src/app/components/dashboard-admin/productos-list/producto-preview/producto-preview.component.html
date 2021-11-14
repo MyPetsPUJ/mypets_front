@@ -1,1 +1,81 @@
-<p>producto-preview works!</p>
+<div class="row" *ngIf="!producto; else main_content">
+    <h1>Cargando...</h1>
+  </div>
+  
+  <ng-template #main_content>
+    <div class="row">
+      <div class="col-md-5 foto">
+        <div class="card">
+          <!-- <img [src]="'http://localhost:3000/' + publicacion.urlImg" class="img-fluid"> -->
+          <input
+            #fileInput
+            type="file"
+            (change)="onPhotoSelected($event)"
+            style="display: none"
+          />
+          <img
+            [src]="photoSelected || 'http://localhost:3000/' + previsualizacion"
+            #imagen
+            class="img-fluid pointer"
+            matTooltip="Desplegar opciones de foto"
+            [matMenuTriggerFor]="menu"
+          />
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="fileInput.click()">
+              <mat-icon>perm_media</mat-icon>
+              <span>Cambiar foto</span>
+              <input (change)="onPhotoSelected($event)" type="file" />
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="card cuerpo">
+          <form class="card-body" (submit)="editarProducto(nombre, precio)">
+            <div class="form-group">
+              <!-- <mat-label>Título de publi</mat-label> -->
+              <input
+                type="text"
+                #nombre
+                class="form-control"
+                placeholder="Nombre del producto"
+                [value]="producto.nombre"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                rows="12"
+                #precio
+                class="form-control"
+                placeholder="Precio del producto"
+                [value]="producto.precio"
+              />
+            </div>
+            <!-- <div class="form-group">
+                      <mat-form-field class="ancho" >
+                          <mat-label >Seleccione la sección a la que pertenece la publicación</mat-label>
+                          <mat-select name="seccionPublicacion" #seccionPublicacion>
+                            <mat-option #seccion *ngFor="let seccion of seccion" [value]="seccion" required > 
+                              {{seccion}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                  </div> -->
+            <button type="submit" class="btn btn-primary btn-block">
+              Modificar
+            </button>
+  
+            <button
+              class="btn btn-danger"
+              (click)="deleteProducto(producto._id!)"
+            >
+              Eliminar
+            </button>
+            <a href="/dashboard-admin/tienda/traer-todos-mis-items" class="btn btn-primary"
+              >Volver
+            </a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </ng-template>

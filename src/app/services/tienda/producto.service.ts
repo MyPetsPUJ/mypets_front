@@ -17,6 +17,7 @@ export class ProductoService {
   pathItem: string = 'item';
   pathItemsAdmin: string = 'traer-todos-mis-items';
   pathAllItems: string = 'traer-todos-los-items';
+  pathEditar: string = 'editar-item';
 
   constructor(private http: HttpClient) {}
 
@@ -28,7 +29,7 @@ export class ProductoService {
 
   getProductoByIdAdmin(id: string) {
     return this.http.get<Producto>(
-      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidadAdmin}/${this.pathTienda}/${this.pathItem}/${id}`
+      `http://${this.dominio}:${this.puerto}/${this.pathIntermedio}/${this.entidadAdmin}/${this.pathTienda}/${this.pathItem}/${this.pathEditar}/${id}`
     );
   }
 
