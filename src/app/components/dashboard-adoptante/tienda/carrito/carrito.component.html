@@ -17,19 +17,14 @@
                   width="10%"
                 />
     </div>
-   
-<div class="nombre">
-    
-    {{ producto.nombre }}
+    <div >
+        <h1><b>{{producto.nombre}}</b></h1>
+    <h3><b>Precio:</b> <i> {{producto.precio}} $</i></h3>
+    <h3><b>Sección:</b> <i> {{producto.seccion}} </i></h3>
+    <h3><b>Producto de:</b> <i> {{producto.tipoAnimal}} </i></h3>
+    </div>
+</div>
+<div style="text-align: center;">
+    <button mat-raised-button (click)="accion('cerrar')" color="warn">Cerrar</button>
 </div>
 
-<div class="precio">
-    
-    {{ producto.precio }}
-</div>
-
-</div>
-<div class="encabezado">
-    <h1>Precio total</h1>
-    {{ sumarProductos }}
-</div>

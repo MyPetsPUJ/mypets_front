@@ -33,7 +33,7 @@ export class TextoInteresComponent implements OnInit {
     private fb: FormBuilder,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
-    private _router: Router
+    private _router: Router,
   ) {
     this.form = this.fb.group({
       direccionLugar: [this.data.direccion, Validators.required],
@@ -115,4 +115,19 @@ export class TextoInteresComponent implements OnInit {
       });
     }
   }
+accion(nombre:string)
+{
+  if(nombre=="confirmar")
+  {
+    this.dialogRef.close(
+      {
+        confirmacion: true
+      } 
+    )
+  }
+  if(nombre == "cancelar")
+  {
+    this.dialogRef.close();
+  }
+}
 }

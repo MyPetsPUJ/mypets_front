@@ -1,11 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/auth/login.service';
 import { EntidadPublicacion } from 'src/app/components/interfaces/entidadPublicacion';
 import { PublicacionService } from 'src/app/services/publicacion/publicacion.service';
 import { ActivatedRoute } from '@angular/router';
+import { PublicacionListComponent } from '../../publicacion-list/publicacion-list/publicacion-list.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-publicacion-preview',
@@ -43,8 +45,10 @@ export class PublicacionPreviewComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private _router: Router,
     private authService: LoginService,
-    private publicacionService: PublicacionService
-  ) {}
+    private publicacionService: PublicacionService,
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
@@ -86,19 +90,44 @@ export class PublicacionPreviewComponent implements OnInit {
       )
       .subscribe((res) => {
         console.log(res);
-        this._router.navigate(['dashboard/publicaciones', this.userId]);
+        this._snackBar.open('Información nueva guardada ', '', {
+          duration: 5000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
+        //this._router.navigate(['dashboard/publicaciones', this.userId]);
       });
   }
 
   deletePublicacion(id: string) {
-    this.publicacionService.deletePublicacion(id).subscribe(
-      (res) => {
-        console.log(res);
-        this._router.navigate(['/dashboard/publicaciones', this.userId]);
-      },
-      (err) => {
-        console.log(err);
+    var confirmacion = false;
+    const dialogRef = this.dialog.open(PublicacionListComponent,
+      {
+        width: '370px',
+        height: '200px',
+        data:
+        {
+          accion: 'eliminar'
+        }
+      })
+    dialogRef.afterClosed().subscribe(result => {
+      confirmacion = result.confirmacion;
+      if (confirmacion) {
+        this.publicacionService.deletePublicacion(id).subscribe(
+          (res) => {
+            console.log(res);
+            this._router.navigate(['/dashboard/publicaciones', this.userId]);
+            this._snackBar.open('Publicación eliminada correctamente ', '', {
+              duration: 5000,
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom',
+            });
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
       }
-    );
+    })
   }
 }
