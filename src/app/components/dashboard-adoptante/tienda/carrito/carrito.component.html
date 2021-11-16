@@ -1,14 +1,5 @@
-
-
-<div class="encabezado">
-    <h1>Imagen</h1>
-    <h1>Nombre</h1>
-    <h1>Precio</h1>
-</div>
 <div *ngFor="let producto of productos; index as i" class="todo">
-    
     <div class="imagen">
-        
         <img
                   class="container crop card"
                   mat-card-image
@@ -16,8 +7,6 @@
                   alt="Foto de un producto"
                   width="10%"
                 />
-
-                
     </div>
     <div >
         <h1><b>{{producto.nombre}}</b></h1>
@@ -29,4 +18,3 @@
 <div style="text-align: center;">
     <button mat-raised-button (click)="accion('cerrar')" color="warn">Cerrar</button>
 </div>
-
