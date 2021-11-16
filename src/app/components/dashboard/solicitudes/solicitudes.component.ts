@@ -62,9 +62,9 @@ export class SolicitudesComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   dataSource1!: MatTableDataSource<any>;
   dataSource2!: MatTableDataSource<any>;
-  @ViewChild(MatPaginator) paginator: MatPaginator | any;
-  @ViewChild(MatPaginator) paginator1 : MatPaginator | any;
-  @ViewChild(MatPaginator) paginator2 : MatPaginator | any;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatPaginator) paginator1!: MatPaginator;
+  @ViewChild(MatPaginator) paginator2!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
 
@@ -99,8 +99,8 @@ export class SolicitudesComponent implements OnInit {
       });
     console.log(this.estados.controls.formulariosAdop.value);
   }
-  openDialog(solicitud: any, accion: string) {
-    var confirmacion;
+  abrir(solicitud: any, accion: string)
+  {
     if(accion == 'ver')
     {
       const dialogRef = this.dialog.open(FormulariosViewComponent, {
@@ -108,8 +108,12 @@ export class SolicitudesComponent implements OnInit {
         height: '600px',
         data: { formulario: solicitud, accion: 'formulario' },
       });
+      console.log(solicitud);
     }
-    console.log(solicitud);
+  }
+  openDialog(solicitud: any, accion: string) {
+    var confirmacion;
+    
     if(accion=='aceptar')
     {
       const dialogRef = this.dialog.open(FormulariosViewComponent, {
@@ -122,8 +126,9 @@ export class SolicitudesComponent implements OnInit {
           confirmacion = result.confirmacion;
           this.animalService.editarEstadoAdopcionAnimal(solicitud.animal._id,solicitud.adoptante._id);
           this.solicitudService.actualizarEstadoSolicitud(solicitud.solicitud._id, 'Aceptado, formulario aceptado.');
+          this.cargarDatosSolicitudes();
         })
-        this.cargarDatosSolicitudes();
+        
     }
     this.cargarDatosSolicitudes();
     if ( accion == 'rechazar')
@@ -137,9 +142,10 @@ export class SolicitudesComponent implements OnInit {
         {
           confirmacion = result.confirmacion;
           this.solicitudService.actualizarEstadoSolicitud(solicitud.solicitud._id, 'Rechazado, formulario no aceptado.');
+          this.cargarDatosSolicitudes();
         })
         console.log('Esta es la confirmacion', confirmacion);
-        this.cargarDatosSolicitudes();
+        
     }
   }
   ngOnInit(): void {
@@ -236,14 +242,14 @@ export class SolicitudesComponent implements OnInit {
         
         
         this.dataSource = new MatTableDataSource(this.datosTablaForm);
-        this.dataSource.paginator = this.paginator;
+        setTimeout(() => this.dataSource.paginator = this.paginator);
         this.dataSource2 = new MatTableDataSource(this.datosTablaHistorial);
-        this.dataSource2.paginator = this.paginator2;
+        setTimeout(() => this.dataSource2.paginator = this.paginator2);
       });
       
     });
     this.dataSource1 = new MatTableDataSource<any>(this.datosTabla);
-    this.dataSource1.paginator = this.paginator1;
+    setTimeout(() => this.dataSource1.paginator = this.paginator);
   }
 
   cargarSolicitudes() {

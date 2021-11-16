@@ -45,7 +45,7 @@
         <mat-header-cell *matHeaderCellDef mat-sort-header>nombre interesado</mat-header-cell>
         <mat-cell *matCellDef="let element">
           <span class="mobile-label">Interesado: </span>
-          {{ element.adoptante.nombre + element.adoptante.apellidos }}
+          {{ element.adoptante.nombre + ' ' + element.adoptante.apellidos }}
         </mat-cell>
       </ng-container>
       <ng-container matColumnDef="localidadSolicitante">
@@ -76,7 +76,7 @@
           <!-- {{element.adoptante.num_celular}}-->
           <span class="mobile-label">Acción: </span>
 
-          <mat-icon class="pointer" matTooltip="Visualizar formulario" (click)="openDialog(element, 'ver')">visibility
+          <mat-icon class="pointer" matTooltip="Visualizar formulario" (click)="abrir(element, 'ver')">visibility
           </mat-icon>
           <i style="color: white">....</i>
           <mat-icon class="pointer" matTooltip="Aceptar formulario" (click)="openDialog(element, 'aceptar')"
@@ -273,7 +273,7 @@
           <!-- {{element.adoptante.num_celular}}-->
           <span class="mobile-label">Acción: </span>
 
-          <mat-icon class="pointer" matTooltip="Visualizar formulario" (click)="openDialog(element, 'ver')">visibility
+          <mat-icon class="pointer" matTooltip="Visualizar formulario" (click)="abrir(element, 'ver')">visibility
           </mat-icon>
         </mat-cell>
       </ng-container>
