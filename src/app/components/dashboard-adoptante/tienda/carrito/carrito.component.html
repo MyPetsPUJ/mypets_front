@@ -1,5 +1,14 @@
+
+
+<div class="encabezado">
+    <h1>Imagen</h1>
+    <h1>Nombre</h1>
+    <h1>Precio</h1>
+</div>
 <div *ngFor="let producto of productos; index as i" class="todo">
+    
     <div class="imagen">
+        
         <img
                   class="container crop card"
                   mat-card-image
@@ -8,11 +17,19 @@
                   width="10%"
                 />
     </div>
+   
 <div class="nombre">
+    
     {{ producto.nombre }}
 </div>
+
 <div class="precio">
+    
     {{ producto.precio }}
 </div>
-  
+
+</div>
+<div class="encabezado">
+    <h1>Precio total</h1>
+    {{ sumarProductos }}
 </div>

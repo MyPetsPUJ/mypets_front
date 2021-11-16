@@ -1,34 +1,36 @@
+.todo {
+  padding-top: 70px;
+}
 .alinear {
-    text-align: center;
-  }
-  .ancho {
-    width: 70%;
-  }
-  .justificar {
-    text-align: justify;
-    text-justify: inter-word;
-  }
-  
-  .img-fluid {
-    margin: 2%;
-  }
-  
-  .form-group {
-    margin: 2%;
-  }
-  
-  .btn {
-    margin: 2%;
-    background-color: black;
-  }
-  .card {
-    background-color: aliceblue;
-    width: auto;
-  }
-  .row {
-    padding-bottom: 15px;
-    padding-top: 30px;
-    padding-right: 30px;
-    padding-left: 30px;
-  }
-  
+  text-align: center;
+}
+.ancho {
+  width: 70%;
+}
+.justificar {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.img-fluid {
+  margin: 2%;
+}
+
+.form-group {
+  margin: 2%;
+}
+
+.btn {
+  margin: 2%;
+  background-color: black;
+}
+.card {
+  background-color: aliceblue;
+  width: auto;
+}
+.row {
+  padding-bottom: 15px;
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-left: 30px;
+}

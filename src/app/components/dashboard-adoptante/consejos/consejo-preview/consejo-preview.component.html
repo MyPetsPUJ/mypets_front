@@ -1,13 +1,16 @@
-<div class="row" *ngIf="!consejo; else main_content">
+<div class="todo">
+  <div class="row" *ngIf="!consejo; else main_content">
     <h1>Cargando...</h1>
   </div>
-  
+
   <ng-template #main_content>
     <div class="row">
       <div class="col-md-5 foto">
         <div class="card">
-          <img [src]="'http://localhost:3000/' + consejo.urlImg" class="img-fluid">
-          
+          <img
+            [src]="'http://localhost:3000/' + consejo.urlImg"
+            class="img-fluid"
+          />
         </div>
       </div>
       <div class="col-md-7">
@@ -42,7 +45,7 @@
                           </mat-select>
                         </mat-form-field>
                   </div> -->
-             
+
             <a href="/dashboard-adoptante/consejos" class="btn btn-primary"
               >Volver a consejos
             </a>
@@ -51,4 +54,4 @@
       </div>
     </div>
   </ng-template>
-  
+</div>

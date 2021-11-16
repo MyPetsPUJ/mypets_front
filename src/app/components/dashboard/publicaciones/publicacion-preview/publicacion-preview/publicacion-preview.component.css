@@ -1,3 +1,6 @@
+.todo {
+  padding-top: 70px;
+}
 .alinear {
   text-align: center;
 }
@@ -31,7 +34,6 @@
   padding-right: 30px;
   padding-left: 30px;
 }
-.pointer 
-{
-  cursor: pointer
+.pointer {
+  cursor: pointer;
 }

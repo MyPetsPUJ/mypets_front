@@ -90,17 +90,15 @@ th {
     padding: 8px 24px;
   }
 }
-.separador 
-{
+.separador {
   margin-bottom: 20px;
   margin-left: 10px;
   margin-right: 10px;
 }
-.centro 
-{
+.centro {
   text-align: center;
 }
-.verde 
-{
-  background-color:rgb(22, 252, 33);
+.verde {
+  background-color: rgb(145, 182, 147);
+  margin-left: 10px;
 }

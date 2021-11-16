@@ -1,3 +1,5 @@
+
+<div class="todo">
 <div class="row" *ngIf="!publicacion; else main_content">
   <h1>Cargando...</h1>
 </div>
@@ -79,7 +81,7 @@
     </div>
   </div>
 </ng-template>
-
+</div>
 <!-- <div class="alinear">
 <form action="publicacion-preview.component.ts" (ngSubmit)="editarPublicacion(updatePubliForm)" #updatePubliForm="ngForm" method="post">
     <h1>{{data.publicacion.titulo}}</h1>
